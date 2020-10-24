@@ -1,0 +1,75 @@
+# jemdoc: menu{menu}{paper.html}
+= Papers
+
+
+== 2020
+
+- [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
+Tian Tong, *Cong Ma*, Yuejie Chi\n
+
+- [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
+Yanxi Chen, *Cong Ma*, H.~Vincent Poor, Yuxin Chen\n
+
+- [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
+Tian Tong, *Cong Ma*, Yuejie Chi\n
+
+
+- [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
+Yuxin Chen, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
+
+
+
+== 2019
+
+- [Publication/MC_inference/MC_inference.pdf Inference and Uncertainty Quantification for Noisy Matrix Completion] \n
+Yuxin Chen, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
+ /Proceedings of the National Academy of Sciences, vol. 116, no. 46, pp. 22931-22937, November 2019/ \n
+[Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf \[Slides\]] [Publication/MC_inference/MC_inference_pnas.pdf \[PNAS version\]] \n
+
+
+- [Publication/DL_survey/DL_survey.pdf A Selective Overview of Deep Learning] \n
+Jianqing Fan, *Cong Ma*, Yiqiao Zhong (alphabetical order)\n
+accepted to /Statistical Science, 2020/ \n
+
+- [Publication/NoisyMC/NoisyMC.pdf Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization] \n
+Yuxin Chen, Yuejie Chi, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
+accepted to /SIAM Journal on Optimization, 2020/ \n
+[Publication/NoisyMC/Slides/NoisyMC_slides.pdf \[Slides\]] \n
+
+== 2018
+
+- [Publication/RandomInit/main.pdf Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
+Yuxin Chen, Yuejie Chi, Jianqing Fan, *Cong Ma* (alphabetical order)\n
+/Mathematical Programming, vol. 176, no. 1-2, pp. 5-37, July 2019/ \n
+[Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]] [Publication/RandomInit/random_init_PR_MP.pdf \[MP version\]] 
+
+
+== 2017
+
+- [Publication/Implicit/paper.pdf Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
+*Cong Ma*, Kaizheng Wang, Yuejie Chi, Yuxin Chen \n
+/Foundations of Computational Mathematics, vol. 20, no. 3, pp. 451-632, June 2020/ \n
+accepted in part to /ICML 2018/ \n
+[Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] [Publication/Implicit/implicit_icml.pdf \[ICML version\]] [Publication/Implicit/ImplicitReg_FoCM.pdf \[FoCM version\]]
+
+
+- [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking ]  \n
+Yuxin Chen, Jianqing Fan, *Cong Ma*, Kaizheng Wang (alphabetical order)\n
+/Annals of Statistics, vol. 47, no. 4, pp. 2204-2235, August 2019/ \n
+[Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]] [Publication/Ranking/topK_AOS.pdf \[AoS version\]]
+
+- [Publication/ISA/interaction.pdf Inter-Subject Analysis: Inferring Sparse Interactions with Dense Intra-Graphs] \n
+*Cong Ma*, Junwei Lu, Han Liu \n
+accepted to /Journal of the American Statistical Association, 2020/ \n
+[Publication/ISA/Slides/ISA.pdf \[Slides\]]\n
+ICSA 2017 Student Paper Award
+
+
+== 2015
+
+- [Publication/Panther/TOIS.pdf Fast and Flexible Top-k Similarity Search on Large Networks] \n
+Jing Zhang, Jie Tang, *Cong Ma*, Hanghang Tong, Yu Jing, Juanzi Li, Walter Luyten, 	Marie-Francine Moens \n
+/ACM Transactions on Information Systems (TOIS),Volume 36 Issue 2, September 2017, Article No. 13/ \n
+accepted in part to /KDD 2015/
+
+
