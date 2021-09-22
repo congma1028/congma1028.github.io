@@ -1,0 +1,24 @@
+# jemdoc: menu{menu.jemdoc}{index.html}
+= ELE520: Mathematics of Data Science 
+[http://www.princeton.edu/~yc5/ Yuxin Chen], Princeton University, Fall 2020
+
+
+
+~~~
+All homeworks are due *at the Monday lectures*.  You are encouraged to use LaTeX to typeset your homeworks. 
+
+
+~~~
+
+#- [hw/hw1.pdf Homework 1], due Friday 4\/12\/13. 
+#  [solutions/hw1sol.pdf Solutions].
+
+#- [homeworks/hw1.pdf Homework 1],  due Wednesday, Mar. 1
+#- [homeworks/hw2.pdf Homework 2],  due Wednesday, Mar. 29
+#- [homeworks/hw3.pdf Homework 3],  due Wednesday, Apr. 26
+#- [hw3.pdf Homework 3],  due Wednesday, Mar. 29
+
+#--  [http://www.rle.mit.edu/rgallager/documents/6.262lateweb1.pdf Chapter 1, Gallager]
+#--  [restricted/hw1_solutions.pdf Homework 1 Solutions]
+
+

@@ -1,0 +1,30 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 37797: Course Information \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Autumn 2021 
+
+
+== Instructor 
+- [https://congma1028.github.io/index.html Cong Ma], Jones 313
+- Office hours: TBA
+
+
+== Lectures
+-  Time: Tue, Thu 3:30 PM - 4:50 PM
+-  Location: Kent Chem Lab 101 
+
+== Grading
+- *Homeworks*: There will be a few homework assignments that involve both theory and programming components. You are encouraged to use LaTeX to typeset your homeworks. 
+#- /Scribing (10\%)./ Each student will be responsible for scribing one lecture. *Please use the  [scribe_template.zip latex template] we provide*.
+- *Final project*: See the description [project.html here].
+- *Your grade:* max{ 0.4\*Homework + 0.6\* Project, Project }
+
+#== Review sessions 
+#There will be a few review sessions given at the beginning of the semester. The purpose of the sessions is to give you a quick review of basic linear algebra and probability. Attendance is optional.
+
+== Course Policies
+- *Prerequisites*: Students should have backgrounds in basic linear algebra and in basic probability (measure-theoretic probability is not needed), as well as knowledge of a programming language like MATLAB, Python, or Julia to conduct simple simulation exercises. While no specific background in optimization is required, a course such as STAT 28000 (Optimization) would be beneficial.
+ 
+
+- *Collaboration*: We encourage you to work on homework problems in study groups. However, you must write up and submit your own solutions and code without reading or copying the solutions of other students or from other online resources.
+
+

@@ -1,0 +1,32 @@
+# jemdoc: menu{menu.jemdoc}{lectures.html}
+= EE278: Reference
+[https://web.stanford.edu/~dntse/ David Tse], Stanford University, Autumn 2014
+
+
+- *Textbooks*: [http://www.cambridge.org/us/academic/subjects/engineering/communications-and-signal-processing/stochastic-processes-theory-applications Stochastic Processes: Theory for Applications], Robert G. Gallager, Cambridge University Press, 1st ed.
+
+- *Other Useful Materials*
+	-- [https://web.stanford.edu/~dntse/classes/ee178_278a.html *EE178 Lecture Notes*] (Basic Probability)
+	-- [lect01-2_Abbas.pdf Review of Basic Probability] by Abbas El Gamal
+	-- [lect06-2.pdf Random Processes] by Abbas El Gamal
+	-- [lect08-1.pdf Random Processes in Linear Systems] by Abbas El Gamal
+
+#These lecture notes will be updated frequently.
+
+#. [lectures/intro.pdf Introduction]
+# . [lectures/det_sys Deterministic finite state control]
+# . [lectures/markov.pdf Probability and Markov chains]
+# . [lectures/markov2.pdf More Markov chains]
+# . [lectures/markov3.pdf Markov chains with costs and rewards]
+# . [lectures/mdp.pdf Markov decision processes]
+# . [lectures/dp.pdf Dynamic programming]
+# . [lectures/trading.pdf Trading example]
+# . [lectures/active_query.pdf Active query example]
+# . [lectures/inf_mc.pdf Markov chains over infinite time 1]
+# . [lectures/inf_mc2.pdf Markov chains over infinite time 2]
+# . [lectures/inf_horiz.pdf Infinite horizon Markov decision problems]
+# . [lectures/risk_averse.pdf Risk averse control]
+# . [lectures/lqr.pdf Linear quadratic stochastic control]
+# . [lectures/leqr.pdf Linear exponential quadratic regulator] ([lectures/leqr_notes.pdf notes])
+# . [lectures/mpc.pdf Model predictive control]
+# 

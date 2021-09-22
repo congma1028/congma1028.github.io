@@ -3,18 +3,28 @@
 
 ~~~
 {}{img_left}{figure/bio.jpg}{alt text}{320}{240}
-I'm a postdoctoral researcher in the Department of Electrical Engineering and Computer Sciences at UC~Berkeley, advised by Professor [https://people.eecs.berkeley.edu/~wainwrig/ Martin Wainwright]. 
+I am an assistant Professor in the [https://stat.uchicago.edu/ Department of Statistics] at the University of Chicago. 
 
-Previously,  I obtained my Ph.D. at Princeton University under the supervision of Professor [http://www.princeton.edu/~yc5/ Yuxin Chen] and Professor [https://orfe.princeton.edu/~jqfan/ Jianqing Fan]. I have also worked with Professor [http://magics.cs.northwestern.edu/people.html Han Liu]. Prior to attending Princeton University, I received my bachelor's degree in Electrical Engineering from Tsinghua University in 2015. \n
+
+
+Previously, I was a postdoctoral researcher at UC~Berkeley, advised by Professor [https://people.eecs.berkeley.edu/~wainwrig/ Martin Wainwright]. I obtained my Ph.D. at Princeton University in 2020, advised by Professor [http://www.princeton.edu/~yc5/ Yuxin Chen] and Professor [https://orfe.princeton.edu/~jqfan/ Jianqing Fan]. Prior to graduate school, I received my bachelor's degree in Electrical Engineering from Tsinghua University in 2015. \n
 \n
-I am broadly interested in mathematics of data science, machine learning, high-dimensional statistics, convex and nonconvex optimization as well as their applications to neuroscience. \n
-
-I'll be joining the [https://stat.uchicago.edu/ Department of Statistics] as an assistant professor at the University of Chicago in July 2021. 
+I am broadly interested in mathematics of data science, reinforcement learning, high-dimensional statistics, convex and nonconvex optimization as well as their applications to neuroscience. \n
 
 
-E-mail: /congm/ \[@\] berkeley \[DOT\] edu
+
+E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 \n
 [https://scholar.google.com/citations?user=IB_jPZ0AAAAJ&hl=en Google Scholar]
-\n
-[CV/CV_Cong_Ma.pdf Resume]
 ~~~
+
+
+== News
+
+- A new paper on offline reinforcement learning: [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism]
+
+- A new paper on off-policy evaluation: [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits]
+
+- A new research monograph on spectral methods: [Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
+
+- Yuxin Chen, Yuejie Chi and I gave a tutorial on "Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods" at [https://eusipco2020.org/tutorials/ EUSIPCO 2020]. 

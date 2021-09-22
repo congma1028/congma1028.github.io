@@ -1,0 +1,39 @@
+# jemdoc: menu{menu.jemdoc}{index.html}
+= EE278: Introduction to Statistical Signal Processing
+[https://web.stanford.edu/~dntse/ David Tse], Stanford University, Autumn 2014
+
+== Overall Contents
+Law of large numbers and central limit theorem; random vectors and processes; Gaussian, Markov processes; stationarity; autocorrelation and power spectral density; minimum mean square error estimation, detection,  linear estimation, Kalman and Wiener filtering; Cramer Rao bound; introduction to compressed sensing.
+
+== Lectures
+-  Tue, Thu 11:00 AM - 12:15 PM at Hewlett 201.
+
+== Final Exam Information
+-  Final exam will be on Wed, 12/10, from 7-10 pm in Hewlett 201.
+-  Additional office hours by Prof. Tse on Thur, 12\/04, from 3-4 pm and on Wed, 12\/10, from 9 to 11 am.
+-  Final exam practice party on Mon, 12\/08, from 2-5 pm in Packard 3rd floor.
+-  Additional office hours by John on Tues, 12\/09, from 10-11 am in Packard 104.
+-  Additional office hours by Yuxin on Tues, 12\/09, from 5-6 pm in Packard 338. 
+
+== Announcements
+
+-  11\/29: [practice_final.pdf Practice Final] posted. [restricted/practice_final-solution.pdf Solutions] to practice final.
+-  11\/26: [hw8.pdf Homework 8] is out. It is due Friday, 12/05.
+-  11\/24 to 11\/28: Thanksgiving recess (no classes).
+-  11\/18: [lect08-1.pdf Random processes in linear systems] reading posted.
+-  11\/15: [hw7.pdf Homework 7] is out. It is due Friday, 11/21.
+-  11\/08: [hw6.pdf Homework 6] is out. It is due Friday, 11/14.
+-  11\/06: [lect06-2.pdf Random processes] reading posted.
+-  10\/31: [hw5.pdf Homework 5] is out. It is due Friday, 11/7.
+-  10\/27: [restricted/midterm-solutions.pdf Midterm Solutions] are posted.
+-  10\/24: Please fill out mid-quarter [https://gradapps.stanford.edu/ClassMgmt/ CA evaluations].
+-  10\/24: Midterm review will be held on Oct 27 from 9 am to 11 am, in place of homework party on Tuesday.
+-  10\/21: Midterm exam will be held at Hewlett 200, on Oct 27 from 6pm to 8pm. [restricted/practice_mt.pdf Practice problems] and [practice_mt-solution.pdf solutions].
+-  10\/18: [hw4.pdf Homework 4] is out. It is due on Friday, 10/24.
+-  10\/14: No lecture today. The make-up lecture will be in Hewlett 201, from 8:10 am to 9:00 am, Friday, 10/17.
+-  10\/10: [hw3.pdf Homework 3] is out. It is due on Friday, 10/17. 
+-  10\/2: [hw2.pdf Homework 2] is out. It is due on Thursday, 10/9.
+-  9\/29: Classroom changed to Hewlett 201.
+-  9\/25: [hw1.pdf Homework 1] is out. It is due on Thursday, 10/2. 
+
+
