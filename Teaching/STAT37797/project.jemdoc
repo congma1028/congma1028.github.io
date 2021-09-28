@@ -18,5 +18,10 @@ There are 3 milestones / deliverables to help you through the process.
 
 /You have the freedom to select a paper of your own interest (especially more practical papers), as long as it is related to the topics of this course. /
 
-Under construction...
-
+. Spectral method
+.. "An Lp theory of PCA and spectral clustering", E. Abbe, J. Fan, K. Wang, 2021 
+.. "Rate-optimal perturbation bounds for singular subspaces with applications to high-dimensional statistics", T.T. Cai, A. Zhang, Annals of Statistics, 2018
+.. "Subspace estimation from unbalanced and incomplete data matrices: L2,inf statistical guarantees", C. Cai, G. Li, Y. Chi, H. V. Poor, Y. Chen, Annals of Statistics, 2021
+. Nonconvex optimization
+.. "Rank Overspecified Robust Matrix Recovery:
+Subgradient Method and Exact Recovery", L. Ding, L. Jiang, Y. Chen, Q. Qu, Z. Zhu, 2021

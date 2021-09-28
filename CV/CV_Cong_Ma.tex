@@ -1,0 +1,356 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true,linkcolor = blue,urlcolor  = blue,citecolor = blue,anchorcolor = blue]{hyperref}
+\usepackage[usenames]{color}
+ \urlstyle{same}
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{a4paper,left=1.2in,right=1.2in,top=1in,bottom=1in}
+
+\usepackage{palatino}
+\setlist[itemize]{leftmargin=1em}
+\setlist[enumerate]{leftmargin=1em}
+
+%\leftmargin=0.25in
+%\oddsidemargin=0.25in
+%\textwidth=6.0in
+%\topmargin=0.25in
+%\textheight=9.25in
+
+\raggedright
+
+\pagenumbering{arabic}
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+% DEFINITIONS FOR RESUME
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}
+}
+
+\newcommand{\lineover}{
+	\begin{changemargin}{-0.05in}{-0.05in}
+		\vspace*{-8pt}
+		\hrulefill \\
+		\vspace*{-2pt}
+	\end{changemargin}
+}
+
+\newcommand{\header}[1]{
+	\begin{changemargin}{-0.5in}{-0.5in}
+		\scshape{#1}\\
+  	\lineover
+	\end{changemargin}
+}
+
+\newcommand{\contact}[5]{
+	\begin{changemargin}{-0.5in}{-0.5in}
+		\begin{center}
+			{\Large \scshape {#1}}\\ \smallskip
+			{#2}\\ \smallskip
+			{#3}\\ \smallskip
+			{#4}\\ \smallskip
+			{#5}\smallskip
+		\end{center}
+	\end{changemargin}
+}
+
+\newenvironment{body} {
+	\vspace*{-16pt}
+	\begin{changemargin}{-0.3in}{-0.5in}
+  }	
+	{\end{changemargin}
+}	
+
+\newcommand{\school}[4]{
+	\textbf{#1} \hfill \emph{#2\\}
+	#3\\
+	#4\\
+}
+
+% END RESUME DEFINITIONS
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Name
+\contact{\bf{Cong Ma}
+\vspace{6pt}}{\emph{Address: } Jones 313, 5747 South Ellis Avenue,
+Chicago, IL 60637}{\emph{Homepage:} \url{https://congma1028.github.io/}}{\emph{Email:} congm@uchicago.edu}
+
+
+
+\header{\LARGE{Appointment}}
+\begin{body}
+	\vspace{18pt}
+	Assistant Professor, Department of Statistics and the College, University of Chicago \hfill \emph{July~2021 - present} \\
+\end{body}
+
+
+\bigskip
+\header{\LARGE{Education}}
+\begin{body}
+	\vspace{18pt}
+	\textbf{\large{University of California, Berkeley}}, CA, USA \hfill \emph{June~2020 - June~2021} \\
+    \begin{itemize}
+      \item[-] Postdoc, Department of Statistics and Department of Electrical Engineering and Computer Sciences,
+      \item[-] Advisor: Professor \emph{Martin J.~Wainwright}
+      %\item GPA: 3.976 / 4.0
+    \end{itemize}
+	\textbf{\large{Princeton University}}, NJ, USA \hfill \emph{Sept.~2015 - June 2020} \\
+    \begin{itemize}
+      \item[-] Ph.D., Department of Operations Research and Financial Engineering
+      \item[-] Advisors: Professor \emph{Yuxin Chen} and Professor \emph{Jianqing Fan}
+      %\item GPA: 3.976 / 4.0
+    \end{itemize}
+    \textbf{\large{Tsinghua University}}, Beijing, China \hfill \emph{Aug.~2011 - July 2015} \\
+    \begin{itemize}
+      \item[-] Bachelor of Engineering, Department of Electrical Engineering
+    \end{itemize}
+    \textbf{\large{Georgia Institute of Technology}}, GA, USA \hfill \emph{Aug.~2013 - Dec.~2013} \\
+    \begin{itemize}
+      \item[-] Exchange student, School of Electrical and Computer Engineering
+    \end{itemize}
+\end{body}
+
+
+
+\bigskip
+\header{\LARGE{Research Interests}}
+\begin{body}
+\vspace{18pt}
+Mathematics of data science, reinforcement learning, high-dimensional statistics, large-scale optimization, inference and uncertainty quantification, and their applications to neuroscience and signal processing.
+\end{body}
+
+
+
+\bigskip
+\header{\LARGE{Preprints}}
+\begin{body}
+	\vspace{18pt}
+	\begin{enumerate}[label={[{P}{{\arabic*}}]}]
+	
+\item P.~Rashidinejad, B.~Zhu, \textbf{C.~Ma}, J.~Jiao, S.~Russel, {``Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism,''} 2021. \\
+
+
+\item \textbf{C.~Ma}, B.~Zhu, J.~Jiao, M.~J.~Wainwright, {``Minimax Off-Policy Evaluation for Multi-Armed Bandits,''} 2021. \\
+
+
+	
+
+\item T.~Tong, \textbf{C.~Ma}, A.~Prater-Bennette, E.~Tripp, Y.~Chi, {``Scaling and Scalability: Provable Nonconvex Low-Rank Tensor
+Estimation from Incomplete Measurements,''} 2021. \\
+
+	\end{enumerate}
+\end{body}
+
+
+\bigskip
+\header{\LARGE{Journal articles}}
+\begin{body}
+\vspace{18pt}
+\begin{enumerate}[label={[{J}{{\arabic*}}]}]
+
+\item Y.~Chen, Y.~Chi, J.~Fan, \textbf{C.~Ma}, Y.~Yan (\textbf{alphabetical order}), {``Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization,''} \emph{SIAM Journal on Optimization}, vol.~30, no.~4, pp.~3098–3121, Oct.~2020. \\
+
+\item Y.~Chen, Y.~Chi, J.~Fan, \textbf{C.~Ma} (\textbf{alphabetical order}), {``Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval,''} \emph{Mathematical Programming,} vol.~176, no.~1-2, pp.~5-37, July 2019. \\
+
+\item \textbf{C.~Ma}, K.~Wang, Y.~Chi, Y.~Chen, {{``Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution,''}}  \emph{Foundations of Computational Mathematics}, vol.~20, no.~3, pp.~451-632, June
+2020. \\
+
+\item Y.~Chen, Y.~Chi, J.~Fan, \textbf{C.~Ma} (\textbf{alphabetical order}), {``Spectral Methods for Data Science: A Statistical Perspective,''} accepted to \emph{Foundations and Trends in Machine Learning}, 2021. \\
+
+\item T.~Tong, \textbf{C.~Ma}, Y.~Chi, {``Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number,''}  accepted to \emph{IEEE Transactions on Signal Processing},~2021. \\
+
+
+
+\item Y.~Chen, J.~Fan, \textbf{C.~Ma}, Y.~Yan (\textbf{alphabetical order}), {``Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data,''}  accepted to \emph{Annals of Statistics}, 2021. \\
+
+\item Y.~Chen, \textbf{C.~Ma}, H.~V.~Poor, Y.~Chen, {``Learning Mixtures of Low-Rank Models,''} \emph{IEEE Transactions on Information Theory}, vol.~67, no.~7, pp.~4613-4636, July 2021. \\
+
+\item J.~Fan, \textbf{C.~Ma}, Y~.Zhong (\textbf{alphabetical order}), {``A Selective Overview of Deep Learning,''} \emph{Statistical Science}, vol.~36, no.~2, pp.~264-290, May 2021 (\textbf{invited overview article}).\\
+
+\item T.~Tong, \textbf{C.~Ma}, Y.~Chi, {``Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent,''} \emph{Journal of Machine Learning Reseasrch}, vol.~22, no.~150, pp.~1-63, May 2021. \\
+
+\item Y.~Li, \textbf{C.~Ma}, Y.~Chen, Y.~Chi, {``Nonconvex Matrix Factorization from Rank-One Measurements,''} \emph{IEEE Transactions on Information Theory}, vol.~67, no.~3, pp.~1928-1950, March 2021.
+
+\item \textbf{C.~Ma}, Y.~Li, Y.~Chi, {``Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing,''} \emph{IEEE Transactions on Signal Processing}, vol.~69, pp.~867-877, Jan.~2021.
+
+
+	
+\item	\textbf{C.~Ma}, J.~Lu, H.~Liu, {{``Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach,''}}  \emph{Journal of the American Statistical Association}, vol.~116, no.~534, pp.~746-755, 2021. \\
+
+
+\item Y.~Chen, J.~Fan, \textbf{C.~Ma}, Y.~Yan (\textbf{alphabetical order}), {``Inference and Uncertainty Quantification for Noisy Matrix Completion,''} \emph{Proceedings of the National Academy of Sciences~(PNAS)} vol.~116, no.~46, pp.~22931-22937, Nov.~2019 (direct submission). \\
+
+
+
+
+	
+\item 
+	Y.~Chen, J.~Fan, \textbf{C.~Ma}, K.~Wang (\textbf{alphabetical order}), {{``Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking,''}} \emph{Annals of Statistics,} vol.~47, no.~4, pp.~2204-2235, Aug.~2019. \\
+
+
+
+
+
+
+
+	
+	\item J.~Zhang, J.~Tang, \textbf{C.~Ma}, H.~Tong, Y.~Jing, J.~Li, W.~Luyten, M-F.~Moens, {{``Fast and Flexible Top-$k$ Similarity Search on Large Networks,''}} \emph{ACM Transactions on Information Systems}, vol.~36, no.~2,  pp.~13:1-13:30, Sept.~2017.\\
+	
+\end{enumerate}
+\end{body}
+
+\bigskip
+\header{\LARGE{Conference papers}}
+\begin{body}
+	\vspace{18pt}
+	\begin{enumerate}[label={[{C}{{\arabic*}}]}]
+	
+	\item \textbf{C.~Ma}, Y.~Li, Y.~Chi, {``Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing,''} \emph{Asilomar Conference on Signals, Systems and Computers}, Nov.~2019. \\
+	\item 
+	Y.~Li, \textbf{C.~Ma}, Y.~Chen, Y.~Chi, {{``Nonconvex Matrix Factorization from Rank-One Measurements,''}} \emph{International Conference on Artificial Intelligence and Statistics (AISTATS)}, Apr.~2019. \\
+	
+	\item 
+	\textbf{C.~Ma}, K.~Wang, Y.~Chi, Y.~Chen, {{``Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval and Matrix Completion,''}} \emph{International Conference on Machine Learning (ICML)}, July 2018. \\
+	
+	\item J.~Zhang, J.~Tang, \textbf{C.~Ma}, H.~Tong, Y.~Jing, J.~Li, {{``Panther: Fast Top-$k$ Similarity Search on Large Networks,''}} \emph{ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)}, Aug.~2015.\\
+	
+	
+	\end{enumerate}
+\end{body}
+
+
+\bigskip
+\header{\LARGE{Tutorials}}
+\begin{body}
+
+\vspace{18pt}
+\begin{enumerate}[label={[{Tut}{{\arabic*}}]}]
+\item  {``Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods,''} European Signal Processing Conference (EUSIPCO) 2020, together with Y.~Chen and Y.~Chi.
+\end{enumerate}
+
+\end{body}
+
+
+\bigskip
+\header{\LARGE{Invited talks}}
+\begin{body}
+	\vspace{18pt}
+	\begin{enumerate}[label={[{T}{{\arabic*}}]}]
+	
+	\item ``Minimax Off-Policy Evaluation for Multi-Armed Bandits,'' \emph{FODSI Seminar, UC Berkeley}, Apr.~2021. 
+	\item ``Bridging Convex and Nonconvex Optimization in Noisy Matrix Completion: Stability and Uncertainty Quantification,'' \emph{BLISS Seminar, UC Berkeley}, Nov.~2020.
+	\item ``Bridging Convex and Nonconvex Optimization in Noisy Matrix Completion: Stability and Uncertainty Quantification,'' \emph{Young Data Science Researcher Seminar, ETH}, June~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{ISyE Seminar, School of Industrial \& Systems Engineering, Georgia Tech, }Feb.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{Department Seminar, Department of IEOR, Columbia University, }Feb.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{Department Seminar, Department of Statistics, University of Pennsylvania, }Feb.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{Department of Statistics, UC Irvine, }Feb.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{Department Seminar, Department Seminar, Department of Statistics, UC Davis, }Feb.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification,'' \emph{Department of Statistics, Rutgers University, }Jan.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty Quantification'', \emph{Statistics Colloquium, Department of Statistics, University of Chicago,} Jan.~2020.
+	\item ``Statistics Meets Nonconvex Optimization: Computational Efficiency and Uncertainty quantification,'' \emph{Department Seminar, Department of Data Sciences and Operations, USC}, Jan.~2020.
+	\item ``Nonconvex Optimization Meets Statistics: Towards Rigorous Computational and Inferential Guarantees,'' \emph{School of Industrial Engineering, Purdue University}, Dec.~2019.
+	\item ``Bridging convex and nonconvex optimization in noisy matrix completion: Stability and uncertainty quantification,'' \emph{Statistics Seminar, Department of Mathematics, University of Maryland, College Park}, Dec.~2019.
+	\item ``Understanding statistical properties by bridging convex and nonconvex optimization,'' \emph{AMS Fall Eastern Sectional Meeting, Binghamton University}, Oct.~2019.
+	\item ``Noisy matrix completion: understanding statistical guarantees for convex relaxation via nonconvex optimization,'' \emph{Annual Young Researchers Workshop}, \emph{ORIE, Cornell University}, Oct.~2019.
+	\item ``Noisy matrix completion: understanding statistical guarantees for convex relaxation via nonconvex optimization,'' \emph{Mathematics, Information and Computation (MIC) Seminar}, \emph{Center for Data Science and Courant Institute, NYU}, Apr.~2019.
+		\item ``Nonconvex Matrix Completion Without Regularization,'' \emph{Asilomar Conference on Signals, Systems, and Computers, Pacific Grove}, Oct.~2018.
+		\item ``Spectral Method and Regularized MLE are Both Optimal for Top-$K$ Ranking,'' \emph{Energy and Information Systems Seminar, CMU}, July 2018.
+		\item ``Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval,'' \emph{ICML Workshop on Modern Trends in Nonconvex Optimization for Machine Learning, Stockholm}, July 2018.
+		\item ``Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion'', \emph{International Conference on Machine Learning (ICML), Stockholm}, July 2018.
+		\item ``Implicit Regularization in Nonconvex Statistical Estimation,'' \emph{International Symposium on Mathematical Programming, Bordeaux}, July 2018.
+		\item ``Implicit Regularization in Nonconvex Statistical Estimation,'' \emph{Department of Electrical Engineering, Tsinghua University}, Jan.~2018.
+			
+		\item ``Spectral Method and Regularized MLE are Both Optimal for Top-$K$ Ranking,'' \emph{International Conference on Data Science, Shanghai}, Dec.~2017.
+		\item ``Inter-Subject Analysis: Inferring Sparse Interactions with Dense Intra-Graphs,'' \emph{ICSA Applied Statistics Symposium, Chicago}, June 2017.
+		
+		\end{enumerate}
+\end{body}
+%
+\bigskip
+\header{\LARGE{Professional Service}}
+\begin{body}
+	\vspace{18pt}
+	\begin{enumerate}
+	\item Co-organizer of \emph{Wilks statistics seminar}, ORFE, Princeton University \hfill July 2018 -- May 2019
+	\item Co-organizer of \emph{$6^{\mathsf{th}}$ Princeton Day of Statistics}, ORFE, Princeton University
+%	\item Co-organizer of reading group on mathematical data science, Princeton University \hfill Sept.~2018 -- May~2020
+	\item Member of Technical Program Committee for \emph{52nd Annual Conference on Information Sciences and Systems} (\emph{CISS 2018})
+	\item Reviewer for the following journals: \emph{Annals of Statistics}, \emph{Statistical Science}, \emph{Bernoulli Journal}, \emph{Operations Research}, \emph{Proceedings of the IEEE}, \emph{Journal of Machine Learning Research}, \emph{IEEE Transactions on Signal Processing}, \emph{IEEE Transactions on Information Theory}, \emph{Journal of Business \& Economic Statistics}, \emph{Transactions on Knowledge and Data Engineering}, \emph{SIAM Journal on Mathematics of Data Science}
+	\item Reviewer for the following conferences: \emph{ACM Symposium on Theory of Computing}, \emph{Conference on Neural Information Processing Systems} (\emph{NeurIPS}), \emph{International Conference on Artificial Intelligence and Statistics}, \emph{IEEE International Symposium on Information Theory}, \emph{Annual Conference on Information Sciences and Systems}, \emph{International Conference on Acoustics, Speech, and Signal Processing} (\emph{ICASSP})
+
+	\end{enumerate}
+\end{body}
+
+%
+\bigskip
+\header{\LARGE{Teaching Experience}}
+\begin{body}
+	\vspace{18pt}
+	\begin{enumerate}
+	\item Topics in Mathematical Data Science: Spectral Methods and Nonconvex Optimization, Fall 2021 
+%	\item \emph{Statistical Foundations of Data Science} by Professor J.~Fan, Spring 2019, Head Teaching Assistant
+%	\item \emph{Mathematics of High-Dimensional Data} by Professor Y.~Chen, Fall 2018, Head Teaching Assistant
+%	\item \emph{Large-Scale Optimization for Data Science} by Professor Y.~Chen, Spring 2018, Head Teaching Assistant
+%	\item \emph{Statistical Learning and Nonparametric Estimation} by Professor Han Liu, Spring 2017, Teaching Assistant
+%	\item \emph{Analysis of Big Data} by Professor Han Liu, Spring 2017, Teaching Assistant
+%	\item \emph{Probability and Stochastic Systems} by Professor Mykhaylo Shkolnikov, Fall 2016, Teaching Assistant
+	\end{enumerate}
+\end{body}
+
+
+%\bigskip
+%\header{\LARGE{Internship Experience}}
+%\begin{body}
+%\vspace{18pt}
+%\emph{AI Labs, Hudson River Trading, New York, NY} \hfill \emph{June~2019 - Aug.~2019} \\
+%
+%\end{body}
+
+\bigskip
+
+\header{\LARGE{Awards and Honors}}
+
+\begin{body}
+    \vspace{18pt}
+    \begin{enumerate}
+    \item  Hannan Graduate Student Travel Award, Institute of Mathematical Statistics \hfill{} \emph{2020} \\
+    \item {School of Engineering and Applied Science Award for Excellence}, Princeton University \hfill{} \emph{2019}\\
+    {\em This award is given to SEAS advanced graduate students who have performed at the highest level as scholars and~researchers.} \\
+    \smallskip
+    \item {AI Labs Fellowship}, Hudson River Trading  \hfill{} \emph{2019}\\
+    \smallskip
+   \item {Best Poster Award}, Princeton Day of Optimization  \hfill{} \emph{2018}\\
+    \smallskip
+     \item{Student Travel Award}, $35^{\mathsf{th}}$ International Conference on Machine Learning (ICML)  \hfill{} \emph{2018}\\
+%    \smallskip
+%     \item{SEAS Travel Grant}, Princeton University  \hfill{} \emph{2018}\\
+%     \smallskip
+%     \item{SEAS Travel Grant}, Princeton University  \hfill{} \emph{2017}\\
+     \smallskip
+     \item {ICSA Student Paper Award}, International Chinese Statistical Association  \hfill{} \emph{2017}\\
+     \smallskip
+     \item  {First Year Engineering Fellowship}, Princeton University \hfill{} \emph{2015}\\
+    \smallskip
+    \item {Outstanding Academic Performance Scholarship}, Tsinghua University  \hfill{} \emph{2014}\\
+    \smallskip
+    \item {National Scholarship}, Tsinghua University (Highest honor, 2 out of 118 in department)\hfill{} \emph{2013}\\
+    \smallskip
+    \item {CNPC Scholarship}, Tsinghua University (Highest honor, only recipient in  department)\hfill{} \emph{2012}
+    \end{enumerate}
+\end{body}
+
+
+\end{document}

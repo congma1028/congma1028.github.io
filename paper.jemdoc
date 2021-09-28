@@ -2,74 +2,112 @@
 = Papers
 
 
+== 2021
+
+
+
+- [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
+P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
+
+
+- [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
+*C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
+[Publication/OPE/OPE_slides.pdf \[Slides\]] \n
+
+- [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
+T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
+
+
 == 2020
 
-- [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
-Tian Tong, *Cong Ma*, Yuejie Chi\n
 
-- [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
-Yanxi Chen, *Cong Ma*, H.~Vincent Poor, Yuxin Chen\n
-
-- [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
-Tian Tong, *Cong Ma*, Yuejie Chi\n
-
+- [Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
 
 - [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
-Yuxin Chen, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
+Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+accepted to /Annals of Statistics/, 2021\n
+
+- [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
+Y. Chen, *C. Ma*, H. V. Poor, Y. Chen\n
+accepted to /IEEE Transactions on Information Theory/, 2021\n
+
+
+- [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
+T. Tong, *C. Ma*, Y. Chi\n
+accepted to /IEEE Transactions on Signal Processing/, 2021\n
+
+
+- [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
+T. Tong, *C. Ma*, Y. Chi\n
+accepted to /Journal of Machine Learning Research/, 2021\n
+
+
+
 
 
 
 == 2019
 
 - [Publication/MC_inference/MC_inference.pdf Inference and Uncertainty Quantification for Noisy Matrix Completion] \n
-Yuxin Chen, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
- /Proceedings of the National Academy of Sciences, vol. 116, no. 46, pp. 22931-22937, November 2019/ \n
+Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+ /Proceedings of the National Academy of Sciences, 2019/ 
 [Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf \[Slides\]] [Publication/MC_inference/MC_inference_pnas.pdf \[PNAS version\]] \n
 
 
 - [Publication/DL_survey/DL_survey.pdf A Selective Overview of Deep Learning] \n
-Jianqing Fan, *Cong Ma*, Yiqiao Zhong (alphabetical order)\n
-accepted to /Statistical Science, 2020/ \n
+J. Fan, *C. Ma*, Y. Zhong (alphabetical order)\n
+/Statistical Science, 2020/ \n
 
 - [Publication/NoisyMC/NoisyMC.pdf Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization] \n
-Yuxin Chen, Yuejie Chi, Jianqing Fan, *Cong Ma*, Yuling Yan (alphabetical order)\n
-accepted to /SIAM Journal on Optimization, 2020/ \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+/SIAM Journal on Optimization, 2020/ 
 [Publication/NoisyMC/Slides/NoisyMC_slides.pdf \[Slides\]] \n
+
+- [Publication/BalancingFree/RectangularMF_TSP.pdf Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing] \n
+*C. Ma*, Y. Li, Y. Chi \n
+ /accepted to IEEE Transactions on Signal Processing, 2021/ \n
+ accepted in part to /Asilomar 2019/
 
 == 2018
 
 - [Publication/RandomInit/main.pdf Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
-Yuxin Chen, Yuejie Chi, Jianqing Fan, *Cong Ma* (alphabetical order)\n
-/Mathematical Programming, vol. 176, no. 1-2, pp. 5-37, July 2019/ \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
+/Mathematical Programming, 2019/ 
 [Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]] [Publication/RandomInit/random_init_PR_MP.pdf \[MP version\]] 
+
+- [Publication/RankOne/noncvx_covsketch_latest.pdf Nonconvex Matrix Factorization from Rank-One Measurements]\n
+Y. Li, *C. Ma*, Y. Chen, Y. Chi \n
+/IEEE Transactions on Information Theory, 2020/ \n
+accepted in part to /AISTATS, 2019/
 
 
 == 2017
 
 - [Publication/Implicit/paper.pdf Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
-*Cong Ma*, Kaizheng Wang, Yuejie Chi, Yuxin Chen \n
-/Foundations of Computational Mathematics, vol. 20, no. 3, pp. 451-632, June 2020/ \n
-accepted in part to /ICML 2018/ \n
+*C. Ma*, K. Wang, Y. Chi, Y. Chen \n
+/Foundations of Computational Mathematics, 2020/ \n
+accepted in part to /ICML, 2018/ 
 [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] [Publication/Implicit/implicit_icml.pdf \[ICML version\]] [Publication/Implicit/ImplicitReg_FoCM.pdf \[FoCM version\]]
 
 
 - [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking ]  \n
-Yuxin Chen, Jianqing Fan, *Cong Ma*, Kaizheng Wang (alphabetical order)\n
-/Annals of Statistics, vol. 47, no. 4, pp. 2204-2235, August 2019/ \n
+Y. Chen, J. Fan, *C. Ma*, K. Wang (alphabetical order)\n
+/Annals of Statistics, 2019/
 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]] [Publication/Ranking/topK_AOS.pdf \[AoS version\]]
 
-- [Publication/ISA/interaction.pdf Inter-Subject Analysis: Inferring Sparse Interactions with Dense Intra-Graphs] \n
-*Cong Ma*, Junwei Lu, Han Liu \n
-accepted to /Journal of the American Statistical Association, 2020/ \n
+- [Publication/ISA/jasa.pdf Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach] \n
+*C. Ma*, J. Lu, H. Liu \n
+/Journal of the American Statistical Association, 2020/ 
 [Publication/ISA/Slides/ISA.pdf \[Slides\]]\n
-ICSA 2017 Student Paper Award
 
 
 == 2015
 
 - [Publication/Panther/TOIS.pdf Fast and Flexible Top-k Similarity Search on Large Networks] \n
-Jing Zhang, Jie Tang, *Cong Ma*, Hanghang Tong, Yu Jing, Juanzi Li, Walter Luyten, 	Marie-Francine Moens \n
-/ACM Transactions on Information Systems (TOIS),Volume 36 Issue 2, September 2017, Article No. 13/ \n
-accepted in part to /KDD 2015/
+J. Zhang, J. Tang, *C. Ma*, H. Tong, Y. Jing, J. Li, W. Luyten, 	M. Moens \n
+/ACM Transactions on Information Systems, 2017/ \n
+accepted in part to /KDD, 2015/ 
+  [Publication/Panther/panther.pdf \[KDD version\]] [Publication/Panther/TOIS.pdf \[TOIS version\]] \n 
 
 

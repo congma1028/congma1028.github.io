@@ -1,0 +1,32 @@
+# jemdoc: menu{menu}{talk.html}
+= Invited Talks
+
+
+. [Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf Bridging convex and nonconvex optimization in noisy matrix completion:
+Stability and uncertainty quantification] \n
+	.. AMS Fall Eastern Sectional Meeting, Binghamton University, Oct. 2019
+
+. [Publication/NoisyMC/Slides/NoisyMC_slides.pdf Noisy matrix completion:
+Understanding statistical guarantees for
+convex relaxation via nonconvex optimization] \n
+	.. The Mathematics, Information and Computation (MIC) Seminar, Center for Data Science and Courant Institute, NYU, Apr. 2019
+	.. Young Researchers Workshop, ORIE, Cornell, Oct. 2019
+. [Publication/Implicit/Slides/unregularized_mc.pdf Nonconvex matrix completion without regularization] \n
+	.. Asilomar Conference on Signals, Systems, and
+Computers, Pacific Grove, Oct. 2018
+. [Publication/Ranking/Slides/ICDS/ICDS_CongMa.pdf Spectral method and regularized MLE are both optimal for top-K ranking] \n
+	.. Energy and Information Systems Seminar, CMU, July 2018
+	.. International Conference on Data Science, Shanghai, Dec. 2017
+. [Publication/Implicit/Slides/implicit_reg_slides.pdf Implicit regularization in nonconvex statistical estimation] \n
+	.. Department of Electrical Engineering, Tsinghua University, Jan. 2018
+
+
+= Talks
+
+. [Publication/Implicit/Slides/implicit_reg_slides.pdf Implicit regularization in nonconvex statistical estimation] \n
+	.. International Conference on Machine Learning (ICML), Stockholm, July 2018
+	.. [https://ismp2018.sciencesconf.org/ International Symposium on Mathematical Programming], Bordeaux, July 2018
+. [Publication/RandomInit/Slides/random_init_slides.pdf Gradient descent with random initialization: fast global convergence for nonconvex phase retrieval] \n
+	.. [https://sites.google.com/view/icml2018nonconvex/ ICML Workshop on Modern Trends in Nonconvex Optimization for Machine Learning], Stockholm, July 2018
+
+

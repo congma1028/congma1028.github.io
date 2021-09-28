@@ -1,0 +1,435 @@
+\usepackage{amsmath,amsfonts,bm,bbm,comment}
+\usepackage{latexsym,tabularx,amscd}
+\usepackage{etex} 
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+\usepackage{subfigure}
+\usepackage{url}
+%\usepackage{multimedia}
+\usepackage{hyperref}
+\usepackage{skull}
+%\usepackage{enumitem}
+%\usepackage{movie15}
+
+\usepackage{multirow}
+\usepackage{cancel}
+
+%\usepackage{ulem}
+\usepackage{lmodern}
+\usepackage{array} 
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage[normalem]{ulem}
+
+\usepackage{mathtools}
+
+\usepackage[space]{grffile}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows}
+\usetikzlibrary{arrows,positioning}
+\usepackage{pgfplots}
+%\usetikzlibrary{pgfplots.groupplots}
+
+\tikzset{
+    myarrow/.style={
+        draw,
+        fill=black,
+        single arrow,
+        minimum height=6ex,
+        single arrow head extend=1ex
+    }
+}
+
+
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\newcommand{\vertiiibig}[1]{{\big\vert\kern-0.25ex\big\vert\kern-0.25ex\big\vert #1 
+    \big\vert\kern-0.25ex\big\vert\kern-0.25ex\big\vert}}
+
+\newcommand{\vertiiiplain}[1]{{\vert\kern-0.25ex\vert\kern-0.25ex\vert #1 
+    \vert\kern-0.25ex\vert\kern-0.25ex\vert}}
+
+
+
+\usepackage{dsfont}
+\DeclareMathOperator{\ind}{\mathds{1}}  % Indicator
+
+
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\mode<presentation>
+
+\usetheme{Madrid}
+% other themes: AnnArbor, Antibes, Bergen, Berkeley, Berlin, Boadilla,
+% boxes, CambridgeUS, Copenhagen, Darmstadt, default, Dresden,
+% Frankfurt, Goettingen, Hannover, Ilmenau, JuanLesPins, Luebeck,
+% Madrid, Maloe, Marburg, Montpellier, PaloAlto, Pittsburg, Rochester,
+% Singapore, Szeged, classic
+
+% \usecolortheme{lily} 
+% color themes: albatross, beaver, beetle, crane, default, dolphin,
+% dov, fly, lily, orchid, rose, seagull, seahorse, sidebartab,
+% structure, whale, wolverine
+
+% \usefonttheme{serif} 
+% font themes: default, professionalfonts, serif, structurebold,
+% structureitalicserif, structuresmallcapsserif
+
+%\usefonttheme[onlymath]{serif}
+%\usefonttheme[onlylarge]{structuresmallcapsserif} 
+  
+%\useoutertheme[subsection=false]{smoothbars}
+% outer themes:
+% default,infolines,miniframes,smoothbars,sidebar,split,shadow,tree,smoothtree
+%\useinnertheme{rectangles}
+\beamertemplatenavigationsymbolsempty
+
+% \definecolor{fore}{RGB}{249,242,215}
+% \definecolor{back}{RGB}{51,51,51}
+% \definecolor{title}{RGB}{255,0,90}
+% \setbeamercolor{titlelike}{fg=title}
+% \setbeamercolor{normal text}{fg=fore,bg=back}
+% \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+%\beamertemplatenavigationsymbolsempty
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+% or whatever
+%\usepackage{comicsans} 
+%\renewcommand{\sfdefault}{comic} 
+%\usepackage{mathptmx}
+%\mathversion{bold}
+%\usepackage{helvet}
+%\usepackage{courier}
+
+%\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+%%%% Figures %%%%%
+
+
+\newcommand{\LectureFigs}{../Figures}
+
+
+\definecolor{bluegray}{rgb}{0.15,0.20,0.40}
+\definecolor{bluegraylight}{rgb}{0.35,0.40,0.60}
+\definecolor{gray}{rgb}{0.3,0.3,0.3}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+\definecolor{brightblue}{rgb}{0.1,0.4,0.7}
+\definecolor{darkblue}{rgb}{0.1,0.1,0.6}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.2}
+\definecolor{orange}{rgb}{0.7,0.3,0}
+
+\def \captioncolor { }
+
+\setbeamertemplate{itemize item}{{\color{black}$\bullet$}}
+\setbeamertemplate{itemize subitem}{{\color{black}$\circ$}}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{frametitle}{series=\bfseries}
+\addtobeamertemplate{frametitle}{\vskip1ex}{ \vspace{0.5em} \hrule}
+\setbeamercolor{frametitle}{fg=,bg=}
+
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{algorithm}[numbered]
+
+\numberwithin{theorem}{subsection}
+\numberwithin{equation}{subsection}
+\numberwithin{figure}{subsection}
+\numberwithin{algorithm}{subsection}
+
+
+%\setbeamerfont{page number in head/foot}{size=\scriptsize}
+\setbeamertemplate{footline}[frame number]
+\setbeamercolor{page number in head/foot}{fg=black}
+\setbeamersize{text margin left=2em,text margin right=2em}
+
+\setbeamertemplate{footline}
+{
+    %\hspace{3em} \insertshorttitle \hfill \insertframenumber / \inserttotalframenumber\hspace{3em}
+    \hspace{3em} \insertshorttitle \hfill \insertsubsectionnumber-\insertframenumber \hspace{3em}
+    \vspace{1.5em}
+}
+
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+\definecolor{matlabPlotBlue}{rgb}{0.25, 0.58, 0.8}
+\definecolor{matlabPlotOrange}{rgb}{0.855, 0.324, 0.098}
+
+
+
+\captionsetup[figure]{labelfont={color=black}}
+
+\AtBeginEnvironment{lemma}{%
+  \setbeamercolor{block title}{fg=black,bg=babyblueeyes}
+  \setbeamercolor{block body}{fg=black,bg=}
+  \setbeamerfont*{block title}{series=\bfseries}
+}
+
+\AtBeginEnvironment{theorem}{%
+  \setbeamercolor{block title}{fg=black,bg=babyblueeyes}
+  \setbeamercolor{block body}{fg=black,bg=}
+  \setbeamerfont*{block title}{series=\bfseries}
+}
+
+\AtBeginEnvironment{corollary}{%
+  \setbeamercolor{block title}{fg=black,bg=babyblueeyes}
+  \setbeamercolor{block body}{fg=black,bg=}
+  \setbeamerfont*{block title}{series=\bfseries}
+}
+
+\AtBeginEnvironment{fact}{%
+  \setbeamercolor{block title}{fg=black,bg=babyblueeyes}
+  \setbeamercolor{block body}{fg=black,bg=}
+  \setbeamerfont*{block title}{series=\bfseries}
+}
+
+\AtBeginEnvironment{definition}{%
+  \setbeamercolor{block title}{fg=black,bg=babyblueeyes}
+  \setbeamercolor{block body}{fg=black,bg=}
+  \setbeamerfont*{block title}{series=\bfseries}
+}
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \vspace{-1em}
+  \begin{center}
+  \begin{minipage}{#1}
+  %\setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}
+  \end{minipage}
+  \end{center}
+}
+
+
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+}
+
+
+%%%%%
+\newcommand{\bb}{\bm b}
+\newcommand{\bZ}{\bm Z}
+\newcommand{\bC}{\bm C}
+\newcommand{\cU}{{\cal U}}
+\newcommand{\bR}{{\bm R}}
+\newcommand{\bi}{{\bm i}}
+\newcommand{\bS}{{\bm S}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\bk}{{\bm k}}
+\newcommand{\bu}{{\bm u}}
+\newcommand{\bx}{{\bm x}}
+\newcommand{\bA}{{\bm A}}
+\newcommand{\bh}{{\bm h}}
+\newcommand{\by}{{\bm y}}
+\newcommand{\bI}{{\bm I}}
+\newcommand{\ba}{{\bm a}}
+\newcommand{\bw}{{\bm w}}
+\newcommand{\bPhi}{{\bm \Phi}}
+\newcommand{\bX}{{\bm X}}
+\newcommand{\bY}{{\bm Y}}
+\newcommand{\bM}{{\bm M}}
+\newcommand{\be}{{\bm e}}
+\newcommand{\bs}{{\bm s}}
+\newcommand{\bB}{{\bm B}}
+\newcommand{\bW}{{\bm W}}
+\newcommand{\bN}{{\bm N}}
+\newcommand{\bU}{{\bm U}}
+\newcommand{\bV}{{\bm V}}
+\newcommand{\bP}{{\bm P}}
+\newcommand{\bH}{{\bm H}}
+\newcommand{\bSigma}{{\bm \Sigma}}
+\newcommand{\bL}{{\bm L}}
+
+
+
+\newcommand{\bv}{\bm v}
+\newcommand{\eps}{\epsilon}
+\newcommand{\vf}{\varphi}
+\newcommand{\de}{\delta}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\goto}{\rightarrow}
+\newcommand{\argmin}{\mbox{argmin}}
+\newcommand{\argmax}{\mbox{argmax}}
+\newcommand{\Ave}{\mathop{\rm Ave}\nolimits}
+\newcommand{\sgn}{\mbox{sgn}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cR}{\mathcal{R}}
+
+\def\C{{\mathbb{C}}}
+\def\R{{{\mathbb{R}}}} %seemed too large in subscripts, so I changed --JW 
+\def\P{{\hbox{\bf P}}}
+\def\Z{{{\mathbb{Z}}}}
+\def\T{{\hbox{\bf T}}}
+
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\shrink}{\text{shrink}}
+
+
+\newcommand{\Obs}{\Omega_{\text{obs}}}
+
+
+\renewcommand{\P}{\operatorname{\mathbb{P}}}
+\newcommand{\E}{\operatorname{\mathbb{E}}}
+
+% Linear algebra macros
+%\newcommand{\vct}[1]{#1}
+%\newcommand{\mtx}[1]{#1}
+\newcommand{\vct}[1]{\bm{#1}}
+\newcommand{\mtx}[1]{\bm{#1}}
+%\newcommand{\mtx}[1]{\mathsfsl{#1}}
+
+\newcommand{\transp}{T}
+\newcommand{\adj}{*}
+\newcommand{\psinv}{\dagger}
+\newcommand{\lspan}[1]{\operatorname{span}{#1}}
+
+\newcommand{\range}{\operatorname{range}}
+\newcommand{\colspan}{\operatorname{colspan}}
+
+\newcommand{\rank}{\text{rank}}
+
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\trace}{\text{Tr}}
+
+\newcommand{\supp}[1]{\operatorname{supp}(#1)}
+
+\newcommand{\smax}{\sigma_{\max}}
+\newcommand{\smin}{\sigma_{\min}}
+
+\newcommand{\restrict}[1]{\big\vert_{#1}}
+
+\newcommand{\Id}{\text{\em I}}
+\newcommand{\OpId}{\mathcal{I}}
+
+
+
+% define your own colors:
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{Green}{rgb}{0,1,0}
+\definecolor{magenta}{rgb}{1,0,.6}
+\definecolor{lightblue}{rgb}{0,.5,1}
+\definecolor{lightpurple}{rgb}{.6,.4,1}
+\definecolor{gold}{rgb}{.6,.5,0}
+\definecolor{orange}{rgb}{1,0.4,0}
+\definecolor{hotpink}{rgb}{1,0,0.5}
+\definecolor{newcolor2}{rgb}{.5,.3,.5}
+\definecolor{newcolor}{rgb}{0,.3,1}
+\definecolor{newcolor3}{rgb}{1,0,.35}
+\definecolor{darkgreen1}{rgb}{0, .35, 0}
+\definecolor{darkgreen}{rgb}{0, .6, 0}
+\definecolor{darkred}{rgb}{.75,0,0}
+
+\xdefinecolor{olive}{cmyk}{0.64,0,0.95,0.4}
+\xdefinecolor{purpleish}{cmyk}{0.75,0.75,0,0}
+
+\definecolor{lightgrey}{RGB}{186,186,186}
+\definecolor{back}{RGB}{51,51,51}
+\definecolor{fore}{RGB}{249,242,215}
+\definecolor{back}{RGB}{51,51,51}
+\definecolor{title}{RGB}{255,0,20}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\definecolor{cobalt}{RGB}{102,153,204}
+
+\def \itemstyle {\bf}
+\def \itemhighlight {\bf}  
+
+% \definecolor{blockbodycolor}{RGB}{30,30,40}
+% \definecolor{blocktitlecolor}{RGB}{55,55,75}
+\definecolor{blockbodycolor}{RGB}{186,206,232}
+\definecolor{blocktitlecolor}{RGB}{55,55,75}
+
+\setbeamercolor{titlelike}{fg=darkred,bg=white}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{block title}{fg=white,bg=blocktitlecolor}
+\setbeamercolor{block body}{bg=blockbodycolor}
+\setbeamercolor{alerted text}{fg=darkred}
+\setbeamercolor{title}{fg=darkred,bg=lightgrey}
+
+
+\newcommand{\alertb}[1]{\textcolor{blue}{ #1}}
+
+\newcommand{\yp}[1]{\textcolor{red}{ #1}}
+\newcommand{\zeronorm}[1]{\left\|#1 \right\|_0}
+\newcommand{\unorm}[1]{\left\|#1 \right\|_u}
+\newcommand{\ynorm}[1]{\left\|#1 \right\|_{\bar{y}}}
+\newcommand{\onetwonorm}[1]{\left\|#1\right\|_{1,2}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|}
+\newcommand{\fronorm}[1]{\left\|#1\right\|_{F}}
+\newcommand{\onenorm}[1]{\left\|#1\right\|_{\ell_1}}
+\newcommand{\twonorm}[1]{\left\|#1\right\|_{2}}
+\newcommand{\oneinfnorm}[1]{\left\|#1\right\|_{1,\infty}}
+\newcommand{\infnorm}[1]{\left\|#1\right\|_{\ell_\infty}}
+\newcommand{\nucnorm}[1]{\left\|#1\right\|_*}
+
+%\makeatletter
+%\def\th@mystyle{%
+%    \normalfont % body font
+%    \setbeamercolor{block title example}{bg=,fg=black}
+%    \setbeamerfont{block title example}{series=\bfseries}
+%    \setbeamercolor{block body example}{bg=,fg=black}
+%    %\setbeamertemplate{exampleblock}[numbered]
+%    \def\inserttheoremblockenv{exampleblock}
+%  }
+%\makeatother
+%\theoremstyle{mystyle}
+%\newtheorem*{lem}{Lemma}
+
+\setbeamertemplate{frametitle continuation}{}
+
+
+\newcommand{\courseTitle}{STAT 37797: Mathematics of Data Science} 
+
+
+
+% \subtitle
+% {Include Only If Paper Has a Subtitle}
+
+\vspace{.5cm}
+
+\author{Yuxin Chen}
+
+\institute[Princeton] % (optional, but mostly needed)
+{Princeton University}
+
+
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+
+\subject{Beamer}
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+
+
+

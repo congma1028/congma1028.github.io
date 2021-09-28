@@ -1,0 +1,1048 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+{Spectral methods: $\ell_2$ perturbation theory}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{2}
+
+\begin{document}
+
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+
+\begin{itemize}
+  \itemsep1em
+  \item Preliminaries: basic matrix analysis
+  \item Distance between two subspaces
+  \item Eigenspace perturbation theory
+  \item Perturbation bounds for singular subspaces
+  \item Eigenvector perturbation bounds for probability transition matrices
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Basic matrix analysis}
+
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Unitarily invariant norms}
+	\begin{definition}
+A matrix norm $\vertiii{\cdot}$ on $\mathbb{R}^{m\times n}$ is said to be unitarily invariant if
+%
+\[
+	\vertiii{\bm{A}}=\vertiiibig{\bm{U}^{\top}\bm{A}\bm{V}}
+\]
+%
+holds for any matrix $\bm{A}\in\mathbb{R}^{m\times n}$ and any two square orthonormal
+matrices $\bm{U}\in\mathcal{O}^{m\times m}$ and $\bm{V}\in\mathcal{O}^{n\times n}$.
+\end{definition}
+
+\vfill
+
+Examples: 
+	\begin{itemize}
+		% \itemsep1em
+		\item $\|\bm{A}\|$: spectral norm (largest singular value of $\bm{A}$)
+	
+		\item $\|\bm{A}\|_{\mathrm{F}}$: Frobenius norm ($\|\bm{A}\|_{\mathrm{F}}= \sqrt{\mathsf{tr}(\bm{A}^{\top}\bm{A})}=\sqrt{\sum_{i,j}A_{i,j}^2}$)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Properties of unitarily invariant norms}
+\begin{lemma}
+\label{prop:unitary_norm_relation}
+For any unitarily invariant norm $\vertiii{\cdot}$, one has 
+%
+\begin{align*}
+\vertiii{\bm{A}\bm{B}} & \leq\vertiii{\bm{A}} \cdot  \left\Vert \bm{B}\right\Vert, &  & \vertiii{\bm{A}\bm{B}}\leq\vertiii{\bm{B}} \cdot \left\Vert \bm{A}\right\Vert,\\
+\vertiii{\bm{A}\bm{B}} & \geq\vertiii{\bm{A}} \, \sigma_{\min}\left(\bm{B}\right), &  & \vertiii{\bm{A}\bm{B}}\geq\vertiii{\bm{B}} \, \sigma_{\min}\left(\bm{A}\right).
+\end{align*}
+%
+%where $\sigma_{\min}(\bm{A})$ denotes the smallest singular value of a matrix $\bm{A}$. 
+\end{lemma}
+
+\vfill
+Exercise: prove the lemma for special cases $\|\cdot\|$, and $\|\cdot\|_{\mathrm{F}}$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalue perturbation bounds}
+	\begin{lemma}[Weyl's inequality for eigenvalues]
+\label{lemma:weyl}
+Let $\bm{A},\bm{E}\in\mathbb{R}^{n\times n}$ be two real symmetric matrices.
+	For every $1\leq i\leq n$, the $i$-th largest eigenvalues of $\bm{A}$ and $\bm{A}+\bm{E}$ obey
+%
+\begin{equation*}
+	\left|\lambda_{i}\left(\bm{A}\right)-\lambda_{i}\left(\bm{A} +\bm{E}\right)\right|\leq\left\Vert \bm{E}\right\Vert .
+\end{equation*}
+%
+\end{lemma}
+\uncover<3->{{\hfill \em \footnotesize --- proof left as exercise}}
+
+\pause
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+eigenvalues of real symmetric matrices are stable against perturbations
+\end{varblock}
+}
+
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Singular value perturbation bounds}
+	\begin{lemma}[Weyl's inequality for singular values]
+\label{lemma:weyls-singular-value}
+Let $\bm{A},\bm{E}\in\mathbb{R}^{m\times n}$ be two general matrices.
+Then for every $1\leq i\leq \min\{m,n\}$, the $i$-th largest singular values of $\bm{A}$ and $\bm{A}+\bm{E}$ obey 
+%
+\[
+	\left|\sigma_{i}\left(\bm{A}+\bm{E}\right)-\sigma_{i}\left(\bm{A}\right)\right|\leq\left\Vert \bm{E}\right\Vert .
+\]
+%
+\end{lemma}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:weyls-singular-value}}
+We begin with introducing a useful "dilation" trick: 
+	\begin{definition}[Symmetric dilation]
+\label{defn:sym-dilation}
+For $\bm{A}\in\mathbb{R}^{n_{1}\times n_{2}}$, its symmetric dilation $\mathcal{S}(\bm{A})$ is defined to be 
+%
+\[
+\mathcal{S}(\bm{A})=\left[\begin{array}{cc}
+\bm{0} & \bm{A}\\
+\bm{A}^{\top} & \bm{0}
+\end{array}\right].
+\]
+%
+ \end{definition}
+ 
+ 
+ Then one has the following eigendecomposition
+for $\mathcal{S}(\bm{A})$: 
+\begin{equation*}
+\mathcal{S}(\bm{A})=\frac{1}{\sqrt{2}}\left[\begin{array}{cc}
+\bm{U} & \bm{U}\\
+\bm{V} & -\bm{V}
+\end{array}\right]\cdot\left[\begin{array}{cc}
+\bm{\Sigma} & \bm{0}\\
+\bm{0} & -\bm{\Sigma}
+\end{array}\right]\cdot\frac{1}{\sqrt{2}}\left[\begin{array}{cc}
+\bm{U} & \bm{U}\\
+\bm{V} & -\bm{V}
+\end{array}\right]^{\top}.
+\end{equation*}
+For $1\leq i\leq \min\{m,n\}$, $\lambda_{i}(\mathcal{S}(\bm{A})) = \sigma_{i}(\bm{A})$. In addition, $\|\mathcal{S}(\bm{E})\| = \|\bm{E}\|$.
+\end{frame}
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Distance between two subspaces}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Setup and notation}
+	\begin{itemize}
+		\item Two $r$-dimensional subspaces $\mathcal{U}^{\star}$ and $\mathcal{U}$ in $\mathbb{R}^{n}$
+		\item Two orthonormal matrices $\bm{U}^{\star}$ and $\bm{U}$ in $\mathbb{R}^{n \times r}$
+		\item Orthogonal complements: $[\bm{U}^\star, \bm{U}^\star_{\perp}]$, and $[\bm{U}, \bm{U}_{\perp}]$
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Question: how to define distance?}
+
+	\begin{itemize}
+		\item  $\|\bm{U}-\bm{U}^\star\|_{\mathrm{F}}$ and $\|\bm{U}-\bm{U}^\star\|$ are not appropriate,  since they fall short of accounting for 
+			\hspace{-3.5em} $\underset{\alertb{\forall\text{ orthonormal } \bm{R}\in \mathbb{R}^{r\times r}, ~\bm{U} \text{ and } \bm{U}\bm{R} \text{ represent same subspace}}}{\underbrace{\text{global orthonormal transformation}}}$ 
+	
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Valid choices of distance}
+	\begin{itemize}
+		\item Distance modulo \emph{optimal rotation}
+		\item Distance using \emph{projection matrices}
+		\item Geometric construction via \emph{principal angles}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Distance modulo optimal rotation}
+	Given global rotation ambiguity, it is natural to adjust for rotation before computing distance:
+	\begin{align*}
+	\mathsf{dist}_{\vertiii{\cdot}}\big(\bm{U},{\bm{U}}^{\star}\big) \coloneqq
+	\min _{\bm{R}\in \mathcal{O}^{r\times r}} \vertiiibig{ \bm{U} \bm{R} - \bm{U}^{\star}  } 
+\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Distance using projection matrices}
+	Key observation: projection matrix $\bm{U} \bm{U}^{\top}$ associated with subspace $\mathcal{U}$ is unique
+
+	\begin{equation*}
+	\mathsf{dist}_{\mathsf{p},\vertiii{\cdot}}\big(\bm{U},{\bm{U}}^{\star}\big) \coloneqq \vertiiibig{\bm{U} \bm{U}^{\top}- {\bm{U}}^{\star} {\bm{U}}^{\star\top}}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Principal angles between two eigen-spaces}
+
+\smallskip
+
+In addition to ``distance'', one might also be interested in ``angles''
+
+
+\begin{columns}
+	\begin{column}{0.2\textwidth}
+	\end{column}
+	
+	\begin{column}{0.3\textwidth}
+		\begin{center}
+			\includegraphics[width=0.95\textwidth]{principal_angle_lines.pdf}
+		\end{center}
+	\end{column}
+
+	\begin{column}{0.1\textwidth}
+	\end{column}
+
+
+	\begin{column}{0.3\textwidth}
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{principal_angle.pdf}
+		\end{center}
+	\end{column}
+
+	\begin{column}{0.2\textwidth}
+	\end{column}
+
+\end{columns}
+
+
+\bigskip
+
+\vfill
+
+
+
+We can quantify the similarity between two lines (represented resp.~by unit vectors $\bm{u}$ and $\bm{u}^\star$) by an angle between them  
+%
+\[
+	\theta = \arccos \langle \bm{u}, \bm{u}^\star \rangle
+\]
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Principal angles between two eigen-spaces}
+
+
+More generally, for $r$-dimensional subspaces, one needs $r$ angles
+
+\bigskip
+\bigskip
+
+
+Specifically, given $\|\bm{U}^{\top}\bm{U}^{\star}\| \leq 1$, we  write the singular value decomposition (SVD) of $\bm{U}^{\top}\bm{U}^{\star} \in\mathbb{R}^{r\times r}$ as
+%
+\[
+	\bm{U}^{\top}\bm{U}^{\star}
+	=\bm{X} {\footnotesize  \underset{\alertb{\eqqcolon\cos \bm{\Theta}}}{\underbrace{ \left[\begin{array}{ccc}
+		\cos\theta_{1}\\
+ 		& \ddots\\
+ 		&  & \cos\theta_{r}
+	\end{array}\right]} }}
+	\bm{Y}^{\top} \eqqcolon \bm{X}\cos\bm{\Theta}\,\bm{Y}^{\top}
+\]
+%
+where $\{\theta_{1},\cdots,\theta_{r}\}$ are called the \alert{principal angles}
+between $\bm{U}$ and $\bm{U}^\star$
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Distance using principal angles}
+With principal angles in place, we can define $\sin\bm{\Theta}$ distance between subspaces as
+	\begin{equation*}
+	\mathsf{dist}_{\mathsf{sin},\vertiii{\cdot}}\big(\bm{U}, {\bm{U}}^{\star} \big) \coloneqq \vertiii{\sin\bm{\Theta}}
+\end{equation*}
+%%
+%where $\vertiii{\cdot}$ is again some matrix norm to be selected, and
+%%
+%\begin{equation}
+%	\bm{\Theta}\coloneqq {\footnotesize \left[\begin{array}{ccc}
+%\theta_{1}\\
+% & \ddots\\
+% &  & \theta_{r}
+%	\end{array}\right] }
+%	,\quad
+%	\sin\bm{\Theta}\coloneqq { \left[\begin{array}{ccc}
+%\sin\theta_{1}\\
+% & \ddots\\
+% &  & \sin\theta_{r}
+%	\end{array}\right] } .
+%	\label{eq:defn-Theta-sin-Theta}
+%\end{equation}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Link between projections and principal angles}
+	\begin{lemma}\label{lemma:link-projections-angles}
+We have 
+%
+\begin{subequations}
+\begin{align*}
+	\big\Vert \bm{U}\bm{U}^{\top}-{\bm{U}}^{\star}{\bm{U}}^{\star\top}\big\Vert
+	& =\left\Vert \sin\bm{\Theta}\right\Vert  = \big\Vert \bm{U}_{\perp}^{\top}\bm{U}^{\star}\big\Vert = \big\Vert \bm{U}^{\top}\bm{U}_{\perp}^{\star}\big\Vert ; \\
+	\tfrac{1}{\sqrt{2}} \big\Vert \bm{U}\bm{U}^{\top}-{\bm{U}}^{\star}{\bm{U}}^{\star\top}\big\Vert _{\mathrm{F}}
+	& =\left\Vert \sin\bm{\Theta}\right\Vert _{\mathrm{F}}
+	=  \big\Vert \bm{U}_{\perp}^{\top}\bm{U}^{\star}\big\Vert_{\mathrm{F}} =   \big\Vert \bm{U}^{\top}\bm{U}_{\perp}^{\star} \big\Vert_{\mathrm{F}} .
+\end{align*}
+\end{subequations}
+\end{lemma}
+
+\begin{itemize}
+	\item sanity check: if $\bm{U} = \bm{U}^\star$, then  everything is 0
+\end{itemize}
+%
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Proof of Lemma~\ref{lemma:link-projections-angles}}
+
+We prove the claim for spectral norm; the claim for Frobenius norm follows similar argument
+
+Note that
+\begin{align*}
+\|\bm{U}^{\top}\bm{U}^\star_{\perp}\| & = \big\| \bm{U}^{\top}\underset{\alertb{=\bm{I}-\bm{U}^\star\bm{U}^{\star\top}}}{\underbrace{\bm{U}^\star_{\perp}\bm{U}^{\star\top}_{\perp}}}\bm{U} \big\|^{\frac{1}{2}}\\
+ & = \big\| \bm{U}^{\top}\bm{U}-\bm{U}^{\top}\bm{U}^\star\bm{U}^{\star\top}\bm{U} \big \|^{\frac{1}{2}}\\
+ & = \big\| \bm{I}-\bm{X}\cos^{2}\bm{\Theta} \,\bm{X}^{\top} \big\|^{\frac{1}{2}}\qquad \alertb{(\text{since }\bm{U}^{\top}\bm{U}^\star=\bm{X}\cos\bm{\Theta}\,\bm{Y}^{\top})}\\
+ & = \big\|\bm{I}-\cos^{2}\bm{\Theta} \big\|^{\frac{1}{2}} \\
+ & = \|\sin\bm{\Theta}^2\|^{\frac{1}{2}} \\
+ & =\|\sin\bm{\Theta}\|
+\end{align*}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Proof of Lemma~\ref{lemma:link-projections-angles} (cont.)}
+Given that singular values are unitarily invariant, it suffices to look at
+the singular values of the following matrix
+%
+\begin{align*}
+\left[\begin{array}{c}
+\bm{U}^{\top}\\
+\bm{U}_{\perp}^{\top}
+\end{array}\right]\big(\bm{U}\bm{U}^{\top}- {\bm{U}}^{\star} {\bm{U}}^{\star\top}\big)
+	\big[
+{\bm{U}}_{\perp}^{\star} , {\bm{U}}^{\star} \big]=\left[\begin{array}{cc}
+	\bm{U}^{\top}{\bm{U}}_{\perp}^{\star} & \bm{0}\\
+\bm{0} & -\bm{U}_{\perp}^{\top} {\bm{U}}^{\star}
+\end{array}\right]
+\end{align*}
+
+which further implies
+\begin{subequations}
+\begin{align*}
+	\big\|\bm{U}\bm{U}^{\top}-\bm{U}^{\star}\bm{U}^{\star\top}\big\| &= \max\big\{\big\|\bm{U}^{\top}\bm{U}_{\perp}^{\star}\big\|,\big\|\bm{U}_{\perp}^{\top}\bm{U}^{\star}\big\|\big\}; \\
+	\big\|\bm{U}\bm{U}^{\top}-\bm{U}^{\star}\bm{U}^{\star\top}\big\|_{\mathrm{F}} & =\Big(\big\|\bm{U}^{\top}\bm{U}_{\perp}^{\star}\big\|_{\mathrm{F}}^{2}+\big\|\bm{U}_{\perp}^{\top}\bm{U}^{\star}\big\|_{\mathrm{F}}^{2}\Big)^{1/2}
+\end{align*}
+\end{subequations}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Link between optimal rotations and projections}
+	\begin{lemma}\label{prop:rotation-UR}
+	One has
+\begin{align*}
+	\|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|
+	&\leq
+	\min_{\bm{R}\in \mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\|
+	%\mathsf{dist} \big(\bm{U},\bm{U}^{\star}\big)
+	\leq \sqrt{2} \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|; \\
+	\tfrac{1}{\sqrt{2}} \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|_{\mathrm{F}}
+	%\mathsf{dist}_{\mathrm{F}} \big(\bm{U},\bm{U}^{\star}\big)
+	&\leq
+	\min_{\bm{R}\in\mathcal{O}^{r\times r}}\left\Vert \bm{U}\bm{R}-\bm{U}^{\star}\right\Vert _{\mathrm{F}}
+	%\mathsf{dist}_{\mathrm{F}} \big(\bm{U},\bm{U}^{\star}\big)
+	\leq \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|_{\mathrm{F}}.
+	%\mathsf{dist} \big(\bm{U},\bm{U}^{\star}\big).
+	%\label{eq:equiv-rotation-dist-spec}
+\end{align*}
+%\end{subequations}
+\end{lemma}
+
+{\hfill \footnotesize \em --- proof left as exercise}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Summary of distance metrics}
+So far we have discussed
+	\begin{align}
+	\mathrm{1)} \quad & \vertiiibig{\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top}}  \notag\\
+	\mathrm{2)} \quad & \vertiiibig{\sin\bm{\Theta}}  \notag\\
+	\mathrm{3)} \quad & \vertiiibig{ \bm{U}_{\perp}^{\top}\bm{U}^{\star} }=\vertiiibig{ \bm{U}^{\top}\bm{U}^{\star}_{\perp} }  \notag \\
+	\mathrm{4)} \quad & \min_{\bm{R}\in \mathcal{O}^{r\times r}} \vertiiibig{ \bm{U}\bm{R} - \bm{U}^{\star} } \notag
+\end{align}
+
+\pause
+Our choice of distance: 
+\begin{subequations}
+\label{eq:dist_UUstar}
+\begin{align*}
+	\mathsf{dist}(\bm{U},\bm{U}^{\star}) &\coloneqq \min_{\bm{R}\in \mathcal{O}^{r\times r}} \big\| \bm{U}\bm{R} - \bm{U}^{\star} \big\|; \\
+	%\big\| \bm{U} \bm{U}^{\top}  -  \bm{U}^{\star} \bm{U}^{\star\top} \big\|, \\
+	\mathsf{dist}_{\mathrm{F}}(\bm{U},\bm{U}^{\star}) &\coloneqq  \min_{\bm{R}\in \mathcal{O}^{r\times r}} \big\| \bm{U}\bm{R} - \bm{U}^{\star} \big\|_{\mathrm{F}}
+	%\big\| \bm{U} \bm{U}^{\top}  -  \bm{U}^{\star} \bm{U}^{\star\top} \big\|_{\mathrm{F}},
+\end{align*}
+\end{subequations}
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Eigen-space perturbation theory}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Setup and notation}
+	\label{frame:setup-spectral}
+
+Consider 2 symmetric matrices $\bm{M}$, $\hat{\bm{M}}=\bm{M}+\bm{H}\in \mathbb{R}^{n\times n}$ with  eigen-decompositions 
+%
+\vspace{-0.5em}
+\[
+	\bm{M}=\sum_{i=1}^{n}\lambda_{i}\bm{u}_{i}\bm{u}_{i}^{\top}
+	\qquad\text{and}\qquad \hat{\bm{M}}=\sum_{i=1}^{n} \hat{\lambda}_{i} \hat{\bm{u}}_{i} \hat{\bm{u}}_{i}^{\top}
+\]
+%
+where $\lambda_{1}\geq\cdots\geq\lambda_{n}$; $\hat{\lambda}_{1}\geq\cdots\geq\hat{\lambda}_{n}$. For simplicity, write
+\vspace{-0.5em}
+%
+\begin{align*}
+\bm{M} & =
+[\bm{U}_{0},\bm{U}_{1}]\left[\begin{array}{cc}
+\bm{\Lambda}_{0}\\
+ & \bm{\Lambda}_{1}
+\end{array}\right]\left[\begin{array}{c}
+\bm{U}_{0}^{\top}\\
+\bm{U}_{1}^{\top}
+\end{array}\right]
+\\
+\hat{\bm{M}} & =
+	[\hat{\bm{U}}_{0}, \hat{\bm{U}}_{1}]\left[\begin{array}{cc}
+		\hat{\bm{\Lambda}}_{0}\\
+		& \hat{\bm{\Lambda}}_{1}
+\end{array}\right]\left[\begin{array}{c}
+	\hat{\bm{U}}_{0}^{\top}\\
+	\hat{\bm{U}}_{1}^{\top}
+\end{array}\right]
+\end{align*}
+%
+Here, $\bm{U}_{0}=[\bm{u}_{1},\cdots,\bm{u}_{r}]$, $\bm{\Lambda}_{0}=\mathrm{diag}\left([\lambda_{1},\cdots,\lambda_{r}]\right)$, $\cdots$
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Setup and notation}
+
+
+% Preview source code for paragraph 1
+
+{\small
+\begin{align*}
+\bm{M} & =\Big[\underset{\alertb{\bm{U}_{0}}}{\underbrace{\begin{array}{ccc}
+\bm{u}_{1} & \cdots & \bm{u}_{r}\end{array}}}\underset{\alertb{\bm{U}_{1}}}{\underbrace{\begin{array}{ccc}
+\bm{u}_{r+1} & \cdots & \bm{u}_{n}\end{array}}}\Big]\\
+ & \qquad\cdot \left[\begin{array}{cc}
+\underset{\alertb{\bm{\Lambda}_{0}}}{\underbrace{\begin{array}{ccc}
+\lambda_{1}\\
+ & \ddots\\
+ &  & \lambda_{r}
+\end{array}}}\\
+ & \underset{\alertb{\bm{\Lambda}_{1}}}{\underbrace{\begin{array}{ccc}
+\lambda_{r+1}\\
+ & \ddots\\
+ &  & \lambda_{n}
+\end{array}}}
+\end{array}\right]\left[\begin{array}{c}
+\begin{array}{c}
+\bm{u}_{1}^{\top}\\
+\vdots\\
+\bm{u}_{r}^{\top}
+\end{array}\\
+\begin{array}{c}
+\\
+\bm{u}_{r+1}^{\top}\\
+\vdots\\
+\bm{u}_{n}^{\top}
+\end{array}
+\end{array}\right]
+\hspace{-1.7em}\begin{array}{c}
+\left.\begin{array}{c}
+\\
+\\
+\\
+\\
+\end{array}\right\} \alertb{\bm{U}_{0}^{\top}}\\
+\left.\begin{array}{c}
+\\
+\\
+\\
+\\
+\end{array}\right\} \alertb{\bm{U}_{1}^{\top}}
+\end{array}
+\end{align*}
+
+
+}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Davis-Kahan $\sin\bm{\Theta}$ theorem: a simple case}
+
+\vspace{-0.5em}
+
+\begin{columns}
+	\begin{column}{0.35\textwidth}
+		\begin{center}
+			\includegraphics[width=0.65\textwidth]{Chandler_Davis.jpg} \\
+			{\footnotesize  Chandler Davis}
+		\end{center}
+	\end{column}
+	\begin{column}{0.35\textwidth}
+		\begin{center}
+			\includegraphics[width=0.7\textwidth]{William_Kahan.jpg} \\
+			{\footnotesize William Kahan}
+		\end{center}
+	\end{column}
+
+
+\end{columns}
+
+\begin{theorem} \label{thm:sin-Theta}
+Suppose $\bm{M}^\star \succeq \bm{0}$ and is rank-$r$. If $\|\bm{E}\| < (1 - 1/ \sqrt{2}) \lambda_{r}(\bm{M}^\star)$, then
+\begin{subequations}
+\label{eq:davis-kahan-conclusion-corollary}
+\begin{align*}
+\mathsf{dist}\big(\bm{U},\bm{U}^{\star}\big) & \leq\sqrt{2}\|\sin\bm{\Theta}\|\leq\frac{2 \big\|\bm{E}\bm{U}^{\star}\big\|}{\lambda_{r}(\bm{M}^\star)}\leq\frac{2\|\bm{E}\|}{\lambda_{r}(\bm{M}^\star)};\\
+	\mathsf{dist}_{\mathrm{F}}\big(\bm{U},\bm{U}^{\star}\big) & \leq\sqrt{2}\|\sin\bm{\Theta}\|_{\mathrm{F}}\leq\frac{2 \big\|\bm{E}\bm{U}^{\star}\big\|_{\mathrm{F}}}{\lambda_{r}(\bm{M}^\star)}\leq\frac{2\sqrt{r}\|\bm{E}\|}{\lambda_{r}(\bm{M}^\star)}.
+\end{align*}
+\end{subequations}
+%
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Interpretations of Davis-Kahan's $\sin\Theta$ theorem}
+	
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+Suppose $\bm{M}^\star \succeq \bm{0}$ and is rank-$r$. If $\|\bm{E}\| < (1 - 1/ \sqrt{2}) \lambda_{r}(\bm{M}^\star)$, then
+\begin{subequations}
+\label{eq:davis-kahan-conclusion-corollary}
+\begin{align*}
+\mathsf{dist}\big(\bm{U},\bm{U}^{\star}\big) & \leq\sqrt{2}\|\sin\bm{\Theta}\|\leq\frac{2 \big\|\bm{E}\bm{U}^{\star}\big\|}{\lambda_{r}(\bm{M}^\star)}\leq\frac{2\|\bm{E}\|}{\lambda_{r}(\bm{M}^\star)}.
+\end{align*}
+\end{subequations}
+\end{varblock}
+}
+
+
+\vfill 
+Remarks: 
+	\begin{itemize}
+	\itemsep0.5em
+	\item Eigen-gap $\lambda_{r}(\bm{M}^{\star}) = \lambda_{r}(\bm{M}^{\star}) - \lambda_{r+1}(\bm{M}^{\star})$
+	\item Perturbation size $\|\bm{E}\|$
+	\item Inverse signal-to-noise ratio $\frac{\|\bm{E}\|}{\lambda_{r}(\bm{M}^\star)}$
+	\item Necessity of $\|\bm{E}\| \lesssim \lambda_{r}(\bm{M}^\star)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What happens when SNR is small?}
+A toy example 	
+	\[
+\bm{M}^{\star}=\left[\begin{array}{cc}
+1+\epsilon & 0\\
+0 & 1-\epsilon
+\end{array}\right],
+~~
+\bm{E}=\left[\begin{array}{cc}
+-\epsilon & \epsilon\\
+\epsilon & \epsilon
+\end{array}\right],~~
+\bm{M}=\left[\begin{array}{cc}
+1 & \epsilon\\
+\epsilon & 1
+\end{array}\right],
+\]
+%
+where $0<\epsilon<1$ can be arbitrarily small. It is straightforward
+to check that the leading eigenvectors of $\bm{M}^{\star}$ and $\bm{M}$ are given respectively by
+%
+\[
+\bm{u}_{1}^{\star}=\left[\begin{array}{c}
+1\\
+0
+\end{array}\right],
+\qquad\text{and}\qquad
+\bm{u}_{1}=\frac{1}{\sqrt{2}} \left[\begin{array}{c}
+1 \\
+1
+\end{array}\right] .
+\]
+%
+Consequently, we have
+%
+\begin{align}
+	\big\|\bm{u}_{1}\bm{u}_{1}^{\top} - \bm{u}_{1}^{\star}\bm{u}_{1}^{\star\top}\big\| = \frac{1}{\sqrt{2}}, 
+	\quad \text{and} \quad
+	%\mathsf{dist}_{\mathrm{F}}(\bm{u}_{1}, \bm{u}_{1}^{\star})
+	\big\|\bm{u}_{1}\bm{u}_{1}^{\top} - \bm{u}_{1}^{\star}\bm{u}_{1}^{\star\top}\big\|_{\mathrm{F}}= 1,
+\end{align}
+%
+which are both quite large regardless of the size of $\epsilon$ or the size of the perturbation $\|\bm{E}\|$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof of  Theorem \ref{thm:sin-Theta}}
+
+
+	We intend to control $\bm{U}_{\perp}^{\top} \bm{U}^\star$ by studying their interactions through $\bm{E}$:	
+\begin{align}
+	\bm{U}_{\perp}^{\top} (\bM - \bM^\star) \bU^\star = \bm{\Lambda}_{\perp}\bm{U}_{\perp}^{\top}\bm{U}^{\star}-\bm{U}_{\perp}^{\top}\bm{U}^{\star}\bm{\Lambda}^{\star}, \label{eq:sylvester}
+\end{align}
+which together with triangle inequality implies
+\begin{align} \label{eq:sinTheta-LB1}
+\vertiiibig{\bm{U}_{\perp}^{\top}\bm{E}\bm{U}^\star} & \geq \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}\bm{\Lambda}^{\star}} - \vertiiibig{\bm{\Lambda}_{\perp}\bm{U}_{\perp}^{\top}\bm{U}^{\star}} \nonumber \\
+	& \geq  \sigma_{\min}(\bm{\Lambda}^\star)  \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}}- \|\bm{\Lambda}_{\perp}\| \cdot \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}}
+\end{align}
+%
+	In view of Weyl's lemma, one has $\|\hat{\bm{\Lambda}}_{\perp}\|\leq\|\bm{E}\|$. In addition, we have $ \sigma_{\min}(\bm{\Lambda}^\star) = \lambda_{r}(\bm{M}^\star)$. These combined with relation~\eqref{eq:sinTheta-LB1} give
+%
+\[
+	\vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}}
+	\leq\frac{\vertiiibig{\bm{U}_{\perp}^{\top}\bm{E}\bm{U}^\star} }{\lambda_{r}(\bm{M}^\star) - \|\bm{E}\|}
+	\leq\frac{ \sqrt{2} \| \bm{U}_{\perp} \| \cdot \vertiii{  \bm{E} \bm{U}^{\star} }}{\lambda_{r}(\bm{M}^{\star})}
+	= \frac{  \sqrt{2}  \vertiii{  \bm{E} \bm{U}^{\star} } }{\lambda_{r}(\bm{M}^{\star})}
+\]
+
+This together with Lemmas \ref{lemma:link-projections-angles}-\ref{prop:rotation-UR} completes the proof
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	Work until here
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Davis-Kahan $\sin\bm{\Theta}$ Theorem: general case}
+
+\begin{theorem}[Davis-Kahan $\sin\bm{\Theta}$ Theorem] \label{thm:sin-Theta-general}
+	Suppose $\lambda_r(\bm{M})  \geq a$  and $\lambda_{r+1}( \hat{\bm{M}} ) \leq a-\Delta$ for some $\Delta>0$.  Then
+%
+\[
+	\mathsf{dist} \big( \hat{\bm{U}}_{0}, \bm{U}_{0} \big) \leq\frac{\big\|\bm{E}\bm{U}_{0} \big\|}{\Delta} 
+\leq \frac{\big\|\bm{E}\big\|}{\Delta}
+\]
+%
+\end{theorem}
+
+\begin{itemize}
+	\itemsep0.5em
+	\item immediate consequence: if $\lambda_r(\bm{M}) > \lambda_{r+1}({\bm{M}})  + \|\bm{E}\|$, then
+%
+\begin{equation}
+	\label{eq:DK-general-simple}
+	\mathsf{dist} \big( \hat{\bm{U}}_{0}, \bm{U}_{0} \big)  
+	\leq \frac{\big\|\bm{E}\big\|}{ \underset{\alertb{\text{spectral gap}}}{\underbrace{ \lambda_r(\bm{M}) - \lambda_{r+1}({\bm{M}}) }} - \|\bm{E}\| }
+\end{equation}
+%
+
+	%\item $\|\cdot\|$ (in numerator of \ref{eq:DK-general-simple} and  $\mathsf{dist}(\cdot,\cdot)$) can be replaced by $\|\cdot\|_{\mathrm{F}}$ 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Perturbation theory for singular subspaces}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Singular value decomposition}
+
+	Consider two matrices $\bm{M}, \hat{\bm{M}}=\bm{M}+\bm{E} \in \mathbb{R}^{n_1\times n_2}$ with SVD
+%
+\begin{align*}
+\bm{M} & =\left[\bm{U}_{0},\bm{U}_{1}\right]\left[\begin{array}{cc}
+\bm{\Sigma}_{0} & \bm{0}\\
+\bm{0} & \bm{\Sigma}_{1} \\
+\bm{0} & \bm{0}\\
+\end{array}\right]\left[\begin{array}{c}
+	\bm{V}_{0}^{\top}\\
+	\bm{V}_{1}^{\top}
+\end{array}\right]\\
+\hat{\bm{M}}  & =\left[ \hat{\bm{U}}_{0}, \hat{\bm{U}}_{1}\right]\left[\begin{array}{cc}
+	\hat{\bm{\Sigma}}_{0} & \bm{0}\\
+	\bm{0} & \hat{\bm{\Sigma}}_{1}\\
+ \bm{0} & \bm{0} \\
+\end{array}\right]\left[\begin{array}{c}
+	\hat{\bm{V}}_{0}^{\top}\\
+	\hat{\bm{V}}_{1}^{\top}
+\end{array}\right]
+\end{align*}
+%
+where $\bm{U}_{0}$ (resp.~$\hat{\bm{U}}_{0}$) and $\bm{V}_{0}$ (resp.~$\hat{\bm{V}}_{0}$) represent the top-$r$ singular subspaces of $\bm{M}$ (resp.~$\hat{\bm{M}}$) 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Wedin's $\sin\bm{\Theta}$ theorem}
+
+
+The Davis-Kahan  Theorem generalizes to singular subspace perturbation:
+
+
+\begin{theorem}[Wedin's sin$\bm{\Theta}$ theorem]
+\label{thm:wedin} If $\|\bm{E}\|<\sigma_{r}^{\star}-\sigma_{r+1}^{\star}$, then one has
+%
+\begin{align*}
+\max\left\{ \mathsf{dist}\big(\bm{U},\bm{U}^{\star}\big),\mathsf{dist}\big(\bm{V},\bm{V}^{\star}\big)\right\}
+	& \leq\frac{ \sqrt{2} \max\big\{ \|\bm{E}^{\top}\bm{U}^{\star}\|,\|\bm{E}\bm{V}^{\star}\|\big\} }{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\bm{E}\|};\\
+\max\left\{ \mathsf{dist}_{\mathrm{F}}\big(\bm{U},\bm{U}^{\star}\big),\mathsf{dist}_{\mathrm{F}}\big(\bm{V},\bm{V}^{\star}\big)\right\}
+	& \leq\frac{\sqrt{2}\max\big\{ \|\bm{E}^{\top}\bm{U}^{\star}\|_{\mathrm{F}},\|\bm{E}\bm{V}^{\star}\|_{\mathrm{F}}\big\} }{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\bm{E}\|}.
+\end{align*}
+%
+\end{theorem}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:wedin}}
+	
+	
+	\begin{align}
+\bm{U}_{\perp}^{\top}\bm{U}^{\star}
+	& =\bm{U}_{\perp}^{\top}\big(\bm{U}^{\star}\bm{\Sigma}^{\star}\bm{V}^{\star\top}\big)\bm{V}^{\star}\bm{\Sigma}^{\star-1}\nonumber \\
+	& =\bm{U}_{\perp}^{\top}\left(\bm{M}-\bm{E}-\bm{U}_{\perp}^{\star}\bm{\Sigma}_{\perp}^{\star}\bm{V}_{\perp}^{\star\top}\right)\bm{V}^{\star}\bm{\Sigma}^{\star-1}\nonumber \\
+ & =\bm{U}_{\perp}^{\top}\left(\bm{U}\bm{\Sigma}\bm{V}^{\top}+\bm{U}_{\perp}\bm{\Sigma}_{\perp}\bm{V}_{\perp}^{\top}-\bm{E}-\bm{U}_{\perp}^{\star}\bm{\Sigma}_{\perp}^{\star}\bm{V}_{\perp}^{\star\top}\right)\bm{V}^{\star}\bm{\Sigma}^{\star-1}\nonumber \\
+ & =\bm{\Sigma}_{\perp}\bm{V}_{\perp}^{\top}\bm{V}^{\star}\bm{\Sigma}^{\star-1}-\bm{U}_{\perp}^{\top}\bm{E}\bm{V}^{\star}\bm{\Sigma}^{\star-1} .
+	\label{eq:wedin-identity}
+\end{align}
+
+Applying the triangle inequality and Lemma~\ref{prop:unitary_norm_relation} in Section~\ref{subsec:Matrix-analysis} to the identity (\ref{eq:wedin-identity})
+yields
+%
+\begin{align}
+\vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}}
+	& \leq \|\bm{\Sigma}_{\perp}\| \cdot \vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}} \cdot \|\bm{\Sigma}^{\star-1}\|
+	 +  \| \bm{U}_{\perp}^{\top}\|\cdot \vertiiibig{\bm{E}\bm{V}^{\star}} \cdot \|\bm{\Sigma}^{\star-1}\| \notag\\
+	 & =  \sigma_{r+1} \cdot \vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}} \cdot \frac{1}{\sigma_r^{\star}}
+	 + \vertiiibig{\bm{E}\bm{V}^{\star}} \cdot \frac{1}{\sigma_r^{\star}}
+	   \notag\\
+ & \leq\frac{\sigma_{r+1}^{\star}+\|\bm{E}\|}{\sigma_{r}^{\star}}\vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}}+\frac{\vertiii{\bm{E}\bm{V}^{\star}}}{\sigma_{r}^{\star}}.
+	\label{eq:Uperp-Ustar-UB}
+\end{align}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:wedin} (cont.)}
+	
+	Repeating the same argument yields
+%
+\begin{align}
+\vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}}\leq\frac{\vertiiibig{\bm{E}^{\top}\bm{U}^{\star}}}{\sigma_{r}^{\star}}
+	+\frac{\sigma_{r+1}^{\star}+\|\bm{E}\|}{\sigma_{r}^{\star}}\vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}}.
+	\label{eq:Vperp-Vstar-UB}
+\end{align}
+
+
+To finish up, combine the inequalities \eqref{eq:Uperp-Ustar-UB} and \eqref{eq:Vperp-Vstar-UB} to obtain
+%
+\begin{align*}
+ & \max\big\{ \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}},\vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}}\big\}
+  \leq \frac{  \max\big\{  \vertiiibig{\bm{E}^{\top}\bm{U}^{\star}},\vertiiibig{\bm{E}\bm{V}^{\star}}  \big\} }{\sigma_r^{\star}}  \\
+	&	\qquad\qquad\qquad\qquad
+	+ \frac{\sigma_{r+1}^{\star}+\|\bm{E}\|}{\sigma_{r}^{\star}} \max\big\{ \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}},\vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}}\big\} .
+\end{align*}
+%
+When $\|\bm{E}\|<\sigma_r^{\star} - \sigma_{r+1}^{\star}$, we can rearrange terms to arrive at
+%
+\begin{align*}
+ & \max\big\{ \vertiiibig{\bm{U}_{\perp}^{\top}\bm{U}^{\star}},\vertiiibig{\bm{V}_{\perp}^{\top}\bm{V}^{\star}}\big\}
+	\leq\frac{\max\big\{ \vertiiibig{\bm{E}^{\top}\bm{U}^{\star}},\vertiiibig{\bm{E}\bm{V}^{\star}}\big\} }{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\bm{E}\|}.
+\end{align*}
+%
+The proof is then completed by invoking Lemmas~\ref{prop:unitary-norm-property} and \ref{prop:rotation-UR}.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extensions of Wedin's theorem}
+	\begin{itemize}
+		\item Single rotation matrix
+		\item Separate bounds for left and right singular vectors
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Eigenvector perturbation for probability transition matrices}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Eigen-decomposition for  asymmetric matrices}
+
+	Eigen-decomposition for asymmetric matrices is much more tricky: 
+	\begin{itemize}
+		\itemsep0.5em
+		\item[{\color{black}1.}]  both eigenvalues and eigenvectors might be complex-valued
+		\item[{\color{black}2.}]  eigenvectors might not be orthogonal to each other
+	\end{itemize}
+
+
+	\vfill
+
+	This lecture focuses on a special case:  {\bf probability transition matrices}
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Probability transition matrices}
+
+\vspace{-0.5em}
+\begin{center}
+	\includegraphics[width=0.3\textwidth]{markov_chain.pdf}  
+\end{center}
+
+\vspace{-0.5em}
+Consider a Markov chain $\{X_t\}_{t\geq 0}$ 
+
+\begin{itemize}
+	\itemsep0.5em
+	\item $n$ states 
+	\item transition probability $\mathbb{P}\{ X_{t+1}=j\mid X_t=i \} = P_{i,j}$
+	\item transition matrix $\bm{P}=[P_{i,j}]_{1\leq i,j\leq n}$
+	\item stationary distribution $\underset{\alertb{\pi_1+\cdots+\pi_n=1}}{\underbrace{ \bm{\pi}=[\pi_1,\cdots,\pi_n] }}$ is 1st eigenvector of $\bm{P}$
+	%
+	\begin{align*}
+		\bm{\pi} \bm{P} = \bm{\pi}
+	\end{align*}
+	%
+	\item $\{X_t\}_{t\geq 0}$ is said to be \alert{reversible} if $\pi_{i} P_{i,j} = \pi_{j} P_{j,i}$ for all $i$, $j$
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Eigenvector perturbation for transition matrices}
+
+
+\hfill Define $\| \bm{a} \|_{\bm{\pi}}:= \sqrt{ \pi_1 a_1^2 + \cdots + \pi_n a_n^2 }$
+
+\medskip
+
+\begin{theorem}[Chen, Fan, Ma, Wang\,'17]
+\label{thm:mc-perturbation}
+Suppose $\bm{P}$, $\hat{\bm{P}}$ are 
+transition matrices with stationary distributions $\bm{\pi}$, $\hat{\bm{\pi}}$, respectively. Assume $\bm{P}$ induces a
+reversible Markov chain. If $1 > \max\left\{ \lambda_{2}(\bm{P}),-\lambda_{n}\left(\bm{P}\right)\right\} + \big\| \hat{\bm{P}} - \bm{P} \big\|_{\bm{\pi}}$, then
+%
+\[
+\| \hat{\bm{\pi}} - \bm{\pi}\|_{\bm{\pi}}\leq\frac{\big\|\bm{\pi} ( \hat{\bm{P}} - \bm{P} )\big\|_{\bm{\pi}}}{ \underset{\alertb{\mathrm{spectral~gap}}}{\underbrace{1-\max\left\{ \lambda_{2}(\bm{P}),-\lambda_{n}\left(\bm{P}\right)\right\} }} -  \underset{\alertb{\mathrm{perturbation}}}{\underbrace{ \big\| \hat{\bm{P}} - \bm{P} \big\|_{\bm{\pi}}}}} 
+\]
+%
+\end{theorem}
+
+\medskip
+\begin{itemize}
+	\item $\hat{\bm{P}}$ does not need to induce a reversible Markov chain
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]
+\frametitle{Reference}
+
+{\small
+\begin{itemize}
+		%[{\color{black}[1]}] 
+
+  \itemsep0.3em
+  \item ''\textit{The rotation of eigenvectors by a perturbation},'' C.~Davis, W.~Kahan, \textit{SIAM Journal on Numerical Analysis}, 1970.
+
+  \item ''\textit{Perturbation bounds in connection with singular value decomposition},'' P.~Wedin, \textit{BIT Numerical Mathematics}, 1972.
+
+  \item ''\textit{Inference, estimation, and information processing, EE 378B lecture notes},'' A.~Montanari, Stanford University.
+
+  \item ''\textit{COMS 4772 lecture notes},'' D.~Hsu, Columbia University.
+
+  \item ''\textit{High-dimensional statistics: a non-asymptotic viewpoint},'' M.~Wainwright, \textit{Cambridge University Press}, 2019.
+
+  %\item ''\textit{Principal component analysis for big data},'' J.~Fan, Q.~Sun, W.~Zhou, Z.~Zhu,  \textit{arXiv:1801.01602}, 2018. 
+
+  \item ''\textit{Community detection and stochastic block models},'' E.~Abbe, \textit{Foundations and Trends in Communications and Information Theory}, 2018.
+
+  \item ''\textit{Consistency thresholds for the planted bisection model},'' E.~Mossel, J.~Neeman, A.~Sly, \textit{ACM Symposium on Theory of Computing}, 2015.
+
+  \item ''\textit{Matrix completion from a few entries},'' R.~Keshavan, A.~Montanari, S.~Oh, \textit{IEEE Transactions on Information Theory}, 2010.
+
+
+  \item ''\textit{The PageRank citation ranking: bringing order to the web},'' L.~Page, S.~Brin, R.~Motwani, T.~Winograd, 1999. 
+
+  \item ''\textit{Rank centrality: ranking from pairwise comparisons},'' S.~Negahban, S.~Oh, D.~Shah, \textit{Operations Research}, 2016. 
+
+  \item ''\textit{Spectral method and regularized MLE are both optimal for top-$K$ ranking},'' Y.~Chen, J.~Fan, C.~Ma, K.~Wang, \textit{Annals of Statistics}, 2019.
+
+\end{itemize}
+}
+
+
+\end{frame}
+
+
+
+\end{document}
+

@@ -1,0 +1,899 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+[Matrix concentration]{Matrix concentration inequalities}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{3}
+
+\begin{document}
+
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Recap: matrix Bernstein inequality}
+
+Consider a sequence of independent random matrices $\big\{ \bm{X}_{l}\in\mathbb{R}^{d_{1}\times d_{2}}\big\} $
+%
+\begin{itemize}
+	\itemsep0.5em
+	\item $\mathbb{E}[\bm{X}_l]=\bm{0}$ \qquad\qquad\qquad\qquad\qquad $\bullet$ $\|\bm{X}_{l}\|\leq B$ for each $l$
+	\item variance statistic: 
+	$$v:=\max\left\{  \left\Vert  \mathbb{E}\left[ \sum\nolimits_{l} \bm{X}_{l}\bm{X}_{l}^{\top}  \right]  \right\Vert  ,  
+			  \left\Vert  \mathbb{E}\left[ \sum\nolimits_{l} \bm{X}_{l}^{\top}\bm{X}_{l}  \right]  \right\Vert  \right\} $$
+\end{itemize}
+
+\begin{theorem}[Matrix Bernstein inequality]\label{thm:mtx-Bernstein}
+%
+For all $\tau \geq 0$,
+\vspace{-1em}
+\[
+\mathbb{P}\left\{ \left\Vert \sum\nolimits_{l}\bm{X}_{l}\right\Vert \geq \tau\right\} \leq\left(d_{1}+d_{2}\right)\exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+\]
+%
+\end{theorem}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Recap: matrix Bernstein inequality}
+
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Gaussian_exponential_tail.pdf}
+	\end{center}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]
+\frametitle{}  
+
+\vfill
+\centering
+	{\large\bf This lecture: detailed introduction of  matrix Bernstein}
+
+\bigskip
+\bigskip
+
+\hfill {\small\em An introduction to matrix concentration inequalities \\ \hfill --- Joel Tropp\,'15}
+
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+
+\begin{itemize}
+  \itemsep1em
+  \item Matrix theory background
+  \item Matrix Laplace transform method
+  \item Matrix Bernstein inequality
+  \item Application: random features
+  %\item Proof of Lieb's Theorem
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Matrix theory background}
+\end{center}
+
+\vfill
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Matrix function}  
+
+Suppose the eigendecomposition of a symmetric matrix $\bm{A}\in \mathbb{R}^{d\times d}$ is 
+%
+{\small
+\[
+\bm{A}=\bm{U}\left[\begin{array}{ccc}
+\lambda_{1}\\
+ & \ddots\\
+ &  & \lambda_{d}
+\end{array}\right]\bm{U}^{\top}
+\]
+}
+%
+Then we can define
+%
+{\small
+\[
+f(\bm{A}) := \bm{U}\left[\begin{array}{ccc}
+f(\lambda_{1})\\
+ & \ddots\\
+ &  & f(\lambda_{d})
+\end{array}\right]\bm{U}^{\top}
+\]
+}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Examples of matrix functions}  
+
+\begin{itemize}
+	\itemsep1em
+	\item Let $f(a)=c_0 + \sum_{k=1}^{\infty} c_k a^k$, then
+	%
+	\[
+		f(\bm{A}) := c_0 \bm{I} + \sum_{k=1}^{\infty} c_k {\bm A}^k
+	\]
+	%
+	\item {\bf matrix exponential:} $\mathrm{e}^{\bm{A}} := \bm{I} + \sum_{k=1}^{\infty} \frac{1}{k!} \bm{A}^k$ \quad \alertb{(why?)}
+
+	%
+	\begin{itemize}
+		\item monotonicity: if $\bm{A}\preceq \bm{H}$, then $\mathrm{tr}\,\mathrm{e}^{\bm{A}} \leq \mathrm{tr}\,\mathrm{e}^{\bm{H}}$
+	\end{itemize}
+
+
+	\item {\bf matrix logarithm:} $\log (\mathrm{e}^{\bm{A}} ) := \bm{A}$
+		
+	%
+	\begin{itemize}
+		\item monotonicity: if $\bm{0}\preceq \bm{A}\preceq \bm{H}$, then $\log {\bm{A}} \preceq \log (\bm{H})$
+	\end{itemize}
+
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Matrix moments and cumulants}  
+
+	Let $\bm{X}$ be a random symmetric matrix. Then
+
+	\begin{itemize}
+		\item {\bf matrix moment generating function (MGF):} 
+		%
+		\[
+			\bm{M}_{\bm{X}}(\theta) := \mathbb{E}[\mathrm{e}^{\theta\bm{X}}]
+		\]
+		%
+	\item {\bf matrix cumulant generating function (CGF):} 
+		%
+		\[
+			\bm{\Xi}_{\bm{X}}(\theta) := \log \mathbb{E}[\mathrm{e}^{\theta\bm{X}}]
+		\]
+		%
+		
+
+	
+	\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Matrix Laplace transform method}
+\end{center}
+
+\vfill
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Matrix Laplace transform}  
+
+A key step for a scalar random variable $Y$: by Markov's inequality,
+	\[
+		\mathbb{P}\left\{ Y \geq t\right\} \leq \inf_{\theta>0} \mathrm{e}^{-\theta t} \,\mathbb{E}\big[\mathrm{e}^{\theta {Y}}\big]
+	\]
+
+
+\bigskip
+\bigskip
+
+This can be generalized to the matrix case
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Matrix Laplace transform} 
+
+
+\begin{lemma}\label{lem:matrix-Laplace}
+Let $\bm{Y}$ be a random symmetric matrix. For all $t\in\mathbb{R}$,
+%
+\[
+	\mathbb{P}\left\{ \lambda_{\max}(\bm{Y}) \geq t\right\} \leq\inf_{\theta>0} \mathrm{e}^{-\theta t} \,\mathbb{E}\big[\mathrm{tr}\,\mathrm{e}^{\theta\bm{Y}}\big]
+\]
+%
+\end{lemma}
+
+\begin{itemize}
+	\item can control the extreme eigenvalues of $\bm{Y}$ via the trace of the matrix MGF
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Proof of Lemma \ref{lem:matrix-Laplace}}  
+
+For any $\theta>0$,
+\begin{align*}
+\mathbb{P}\left\{ \lambda_{\max}(\bm{Y})\geq t\right\}  & =\mathbb{P}\left\{ \mathrm{e}^{\theta\lambda_{\max}(\bm{Y})}\geq\mathrm{e}^{\theta t}\right\} \\
+	& \leq\frac{\mathbb{E}[\mathrm{e}^{\theta\lambda_{\max}(\bm{Y})}]}{\mathrm{e}^{\theta t}}\qquad ~~\alertb{(\text{Markov's inequality})}\\
+ 	& =\frac{\mathbb{E}[\mathrm{e}^{\lambda_{\max}(\theta\bm{Y})}]}{\mathrm{e}^{\theta t}}\\
+	& =\frac{\mathbb{E}[\lambda_{\max}(\mathrm{e}^{\theta\bm{Y}})]}{\mathrm{e}^{\theta t}}\qquad  \alertb{(\mathrm{e}^{\lambda_{\max}(\bm{Z})}=\lambda_{\max}(\mathrm{e}^{\bm{Z}}))}\\
+ 	& \leq\frac{\mathbb{E}[\mathrm{tr}\,\mathrm{e}^{\theta\bm{Y}}]}{\mathrm{e}^{\theta t}}
+\end{align*}
+
+This completes the proof since it holds for any $\theta>0$ 
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Issues of the matrix MGF}  
+
+The Laplace transform method is effective for controlling an independent sum when MGF decomposes
+
+\begin{itemize}
+	\item in the scalar case where $X=X_{1}+\cdots+X_{n}$ with independent $\{X_{l}\}$:
+	%
+	\[
+		M_{X}(\theta)=\mathbb{E}[\mathrm{e}^{\theta X_1 + \cdots + \theta X_n}]= \mathbb{E}[\mathrm{e}^{\theta X_{1}}] \cdots \mathbb{E}[\mathrm{e}^{\theta X_{n}}] = \hspace{-1.7em}\underset{\alertb{\text{look at each }X_l\text{ separately}}}{\underbrace{ \prod_{l=1}^{n} M_{X_{l}}(\theta) }}
+	\]
+	%
+\end{itemize}
+
+\vfill
+
+{\bf Issues in the matrix settings:} 
+%
+\[
+	\mathrm{e}^{\bm{X}_{1}+\bm{X}_{2}} ~\neq~ \mathrm{e}^{\bm{X}_{1}}\mathrm{e}^{\bm{X}_{2}}\qquad\text{unless }\bm{X}_{1}\text{ and }\bm{X}_{2}\text{ commute}
+\]
+%
+\[
+	\mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}+\cdots+\bm{X}_{n}} ~\nleq~ \mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}}\mathrm{e}^{\bm{X}_{1}}\cdots\mathrm{e}^{\bm{X}_{n}}
+\]
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Subadditivity of the matrix CGF}  
+
+Fortunately, the matrix CGF satisfies certain subadditivity rules, allowing us to decompose independent matrix components 
+
+\bigskip
+
+
+\begin{lemma}
+	\label{lem:subadditive-CGF}
+	Consider a finite sequence $\{\bm{X}_l\}_{1\leq l\leq n}$ of independent random symmetric matrices. Then for any $\theta \in \mathbb{R}$, 
+	%
+	\[
+		\underset{\alertb{ \mathrm{tr} \exp\big(\bm{\Xi}_{\Sigma_{l}\bm{X}_{l}}(\theta)\big) }}{\underbrace{ \mathbb{E}\Big[\mathrm{tr}\,\mathrm{e}^{\theta\sum_{l}\bm{X}_{l}}\Big] }} 
+		\leq
+		\underset{\alertb{ \mathrm{tr} \exp\big(\sum_{l}\bm{\Xi}_{\bm{X}_{l}}(\theta)\big) }}{\underbrace{ \mathrm{tr} \exp\Big(\sum\nolimits _{l}\log\mathbb{E}\big[\mathrm{e}^{\theta\bm{X}_{l}}\big]\Big) }}
+	\]
+	%
+
+	
+\end{lemma}
+
+	
+\begin{itemize}
+	\item this is a deep result --- based on Lieb's Theorem! 
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Lieb's Theorem}
+
+
+
+\begin{columns}
+
+\begin{column}{0.25\textwidth}
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{Elliott-Lieb.jpg} \\
+	{\small Elliott Lieb}
+\end{center}
+
+\end{column}
+
+\begin{column}{0.6\textwidth}
+
+\begin{theorem}[Lieb\,'73]
+	\label{thm:Lieb}
+	Fix a symmetric matrix $\bm{H}$. Then 
+	%
+	\[
+		\bm{A}~\mapsto~\mathrm{tr}\exp(\bm{H}+\log\bm{A})
+	\]
+	%
+	is concave on positive-semidefinite cone
+\end{theorem}
+
+\end{column}
+\end{columns}
+
+
+\vfill
+
+Lieb's Theorem immediately implies  \alertb{(exercise: Jensen's inequality)}
+%
+\begin{align}
+	\label{eq:Lieb-corollary}
+	\mathbb{E}\big[\mathrm{tr}\exp(\bm{H}+\bm{X})\big]\leq\mathrm{tr}\exp\big(\bm{H}+\log\mathbb{E}\big[\mathrm{e}^{\bm{X}}\big]\big)
+\end{align}
+%
+
+
+\end{frame}
+
+
+
+
+
+\begin{comment}
+\begin{frame}
+	\frametitle{Proof sketch of Lieb's Theorem}
+
+
+Main observation: $\mathrm{tr}(\cdot)$ admits a variational formula
+
+\bigskip
+
+\begin{lemma}
+	\label{lem:trace-variational}
+	For any $\bm{M}\succeq \bm{0}$, one has
+	\vspace{-0.5em}
+	%
+	\begin{align*}
+		\mathrm{tr} \bm{M} = \sup_{\bm{T}\succ \bm{0}}  \mathrm{tr}~\big[ \hspace{-2em} \underset{\alertb{\text{relative entropy is }\bm{T} \log \bm{M} - \bm{T} \log \bm{T} + \bm{T} - \bm{M}}}{\underbrace{ \bm{T} \log \bm{M} - \bm{T} \log \bm{T} + \bm{T} }} \hspace{-2em}\big]
+	\end{align*}
+	%
+\end{lemma}
+
+
+\end{frame}
+\end{comment}
+
+
+
+
+\begin{frame}
+\frametitle{Proof of Lemma \ref{lem:subadditive-CGF}}  
+
+
+\begin{align*}
+\mathbb{E}\big[\mathrm{tr}\,\mathrm{e}^{\theta\sum_{l}\bm{X}_{l}}\big] & =\mathbb{E}\big[\mathrm{tr}\exp\big(\theta\sum\nolimits _{l=1}^{n-1}\bm{X}_{l}+\theta\bm{X}_{n}\big)\big]\\
+	& \leq\mathbb{E}\Big[\mathrm{tr}\exp\Big(\theta\sum\nolimits _{l=1}^{n-1}\bm{X}_{l}+\log\mathbb{E}\big[ \mathrm{e}^{\theta\bm{X}_{n}} \big]\Big)\Big] \qquad \alertb{(\text{by }\eqref{eq:Lieb-corollary})}\\
+ 	& \leq\mathbb{E}\Big[\mathrm{tr}\exp\Big(\theta\sum\nolimits _{l=1}^{n-2}\bm{X}_{l}+\log\mathbb{E}\big[ \mathrm{e}^{\theta\bm{X}_{n-1}} \big]+\log\mathbb{E}\big[\mathrm{e}^{\theta\bm{X}_{n}}\big]\Big)\Big]\\
+ 	& \leq\cdots\\
+ 	& \leq\mathrm{tr}\exp\Big(\sum\nolimits _{l=1}^{n}\log\mathbb{E}\big[\mathrm{e}^{\theta\bm{X}_{l}}\big]\Big)
+\end{align*}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Master bounds}  
+
+
+Combining the Laplace transform method with the subadditivity of CGF yields:
+
+\bigskip
+
+\begin{theorem}[Master bounds for sum of independent matrices]
+	\label{thm:master-bounds}
+	Consider a finite sequence $\{\bm{X}_l\}$ of independent random symmetric matrices. Then 
+	\vspace{-0.5em}
+	%
+	\[
+		\mathbb{P}\left\{ \lambda_{\max}\big(\sum\nolimits _{l}\bm{X}_{l}\big)\geq t\right\} \leq\inf_{\theta>0}\frac{\mathrm{tr}\exp\big(\sum\nolimits _{l}\log\mathbb{E}[\mathrm{e}^{\theta\bm{X}_{l}}]\big)}{\mathrm{e}^{\theta t}}
+	\]
+	%
+\end{theorem}
+
+\begin{itemize}
+	\item this is a general result underlying the proofs of the matrix Bernstein inequality and beyond (e.g.~matrix Chernoff)
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Matrix Bernstein inequality}
+\end{center}
+
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Matrix CGF}  
+
+\[
+	\mathbb{P}\left\{ \lambda_{\max}\big(\sum\nolimits _{l}\bm{X}_{l}\big)\geq t\right\} \leq\inf_{\theta>0}\frac{\mathrm{tr}\exp\big(\sum\nolimits _{l}\log\mathbb{E}[\mathrm{e}^{\theta\bm{X}_{l}}]\big)}{\mathrm{e}^{\theta t}}
+\]
+
+
+\bigskip
+\bigskip
+
+To invoke the master bound, one needs to \hspace{-1.5em} $\underset{\alertb{\text{main step for proving matrix Bernstein}}}{\underbrace{\text{control the matrix CGF}}}$ 
+	
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Symmetric case}  
+
+
+Consider a sequence of independent random symmetric matrices $\big\{ \bm{X}_{l}\in\mathbb{R}^{d \times d}\big\} $
+%
+\begin{itemize}
+	\itemsep0.5em
+	\item $\mathbb{E}[\bm{X}_l]=\bm{0}$ \qquad\qquad\qquad\qquad\qquad $\bullet$ $\lambda_{\max}(\bm{X}_{l}) \leq B$ for each $l$
+	\item variance statistic: 
+	$v:= \left\Vert  \mathbb{E}\left[ \sum\nolimits_{l} \bm{X}_{l}^2  \right]  \right\Vert  $
+\end{itemize}
+
+\begin{theorem}[Matrix Bernstein inequality: symmetric case]
+\label{thm:mtx-Bernstein-symmetric}
+%
+For all $\tau \geq 0$,
+\vspace{-1em}
+\[
+	\mathbb{P}\left\{ \lambda_{\max}\left( \sum\nolimits_{l}\bm{X}_{l}\right ) \geq \tau\right\} \leq d \exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+\]
+%
+\end{theorem}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Bounding matrix CGF}  
+
+
+For bounded random matrices, one can control the matrix CGF as follows:
+
+\bigskip
+\bigskip
+
+\begin{lemma}
+	\label{lem:bound-matrix-CGF}
+	Suppose $\mathbb{E}[\bm{X}]=\bm{0}$ and $\lambda_{\max}(\bm{X})\leq B$. Then for $0<\theta<3/B$,
+	\vspace{-0.5em}
+	%
+	\[
+		\log\mathbb{E}\big[\mathrm{e}^{\theta\bm{X}}\big]\preceq\frac{\theta^{2}/2}{1-\theta B/3}\mathbb{E}[\bm{X}^{2}]
+	\]
+	%
+\end{lemma}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Proof of Theorem \ref{thm:mtx-Bernstein-symmetric}}  
+
+
+Let $g(\theta):=\frac{\theta^{2}/2}{1-\theta B/3}$, then it follows
+from the master bound that
+\begin{align*}
+\mathbb{P}\left\{ \lambda_{\max}\big(\sum\nolimits _{i}\bm{X}_{i}\big)\geq t\right\}  & \leq\inf_{\theta>0}\frac{\mathrm{tr}\exp\big(\sum\nolimits _{i=1}^{n}\log\mathbb{E}[\mathrm{e}^{\theta\bm{X}_{i}}]\big)}{\mathrm{e}^{\theta t}}\\
+	& \hspace{-1.5em}\overset{\alertb{\text{Lemma \ref{lem:bound-matrix-CGF}}}}{\leq}  \hspace{-1em} \inf_{0<\theta<3/B}\frac{\mathrm{tr}\exp\big(g(\theta)\sum\nolimits _{i=1}^{n}\mathbb{E}[\bm{X}_{i}^{2}]\big)}{\mathrm{e}^{\theta t}}\\
+ & \leq \inf_{0<\theta<3/B}\frac{d\,\exp\big(g(\theta)v\big)}{\mathrm{e}^{\theta t}}
+\end{align*}
+Taking $\theta=\frac{t}{v+Bt/3}$ and simplifying the above expression, we establish matrix Bernstein
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Proof of Lemma \ref{lem:bound-matrix-CGF}} 
+
+{\small
+
+Define $f(x)=\frac{\mathrm{e}^{\theta x}-1-\theta x}{x^{2}}$, then
+for any $\bm{X}$ with $\lambda_{\max}(\bm{X})\leq B$:
+\begin{align*}
+\mathrm{e}^{\theta\bm{X}} & =\bm{I}+\theta\bm{X}+\big(\mathrm{e}^{\theta\bm{X}}-\bm{I}-\theta\bm{X}\big)=\bm{I}+\theta\bm{X}+\bm{X}\cdot f(\bm{X})\cdot\bm{X}\\
+ & \preceq\bm{I}+\theta\bm{X}+f(B)\cdot\bm{X}^{2}
+\end{align*}
+In addition, we note an elementary inequality: for any $0<\theta<3/B$,
+%
+\[
+f(B)=\frac{\mathrm{e}^{\theta B}-1-\theta B}{B^{2}}=\frac{1}{B^{2}}\sum_{k=2}^{\infty}\frac{(\theta B)^{k}}{k!}\leq\frac{\theta^{2}}{2}\sum_{k=2}^{\infty}\frac{(\theta B)^{k-2}}{3^{k-2}}=\frac{\theta^{2}/2}{1-\theta B/3}
+\]
+%
+\begin{align*}
+	\Longrightarrow \qquad \mathrm{e}^{\theta\bm{X}} & \preceq\bm{I}+\theta\bm{X}+\frac{\theta^{2}/2}{1-\theta B/3}\cdot\bm{X}^{2}
+\end{align*}
+%
+Since $\bm{X}$ is zero-mean, one further has
+\[
+\mathbb{E}\big[\mathrm{e}^{\theta\bm{X}}\big]\preceq\bm{I}+\frac{\theta^{2}/2}{1-\theta B/3}\mathbb{E}[\bm{X}^{2}]\preceq\exp\left(\frac{\theta^{2}/2}{1-\theta B/3}\mathbb{E}[\bm{X}^{2}]\right)
+\]
+
+}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf Application: random features}
+\end{center}
+
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Kernel trick} 
+
+A modern idea in machine learning:  replace the inner product by kernel evaluation (i.e.~certain similarity measure)
+
+\bigskip
+\bigskip
+\bigskip
+
+Advantage: work beyond the Euclidean domain via task-specific similarity measures
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Similarity measure}  
+
+Define the similarity measure $\Phi$
+
+	\begin{itemize}
+		\itemsep0.5em
+		\item $\Phi(\bm{x}, \bm{x})=1$
+		\item $|\Phi(\bm{x}, \bm{y})| \leq 1$
+		\item $\Phi(\bm{x}, \bm{y}) = \Phi(\bm{y}, \bm{x})$
+	\end{itemize}
+
+\vfill
+
+Example: angular similarity
+%
+\[
+	\Phi(\bm{x},\bm{y})=\frac{2}{\pi}\arcsin\frac{\langle\bm{x},\bm{y}\rangle}{\|\bm{x}\|_{2}\|\bm{y}\|_{2}}=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}
+\]
+%
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Kernel matrix} 
+
+	Consider $N$ data points $\bm{x}_1,\cdots,\bm{x}_N\in \mathbb{R}^d$. Then the kernel matrix $\bm{G}\in \mathbb{R}^{N\times N}$ is 
+	%
+	\begin{equation*}
+		G_{i,j} = \Phi (\bm{x}_i, \bm{x}_j) \qquad 1\leq  i,j \leq N
+	\end{equation*}
+	%
+
+
+	\begin{itemize}
+		\item Kernel $\Phi$ is said to be positive semidefinite if $\bm{G}\succeq \bm{0}$ for any  $\{\bm{x}_i\}$
+	\end{itemize}
+
+
+	\vfill
+
+	{\bf Challenge:} kernel matrices are usually large 
+	\begin{itemize}
+		\itemsep0.3em
+		\item cost of constructing $\bm{G}$ is $O(dN^2)$ 
+	\end{itemize}
+
+	\medskip
+	{\bf Question:} can we approximate $\bm{G}$ more efficiently?
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Random features}  
+
+	Introduce a random variable $\bm{w}$ and a feature map $\psi$ such that
+	%
+	\[
+		\Phi(\bm{x},\bm{y})=\mathbb{E}_{\bm{w}}[ \underset{\alertb{\text{decouple }\bm{x}\text{ and }\bm{y}}}{\underbrace{ \psi(\bm{x};\bm{w})\cdot\psi(\bm{y};\bm{w}) }} ]
+	\]
+	%
+	\begin{itemize}
+		\item<1> {\bf example (angular similarity)}
+		%
+		\begin{align}
+			\label{eq:angular-similarity-random}
+			\underset{\alertb{\text{Grothendieck's identity}}}{\underbrace{ \Phi(\bm{x},\bm{y})=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}=\mathbb{E}_{\bm{w}}[\mathrm{sgn}\langle\bm{x},\bm{w}\rangle \cdot \mathrm{sgn}\langle\bm{y},\bm{w}\rangle] }}
+		\end{align}
+		%
+		with $\bm{w}$ uniformly drawn from the unit sphere
+
+
+		\vspace{-7em}
+		\item<2> this results in a {\bf random feature vector}
+		%
+		\[
+			\bm{z}=\left[\begin{array}{c}
+				z_{1}\\
+				\vdots\\
+				z_{N}
+			\end{array}\right]
+			=\left[\begin{array}{c}
+				\psi(\bm{x}_{1};\bm{w})\\
+				\vdots\\
+				\psi(\bm{x}_{N};\bm{w})
+			\end{array}\right]
+		\]
+		%
+		\begin{itemize}
+			\item $\underset{\alertb{\text{rank 1}}}{\underbrace{\bm{z}\bm{z}^{\top}}}$ is an \alert{unbiased estimate} of $\bm{G}$, i.e.~$\bm{G}=\mathbb{E}[\bm{z}\bm{z}^{\top}]$
+		\end{itemize}
+		
+	\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Example}
+
+
+	Angular similarity:
+	\begin{align*}
+\Phi(\bm{x},\bm{y}) & =1-\frac{2\angle(\bm{x},\bm{y})}{\pi}\\
+ & =\mathbb{E}_{\bm{w}}\left[\mathsf{sign}\langle\bm{x},\bm{w}\rangle\,\mathsf{sign}\langle\bm{y},\bm{w}\rangle\right]
+\end{align*}
+where $\bm{w}$ is uniformly drawn from the unit sphere
+
+\bigskip
+\bigskip
+
+	As a result, the random feature map is $\psi(\bm{x},\bm{w})=\mathsf{sign}\langle\bm{x},\bm{w}\rangle$
+
+	
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Random feature approximation}  
+
+	Generate $n$ independent copies of $\bm{R}=\bm{z}\bm{z}^{\top}$, i.e.~$\{\bm{R}_l\}_{1\leq l\leq n}$
+
+	\bigskip
+	\bigskip
+	
+	{\bf Estimator} of the kernel matrix $\bm{G}$:
+	%
+	\[
+		\hat{\bm{G}} = \frac{1}{n} \sum_{l=1}^n \bm{R}_l
+	\]
+
+
+	\bigskip
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	{\bf Question:} ~how many random features are needed to guarantee accurate estimation?
+\end{center}
+\end{varblock}
+}
+
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Statistical guarantees for random feature approximation}  
+
+Consider the angular similarity example \eqref{eq:angular-similarity-random}: 
+%
+\begin{itemize}
+	\itemsep0.5em
+		
+	\item To begin with,
+%
+\[
+	\mathbb{E}[\bm{R}_l^2]=\mathbb{E}[\bm{z}\bm{z}^{\top}\bm{z}\bm{z}^{\top}]=N\mathbb{E}[\bm{z}\bm{z}^{\top}]=N\bm{G}
+\]
+%
+\[
+	\Longrightarrow\qquad v= \Big\| \frac{1}{n^2} \sum\nolimits _{l=1}^{n}\mathbb{E}[\bm{R}_{l}^{2}] \Big\| = \frac{N}{n} \|\bm{G}\|
+\]
+%
+
+	\item Next, $ \frac{1}{n}\|\bm{R}\| = \frac{1}{n} \|\bm{z}\|_2^2 = \frac{N}{n} \eqqcolon B$
+
+	\item Applying the matrix Bernstein inequality yields: with high prob.
+	%
+	\begin{align*}
+		\|\hat{\bm{G}}-\bm{G}\| &\lesssim\sqrt{v\log N}+B\log N\lesssim  \sqrt{ \frac{N}{n} \|\bm{G}\| \log N } + \frac{N}{n}\log N  \\
+					&\lesssim  \sqrt{ \frac{N}{n} \underset{\alertb{\geq 1}}{\underbrace{ \|\bm{G}\| }} \log N }   \qquad \qquad \alertb{\text{(for sufficiently large }n)}
+	\end{align*}
+	%
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Sample complexity}
+
+	Define the intrinsic dimension of $\bm{G}$ as 
+	\[
+		\mathsf{intdim}(\bm{G})= \frac{\mathrm{tr} \bm{G}}{ \|\bm{G} \|} = \frac{N}{\|\bm{G}\|}
+	\]
+
+	If $n \gtrsim \varepsilon^{-2} \mathsf{intdim}(\bm{G}) \log N$, then we have
+	%
+	\[
+		\frac{\| \hat{\bm{G}} - \bm{G} \|}{\|\bm{G}\|} \leq \varepsilon
+	\]
+
+
+\end{frame}
+
+
+
+\begin{frame}[allowframebreaks]
+\frametitle{Reference}
+
+{\small
+\begin{itemize}  \itemsep0.3em
+  \item ''\textit{An introduction to matrix concentration inequalities},'' J.~Tropp, \textit{Foundations and Trends in Machine Learning}, 2015.
+  \item ''\textit{Convex trace functions and the Wigner-Yanase-Dyson conjecture},'' E.~Lieb, \textit{Advances in Mathematics}, 1973.
+  %\item ''\textit{Introduction to the non-asymptotic analysis of random matrices},'' R.~Vershinyn, \textit{arXiv:1011.3027}, 2010.
+  \item ''\textit{User-friendly tail bounds for sums of random matrices},'' J.~Tropp, \textit{Foundations of computational mathematics}, 2012.
+  \item ''\textit{Random features for large-scale kernel machines},'' A.~Rahimi, B.~Recht, \textit{Neural Information Processing Systems}, 2008.  
+
+
+\end{itemize}
+}
+
+
+\end{frame}
+
+
+
+\end{document}
+

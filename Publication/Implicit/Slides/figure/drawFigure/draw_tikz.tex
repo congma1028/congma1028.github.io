@@ -1,0 +1,73 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[miktex]{gnuplottex}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+     width=200pt, height = 130pt, compat=1.5.1,grid style={ultra thin},every axis plot post/.append style={thick},
+     x tick label style={font=\footnotesize},y tick label style={font=\footnotesize},
+     scale only axis,grid=none,axis lines=middle,
+     xlabel={$t$},
+     ylabel={$f(t)/\sqrt{1+t^2}$},
+     xmin= 0,
+     xmax= 1.08,
+     domain= 0:1.1,
+     ymin=0.885,
+     ymax=1.03,
+     xtick={0,0.2, ..., 1},
+     ytick={0.9, 1, 1.1},
+     restrict y to domain=0:1.05,
+     restrict x to domain=0:1,
+     legend style={at={(0.5,-0.05)},anchor=north,nodes={right}},
+ ]
+ \addplot[mark=none,color=blue, samples=1000]{ (2/pi* (2* sqrt(x) + (1-x)* (pi/2 - 2*rad(atan( sqrt(x) ))))) / sqrt( 1 + x^2)};
+ %\addlegendentry{$y = \tan^{-1}x $};
+ \end{axis}
+\end{tikzpicture}
+
+\vspace{2em}
+
+\begin{tikzpicture}
+\begin{axis}[
+     width=200pt, height = 130pt, compat=1.5.1,grid style={ultra thin},every axis plot post/.append style={thick},
+     x tick label style={font=\normalsize},y tick label style={font=\footnotesize},
+     scale only axis,grid=none,axis lines=middle,
+     xlabel={},
+     ylabel={},
+     xmin= -20,
+     xmax= 20,     
+     ymin=0,
+     ymax=220,
+     xtick={0.02},
+     xticklabels = {},
+     ytick={0},
+     restrict y to domain=0:200,
+     restrict x to domain=-40:40,
+     legend style={at={(0.5,-0.05)},anchor=north,nodes={right}},
+ ]
+	\addplot[mark=none,color=blue, samples=1000, domain= 6:20]{  x^2 + 1.5* x * (cos(deg(x-6)) - 1) };
+	\addplot[mark=none,color=blue, samples=1000, domain= -20:-6]{ x^2 - 1.5* x * (cos(deg(x+6)) - 1)};
+	\addplot[mark=none,color=blue, samples=1000, domain= -6:6]{  x^2 };
+	%\draw[dashed]
+	%\addplot[dashed, mark=none,color=red, samples=1000, domain= 6.7:17]{  6.2* (x-6.7) + 43  };
+	%\addplot[dashed, mark=none,color=red, samples=1000, domain= -13:1.5]{  - 10* (x+13) + 166  };
+ %\addlegendentry{$y = \tan^{-1}x $};
+ \end{axis}
+\end{tikzpicture}
+
+
+
+\end{document}

@@ -1,0 +1,81 @@
+% A complete graph
+% Author: Quintin Jean-NoÃ«l
+% <http://moais.imag.fr/membres/jean-noel.quintin/>
+\documentclass{article}
+\usepackage{tikz}
+%%%<
+\usepackage{verbatim}
+\usepackage{verbatim}
+
+\usepackage{color}
+
+\usepackage[active,tightpage]{preview}
+
+\definecolor{colorNodeInner}{RGB}{253,141,60}
+\definecolor{colorNodeEdge}{RGB}{217,72,1}
+\definecolor{colorEdge}{RGB}{241,105,19}
+
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+%%%>
+\usetikzlibrary[topaths,positioning]
+% A counter, since TikZ is not clever enough (yet) to handle
+% arbitrary angle systems.
+\newcount\mycount
+\newcount\mylabel
+\begin{document}
+\begin{tikzpicture}[transform shape]
+  %the multiplication with floats is not possible. Thus I split the loop in two.
+  \foreach \number in {1,...,12}{
+      % Computer angle:
+        \mycount=\number
+        \advance\mycount by -1
+  \multiply\mycount by 30
+        \advance\mycount by 0
+      \node[draw=colorNodeEdge,line width=2pt,circle,fill=colorNodeInner, inner sep=0.25cm] (N-\number) at (\the\mycount:5.4cm) {};
+    }
+  %\foreach \number in {9,...,16}{
+      % Computer angle:
+  %      \mycount=\number
+  %      \advance\mycount by -1
+  %\multiply\mycount by 45
+  %      \advance\mycount by 22.5
+  %    \node[draw,circle,inner sep=0.25cm] (N-\number) at (\the\mycount:5.4cm) {};
+  %  }
+
+  %% Another complete graph
+  \foreach \number in {13,...,24}{
+      % Computer angle:
+        \mycount=\number
+        \advance\mycount by -1
+  \multiply\mycount by 30
+        \advance\mycount by 0
+
+	\mylabel=\number
+	\advance\mylabel by -12
+      \node[right=13cm of N-1, draw=colorNodeEdge,line width=2pt,circle,fill=colorNodeInner, inner sep=0.15cm] (N-\number) at (\the\mycount:5.4cm) {\Huge \the\mylabel};
+    }
+
+  \foreach \numbera/\numberb in {13/15,18/13,19/13,21/13,
+				14/18,14/23,
+				15/17,22/15,15/24,
+				16/20,16/23,
+				17/18,22/17,17/24,
+				18/21,
+				19/20,19/23,
+				20/24,
+				21/24}{
+    \path (N-\numbera) edge[-,bend right=4, colorEdge, line width=0.7pt] (N-\numberb);
+    \path (N-\numbera) edge[-,bend right=0, colorEdge, line width=0.7pt] (N-\numberb);
+    \path (N-\numbera) edge[-,bend right=8, colorEdge, line width=0.7pt] (N-\numberb);
+    \path (N-\numbera) edge[-,bend left=4, colorEdge, line width=0.7pt] (N-\numberb);
+    %\path (N-\numbera) edge[-,bend left=8, colorEdge, line width=0.7pt] (N-\numberb);
+
+    }
+
+
+  %\path (N-1) edge[-, bend left = 3, line width = 2pt, colorEdge] (N-19);
+
+\end{tikzpicture}
+\end{document}
