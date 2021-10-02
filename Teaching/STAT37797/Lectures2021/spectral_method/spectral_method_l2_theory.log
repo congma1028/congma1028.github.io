@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  26 SEP 2021 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 OCT 2021 10:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1364,9 +1364,13 @@ Package pdftex.def Info: ../../../Figures/../Figures/UC_logo.png  used on input
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../../.
 ./Figures/../Figures/UC_logo.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 60.
+(Font)              <10.95> on input line 64.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 60.
+(Font)              <8> on input line 64.
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 64.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 64.
  [2
 
 ] [3
@@ -1376,8 +1380,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [5
 
 ]
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 145.
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <8> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 137.
+
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <6> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 137.
 
  [6
 
@@ -1402,52 +1409,55 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
 
 ] [16
 
+] [17
+
 ]
-<../../../Figures/principal_angle_lines.pdf, id=212, 167.62625pt x 49.18375pt>
+<../../../Figures/principal_angle_lines.pdf, id=234, 167.62625pt x 49.18375pt>
 File: ../../../Figures/principal_angle_lines.pdf Graphic file (type pdf)
 <use ../../../Figures/principal_angle_lines.pdf>
 Package pdftex.def Info: ../../../Figures/principal_angle_lines.pdf  used on in
-put line 307.
+put line 338.
 (pdftex.def)             Requested size: 91.31326pt x 26.7922pt.
-<../../../Figures/principal_angle.pdf, id=213, 127.47626pt x 122.4575pt>
+<../../../Figures/principal_angle.pdf, id=235, 127.47626pt x 122.4575pt>
 File: ../../../Figures/principal_angle.pdf Graphic file (type pdf)
 <use ../../../Figures/principal_angle.pdf>
 Package pdftex.def Info: ../../../Figures/principal_angle.pdf  used on input li
-ne 307.
+ne 338.
 (pdftex.def)             Requested size: 76.89592pt x 73.87119pt.
- [17
+ [18
 
  <../../../Figures/principal_angle_lines.pdf> <../../../Figures/principal_angle
 .pdf>]
 
-LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 33
-8.
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 36
+9.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 338.
-[18
-
-] [19
-
-] [20
+[19
 
 ]
-Overfull \hbox (1.11224pt too wide) detected at line 408
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 39
+5.
+
+[20
+
+] [21
+
+]
+Overfull \hbox (1.5679pt too wide) detected at line 437
 []
  []
 
-[21
+[22
 
-] [22
+] [23
 
 ]
-Overfull \hbox (15.78777pt too wide) detected at line 464
+Overfull \hbox (15.78777pt too wide) detected at line 493
 []
  []
 
-[23
-
-] [24
+[24
 
 ] [25
 
@@ -1457,32 +1467,36 @@ Overfull \hbox (15.78777pt too wide) detected at line 464
 
 ] [28
 
+] [29
+
 ]
-<../../../Figures/Chandler_Davis.jpg, id=447, 1279.78125pt x 1333.98375pt>
+<../../../Figures/Chandler_Davis.jpg, id=470, 1279.78125pt x 1333.98375pt>
 File: ../../../Figures/Chandler_Davis.jpg Graphic file (type jpg)
 <use ../../../Figures/Chandler_Davis.jpg>
 Package pdftex.def Info: ../../../Figures/Chandler_Davis.jpg  used on input lin
-e 640.
+e 655.
 (pdftex.def)             Requested size: 72.8905pt x 75.96458pt.
-<../../../Figures/William_Kahan.jpg, id=448, 287.0725pt x 280.04625pt>
+<../../../Figures/William_Kahan.jpg, id=471, 287.0725pt x 280.04625pt>
 File: ../../../Figures/William_Kahan.jpg Graphic file (type jpg)
 <use ../../../Figures/William_Kahan.jpg>
 Package pdftex.def Info: ../../../Figures/William_Kahan.jpg  used on input line
- 640.
+ 655.
 (pdftex.def)             Requested size: 78.49785pt x 76.57495pt.
- [29
+ [30
 
  <../../../Figures/Chandler_Davis.jpg> <../../../Figures/William_Kahan.jpg>]pdf
 TeX warning (ext4): destination with the same identifier (name{eq:davis-kahan-c
 onclusion-corollary}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.669 \end{frame}
-                  [30
+l.685 \end{frame}
+                  [31
 
-] [31
+]
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 730.
 
-] [32
+ [32
 
 ] [33
 
@@ -1493,25 +1507,15 @@ l.669 \end{frame}
 ] [36
 
 ]
-Overfull \hbox (6.63823pt too wide) detected at line 844
+Overfull \hbox (3.59656pt too wide) detected at line 864
 []
  []
 
 [37
 
-]
+] [38
 
-LaTeX Warning: Reference `subsec:Matrix-analysis' on page 38 undefined on input
- line 874.
-
-[38
-
-]
-
-LaTeX Warning: Reference `prop:unitary-norm-property' on page 39 undefined on i
-nput line 907.
-
-[39
+] [39
 
 ] [40
 
@@ -1520,24 +1524,42 @@ nput line 907.
 ] [42
 
 ]
-<../../../Figures/markov_chain.pdf, id=591, 172.645pt x 111.41624pt>
+<../../../Figures/markov_chain.pdf, id=603, 172.645pt x 111.41624pt>
 File: ../../../Figures/markov_chain.pdf Graphic file (type pdf)
 <use ../../../Figures/markov_chain.pdf>
 Package pdftex.def Info: ../../../Figures/markov_chain.pdf  used on input line 
-974.
+992.
 (pdftex.def)             Requested size: 96.11954pt x 62.03055pt.
  [43
 
  <../../../Figures/markov_chain.pdf>] [44
 
 ]
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 1043
-.
- [45
+[45
 
 ] [46
 
+] [47
+
+] [48
+
+]
+Overfull \hbox (10.13998pt too wide) detected at line 1095
+[]
+ []
+
+[49
+
+]
+Overfull \hbox (18.72824pt too wide) detected at line 1126
+[]
+ []
+
+[50
+
+] [51
+
+] [52
 
 ]
 \tf@nav=\write7
@@ -1554,85 +1576,80 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
 Package caption Warning: Unused \captionsetup[figure] on input line 166.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1047.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1047.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1206.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1206.
 (./spectral_method_l2_theory.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1047.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1047.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1206.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1206.
 
 Package rerunfilecheck Info: File `spectral_method_l2_theory.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34197 strings out of 492616
- 808406 string characters out of 6129482
- 1048796 words of memory out of 5000000
- 37237 multiletter control sequences out of 15000+600000
- 85837 words of font info for 112 fonts, out of 8000000 for 9000
+ 34244 strings out of 492616
+ 809078 string characters out of 6129482
+ 1043796 words of memory out of 5000000
+ 37272 multiletter control sequences out of 15000+600000
+ 91347 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,32n,96p,792b,713s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{prop:unitary-norm-property} has been referenced b
-ut does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsec:Matrix-analysis} has been referenced but doe
-s not exist, replaced by a fixed one
-
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/te
-xlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019
-/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dis
-t/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
-lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/loc
-al/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/
-2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2019/texmf-
-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/
-type1/public/lm/lmmi9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
-c/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr12.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/lo
-cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/
-2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/lm/lmr9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
-m/lmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss12.p
-fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/lo
-cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/lm/lmsso9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
-m/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy7.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
-local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></us
-r/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spectral_method_l2_theory.pdf (46 pages, 1632953 bytes).
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/20
+19/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
+public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
+public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
+lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/loca
+l/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
+/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/loca
+l/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dis
+t/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/lm/lmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
+m/lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss8.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/lm/lmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm
+/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on spectral_method_l2_theory.pdf (52 pages, 1681108 bytes).
 PDF statistics:
- 864 PDF objects out of 1000 (max. 8388607)
- 114 named destinations out of 1000 (max. 500000)
- 457 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 933 PDF objects out of 1000 (max. 8388607)
+ 125 named destinations out of 1000 (max. 500000)
+ 493 words of extra memory for PDF output out of 10000 (max. 10000000)
 

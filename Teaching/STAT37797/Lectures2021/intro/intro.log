@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 SEP 2021 20:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  28 SEP 2021 15:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1546,10 +1546,14 @@ t line 705.
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 740.
+(Font)              <10> on input line 741.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 740.
- [37
+(Font)              <7> on input line 741.
+
+Overfull \vbox (3.31343pt too high) detected at line 741
+ []
+
+[37
 
 ] [38
 
@@ -1577,20 +1581,20 @@ t>
 File: ../../../Figures/high-dim-stats-Wainwright.jpg Graphic file (type jpg)
 <use ../../../Figures/high-dim-stats-Wainwright.jpg>
 Package pdftex.def Info: ../../../Figures/high-dim-stats-Wainwright.jpg  used o
-n input line 853.
+n input line 854.
 (pdftex.def)             Requested size: 82.02336pt x 117.61304pt.
 <../../../Figures/high-dim-prob-Vershynin.jpg, id=579, 180.675pt x 259.97125pt>
 
 File: ../../../Figures/high-dim-prob-Vershynin.jpg Graphic file (type jpg)
 <use ../../../Figures/high-dim-prob-Vershynin.jpg>
 Package pdftex.def Info: ../../../Figures/high-dim-prob-Vershynin.jpg  used on 
-input line 853.
+input line 854.
 (pdftex.def)             Requested size: 82.02336pt x 118.02132pt.
 <../../../Figures/jianqing-book.jpeg, id=580, 181.67876pt x 279.0425pt>
 File: ../../../Figures/jianqing-book.jpeg Graphic file (type jpg)
 <use ../../../Figures/jianqing-book.jpeg>
 Package pdftex.def Info: ../../../Figures/jianqing-book.jpeg  used on input lin
-e 853.
+e 854.
 (pdftex.def)             Requested size: 77.92134pt x 119.68362pt.
  [48
 
@@ -1613,11 +1617,11 @@ ob-Vershynin.jpg> <../../../Figures/jianqing-book.jpeg>] [49
 \tf@snm=\write9
 \openout9 = `intro.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 982.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 982.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 983.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 983.
  (./intro.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 982.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 982.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 983.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 983.
 Package rerunfilecheck Info: File `intro.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
@@ -1663,7 +1667,7 @@ t/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/lm/lmsy9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on intro.pdf (52 pages, 2570128 bytes).
+Output written on intro.pdf (52 pages, 2570225 bytes).
 PDF statistics:
  740 PDF objects out of 1000 (max. 8388607)
  105 named destinations out of 1000 (max. 500000)

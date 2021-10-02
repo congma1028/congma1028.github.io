@@ -650,228 +650,228 @@ Since $\bm{X}$ is zero-mean, one further has
 \end{frame}
 
 
-
-\begin{frame}
-\frametitle{Kernel trick} 
-
-A modern idea in machine learning:  replace the inner product by kernel evaluation (i.e.~certain similarity measure)
-
-\bigskip
-\bigskip
-\bigskip
-
-Advantage: work beyond the Euclidean domain via task-specific similarity measures
-
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Similarity measure}  
-
-Define the similarity measure $\Phi$
-
-	\begin{itemize}
-		\itemsep0.5em
-		\item $\Phi(\bm{x}, \bm{x})=1$
-		\item $|\Phi(\bm{x}, \bm{y})| \leq 1$
-		\item $\Phi(\bm{x}, \bm{y}) = \Phi(\bm{y}, \bm{x})$
-	\end{itemize}
-
-\vfill
-
-Example: angular similarity
 %
-\[
-	\Phi(\bm{x},\bm{y})=\frac{2}{\pi}\arcsin\frac{\langle\bm{x},\bm{y}\rangle}{\|\bm{x}\|_{2}\|\bm{y}\|_{2}}=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}
-\]
+%\begin{frame}
+%\frametitle{Kernel trick} 
 %
-
-
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Kernel matrix} 
-
-	Consider $N$ data points $\bm{x}_1,\cdots,\bm{x}_N\in \mathbb{R}^d$. Then the kernel matrix $\bm{G}\in \mathbb{R}^{N\times N}$ is 
-	%
-	\begin{equation*}
-		G_{i,j} = \Phi (\bm{x}_i, \bm{x}_j) \qquad 1\leq  i,j \leq N
-	\end{equation*}
-	%
-
-
-	\begin{itemize}
-		\item Kernel $\Phi$ is said to be positive semidefinite if $\bm{G}\succeq \bm{0}$ for any  $\{\bm{x}_i\}$
-	\end{itemize}
-
-
-	\vfill
-
-	{\bf Challenge:} kernel matrices are usually large 
-	\begin{itemize}
-		\itemsep0.3em
-		\item cost of constructing $\bm{G}$ is $O(dN^2)$ 
-	\end{itemize}
-
-	\medskip
-	{\bf Question:} can we approximate $\bm{G}$ more efficiently?
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Random features}  
-
-	Introduce a random variable $\bm{w}$ and a feature map $\psi$ such that
-	%
-	\[
-		\Phi(\bm{x},\bm{y})=\mathbb{E}_{\bm{w}}[ \underset{\alertb{\text{decouple }\bm{x}\text{ and }\bm{y}}}{\underbrace{ \psi(\bm{x};\bm{w})\cdot\psi(\bm{y};\bm{w}) }} ]
-	\]
-	%
-	\begin{itemize}
-		\item<1> {\bf example (angular similarity)}
-		%
-		\begin{align}
-			\label{eq:angular-similarity-random}
-			\underset{\alertb{\text{Grothendieck's identity}}}{\underbrace{ \Phi(\bm{x},\bm{y})=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}=\mathbb{E}_{\bm{w}}[\mathrm{sgn}\langle\bm{x},\bm{w}\rangle \cdot \mathrm{sgn}\langle\bm{y},\bm{w}\rangle] }}
-		\end{align}
-		%
-		with $\bm{w}$ uniformly drawn from the unit sphere
-
-
-		\vspace{-7em}
-		\item<2> this results in a {\bf random feature vector}
-		%
-		\[
-			\bm{z}=\left[\begin{array}{c}
-				z_{1}\\
-				\vdots\\
-				z_{N}
-			\end{array}\right]
-			=\left[\begin{array}{c}
-				\psi(\bm{x}_{1};\bm{w})\\
-				\vdots\\
-				\psi(\bm{x}_{N};\bm{w})
-			\end{array}\right]
-		\]
-		%
-		\begin{itemize}
-			\item $\underset{\alertb{\text{rank 1}}}{\underbrace{\bm{z}\bm{z}^{\top}}}$ is an \alert{unbiased estimate} of $\bm{G}$, i.e.~$\bm{G}=\mathbb{E}[\bm{z}\bm{z}^{\top}]$
-		\end{itemize}
-		
-	\end{itemize}
-
-
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Example}
-
-
-	Angular similarity:
-	\begin{align*}
-\Phi(\bm{x},\bm{y}) & =1-\frac{2\angle(\bm{x},\bm{y})}{\pi}\\
- & =\mathbb{E}_{\bm{w}}\left[\mathsf{sign}\langle\bm{x},\bm{w}\rangle\,\mathsf{sign}\langle\bm{y},\bm{w}\rangle\right]
-\end{align*}
-where $\bm{w}$ is uniformly drawn from the unit sphere
-
-\bigskip
-\bigskip
-
-	As a result, the random feature map is $\psi(\bm{x},\bm{w})=\mathsf{sign}\langle\bm{x},\bm{w}\rangle$
-
-	
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Random feature approximation}  
-
-	Generate $n$ independent copies of $\bm{R}=\bm{z}\bm{z}^{\top}$, i.e.~$\{\bm{R}_l\}_{1\leq l\leq n}$
-
-	\bigskip
-	\bigskip
-	
-	{\bf Estimator} of the kernel matrix $\bm{G}$:
-	%
-	\[
-		\hat{\bm{G}} = \frac{1}{n} \sum_{l=1}^n \bm{R}_l
-	\]
-
-
-	\bigskip
-{
-\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
-
-\begin{varblock}[\textwidth]{}
-\begin{center}
-	{\bf Question:} ~how many random features are needed to guarantee accurate estimation?
-\end{center}
-\end{varblock}
-}
-
-	
-\end{frame}
-
-
-
-
-\begin{frame}
-\frametitle{Statistical guarantees for random feature approximation}  
-
-Consider the angular similarity example \eqref{eq:angular-similarity-random}: 
+%A modern idea in machine learning:  replace the inner product by kernel evaluation (i.e.~certain similarity measure)
 %
-\begin{itemize}
-	\itemsep0.5em
-		
-	\item To begin with,
+%\bigskip
+%\bigskip
+%\bigskip
 %
-\[
-	\mathbb{E}[\bm{R}_l^2]=\mathbb{E}[\bm{z}\bm{z}^{\top}\bm{z}\bm{z}^{\top}]=N\mathbb{E}[\bm{z}\bm{z}^{\top}]=N\bm{G}
-\]
+%Advantage: work beyond the Euclidean domain via task-specific similarity measures
 %
-\[
-	\Longrightarrow\qquad v= \Big\| \frac{1}{n^2} \sum\nolimits _{l=1}^{n}\mathbb{E}[\bm{R}_{l}^{2}] \Big\| = \frac{N}{n} \|\bm{G}\|
-\]
+%\end{frame}
 %
-
-	\item Next, $ \frac{1}{n}\|\bm{R}\| = \frac{1}{n} \|\bm{z}\|_2^2 = \frac{N}{n} \eqqcolon B$
-
-	\item Applying the matrix Bernstein inequality yields: with high prob.
-	%
-	\begin{align*}
-		\|\hat{\bm{G}}-\bm{G}\| &\lesssim\sqrt{v\log N}+B\log N\lesssim  \sqrt{ \frac{N}{n} \|\bm{G}\| \log N } + \frac{N}{n}\log N  \\
-					&\lesssim  \sqrt{ \frac{N}{n} \underset{\alertb{\geq 1}}{\underbrace{ \|\bm{G}\| }} \log N }   \qquad \qquad \alertb{\text{(for sufficiently large }n)}
-	\end{align*}
-	%
-
-\end{itemize}
-
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Sample complexity}
-
-	Define the intrinsic dimension of $\bm{G}$ as 
-	\[
-		\mathsf{intdim}(\bm{G})= \frac{\mathrm{tr} \bm{G}}{ \|\bm{G} \|} = \frac{N}{\|\bm{G}\|}
-	\]
-
-	If $n \gtrsim \varepsilon^{-2} \mathsf{intdim}(\bm{G}) \log N$, then we have
-	%
-	\[
-		\frac{\| \hat{\bm{G}} - \bm{G} \|}{\|\bm{G}\|} \leq \varepsilon
-	\]
-
-
-\end{frame}
+%
+%
+%\begin{frame}
+%\frametitle{Similarity measure}  
+%
+%Define the similarity measure $\Phi$
+%
+%	\begin{itemize}
+%		\itemsep0.5em
+%		\item $\Phi(\bm{x}, \bm{x})=1$
+%		\item $|\Phi(\bm{x}, \bm{y})| \leq 1$
+%		\item $\Phi(\bm{x}, \bm{y}) = \Phi(\bm{y}, \bm{x})$
+%	\end{itemize}
+%
+%\vfill
+%
+%Example: angular similarity
+%%
+%\[
+%	\Phi(\bm{x},\bm{y})=\frac{2}{\pi}\arcsin\frac{\langle\bm{x},\bm{y}\rangle}{\|\bm{x}\|_{2}\|\bm{y}\|_{2}}=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}
+%\]
+%%
+%
+%
+%\end{frame}
+%
+%
+%
+%\begin{frame}
+%\frametitle{Kernel matrix} 
+%
+%	Consider $N$ data points $\bm{x}_1,\cdots,\bm{x}_N\in \mathbb{R}^d$. Then the kernel matrix $\bm{G}\in \mathbb{R}^{N\times N}$ is 
+%	%
+%	\begin{equation*}
+%		G_{i,j} = \Phi (\bm{x}_i, \bm{x}_j) \qquad 1\leq  i,j \leq N
+%	\end{equation*}
+%	%
+%
+%
+%	\begin{itemize}
+%		\item Kernel $\Phi$ is said to be positive semidefinite if $\bm{G}\succeq \bm{0}$ for any  $\{\bm{x}_i\}$
+%	\end{itemize}
+%
+%
+%	\vfill
+%
+%	{\bf Challenge:} kernel matrices are usually large 
+%	\begin{itemize}
+%		\itemsep0.3em
+%		\item cost of constructing $\bm{G}$ is $O(dN^2)$ 
+%	\end{itemize}
+%
+%	\medskip
+%	{\bf Question:} can we approximate $\bm{G}$ more efficiently?
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%\frametitle{Random features}  
+%
+%	Introduce a random variable $\bm{w}$ and a feature map $\psi$ such that
+%	%
+%	\[
+%		\Phi(\bm{x},\bm{y})=\mathbb{E}_{\bm{w}}[ \underset{\alertb{\text{decouple }\bm{x}\text{ and }\bm{y}}}{\underbrace{ \psi(\bm{x};\bm{w})\cdot\psi(\bm{y};\bm{w}) }} ]
+%	\]
+%	%
+%	\begin{itemize}
+%		\item<1> {\bf example (angular similarity)}
+%		%
+%		\begin{align}
+%			\label{eq:angular-similarity-random}
+%			\underset{\alertb{\text{Grothendieck's identity}}}{\underbrace{ \Phi(\bm{x},\bm{y})=1-\frac{2\angle(\bm{x},\bm{y})}{\pi}=\mathbb{E}_{\bm{w}}[\mathrm{sgn}\langle\bm{x},\bm{w}\rangle \cdot \mathrm{sgn}\langle\bm{y},\bm{w}\rangle] }}
+%		\end{align}
+%		%
+%		with $\bm{w}$ uniformly drawn from the unit sphere
+%
+%
+%		\vspace{-7em}
+%		\item<2> this results in a {\bf random feature vector}
+%		%
+%		\[
+%			\bm{z}=\left[\begin{array}{c}
+%				z_{1}\\
+%				\vdots\\
+%				z_{N}
+%			\end{array}\right]
+%			=\left[\begin{array}{c}
+%				\psi(\bm{x}_{1};\bm{w})\\
+%				\vdots\\
+%				\psi(\bm{x}_{N};\bm{w})
+%			\end{array}\right]
+%		\]
+%		%
+%		\begin{itemize}
+%			\item $\underset{\alertb{\text{rank 1}}}{\underbrace{\bm{z}\bm{z}^{\top}}}$ is an \alert{unbiased estimate} of $\bm{G}$, i.e.~$\bm{G}=\mathbb{E}[\bm{z}\bm{z}^{\top}]$
+%		\end{itemize}
+%		
+%	\end{itemize}
+%
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Example}
+%
+%
+%	Angular similarity:
+%	\begin{align*}
+%\Phi(\bm{x},\bm{y}) & =1-\frac{2\angle(\bm{x},\bm{y})}{\pi}\\
+% & =\mathbb{E}_{\bm{w}}\left[\mathsf{sign}\langle\bm{x},\bm{w}\rangle\,\mathsf{sign}\langle\bm{y},\bm{w}\rangle\right]
+%\end{align*}
+%where $\bm{w}$ is uniformly drawn from the unit sphere
+%
+%\bigskip
+%\bigskip
+%
+%	As a result, the random feature map is $\psi(\bm{x},\bm{w})=\mathsf{sign}\langle\bm{x},\bm{w}\rangle$
+%
+%	
+%\end{frame}
+%
+%
+%
+%\begin{frame}
+%\frametitle{Random feature approximation}  
+%
+%	Generate $n$ independent copies of $\bm{R}=\bm{z}\bm{z}^{\top}$, i.e.~$\{\bm{R}_l\}_{1\leq l\leq n}$
+%
+%	\bigskip
+%	\bigskip
+%	
+%	{\bf Estimator} of the kernel matrix $\bm{G}$:
+%	%
+%	\[
+%		\hat{\bm{G}} = \frac{1}{n} \sum_{l=1}^n \bm{R}_l
+%	\]
+%
+%
+%	\bigskip
+%{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	{\bf Question:} ~how many random features are needed to guarantee accurate estimation?
+%\end{center}
+%\end{varblock}
+%}
+%
+%	
+%\end{frame}
+%
+%
+%
+%
+%\begin{frame}
+%\frametitle{Statistical guarantees for random feature approximation}  
+%
+%Consider the angular similarity example \eqref{eq:angular-similarity-random}: 
+%%
+%\begin{itemize}
+%	\itemsep0.5em
+%		
+%	\item To begin with,
+%%
+%\[
+%	\mathbb{E}[\bm{R}_l^2]=\mathbb{E}[\bm{z}\bm{z}^{\top}\bm{z}\bm{z}^{\top}]=N\mathbb{E}[\bm{z}\bm{z}^{\top}]=N\bm{G}
+%\]
+%%
+%\[
+%	\Longrightarrow\qquad v= \Big\| \frac{1}{n^2} \sum\nolimits _{l=1}^{n}\mathbb{E}[\bm{R}_{l}^{2}] \Big\| = \frac{N}{n} \|\bm{G}\|
+%\]
+%%
+%
+%	\item Next, $ \frac{1}{n}\|\bm{R}\| = \frac{1}{n} \|\bm{z}\|_2^2 = \frac{N}{n} \eqqcolon B$
+%
+%	\item Applying the matrix Bernstein inequality yields: with high prob.
+%	%
+%	\begin{align*}
+%		\|\hat{\bm{G}}-\bm{G}\| &\lesssim\sqrt{v\log N}+B\log N\lesssim  \sqrt{ \frac{N}{n} \|\bm{G}\| \log N } + \frac{N}{n}\log N  \\
+%					&\lesssim  \sqrt{ \frac{N}{n} \underset{\alertb{\geq 1}}{\underbrace{ \|\bm{G}\| }} \log N }   \qquad \qquad \alertb{\text{(for sufficiently large }n)}
+%	\end{align*}
+%	%
+%
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%
+%\begin{frame}
+%\frametitle{Sample complexity}
+%
+%	Define the intrinsic dimension of $\bm{G}$ as 
+%	\[
+%		\mathsf{intdim}(\bm{G})= \frac{\mathrm{tr} \bm{G}}{ \|\bm{G} \|} = \frac{N}{\|\bm{G}\|}
+%	\]
+%
+%	If $n \gtrsim \varepsilon^{-2} \mathsf{intdim}(\bm{G}) \log N$, then we have
+%	%
+%	\[
+%		\frac{\| \hat{\bm{G}} - \bm{G} \|}{\|\bm{G}\|} \leq \varepsilon
+%	\]
+%
+%
+%\end{frame}
 
 
 
