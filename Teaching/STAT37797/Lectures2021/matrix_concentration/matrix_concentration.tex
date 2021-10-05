@@ -34,7 +34,7 @@ mathserif,wide,%red,
   \vfill
 }
 
-\setcounter{subsection}{3}
+\setcounter{subsection}{4}
 
 \begin{document}
 
@@ -45,14 +45,97 @@ mathserif,wide,%red,
 \end{frame}
 
 
+\begin{frame}
+	\frametitle{Concentration inequalities}
+	Let $X_{1}, X_{2}, \ldots, X_{n}$ be i.i.d.~random variables, law of large numbers tells us that
+	\[
+	\frac{1}{n}\sum_{l=1}^{n} X_{l} - \mathbb{E} \left[ \frac{1}{n}\sum_{l=1}^{n} X_{l} \right] \rightarrow 0, \quad \text{as }n \rightarrow \infty
+	\]
+	
+	\vfill
+		{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
 
+\begin{varblock}[\textwidth]{}
+{\bf Key message: }\\
+\begin{center}
+sum of independent random variables \emph{concentrate} around its mean
+\end{center}
+\end{varblock}
 
+}
 
+{\hfill \em --- how fast does it concentrate?}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Bernstein's inequality}
+	Consider a sequence of independent random variables $\{X_{l}\} \in \mathbb{R}$
+%
+\begin{itemize}
+	\itemsep0.5em
+	\item $\mathbb{E}[{X}_l]=0$ \qquad\qquad\qquad\qquad\qquad $\bullet$ $|{X}_{l}|\leq B$ for each $l$
+	\item variance statistic: 
+	$$v \coloneqq \mathbb{E} \big [ \big (\sum_{l} X_l \big)^{2} \big] = \sum_{l=1}^{n} \mathbb{E} \big [X_{l}^{2} \big]$$
+\end{itemize}
+
+\begin{theorem}[Bernstein's inequality]\label{thm:mtx-Bernstein}
+%
+For all $\tau \geq 0$,
+\vspace{-1em}
+\[
+\mathbb{P}\left\{ \left| \sum\nolimits_{l}{X}_{l}\right| \geq \tau\right\} \leq  2 \exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+\]
+%
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tail behavior}
+
+\[
+\mathbb{P}\left\{ \left| \sum\nolimits_{l}{X}_{l}\right| \geq \tau\right\} \leq  2 \exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+\]
+
+\bigskip
+
+\begin{itemize}
+	\itemsep1em
+	\item<1> {\bf moderate-deviation regime} ($\tau$ is small): \\
+		  \quad --- sub-Gaussian tail behavior $\exp(-\tau^2/2v)$
+		  
+	\item<1> {\bf large-deviation regime} ($\tau$ is large): \\
+		  \quad --- sub-exponential tail behavior $\exp(-3\tau/2B)$ (slower decay)
+	
+	\item<1> {\bf user-friendly form} (exercise): with prob.~$1-O(n^{-10})$
+	%
+	\begin{equation*} 
+		\left| \sum\nolimits_{l}{X}_{l}\right| \lesssim  \sqrt{ v \log n } + B \log n
+	\end{equation*}
+
+\end{itemize}
+
+\end{frame}
 
 
 \begin{frame}
-\frametitle{Recap: matrix Bernstein inequality}
+\frametitle{Tail behavior (cont.)}
+
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Gaussian_exponential_tail.pdf}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]
+	\vfill
+	\centering
+	\large \bf There are exponential concentration inequalities for \\ spectral norm of sum of independent random matrices
+	\vfill
+\end{frame}
+
+\begin{frame}
+\frametitle{Matrix Bernstein inequality}
 
 Consider a sequence of independent random matrices $\big\{ \bm{X}_{l}\in\mathbb{R}^{d_{1}\times d_{2}}\big\} $
 %
@@ -74,18 +157,16 @@ For all $\tau \geq 0$,
 %
 \end{theorem}
 
+\pause
+User-friendly form: with probability at least $1- O((d_1 +d_2)^{-10})$
+\begin{equation} \label{eq:Bernstein-user-friendly}
+		\left\Vert \sum\nolimits_{l}\bm{X}_{l}\right\Vert \lesssim  \sqrt{ v \log(d_1+d_2) } + B \log(d_1+d_2)
+	\end{equation}
 \end{frame}
 
 
 
-\begin{frame}
-\frametitle{Recap: matrix Bernstein inequality}
 
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Gaussian_exponential_tail.pdf}
-	\end{center}
-
-\end{frame}
 
 
 
@@ -96,7 +177,7 @@ For all $\tau \geq 0$,
 
 \vfill
 \centering
-	{\large\bf This lecture: detailed introduction of  matrix Bernstein}
+	{\large\bf This lecture: detailed introduction to matrix Bernstein}
 
 \bigskip
 \bigskip
@@ -113,10 +194,10 @@ For all $\tau \geq 0$,
 
 \begin{itemize}
   \itemsep1em
-  \item Matrix theory background
+  \item Background on matrix functions
   \item Matrix Laplace transform method
   \item Matrix Bernstein inequality
-  \item Application: random features
+  % \item Application: random features
   %\item Proof of Lieb's Theorem
 \end{itemize}
 
@@ -128,7 +209,7 @@ For all $\tau \geq 0$,
 
 \vfill
 \begin{center}
-  {\Large\bf Matrix theory background}
+  {\Large\bf Background on matrix functions}
 \end{center}
 
 \vfill
@@ -153,7 +234,7 @@ Suppose the eigendecomposition of a symmetric matrix $\bm{A}\in \mathbb{R}^{d\ti
 \]
 }
 %
-Then we can define
+Then we can define 
 %
 {\small
 \[
@@ -165,6 +246,8 @@ f(\lambda_{1})\\
 \]
 }
 
+
+{\hfill \em --- align with our intuition about $\bm{A}^{k}$}
 \end{frame}
 
 
@@ -179,7 +262,7 @@ f(\lambda_{1})\\
 		f(\bm{A}) := c_0 \bm{I} + \sum_{k=1}^{\infty} c_k {\bm A}^k
 	\]
 	%
-	\item {\bf matrix exponential:} $\mathrm{e}^{\bm{A}} := \bm{I} + \sum_{k=1}^{\infty} \frac{1}{k!} \bm{A}^k$ \quad \alertb{(why?)}
+	\item {\bf matrix exponential:} $\mathrm{e}^{\bm{A}} := \bm{I} + \sum_{k=1}^{\infty} \frac{1}{k!} \bm{A}^k$
 
 	%
 	\begin{itemize}
@@ -191,7 +274,7 @@ f(\lambda_{1})\\
 		
 	%
 	\begin{itemize}
-		\item monotonicity: if $\bm{0}\preceq \bm{A}\preceq \bm{H}$, then $\log {\bm{A}} \preceq \log (\bm{H})$
+		\item monotonicity: if $\bm{0}\preceq \bm{A}\preceq \bm{H}$, then $\log {\bm{A}} \preceq \log (\bm{H})$ (does not hold for matrix exponential) 
 	\end{itemize}
 
 
@@ -223,7 +306,7 @@ f(\lambda_{1})\\
 	
 	\end{itemize}
 
-
+{\hfill \em --- expectations may not exist for all $\theta$}
 \end{frame}
 
 
@@ -276,6 +359,7 @@ Let $\bm{Y}$ be a random symmetric matrix. For all $t\in\mathbb{R}$,
 
 \begin{itemize}
 	\item can control the extreme eigenvalues of $\bm{Y}$ via the trace of the matrix MGF
+	\item similar result holds for minimum eigenvalue
 \end{itemize}
 
 \end{frame}
@@ -325,16 +409,38 @@ The Laplace transform method is effective for controlling an independent sum whe
 \]
 %
 \[
-	\mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}+\cdots+\bm{X}_{n}} ~\nleq~ \mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}}\mathrm{e}^{\bm{X}_{1}}\cdots\mathrm{e}^{\bm{X}_{n}}
+	\mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}+\cdots+\bm{X}_{n}} ~\nleq~ \mathrm{tr}\,\mathrm{e}^{\bm{X}_{1}}\mathrm{e}^{\bm{X}_{1}}\cdots\mathrm{e}^{\bm{X}_{n}} \quad \text{for } n  \geq 3
 \]
 
+\end{frame}
+
+\begin{frame}
+	\frametitle{How about matrix CGF?}
+	\begin{itemize}
+	\item in the scalar case where $X=X_{1}+\cdots+X_{n}$ with independent $\{X_{l}\}$:
+	%
+	\[
+		{\Xi}_{X }(\theta)  = \log M_{X}(\theta)=\underset{\alertb{\text{look at each }X_l\text{ separately}}}{\underbrace{ \sum_{l=1}^{n} \log M_{X_{l}}(\theta) }} = \sum_{l} {\Xi}_{{X}_{l}}(\theta)
+	\]
+	%
+\end{itemize}
+
+\vfill
+
+In matrix case, can we hope for
+%
+\[
+\bm{\Xi}_{\sum_{l }\bm{X}_{l} }(\theta) = \sum_{l} \bm{\Xi}_{\bm{X}_{l}}(\theta) \quad ?
+\]
+
+{\hfill \em --- Nope; But...}
 \end{frame}
 
 
 
 
 \begin{frame}
-\frametitle{Subadditivity of the matrix CGF}  
+\frametitle{Subadditivity of matrix CGF}  
 
 Fortunately, the matrix CGF satisfies certain subadditivity rules, allowing us to decompose independent matrix components 
 
@@ -395,7 +501,7 @@ Fortunately, the matrix CGF satisfies certain subadditivity rules, allowing us t
 		\bm{A}~\mapsto~\mathrm{tr}\exp(\bm{H}+\log\bm{A})
 	\]
 	%
-	is concave on positive-semidefinite cone
+	is concave on positive-definite cone
 \end{theorem}
 
 \end{column}
@@ -419,7 +525,6 @@ Lieb's Theorem immediately implies  \alertb{(exercise: Jensen's inequality)}
 
 
 
-\begin{comment}
 \begin{frame}
 	\frametitle{Proof sketch of Lieb's Theorem}
 
@@ -434,14 +539,13 @@ Main observation: $\mathrm{tr}(\cdot)$ admits a variational formula
 	\vspace{-0.5em}
 	%
 	\begin{align*}
-		\mathrm{tr} \bm{M} = \sup_{\bm{T}\succ \bm{0}}  \mathrm{tr}~\big[ \hspace{-2em} \underset{\alertb{\text{relative entropy is }\bm{T} \log \bm{M} - \bm{T} \log \bm{T} + \bm{T} - \bm{M}}}{\underbrace{ \bm{T} \log \bm{M} - \bm{T} \log \bm{T} + \bm{T} }} \hspace{-2em}\big]
+		\mathrm{tr} \bm{M} = \sup_{\bm{T}\succ \bm{0}}  \mathrm{tr}~\big[ \hspace{-2em} \underset{\alertb{\text{relative entropy is }- \bm{T} \log \bm{M} + \bm{T} \log \bm{T} - \bm{T} + \bm{M}}}{\underbrace{ \bm{T} \log \bm{M} - \bm{T} \log \bm{T} + \bm{T} }} \hspace{-2em}\big]
 	\end{align*}
 	%
 \end{lemma}
 
 
 \end{frame}
-\end{comment}
 
 
 
@@ -483,7 +587,7 @@ Combining the Laplace transform method with the subadditivity of CGF yields:
 \end{theorem}
 
 \begin{itemize}
-	\item this is a general result underlying the proofs of the matrix Bernstein inequality and beyond (e.g.~matrix Chernoff)
+	\item this is a general result underlying the proofs of the matrix Bernstein inequality and beyond (e.g.,~matrix Chernoff)
 \end{itemize}
 
 
@@ -552,7 +656,7 @@ For all $\tau \geq 0$,
 %
 \end{theorem}
 
-
+{\hfill \em \footnotesize--- left as exercise to prove extension to rectangular case}
 \end{frame}
 
 
@@ -631,24 +735,40 @@ Since $\bm{X}$ is zero-mean, one further has
 \]
 
 }
-
+Finish by observing $\log$ is monotone
 \end{frame}
 
 
 
 
 
-\begin{frame}[plain]
+\begin{frame}
+\frametitle{Appendix: asymptotic notation}
 
-\vfill
-\begin{center}
-  {\Large\bf Application: random features}
-\end{center}
+\begin{itemize}
+   \itemsep1em
+   \item  $f(n) \lesssim g(n)$ or $f(n) = O(g(n))$ means 
+   \[
+     \limsup_{n\rightarrow\infty} \frac{|f(n)|}{|g(n)|} ~\leq~ \text{const} 
+   \]
+   \item  $f(n) \gtrsim g(n)$ or $f(n) = \Omega(g(n))$ means 
+   \[
+     \liminf_{n\rightarrow\infty} \frac{|f(n)|}{|g(n)|} ~\geq~ \text{const} 
+   \]
+   \item  $f(n) \asymp g(n)$ or $f(n) = \Theta(g(n))$ means 
+   \[
+      f(n) \lesssim g(n) \quad \text{and} f(n) \gtrsim g(n)
+   \]
 
-\vfill
+
+   \item  $f(n) = o(g(n))$ means 
+   \[
+       \lim_{n\rightarrow\infty} \frac{|f(n)|}{|g(n)|} ~=~ 0
+   \]
+
+\end{itemize}
 
 \end{frame}
-
 
 %
 %\begin{frame}
@@ -874,24 +994,24 @@ Since $\bm{X}$ is zero-mean, one further has
 %\end{frame}
 
 
-
-\begin{frame}[allowframebreaks]
-\frametitle{Reference}
-
-{\small
-\begin{itemize}  \itemsep0.3em
-  \item ''\textit{An introduction to matrix concentration inequalities},'' J.~Tropp, \textit{Foundations and Trends in Machine Learning}, 2015.
-  \item ''\textit{Convex trace functions and the Wigner-Yanase-Dyson conjecture},'' E.~Lieb, \textit{Advances in Mathematics}, 1973.
-  %\item ''\textit{Introduction to the non-asymptotic analysis of random matrices},'' R.~Vershinyn, \textit{arXiv:1011.3027}, 2010.
-  \item ''\textit{User-friendly tail bounds for sums of random matrices},'' J.~Tropp, \textit{Foundations of computational mathematics}, 2012.
-  \item ''\textit{Random features for large-scale kernel machines},'' A.~Rahimi, B.~Recht, \textit{Neural Information Processing Systems}, 2008.  
-
-
-\end{itemize}
-}
-
-
-\end{frame}
+%
+%\begin{frame}[allowframebreaks]
+%\frametitle{Reference}
+%
+%{\small
+%\begin{itemize}  \itemsep0.3em
+%  \item ''\textit{An introduction to matrix concentration inequalities},'' J.~Tropp, \textit{Foundations and Trends in Machine Learning}, 2015.
+%  \item ''\textit{Convex trace functions and the Wigner-Yanase-Dyson conjecture},'' E.~Lieb, \textit{Advances in Mathematics}, 1973.
+%  %\item ''\textit{Introduction to the non-asymptotic analysis of random matrices},'' R.~Vershinyn, \textit{arXiv:1011.3027}, 2010.
+%  \item ''\textit{User-friendly tail bounds for sums of random matrices},'' J.~Tropp, \textit{Foundations of computational mathematics}, 2012.
+%  \item ''\textit{Random features for large-scale kernel machines},'' A.~Rahimi, B.~Recht, \textit{Neural Information Processing Systems}, 2008.  
+%
+%
+%\end{itemize}
+%}
+%
+%
+%\end{frame}
 
 
 

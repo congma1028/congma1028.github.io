@@ -10,7 +10,7 @@ mathserif,wide,%red,
 
 
 \title % (optional, use only with long paper titles)
-[Intro to spectral methods]{Applications of spectral methods ($\ell_{2}$ theory)}
+{Applications of spectral methods ($\ell_{2}$ theory)}
 
 \defbeamertemplate*{title page}{customized}[1][]
 {
@@ -34,7 +34,7 @@ mathserif,wide,%red,
   \vfill
 }
 
-\setcounter{subsection}{2}
+\setcounter{subsection}{5}
 
 \begin{document}
 
@@ -44,15 +44,33 @@ mathserif,wide,%red,
 
 \end{frame}
 
+\begin{frame}
+	\frametitle{What we have learned so far}
+	
+	- Classical $\ell_{2}$ matrix perturbation theory: 
+	\begin{itemize}
+		\item Davis-Kahan's $\sin \bm{\Theta}$ theorem 				\item Wedin's $\sin \bm{\Theta}$ theorem 		
+		\item Eigenvector perturbation of probability transition matrices
+	\end{itemize}
+	
+	\vfill 
+	- Matrix concentration inequalities:
+	\begin{itemize}
+		\item Matrix Bernstein inequality
+	\end{itemize}
+	
+	\vfill
+	\pause
+	{\hfill \em --- we will check their applications today}
+\end{frame}
 
 \begin{frame}
 \frametitle{Outline}
 
 \begin{itemize}
   \itemsep1em
-  \item Warm-up: matrix denoising
-  \item Community recovery
-  \item Phase retrieval
+  %\item Warm-up: matrix denoising
+  \item Community recovery in stochastic block model
   \item Low-rank matrix completion
   \item Ranking from pairwise comparisons
 \end{itemize}
@@ -60,6 +78,799 @@ mathserif,wide,%red,
 \end{frame}
 
 
+\begin{frame}[plain]
+	\vfill
+	\centering
+	\large \bf Community recovery in stochastic block model
+	\vfill
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Stochastic block model (SBM)}
+
+
+\vspace{-1em}
+
+\begin{center}
+	\includegraphics[height=0.3\textwidth]{SBM_2.png}  \\
+	  {\small $x_i^{\star}=1$: $1^{\text{st}}$ community}   \qquad   {\small $x_i^{\star}=-1$: $2^{\text{nd}}$ community}
+\end{center}
+
+\begin{itemize}
+	\itemsep0.5em
+	\item  $n$ nodes $\{1,\ldots,n\}$
+	\item  2 communities
+	\item  $n$ unknown variables:  $x_1^{\star}, \ldots, x_n^{\star} \in \{1,-1\}$ 
+	\begin{itemize}
+		\item encode community memberships
+	\end{itemize}
+
+	
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{A simple model: stochastic block model (SBM)}
+
+\vspace{-1em}
+
+
+\begin{columns}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.25\textwidth}
+\begin{center}
+  \includegraphics[height=0.9\textwidth]{SBM_1.png} \\
+	$\mathcal{G}$
+\end{center}
+\end{column}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.12\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth,angle=-90]{arrow_up.png} 
+\end{center}
+\end{column}
+
+
+\begin{column}{0.5\textwidth}
+\begin{center}
+  \includegraphics[height=0.45\textwidth]{SBM_2.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.03\textwidth}
+\end{column}
+
+\end{columns}
+
+
+\bigskip
+
+
+\begin{itemize}
+	\itemsep0.5em
+	
+	\item observe a graph $\mathcal{G}$
+		\vspace{-0.8em}
+		\begin{align*}
+			(i,j)\in \mathcal{G} \text{ with prob.~} \begin{cases} p,  & \text{if }i\text{ and }j \text{ are from same community} \\ q, & \text{else} \end{cases}
+		\end{align*}
+		%
+		Here, $p>q$
+	\item {\bf Goal:}  recover community memberships  of all nodes, i.e., $\{x_i^{\star}\}$
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Adjacency matrix}
+
+
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{adjacency_random.png} 
+\end{center}
+
+
+Consider the adjacency matrix $\bm{A}\in \{0,1\}^{n\times n}$ of $\mathcal{G}$: (assume $A_{ii} = p$)
+%
+\[
+	A_{i,j} = \begin{cases}  1, \qquad & \text{if } (i,j) \in \mathcal{G} \\ 0, & \text{else} \end{cases}
+\]
+
+\vspace{-0.5em}
+\begin{itemize}
+	\item WLOG, suppose $x_1^{\star}=\cdots=x_{n/2}^{\star}=1$; $x_{n/2+1}^{\star}=\cdots=x_n^{\star}=-1$ 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Adjacency matrix}
+
+
+		
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_random.png} &   & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_mean.png} &  & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_noise.png}\tabularnewline
+	$\bm{A}$ & = & $\underset{\alertb{\text{rank 2}}}{\underbrace{\mathbb{E}[\bm{A}]}}$ & + & $\bm{A}-\mathbb{E}\left[\bm{A}\right]$\tabularnewline
+\end{tabular}
+\end{center}
+
+
+{\small $$\mathbb{E}[\bm{A}]=\left[\begin{array}{cc}
+p\bm{1}\bm{1}^{\top} & q\bm{1}\bm{1}^{\top}\\
+q\bm{1}\bm{1}^{\top} & p\bm{1}\bm{1}^{\top}
+\end{array}\right]=\underset{\alertb{\text{uninformative bias}}}{\underbrace{\frac{p+q}{2}\bm{1}\bm{1}^{\top}}} \hspace{-0.3em} +\frac{p-q}{2} \hspace{-0.5em}\underset{\alertb{=\bm{x}^{\star}=[x_i]_{1\leq i\leq n}}}{\underbrace{\left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]}} \hspace{-1em} \left[\bm{1}^{\top},-\bm{1}^{\top}\right]$$ }
+
+		
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Spectral clustering}
+
+		
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_random.png} &   & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_mean.png} &  & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_noise.png}\tabularnewline
+	$\bm{A}$ & = & $\underset{\alertb{\text{rank 2}}}{\underbrace{\mathbb{E}[\bm{A}]}}$ & + & $\bm{A}-\mathbb{E}\left[\bm{A}\right]$\tabularnewline
+\end{tabular}
+\end{center}
+
+\vspace{-0.5em}
+\begin{itemize}
+	\item[{\color{black}1.}] computing the leading eigenvector $\bm{u}=[u_i]_{1\leq i\leq n}$ of $\bm{A} - \frac{p+q}{2}\bm{1}\bm{1}^{\top}$
+	\item[{\color{black}2.}] rounding:  output
+		${x}_{i}=\begin{cases}
+			1, & \text{if }u_{i}>0\\
+			-1, & \text{if }u_{i}<0
+\end{cases}$
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Apply Davis-Kahan's result}
+Let \quad $
+\bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]\left[\begin{array}{cc}
+\bm{1}^{\top} & -\bm{1}^{\top}\end{array}\right], 
+$ \\
+\qquad$
+\bm{M}\coloneqq \bm{A}-\frac{p+q}{2}\bm{1}\bm{1}^{\top}
+$, and 
+$
+\bm{u}^{\star}\coloneqq \frac{1}{\sqrt{n}}\left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]
+$ \\
+
+\vfill
+Then the Davis-Kahan $\sin\bm{\Theta}$ Theorem yields
+%
+\begin{equation}
+	\label{eq:DK-SBM}
+	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) \leq\frac{\|{\bm{M}} - \bm{M}^{\star}\|}{\lambda_{1}(\bm{M}^{\star})-\|{\bm{M}} - \bm{M}\|}=\frac{\|\bm{A}-\mathbb{E}[\bm{A}]\|}{\frac{(p-q)n}{2}-\|\bm{A}-\mathbb{E}[\bm{A}]\|}
+\end{equation}
+as long as $\|\bm{A}-\mathbb{E}[\bm{A}]\| < \lambda_{1}(\bm{M}^{\star})=\frac{(p-q)n}{2}$
+%
+%\vfill
+%
+%{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	{\bf Question:} how to bound $\|\bm{A}-\mathbb{E}[\bm{A}]\|$? 
+%\end{center}
+%\end{varblock}
+%}
+
+	
+\end{frame}
+
+
+
+
+
+%
+%\begin{frame}
+%\frametitle{A hammer: matrix Bernstein inequality}
+%
+%Consider a sequence of independent random matrices $\big\{ \bm{X}_{l}\in\mathbb{R}^{d_{1}\times d_{2}}\big\} $
+%%
+%\begin{itemize}
+%	\itemsep0.5em
+%	\item $\mathbb{E}[\bm{X}_l]=\bm{0}$ \qquad\qquad\qquad\qquad\qquad $\bullet$ $\|\bm{X}_{l}\|\leq B$ for each $l$
+%	\item variance statistic: 
+%	$$v:=\max\left\{  \left\Vert  \mathbb{E}\left[ \sum\nolimits_{l} \bm{X}_{l}\bm{X}_{l}^{\top}  \right]  \right\Vert  ,  
+%			  \left\Vert  \mathbb{E}\left[ \sum\nolimits_{l} \bm{X}_{l}^{\top}\bm{X}_{l}  \right]  \right\Vert  \right\} $$
+%\end{itemize}
+%
+%\begin{theorem}[Matrix Bernstein inequality]\label{thm:mtx-Bernstein}
+%%
+%For all $\tau \geq 0$,
+%\vspace{-1em}
+%\[
+%\mathbb{P}\left\{ \left\Vert \sum\nolimits_{l}\bm{X}_{l}\right\Vert \geq \tau\right\} \leq\left(d_{1}+d_{2}\right)\exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+%\]
+%%
+%\end{theorem}
+%
+%\end{frame}
+%
+%
+%
+%
+%
+%
+%\begin{frame}
+%\frametitle{A hammer: matrix Bernstein inequality}
+%
+%\[
+%\mathbb{P}\left\{ \left\Vert \sum\nolimits_{l}\bm{X}_{l}\right\Vert \geq \tau\right\} \leq\left(d_{1}+d_{2}\right)\exp\left(\frac{-\tau^{2}/2}{v+B\tau/3}\right)
+%\]
+%
+%\bigskip
+%
+%\begin{itemize}
+%	\itemsep1em
+%	\item<1> {\bf moderate-deviation regime} ($\tau$ is small): \\
+%		  \quad --- sub-Gaussian tail behavior $\exp(-\tau^2/2v)$
+%		  
+%	\item<1> {\bf large-deviation regime} ($\tau$ is large): \\
+%		  \quad --- sub-exponential tail behavior $\exp(-3\tau/2B)$ (slower decay)
+%	
+%	\item<1> {\bf user-friendly form} (exercise): with prob.~$1-O((d_1+d_2)^{-10})$
+%	%
+%	\begin{equation} \label{eq:Bernstein-user-friendly}
+%		\left\Vert \sum\nolimits_{l}\bm{X}_{l}\right\Vert \lesssim  \sqrt{ v \log(d_1+d_2) } + B \log(d_1+d_2)
+%	\end{equation}
+%
+%\end{itemize}
+%
+%\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Bounding $\| \bm{A}-\mathbb{E}[\bm{A}] \|$}
+
+Matrix concentration inequalities tell us that 
+%
+\begin{lemma}
+\label{lem:perturbation-SBM}
+%
+Consider SBM with $p>q$ and $p\gtrsim \frac{\log n}{n}$. Then with high prob. 
+%
+\begin{equation}
+	\label{eq:A-perturbation}
+	\|\bm{A}-\mathbb{E}[\bm{A}]\|\lesssim \sqrt{np \log n} 
+\end{equation}
+%
+\end{lemma}
+
+{\hfill \em --- better concentration yields $\sqrt{np}$ bound}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Statistical accuracy of spectral clustering}
+
+Substitute \eqref{eq:A-perturbation} into \eqref{eq:DK-SBM} to reach
+%
+\begin{align*}
+	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) &\leq \frac{\|\bm{A}-\mathbb{E}[\bm{A}]\|}{\frac{(p-q)n}{2}-\|\bm{A}-\mathbb{E}[\bm{A}]\|}  \lesssim \frac{\sqrt{np \log n}}{(p-q)n}
+\end{align*}
+%
+provided that $(p-q)n \gg \sqrt{np \log n}$
+
+\bigskip
+
+Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $}, with high prob.~one has
+%
+\begin{align*}
+	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) \ll 1  \qquad \Longrightarrow \qquad  \text{nearly perfect clustering}
+\end{align*}
+%
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Statistical accuracy of spectral clustering}
+
+\[
+	\alert{\frac{p-q}{\sqrt{p}}\gg \sqrt{\frac{\log n}{n}}} \quad \Longrightarrow \quad \text{nearly perfect clustering} 
+\]
+
+\begin{itemize}
+	\item {\bf dense regime:} if $p\asymp q \asymp 1$, then this condition reads
+	      \[
+			p-q \gg \sqrt{\frac{\log n}{n}}
+	      \]
+        \item {\bf ``sparse'' regime:} if $p = \frac{a\log n}{n}$ and $q = \frac{b \log n}{n}$ for  $a,b\asymp 1$, then 
+	      \[
+		      a - b \gg \sqrt{a} 
+	      \]
+
+\end{itemize}
+
+
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	This  condition is information-theoretically optimal (up to log factor) \\
+	\hfill --- {\em Mossel, Neeman, Sly\,'15, Abbe\,'18}
+\end{center}
+\end{varblock}
+}
+
+
+\end{frame}
+
+
+
+%\begin{frame}
+%	\frametitle{Empirical performance of spectral clustering}
+%	\begin{figure}
+%	\includegraphics[width=0.6\textwidth]{SBM_experiment.pdf}
+%	\end{figure}
+%	
+%	
+%	{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	$\ell_{2}$ perturbation theory alone cannot explain exact recovery guarantees
+%\end{center}
+%\end{varblock}
+%}
+%\hfill --- call for fine-grained analysis
+%	\end{frame}
+	
+
+
+\begin{frame}
+\frametitle{Proof of Lemma \ref{lem:perturbation-SBM}}
+
+\vfill
+	To simplify presentation,  assume $A_{i,j}$ and $A_{j,i}$ are independent \\ \medskip \hfill (check: why this assumption does not change our bounds)
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Proof of Lemma \ref{lem:perturbation-SBM}}
+
+{\small
+Write $\bm{A}-\mathbb{E}[\bm{A}]$ as $\sum_{i,j}\bm{X}_{i,j}$, where
+$\bm{X}_{i,j}=\big(A_{i,j}-\mathbb{E}[A_{i,j}]\big)\bm{e}_{i}\bm{e}_{j}^{\top}$
+%
+\begin{itemize}
+\itemsep0.5em
+\item Since $\mathsf{Var}(A_{i,j})\leq p$, one has
+$\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq p\bm{e}_{i}\bm{e}_{i}^{\top}$, which gives
+%
+\[
+\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq\sum\nolimits_{i,j}p \bm{e}_{i}\bm{e}_{i}^{\top} \preceq np\,\bm{I}
+\]
+%
+Similarly, $\sum_{i,j}\mathbb{E}\left[ \bm{X}_{i,j}^{\top} \bm{X}_{i,j} \right]\preceq np\,\bm{I}$.
+As a result,
+%
+\[
+v=\max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\Big\|,\Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\right]\Big\|\right\} \leq np
+\]
+%
+\item In addition, $\|\bm{X}_{i,j}\|\leq1 \eqqcolon B$
+	
+\item Take the matrix Bernstein inequality to conclude that with high prob.,
+%
+\begin{equation*}
+	\|\bm{A}-\mathbb{E}[\bm{A}]\|\lesssim\sqrt{v\log n}+B\log n\lesssim \sqrt{np\log n} \quad(\text{since }p\gtrsim \frac{\log n}{n})
+\end{equation*}
+%
+\end{itemize}
+%
+%
+
+}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]
+	\vfill
+	\centering
+	\large \bf Low-rank matrix completion
+	\vfill
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Low-rank matrix completion}
+
+
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\[
+ \begin{bmatrix}
+   {\color{blue} \checkmark} & {\color{red} ?} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark}  & {\color{red} ?} &{\color{red} ?}  & {\color{blue} \checkmark} \\
+   {\color{blue} \checkmark}  &  {\color{red} ?} & {\color{red} ?} & {\color{red} ?}  & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{blue} \checkmark} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?}  &{\color{red} ?} & {\color{blue} \checkmark} &
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?}
+\end{bmatrix}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}  
+\begin{center}
+\includegraphics[width=0.9\textwidth]{NetflixMahdi} \\
+\hfill {\footnotesize\em figure credit: Cand\`es ~~}
+\end{center}
+\end{column}
+
+\end{columns}
+
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item consider a low-rank matrix $\bm{M}^{\star} = \bm{U}^{\star} \bm{\Sigma}^{\star} \bm{V}^{\star\top}$
+	\item each entry $M_{i,j}^{\star}$   is observed independently with prob.~$p$
+	\item {\bf intermediate goal:} estimate $\bm{U}^{\star}, \bm{V}^{\star}$
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Spectral method for matrix completion}
+
+\begin{itemize}
+	
+	\item[{\color{black}1.}] identify the key matrix $\bm{M}^{\star}$
+	\item[{\color{black}2.}] construct surrogate matrix ${\bm{M}}\in \mathbb{R}^{n\times n}$ as
+	%
+	\[
+		{M}_{i,j} = \begin{cases} \frac{1}{p} M_{i,j}^{\star}, \quad & \text{if }M_{i,j}^{\star}\text{ is observed} \\ 
+					0,  & \text{else}	\end{cases} 
+	\]
+	%
+	\begin{itemize}
+		\item {\bf rationale for rescaling:} ensures $\mathbb{E}[{\bm{M}}] = \bm{M}^{\star}$
+	\end{itemize}
+
+	\bigskip
+
+\item[{\color{black}3.}] compute the rank-$r$ SVD ${\bm{U}}{\bm{\Sigma}}{\bm{V}}^{\top}$ of ${\bm{M}}$, and return $({\bm{U}}, {\bm{\Sigma}}, {\bm{V}})$
+
+	
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Statistical accuracy of spectral estimate}
+
+Let's analyze a simple case where $\bm{M}=\bm{u} \bm{v}^{\top}$ with
+%
+\begin{align*}
+	\bm{u} = \frac{1}{\|\tilde{\bm{u}}\|_2} \tilde{\bm{u}}, \quad \bm{v} = \frac{1}{\|\tilde{\bm{v}}\|_2} \tilde{\bm{v}}, \quad \tilde{\bm{u}}, \tilde{\bm{v}} \sim \mathcal{N}(\bm{0},\bm{I}_n)
+\end{align*}
+%
+
+\vfill
+
+From Wedin's Theorem: if $p\gg\log^{3}n/n$, then with high prob.
+%
+\begin{align}
+	\max\left\{ \mathsf{dist}(\hat{\bm{u}},\bm{u} ),\mathsf{dist}( \hat{\bm{v}},\bm{v} )\right\} 
+	& \leq \frac{ \| \hat{\bm{M}} - \bm{M} \|  }{\sigma_1(\bm{M})-\| \hat{\bm{M}} - \bm{M} \| } \asymp \hspace{-1em}  \underset{\alertb{\text{controlled by Bernstein}}}{\underbrace{ \| \hat{\bm{M}} - \bm{M} \| }}  \nonumber\\
+	& \ll 1 \quad \alertb{(\text{nearly accurate estimates})}  \label{eq:MC-perturbation}
+\end{align}
+%
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Sample complexity}
+
+For rank-1 matrix completion, 
+%
+\begin{align*}
+	p\gg \frac{\log^{3}n}{n}  \qquad \Longrightarrow \qquad \text{nearly accurate estimates}
+\end{align*}
+
+
+\vfill
+
+Sample complexity needed to yield reliable spectral estimates is 
+%
+\[
+	\underset{\alertb{\text{optimal up to log factor}}}{\underbrace{ n^2 p \asymp n \log ^3 n  }} 
+\]
+%
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Proof of \eqref{eq:MC-perturbation}}
+
+{\small
+
+
+Write $\hat{\bm{M}}-\bm{M}=\sum_{i,j}\bm{X}_{i,j}$, where $\bm{X}_{i,j}=(\hat{M}_{i,j}-M_{i,j})\bm{e}_{i}\bm{e}_{j}^{\top}$
+\begin{itemize}
+
+\item First, 
+\[
+	\|\bm{X}_{i,j}\|\leq\frac{1}{p}\max_{i,j} |M_{i,j}| \lesssim\frac{\log n}{pn}:=B \quad (\text{check})
+\]
+
+
+\item Next, $\mathbb{E}\big[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]=\mathsf{Var}(\hat{M}_{i,j})\bm{e}_{i}\bm{e}_{i}^{\top}$
+and hence
+\[
+\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\preceq\Big\{\max_{i,j}\mathsf{Var}\big(\hat{M}_{i,j}\big)\Big\} n\bm{I}\preceq\Big\{\frac{n}{p}\max_{i,j}M_{i,j}^{2}\Big\}\bm{I}
+\]
+\[
+\Longrightarrow\qquad\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\big\|\leq\frac{n}{p}\max_{i,j}M_{i,j}^{2}\lesssim\frac{\log^{2}n}{np}\quad(\text{check})
+\]
+Similar bounds hold for $\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\big]\big\|$.
+Therefore, 
+\[
+v:=\max\left\{ \big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\big\|,\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\big]\big\|\right\} \lesssim\frac{\log^{2}n}{np}
+\]
+
+\item Take the matrix Bernstein inequality to yield: if $p\gg\log^{3}n/n$,
+then
+\[
+\|\hat{\bm{M}}-\bm{M}\|\lesssim\sqrt{v\log n}+B\log n\ll1
+\]
+\end{itemize}
+
+
+
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}[plain]
+	\vfill
+	\centering
+	\large \bf Ranking from pairwise comparisons
+	\vfill
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Ranking from pairwise comparisons}
+
+
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{pairwise-comparison-tennis.png} \\
+		 pairwise comparisons for ranking tennis players  \\
+		\hfill {\footnotesize figure credit: Boz\'{o}ki, Csat\'{o}, Temesi}
+	\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Bradley-Terry-Luce (logistic) model}
+
+
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{preference-score-w.pdf} 
+	\end{center}
+
+	\vspace{-1.2em}
+
+	\begin{itemize}
+		\itemsep0.5em
+		\item $n$ items to be ranked
+
+		\item assign  a latent score $\{w_i^{\star}\}_{1\leq i\leq n}$ to each item, so that 
+			$$\text{item }i\succ\text{item }j \quad \text{if} \quad w_i^{\star} >w_j^{\star}$$
+
+		\item each pair of items $(i,j)$ is compared independently
+		\uncover<1>{
+		%
+		\begin{equation*}
+			\mathbb{P}\left\{ \text{item }j\text{ beats item }i\right\} =\frac{w_{j}^{\star}}{w_{i}^{\star}+w_{j}^{\star}}
+		\end{equation*}
+		%
+		}
+
+		\uncover<2>{
+		\vspace{-4.5em}
+		%
+		\begin{equation*}
+			y_{i,j} ~ \overset{\text{ind.}}{=} ~ \begin{cases}
+			1,\quad & \text{with prob. }\frac{w_{j}^{\star}}{w_{i}^{\star}+w_{j}^{\star}} \\
+			0, & \text{else}
+			\end{cases}
+		\end{equation*}
+		%
+		\item {\bf intermediate goal:} estimate score vector $\bm{w}^{\star}$ (up to scaling)
+		}
+			\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+	\frametitle{Spectral ranking}
+
+
+
+	\begin{itemize}
+		\item[{\color{black}1.}] identify key matrix  ${\bm{P}}^{\star}$---\alert{probability transition matrix}
+		\[
+			{P}^{\star}_{i,j}=\begin{cases}
+			\frac{1}{n}\cdot\frac{w_j^{\star}}{w_i^{\star}+w_j^{\star}}, & \text{if }i\neq j\\
+			1-\sum\nolimits _{l:l\neq i} {P}^{\star}_{i,l},\qquad & \text{if }i=j
+			\end{cases}
+		\]
+		Rationale:
+		\begin{itemize}
+		\item  $\bm{P}^{\star}$ obeys
+		\[
+			w_i^{\star} P_{i,j}^{\star} = w_j^{\star} P_{j,i}^{\star} \qquad \alertb{\text{(detailed balance)}}
+		\]
+		\item Thus, the stationary distribution $\bm{\pi}^{\star}$ of $\bm{P}^{\star}$ obeys
+		\[
+			\bm{\pi}^{\star}  ~=~ \frac{1}{\sum_{l}w_l^{\star}} \bm{w}^{\star} \qquad \alertb{(\text{reveals true scores})}
+		\]
+
+
+	\end{itemize}
+
+	\end{itemize}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Spectral ranking}
+	\begin{itemize}
+		
+		\item[{\color{black}2.}] construct a surrogate matrix ${\bm{P}}$ obeying
+		%
+		\[
+			{P}_{i,j}=\begin{cases}
+			\frac{1}{n}y_{i,j}, & \text{if }i\neq j\\
+			1-\sum\nolimits _{l:l\neq i} {P}_{i,l},\qquad & \text{if }i=j
+			\end{cases}
+		\]
+		%
+		\bigskip
+
+		\item[{\color{black}3.}] return leading left eigenvector ${\bm{\pi}}$ of ${\bm{P}}$ as score estimate
+	
+	\end{itemize}
+
+
+	\vfill
+
+	\hfill --- closely related to PageRank
+
+\pause
+\vfill	
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	{\bf Key:} stability of eigenspace against perturbation $\bm{M}-\bm{M}^{\star}$? 
+\end{center}
+\end{varblock}
+}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Statistical guarantees for spectral ranking}
+
+	\hfill --- {\small Negahban, Oh, Shah\,'16, Chen, Fan, Ma, Wang\,'19}
+
+	\vfill
+
+	Suppose $\max_{i,j} \frac{w_i}{w_j} \lesssim 1$. Then with high prob.
+	%
+	\begin{align*}
+		\frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_2 }{\|\bm{\pi} \|_2} \asymp \frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_{\bm{\pi}} }{\|\bm{\pi} \|_{2}} \lesssim  \hspace{-1.2em} \underset{\alertb{\text{nearly perfect estimate}}}{\underbrace{ \frac{1}{\sqrt{n}} ~\rightarrow~ 0 }}
+	\end{align*}
+	%
+
+	\begin{itemize}
+		\item a consequence of Theorem \ref{thm:mc-perturbation} and  matrix Bernstein (exercise)
+	\end{itemize}
+
+\end{frame}
 
 
 \end{document}

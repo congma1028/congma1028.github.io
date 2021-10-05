@@ -12,7 +12,7 @@ either individually or in groups of two:
 There are 3 milestones / deliverables to help you through the process.
 . *Proposal* (due Oct. 21st): Submit a short report (no more than 1 page) stating the papers you plan to survey or the research problems that you plan to work on. Describe why they are important or interesting, and provide some appropriate references. If you elect to do original research, please do not propose an overly ambitious project that cannot be completed by the end of the semester, and do not be too lured by generality. Focus on the simplest scenarios that can capture the issues you’d like to address.
 . *In-class presentation*: Prepare an  oral presentation with slides (the exact time will depend on the number of projects in the class). Focus on high-level ideas, and leave most technical details to your report.
-. *A written report* (due TBA): You are expected to submit a final project report—up to 4 pages with unlimited appendix—summarizing your findings / contributions. You must turn in an electronic copy.
+. *A written report* (due Dec. 13th): You are expected to submit a final project report—up to 4 pages with unlimited appendix—summarizing your findings / contributions. You must turn in an electronic copy.
 
 == Suggested (theoretical) papers for literature review (constantly updated...)
 
@@ -22,6 +22,9 @@ There are 3 milestones / deliverables to help you through the process.
 .. "An Lp theory of PCA and spectral clustering", E. Abbe, J. Fan, K. Wang, 2021 
 .. "Rate-optimal perturbation bounds for singular subspaces with applications to high-dimensional statistics", T.T. Cai, A. Zhang, Annals of Statistics, 2018
 .. "Subspace estimation from unbalanced and incomplete data matrices: L2,inf statistical guarantees", C. Cai, G. Li, Y. Chi, H. V. Poor, Y. Chen, Annals of Statistics, 2021
+.. "Partial recovery for top-k ranking: optimality of MLE and sub-optimality of spectral method", P. Chen, C. Gao, and A. Zhang, 2021
+.. "Lagrangian inference for ranking problems", Y. Liu, E. X. Fang, and J. Lu, 2021 
 . Nonconvex optimization
-.. "Rank Overspecified Robust Matrix Recovery:
-Subgradient Method and Exact Recovery", L. Ding, L. Jiang, Y. Chen, Q. Qu, Z. Zhu, 2021
+.. "On the computational and statistical complexity of over-parameterized matrix sensing", J. Zhuo, J. Kwon, N. Ho, C. Caramanis, 2021
+.. "Rank overspecified robust matrix recovery:
+subgradient method and exact recovery", L. Ding, L. Jiang, Y. Chen, Q. Qu, Z. Zhu, 2021
