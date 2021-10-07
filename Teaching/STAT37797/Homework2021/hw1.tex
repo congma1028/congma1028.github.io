@@ -1,0 +1,636 @@
+\documentclass{article}
+\usepackage{url}
+
+\usepackage{cite,enumitem,amsmath, amsfonts, amssymb}
+\usepackage{epsfig,subfigure}
+\usepackage{comment}
+\usepackage{array}
+
+
+\newcommand\dueDate{11:59pm on Oct. 21st}
+
+\input assignment_utils
+\usepackage{listings}
+
+
+\begin{document}
+\createHomework{1}
+%\createHomeworkSolutions{1}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}{Weyl's inequality}{20}
+
+
+	
+
+\newpart{10}
+	Let $\bm{A}$ be
+	an $n \times n$ real symmetric matrix, with eigenvalues $\lambda_1(\bm{A})\geq \lambda_2(\bm{A}) \geq \cdots \geq \lambda_n(\bm{A})$. Then for each $1\leq i\leq n$,  prove the following  variational representation of eigenvalues
+%
+\[
+\lambda_{i}(\bm{A})=\sup_{V:\mathrm{dim}(V)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{A}\bm{v}.
+\]
+In the above notation, $V$ is a subspace in $\mathbb{R}^{n}$, and
+$\mathrm{dim}(V)=i$ means $V$ is an $i$-dimensional subspace.
+
+
+\solution{
+Let $\bm{A}=\bm{U}\bm{\Lambda}\bm{U}^{\top}$ be the eigen-decomposition
+of $\bm{A}$, where $\bm{U}=[\bm{u}_{1},\bm{u}_{2},\cdots,\bm{u}_{n}]$
+and $\bm{\Lambda}=\text{diag}(\lambda_{1}(\bm{A}),\lambda_{2}(\bm{A}),\cdots,\lambda_{n}(\bm{A}))$.
+Pick $V$ to be the subpace spaned by the top-$i$ eigenvectors $\{\bm{u}_{1},\bm{u}_{2},\cdots,\bm{u}_{i}\}$.
+Then every $\bm{v}\in V$ has the following decomposition 
+\[
+\bm{v}=\sum_{k=1}^{i}\alpha_{k}\bm{u}_{k}.
+\]
+As a consequence, we have 
+\begin{align*}
+\bm{v}^{\top}\bm{A}\bm{v} & =\bm{v}^{\top}\bm{U}\bm{\Lambda}\bm{U}^{\top}\bm{v}\\
+ & =\sum_{k=1}^{i}\alpha_{k}^{2}\lambda_{k}\left(\bm{A}\right),
+\end{align*}
+which in turn leads to 
+\[
+\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{A}\bm{v}=\inf_{\|\bm{\alpha}\|_{2}=1}\sum_{k=1}^{i}\alpha_{k}^{2}\lambda_{k}\left(\bm{A}\right)=\lambda_{i}\left(\bm{A}\right).
+\]
+Therefore we obtain 
+\[
+\lambda_{i}\left(\bm{A}\right)\leq\sup_{V:\text{dim}\left(V\right)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{A}\bm{v}.
+\]
+Now we move on to show the reverse inequality, i.e. for every $V$
+with dimension $i$, we can find some $\bm{v}\in V, \|\bm{v}\|_{2}=1$ such that $\bm{v}^{\top}\bm{A}\bm{v}\leq\lambda_{i}(\bm{A})$.
+Let $W$ be a space spanned by $\{\bm{u}_{i},\bm{u}_{i+1},\cdots,\bm{u}_{n}\}$
+which has dimension $n-i+1$ and codimension $i-1$. In light of this, it must have a nontrivial
+intersection with $V$. Let $v\in V\cap W$ and $v=\sum_{k=i}^{n}\alpha_{k}\bm{u}_{k}$.
+Then one has 
+\[
+\bm{v}^{\top}\bm{A}\bm{v}=\sum_{k=i}^{n}\alpha_{k}^{2}\lambda_{k}\left(\bm{A}\right)\leq\lambda_{i}\left(\bm{A}\right).
+\]
+This completes the proof. 
+}
+
+	\newpart{10}  Prove that: if $\bm{A}$ and $\bm{B}$ are both real and symmetric matrices, then
+	\[
+		| \lambda_i (\bm{A}) - \lambda_i (\bm{B}) | \leq \|\bm{A} - \bm{B} \|,\qquad\text{for all }1\leq i\leq n,
+	\]
+	where $\|\cdot\|$ denotes the spectral norm. 
+
+
+\solution{
+By (a), one sees that 
+\begin{align*}
+\lambda_{i}\left(\bm{A}\right) & =\sup_{V:\text{dim}\left(V\right)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{A}\bm{v}\\
+ & =\sup_{V:\text{dim}\left(V\right)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{B}\bm{v}+\bm{v}^{\top}\left(\bm{A}-\bm{B}\right)\bm{v}.
+\end{align*}
+In light of the fact that 
+\[
+\left|\bm{v}^{\top}\left(\bm{A}-\bm{B}\right)\bm{v}\right|\leq\left\Vert \bm{A}-\bm{B}\right\Vert ,
+\]
+we have 
+\begin{align*}
+\lambda_{i}\left(\bm{A}\right) & \leq\sup_{V:\text{dim}\left(V\right)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{B}\bm{v}+\left\Vert \bm{A}-\bm{B}\right\Vert \\
+ & =\lambda_{i}\left(\bm{B}\right)+\left\Vert \bm{A}-\bm{B}\right\Vert 
+\end{align*}
+and similarly 
+\begin{align*}
+\lambda_{i}\left(\bm{A}\right) & \geq\sup_{V:\text{dim}\left(V\right)=i}\inf_{\bm{v}\in V:\|\bm{v}\|_{2}=1}\bm{v}^{\top}\bm{B}\bm{v}-\left\Vert \bm{A}-\bm{B}\right\Vert \\
+ & =\lambda_{i}\left(\bm{B}\right)-\left\Vert \bm{A}-\bm{B}\right\Vert .
+\end{align*}
+Combining the above two inequalities yields the desired result. 
+}
+
+
+\end{problem}
+
+
+\begin{problem}{Distance metrics for subspaces}{20}
+Consider two orthonormal matrices $\bm{U},\bm{U}^{\star} \in\mathbb{R}^{n\times r}$,
+	satisfying $\bm{U}^{\top}\bm{U}= \bm{U}^{\star\top} \bm{U}^{\star}=\bm{I}_r$ with $r<n$. We have discussed extensively the distance using projection matrices
+\[
+\|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|, \quad \text{and}\quad \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|_{\mathrm{F}}.
+\]
+Also, our default choice of distance is the one using optimal rotation matrix: 
+\[
+\min_{\bm{R}\in \mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\| , \quad \text{and}\quad \min_{\bm{R}\in\mathcal{O}^{r\times r}}\left\Vert \bm{U}\bm{R}-\bm{U}^{\star}\right\Vert _{\mathrm{F}}.
+\]
+Here $\mathbb{O}^{r\times r}:=\{\bm{R}\in\mathbb{R}^{r\times r}\mid\bm{R}\bm{R}^{\top}=\bm{R}^{\top}\bm{R}=\bm{I}_{r}\}$ is the set of all $r\times r$ orthonormal matrices. 
+
+
+	\newpart{10} Show that 
+	\[
+	\|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|
+	\leq
+	\min_{\bm{R}\in \mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\|
+	%\mathsf{dist} \big(\bm{U},\bm{U}^{\star}\big)
+	\leq \sqrt{2} \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|.
+	\]
+
+
+\solution{
+
+As before, suppose that the SVD of $\bm{U}^{\top}\bm{U}^{\star}$
+is given by $\bm{X}\bm{\Sigma}\bm{Y}^{\top}$, where $\bm{X}$ and $\bm{Y}$
+are $r\times r$ orthonormal matrices whose columns contain the left singular vectors and the right singular vectors of $\bm{U}^{\top}\bm{U}^{\star}$, respectively, and $\bm{\Sigma}\in \mathbb{R}^{r\times r}= \cos\bm{\Theta}$ is a diagonal matrix whose diagonal entries correspond to the singular values of $\bm{U}^{\top}\bm{U}^{\star}$.
+
+
+
+
+
+\paragraph{The spectral norm upper bound.}
+We first observe that
+%
+\begin{align}
+\|\bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star}\|^{2} & =\|(\bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star})^{\top}(\bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star})\|\nonumber\\
+ & =\|2\bm{I}_{r}-\bm{Y}\bm{X}^{\top}\bm{U}^{\top}\bm{U}^{\star}-\bm{U}^{\star\top}\bm{U}\bm{X}\bm{Y}^{\top}\| \nonumber\\
+	& =\|2\bm{I}_{r}-\bm{Y}\bm{X}^{\top}\bm{X}\bm{\Sigma}\bm{Y}^{\top}-\bm{Y}\bm{\Sigma}\bm{X}^{\top}\bm{X}\bm{Y}^{\top}\| \nonumber\\
+ & =2\|\bm{Y}(\bm{I}_{r}-\bm{\Sigma})\bm{Y}^{\top}\|=2\|\bm{I}_{r}-\bm{\Sigma}\|.
+	\label{eq:UXT-Ustar-UB1}
+\end{align}
+%
+Here, the penultimate line relies on the singular value decomposition $\bm{U}^{\top}\bm{U}^{\star}=\bm{X}\bm{\Sigma}\bm{Y}^{\top}$,
+while the two identities in the last line result from  the orthonormality of $\bm{X}$ and $\bm{Y}$, respectively. In addition, note that
+%
+\begin{align*}
+	\|\bm{I}_{r}-\bm{\Sigma}\| &= \|\bm{I}_{r}-\cos\bm{\Theta}\|\leq\|\bm{I}_{r}-\cos^{2}\bm{\Theta}\| \\
+	& =\|\sin^{2}\bm{\Theta}\|=\|\sin\bm{\Theta}\|^2.
+\end{align*}
+%
+This taken together with \eqref{eq:UXT-Ustar-UB1} leads to
+%
+\begin{align*}
+	\min_{\bm{R}\in \mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\|
+	\leq \big\|\bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star}\big\| \leq \sqrt{2} \|\sin \bm{\Theta} \| ,
+	% \mathsf{dist}(\bm{U},\bm{U}^{\star}).
+\end{align*}
+%
+where the first inequality holds since $\bm{X}$ and $\bm{Y}$ are both orthonormal matrices and hence $\bm{X}\bm{Y}^{\top}$ is also orthonormal.
+
+
+
+\paragraph{The spectral norm lower bound.}
+On the other hand, we make the observation that
+%
+\begin{align}
+	& \min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\|^{2}  =\min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|(\bm{U}\bm{R}-\bm{U}^{\star})^{\top}(\bm{U}\bm{R}-\bm{U}^{\star})\big\|\nonumber \\
+ & \qquad\qquad =\min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|\bm{R}^{\top}\bm{U}^{\top}\bm{U}\bm{R}+\bm{U}^{\star\top}\bm{U}^{\star}-\bm{R}^{\top}\bm{U}^{\top}\bm{U}^{\star}-\bm{U}^{\star\top}\bm{U}\bm{R}\big\|\nonumber \\
+ & \qquad\qquad{=}\min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|2\bm{I}_{r}-\bm{R}^{\top}\bm{X}\bm{\Sigma}\bm{Y}^{\top}-\bm{Y}\bm{\Sigma}\bm{X}^{\top}\bm{R}\big\|,
+	\label{eq:relation-i-123456}
+\end{align}
+%
+where the last relation holds since $\bm{X}\bm{\Sigma}\bm{Y}^{\top}$ is the
+SVD of $\bm{U}^{\top}\bm{U}^{\star}$. Continue the derivation to obtain
+%
+\begin{align}
+\eqref{eq:relation-i-123456}  & \overset{(\mathrm{i})}{=}\min_{\bm{Q}\in\mathcal{O}^{r\times r}}\big\|2\bm{I}_{r}-\bm{Q}\bm{\Sigma}\bm{Y}^{\top}-\bm{Y}\bm{\Sigma}\bm{Q}^{\top}\big\|\nonumber \\
+ & \overset{(\mathrm{ii})}{=}\min_{\bm{Q}\in\mathcal{O}^{r\times r}}\big\|2\bm{Q}^{\top}\bm{Q}-\bm{Q}^{\top}\bm{Q}\bm{\Sigma}\bm{Y}^{\top}\bm{Q}-\bm{Q}^{\top}\bm{Y}\bm{\Sigma}\bm{Q}^{\top}\bm{Q}\big\|\nonumber \\
+ &  =\min_{\bm{Q}\in\mathcal{O}^{r\times r}}\big\|2\bm{I}_{r}-\bm{\Sigma}\bm{Y}^{\top}\bm{Q}-\bm{Q}^{\top}\bm{Y}\bm{\Sigma}\big\|\nonumber \\
+ &  \overset{(\mathrm{iii})}{=}\min_{\bm{O}\in\mathcal{O}^{r\times r}}\big\|2\bm{I}_{r}-\bm{\Sigma}\bm{O}-\bm{O}^{\top}\bm{\Sigma}\big\|.\label{eq:UR-Ustar-identity}
+\end{align}
+%
+Here, (i) follows by setting $\bm{Q}=\bm{R}^{\top}\bm{X}$
+(since both $\bm{X}$ and $\bm{R}$ are orthonormal matrices), (ii)
+results from the unitary invariance of the spectral norm, whereas (iii) holds
+by setting $\bm{O}=\bm{Y}^{\top}\bm{Q}$. Moreover, recognizing that
+$\|\bm{\Sigma}\bm{O}\|\leq\|\bm{\Sigma}\| \cdot \|\bm{O}\|\leq1$ (and hence
+$2\bm{I}_{r}-\bm{\Sigma}\bm{O}-\bm{O}^{\top}\bm{\Sigma}\succeq\bm{0}$),
+one can obtain
+%
+\begin{align}
+\min_{\bm{O}\in\mathcal{O}^{r\times r}}\big\|2\bm{I}_{r}-\bm{\Sigma}\bm{O}-\bm{O}^{\top}\bm{\Sigma}\big\|
+	& = \min_{\bm{O}\in\mathcal{O}^{r\times r}}\lambda_{\max} \big( 2\bm{I}_{r}-\bm{\Sigma}\bm{O}-\bm{O}^{\top}\bm{\Sigma}\big) \notag\\
+	& =\min_{\bm{O}\in\mathcal{O}^{r\times r}}\max_{\bm{u}:\|\bm{u}\|_{2}=1}\bm{u}^{\top}\big(2\bm{I}_{r}-\bm{\Sigma}\bm{O}-\bm{O}^{\top}\bm{\Sigma}\big)\bm{u}\nonumber \\
+ & =\min_{\bm{O}\in\mathcal{O}^{r\times r}}\max_{\bm{u}:\|\bm{u}\|_{2}=1}\big(2-2\bm{u}^{\top}\bm{\Sigma}\bm{O}\bm{u}\big)\nonumber \\
+ & \geq\min_{\bm{O}\in\mathcal{O}^{r\times r}}\big(2-2\bm{e}_{r}^{\top}\bm{\Sigma}\bm{O}\bm{e}_{r}\big)\nonumber \\
+ & = 2-2\cos\theta_{r}\max_{\bm{O}\in\mathcal{O}^{r\times r}}\bm{e}_{r}^{\top}\bm{O}\bm{e}_{r}\nonumber \\
+ & \geq 2-2\cos\theta_{r}
+	=4\sin^{2}(\theta_{r}/2).\label{eq:UR-star-inequality}
+\end{align}
+%
+Here, the inequality follows by taking $\bm{u}$ to be $\bm{e}_{r}$
+(recall that by construction, $\sigma_{r}=\cos\theta_{r}\geq 0$ is the
+smallest singular value of $\bm{\Sigma}$), and the penultimate line
+holds by combining the facts $|\bm{e}_{r}^{\top}\bm{O}\bm{e}_{r}|\leq\|\bm{O}\|=1$
+and $\bm{e}_{r}^{\top}\bm{e}_{r}=1$. Putting (\ref{eq:UR-star-inequality})
+and (\ref{eq:UR-Ustar-identity}) together yields
+%
+\begin{align*}
+\min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\| & \geq\sqrt{4\sin^{2}(\theta_{r}/2)}=2\sin(\theta_{r}/2)=\|2\sin(\bm{\Theta}/2)\|\nonumber \\
+ & \geq\|\sin\bm{\Theta}\|,
+	%=\mathsf{dist}(\bm{U},\bm{U}^{\star})
+\end{align*}
+%
+where we again use the inequality $2\sin(\theta/2) \geq \sin \theta$ for all $\theta\in [0,\pi/2]$.
+
+Finally, invoking the relation $\|\sin\bm{\Theta}\|=  \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top}\|$ establishes the claimed spectral norm bounds.
+
+
+
+
+
+
+}
+
+
+\newpart{10} Show that 
+\[
+\tfrac{1}{\sqrt{2}} \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|_{\mathrm{F}}
+	%\mathsf{dist}_{\mathrm{F}} \big(\bm{U},\bm{U}^{\star}\big)
+	\leq
+	\min_{\bm{R}\in\mathcal{O}^{r\times r}}\left\Vert \bm{U}\bm{R}-\bm{U}^{\star}\right\Vert _{\mathrm{F}}
+	%\mathsf{dist}_{\mathrm{F}} \big(\bm{U},\bm{U}^{\star}\big)
+	\leq \|\bm{U}\bm{U}^{\top} - \bm{U}^{\star}\bm{U}^{\star\top} \|_{\mathrm{F}}.
+\] 
+
+
+\solution{ 
+
+
+\paragraph{The Frobenius norm upper bound.}
+  Regarding the Frobenius norm upper bound, one sees that
+%
+\begin{align}
+	& \big\Vert \bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star}\big\Vert _{\mathrm{F}}^{2}  =\left\Vert \bm{U}\right\Vert _{\mathrm{F}}^{2}+\big\|\bm{U}^{\star}\big\|_{\mathrm{F}}^{2}-2\mathsf{Tr}\big(\bm{Y}\bm{X}^{\top}\bm{U}^{\top}\bm{U}^{\star}\big) \notag\\
+ & \qquad\qquad \overset{(\mathrm{i})}{=}r+r-2\mathsf{Tr}\big(\bm{Y}\bm{X}^{\top}\bm{X}\bm{\Sigma}\bm{Y}^{\top}\big)
+  \overset{(\mathrm{ii})}{=}2r-2\mathsf{Tr}\left(\bm{\Sigma}\right) ,
+	\label{eq:relation-UB-12689}
+\end{align}
+%
+where (i) holds since $\bm{U}$ and $\bm{U}^{\star}$ are both $n\times r$
+matrices with orthonormal columns, and (ii) follows since $\bm{X}^{\top}\bm{X}=\bm{Y}^{\top}\bm{Y}=\bm{I}$ (and hence $\mathsf{Tr}(\bm{Y}\bm{X}^{\top}\bm{X}\bm{\Sigma}\bm{Y}^{\top})=\mathsf{Tr}(\bm{Y}^{\top}\bm{Y}\bm{X}^{\top}\bm{X}\bm{\Sigma})=\mathsf{Tr}(\bm{\Sigma})$).
+Furthermore,
+%
+\begin{align*}
+2r-2\mathsf{Tr}\left(\bm{\Sigma}\right)
+	& \overset{(\mathrm{iii})}{=}2\sum\nolimits_{i} (1-\cos\theta_{i})
+	\leq2\sum\nolimits_{i} (1-\cos^{2}\theta_{i})\\
+ & =2\left\Vert \sin\bm{\Theta}\right\Vert _{\mathrm{F}}^{2} = \big\Vert \bm{U}\bm{U}^{\top}-{\bm{U}}^{\star}{\bm{U}}^{\star\top}\big\Vert _{\mathrm{F}}^2,
+\end{align*}
+%
+where (iii) holds by construction, and the last identity results from the lemma in class. This
+taken collectively with  \eqref{eq:relation-UB-12689}
+reveals that
+%
+\begin{align*}
+\min_{\bm{R}\in\mathcal{O}^{r\times r}}\left\Vert \bm{U}\bm{R}-\bm{U}^{\star}\right\Vert _{\mathrm{F}}^{2}
+	& \leq\big\Vert \bm{U}\bm{X}\bm{Y}^{\top}-\bm{U}^{\star}\big\Vert _{\mathrm{F}}^{2}
+	\leq
+	%2\left\Vert \sin\bm{\Theta}\right\Vert _{\mathrm{F}}^{2} \\
+	%=\mathsf{dist}_{\mathrm{F}}^{2}\big(\bm{U},\bm{U}^{\star}\big).
+	\big\Vert \bm{U}\bm{U}^{\top}-{\bm{U}}^{\star}{\bm{U}}^{\star\top}\big\Vert _{\mathrm{F}}^2  ,
+\end{align*}
+where the first inequality holds since $\bm{X}$ and $\bm{Y}$ are both orthonormal matrices and hence $\bm{X}\bm{Y}^{\top}$ is also orthonormal.
+
+
+
+\paragraph{The Frobenius norm lower bound.}
+
+With regards to the Frobenius norm lower bound, it is seen that
+%
+\begin{align}
+\min_{\bm{R}\in\mathcal{O}^{r\times r}}\big\|\bm{U}\bm{R}-\bm{U}^{\star}\big\|_{\mathrm{F}}^{2} & =\min_{\bm{R}\in\mathcal{O}^{r\times r}}\Big\{\|\bm{U}\bm{R}\|_{\mathrm{F}}^{2}+\|\bm{U}^{\star}\|_{\mathrm{F}}^{2}-2\big\langle\bm{U}\bm{R},\bm{U}^{\star}\big\rangle\Big\}\nonumber \\
+ & \overset{(\mathrm{i})}{=} 2\min_{\bm{R}\in\mathcal{O}^{r\times r}}\Big\{ r-\big\langle\bm{R},\bm{U}^{\top}\bm{U}^{\star}\big\rangle\Big\}\nonumber \\
+ & \overset{(\mathrm{ii})}{=} 2\min_{\bm{R}\in\mathcal{O}^{r\times r}}\Big\{ r-\big\langle\bm{R},\bm{X}\bm{\Sigma}\bm{Y}^{\top}\big\rangle\Big\} ,
+	\label{eq:relation-ii-67890}
+\end{align}
+%
+where (i) holds since $\|\bm{U}\|_{\mathrm{F}}=\|\bm{U}^{\star}\|_{\mathrm{F}}=\sqrt{r}$,
+and (ii) relies on the SVD $\bm{X}\bm{\Sigma}\bm{Y}^{\top}$ of $\bm{U}^{\top}\bm{U}^{\star}$.
+Continue the derivation to obtain
+%
+\begin{align}
+\eqref{eq:relation-ii-67890}
+	& \overset{(\mathrm{iii})}{=}  2\min_{\bm{Q}\in\mathcal{O}^{r\times r}}\Big\{ r-\big\langle\bm{Q},\cos\bm{\Theta}\big\rangle\Big\}
+	 \overset{(\mathrm{iv})}{\geq} 2\min_{\bm{Q}\in\mathcal{O}^{r\times r}}\Big\{ r-\|\bm{Q}\|\,\|\cos\bm{\Theta}\|_{*}\Big\}\nonumber \\
+ & =2 \big( r-\sum\nolimits_{i}\cos\theta_{i}\big).\label{eq:min-UR-Ustar-fro-1}
+\end{align}
+%
+Here, (iii) sets $\bm{Q}=\bm{X}^{\top}\bm{R}\bm{Y}$ and identifies
+$\bm{\Sigma}$ as $\cos\bm{\Theta}$,
+(iv) comes from the elementary inequality $\langle \bm{A}, \bm{B} \rangle \leq \|\bm{A}\|\,\|\bm{B}\|_*$,
+whereas the last line follows
+since $\cos\theta_{i}\geq0$. Additionally, it is easily seen that
+%
+\begin{align}
+%2r-2\sum\nolimits_{i} \cos\theta_{i}
+\eqref{eq:min-UR-Ustar-fro-1}
+	& =2\sum\nolimits_{i} (1-\cos\theta_{i})=4\sum\nolimits_{i} \sin^{2}(\theta_{i}/2)\nonumber \\
+ & \geq \sum\nolimits_{i} \sin^{2}\theta_{i}
+	%=\|\sin\bm{\Theta}\|_{\mathrm{F}}^{2}\nonumber \\
+  =\frac{1}{2} \big\Vert \bm{U}\bm{U}^{\top}-{\bm{U}}^{\star}{\bm{U}}^{\star\top}\big\Vert _{\mathrm{F}}^2 ,
+	\label{eq:min-UR-Ustar-fro-2}
+\end{align}
+%
+where the penultimate relation follows from the elementary inequality
+$2\sin(\theta/2)\geq\sin\theta$ (which holds for any $0\leq\theta\leq\pi/2$).
+Combining the inequalities (\ref{eq:min-UR-Ustar-fro-1}) and (\ref{eq:min-UR-Ustar-fro-2}),
+we establish the claimed lower bound.
+
+
+
+
+}
+
+
+\end{problem}
+
+
+
+
+
+
+
+\begin{comment}
+
+\begin{problem}{Ranking from pairwise comparisons with missing data}{20}
+%
+Consider $n$ items to be ranked, where each item is associated with a latent score $w_i>0$ (which determines the rank of the  items).  
+For each pair of items $(i,j)$, we observe a pairwise comparison independently with probability $p$.  The pairwise comparison outcome $y_{i,j}$ is generated according to the Bradley-Terry-Luce (or logistic) model such that: if a pairwise comparison between $i$ and $j$ is obtained, then the outcome is given by  
+%
+\[
+y_{i,j}=\begin{cases}
+1,\quad & \text{with probability }\frac{w_{j}}{w_{i}+w_{j}},\\
+0, & \text{with probability }\frac{w_{i}}{w_{i}+w_{j}},
+\end{cases}
+\qquad \text{provided that }(i,j) \text{ has been compared.} 
+\]
+%
+
+Recall that the spectral ranking method computes the leading left eigenvector of $ {\bm{\pi}}$ of a certain matrix $ {\bm{P}}=[ {P}_{i,j}]_{1\leq i,j\leq n}$.  In the missing data case, this matrix is given by
+\[
+ {P}_{i,j}=\begin{cases}
+	\frac{1}{2np}y_{i,j}, & \text{if }i\neq j \text{ and a paired comparison of } (i,j) \text{ is observed},\\
+	0,  & \text{if }i\neq j \text{ and } (i,j) \text{ is not compared}, \\
+1-\sum_{j:j\neq i} {P}_{i,j}, & \text{if }i=j.
+\end{cases}
+	%\qquad \text{provided that }(i,j) \text{ has been compared.} 
+\]
+%
+Here, one can think of $np$ as the average number of comparisons  involving any item.   Let $ {\bm{\pi}}$ be the leading left eigenvector of $ {\bm{P}}$, and define $\bm{\pi}:=\frac{1}{\sum_{i=1}^n w_i} [w_1,\cdots, w_n]$. 
+	
+	
+	\newpart{10} Use the eigenvector perturbation theory to derive an eigenvector perturbation upper bound on $\|  {\bm{\pi}} - \bm{\pi} \|_{\bm{\pi}}$.  \\
+	
+	(Hint) You can assume (without proof) that the spectral gap $1- \max\big\{ \lambda_2 \big( \mathbb{E}_{\bm{y}}[ {\bm{P}}] \big), - \lambda_n \big( \mathbb{E}_{\bm{y}}[ {\bm{P}}] \big) \big\}>c$ for some universal constant $c>0$, where  $\mathbb{E}_{\bm{y}}[ {\bm{P}}]$ denotes the conditional expectation of $ {\bm{P}}$ given the set of indicator variables $ \mathbb{I}_{\{(i,j)\text{ is observed}\}}  $ (${1\leq i,j\leq n}$). 
+
+\solution{
+
+}
+
+	\newpart{10}  Suppose that the observed data $y_{i,j}$ is instead an average of $L$ independent pairwise comparisons, namely, 
+	\[
+y_{i,j}=\frac{1}{L}\sum_{l=1}^{L}y_{i,j}^{(l)},
+\]
+	where $y_{i,j}^{(l)}$ are independently generates obeying
+	$$y_{i,j}^{(l)} = \begin{cases}
+1,\quad & \text{with probability }\frac{w_{j}}{w_{i}+w_{j}}\\
+0, & \text{with probability }\frac{w_{i}}{w_{i}+w_{j}}
+\end{cases} 
+	\qquad \text{provided that }(i,j) \text{ is compared.}
+	$$
+	%are independently generated.  
+	Show that $ {\bm{\pi}}$ converges to ${\bm{\pi}}$ as $L\rightarrow \infty$. 
+
+\solution{
+
+}
+
+\end{problem}
+
+\end{comment}
+
+
+\begin{problem}{Variant of Wedin's theorem}{10}
+Consider the setting and notation used in class. Wedin's $\sin \bm{\Theta}$ theorem tells us that if $\|\bm{E}\| < \sigma_{r}^{\star} - \sigma_{r+1}^{\star}$, then there exist two orthonormal matrices $\bm{R}_{\bm{U}}, \bm{R}_{\bm{V}} \in \mathbb{R}^{r \times r}$ such that 
+\[
+\max\left\{ \left\Vert \bm{U}\bm{R}_{\bm{U}}-\bm{U}^{\star}\right\Vert _{\mathrm{F}} , \left\Vert \bm{V}\bm{R}_{\bm{V}}-\bm{V}^{\star}\right\Vert _{\mathrm{F}}\big)\right\} \leq \frac{\sqrt{2}\max\big\{ \|\bm{E}^{\top}\bm{U}^{\star}\|_{\mathrm{F}},\|\bm{E}\bm{V}^{\star}\|_{\mathrm{F}}\big\} }{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\bm{E}\|}.
+\]
+However, in some cases, we hope for a single rotation matrix that could align both $(\bm{U}, \bm{U}^{\star})$ and  $(\bm{V}, \bm{V}^{\star})$. It turns out that this is achievable. Show that if $\|\bm{E}\| < \sigma_{r}^{\star} - \sigma_{r+1}^{\star}$, there exists a single orthonormal matrix $\bm{R} \in \mathcal{O}^{r \times r}$ such that
+\[
+\big(\left\Vert \bm{U}\bm{R}-\bm{U}^{\star}\right\Vert _{\mathrm{F}}^{2} + \left\Vert \bm{V}\bm{R}-\bm{V}^{\star}\right\Vert _{\mathrm{F}}^{2}\big)^{1/2} \leq \frac{\sqrt{2}\big( \|\bm{E}^{\top}\bm{U}^{\star}\|_{\mathrm{F}}^{2} + \|\bm{E}\bm{V}^{\star}\|_{\mathrm{F}}^{2}\big)^{1/2} }{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\bm{E}\|}.
+\]
+
+You are allowed to invoke the general Davis-Kahan $\sin\bm{\Theta}$ theorem given in class.
+
+\solution{
+Apply Davis-Kahan to the symmetric dilation of $\bm{M}$ and $\bm{M}^\star$.}
+
+\end{problem}
+
+\begin{problem}{Quadratic systems of equations}{10}
+Suppose that our goal is to estimate an unknown vector $\bm{x}^{\star} \in \mathbb{R}^n$ (obeying $\|\bm{x}^{\star}\|_2=1$) based on $m$ i.i.d.~samples of the form
+	\[
+		y_i = ( \bm{a}_i^{\top} \bm{x}^{\star} )^2, \qquad i=1,\ldots,m,
+	\]
+	where $\bm{a}_i\in \mathbb{R}^n$ are independent vectors (known {\em a priori}) obeying $\bm{a}_i \sim \mathcal{N}(\bm{0},\bm{I}_n)$. 
+
+%\newpart{10}
+	Suggest a spectral method for estimating $\bm{x}^{\star}$ that is consistent with either $\bm{x}^{\star}$ or $-\bm{x}^{\star}$ in the limit of infinite data, i.e., as $m$ goes to infinity.
+
+%\newpart{10}
+%	Derive a perturbation bound for the estimate output by your spectral method for sufficiently large $m$. 
+
+
+\solution{
+Construct a surrogate matrix
+\[
+\bm{Y}=\frac{1}{m}\sum_{i=1}^{m}y_{i}\bm{a}_{i}\bm{a}_{i}^{\top}=\frac{1}{m}\sum_{i=1}^{m}(\bm{a}_{i}^{\top}\bm{x})^{2}\bm{a}_{i}\bm{a}_{i}^{\top}.
+\]
+Then compute the leading eigenvalue $\bm{u}$ of $\bm{Y}.$ When $m\rightarrow\infty$,
+\[
+\bm{Y}\rightarrow\mathbb{E}[\bm{Y}]=\|\bm{x}\|_{2}^{2}\bm{I}+2\bm{x}\bm{x}^{\top}=\bm{I}+2\bm{x}\bm{x}^{\top},
+\]
+whose leading eigenvector is exactly $\pm\bm{x}$. 
+
+
+}
+
+\end{problem}
+
+
+
+
+
+\begin{problem}{Matrix completion}{20}
+% Preview source code for paragraph 0
+Suppose that the ground-truth matrix is given by
+\[
+\bm{M}^\star=\bm{u}^\star\bm{v}^{\star\top}\in\mathbb{R}^{n\times n},
+\]
+where $\bm{u}^\star=\tilde{\bm{u}}/\|\tilde{\bm{u}}\|_{2}$ and $\bm{v}^\star=\tilde{\bm{v}}/\|\tilde{\bm{v}}\|_{2}$,
+with $\tilde{\bm{u}},\tilde{\bm{v}}\sim\mathcal{N}(\bm{0}, \bm{I}_{n})$
+generated independently. Each entry of $\bm{M}^\star=[M^\star_{i,j}]_{1\leq i,j\leq n}$
+is observed independently with probability $p$. In the lecture,
+we have constructed a matrix ${\bm{M}}=[{M}_{i,j}]_{1\leq i,j\leq n}$,
+where
+\[
+{M}_{i,j}=\begin{cases}
+\frac{1}{p}M^\star_{i,j}, & \text{if }M^\star_{i,j}\text{ is observed};\\
+0, & \text{else}.
+\end{cases}
+\]
+We have shown in class that with high probability, the leading left singular vector ${\bm{u}}$
+of ${\bm{M}}$ is a reliable estimate of $\bm{u}^\star$, provided that
+$p\gg\frac{\log^{3}n}{n}$.
+
+
+	Now, consider a new matrix ${\bm{M}}^{(1)}=[{M}_{i,j}^{(1)}]_{1\leq i,j\leq n}$ obtained by zeroing out the 1st column and 1st row of ${\bm{M}}$. More precisely, for any $1\leq i,j\leq n$, 
+\[
+{M}_{i,j}^{(1)}=\begin{cases}
+{M}_{i,j}, & \text{if }i\neq1\text{ and }j\neq1;\\
+0, & \text{else}.
+\end{cases}
+\]
+Let ${\bm{u}}^{(1)}$ (resp.~${\bm{v}}^{(1)}$) be the leading left (resp.~right) singular vector of ${\bm{M}}^{(1)}$. 
+
+	\newpart{10} Recall that  Wedin's $\sin\bm{\Theta}$ Theorem states that: for any two matrices $\bm{A}$ and $\bm{B}$, their leading left singular vectors (denoted by $\bm{u}_A$ and $\bm{u}_B$ respectively) satisfy
+%
+\[
+	\mathsf{dist}(\bm{u}_A, \bm{u}_B)\leq\frac{\big\|\bm{A}-\bm{B}\big\|}{\sigma_{1}\big(\bm{A}\big)-\sigma_2(\bm{A}) -\|\bm{A}-\bm{B}\|}.
+\]
+Use it to derive an upper bound on $\mathsf{dist}({\bm{u}}^{(1)},{\bm{u}})$ in terms of $n$ and $p$. 
+
+\solution{
+%
+
+
+To begin with, using Matlab notation we have
+\begin{align*}
+\sigma_{1}( {\bm{M}}^{(1)}) & \geq\sigma_{1}(\bm{M}^\star)-\|\bm{M}^\star- {\bm{M}}^{(1)}\|\\
+ & \geq1-\|\bm{M}^\star_{2:n,2:n}- {\bm{M}}_{2:n,2:n}\|-\|\bm{M}^\star_{1:n,1}\|_{2}-\|\bm{M}^\star_{1,1:n}\|_{2}\\
+ & \geq1-o(1),
+\end{align*}
+with high probability. Here, the last inequality follows since 
+\begin{itemize}
+\item it has been shown in the lecture notes that $\|\bm{M}^\star_{2:n,2:n}- {\bm{M}}_{2:n,2:n}\| \leq \|\bm{M}^\star- {\bm{M}} \| \ll1$
+if $p\gg\frac{\log^{3}n}{n}$; 
+\item $\|\bm{M}^\star_{1:n,1}\|_{2}=|v^\star_{1}|\cdot\|\bm{u}^\star\|_{2}=|v^\star_{1}|=\frac{|\tilde{v}_{1}|}{\|\tilde{\bm{v}}\|_{2}}\lesssim\sqrt{\frac{\log n}{n}}$
+with high probability (because $|\tilde{v}_{1}|\lesssim\sqrt{\log n}$
+and $\|\tilde{\bm{v}}\|_{2}=(1-o(1))\sqrt{n}$ with high probability);
+\item Similarly, $\|\bm{M}^\star_{1,1:n}\|_{2}\lesssim\sqrt{\frac{\log n}{n}}$
+with high probability.
+\end{itemize}
+
+Similarly, with high probability one has
+\begin{align*}
+\sigma_{2}( {\bm{M}}^{(1)}) & \leq\sigma_{2}(\bm{M}^\star) + \|\bm{M}^\star- {\bm{M}}^{(1)}\|
+ %& \geq1-\|\bm{M}_{2:n,2:n}- {\bm{M}}_{2:n,2:n}\|-\|\bm{M}_{1:n,1}\|_{2}-\|\bm{M}_{1,1:n}\|_{2}\\
+  \leq o(1).
+\end{align*}
+%
+The above two bounds taken collectively give
+\begin{align*}
+  \sigma_{1}( {\bm{M}}^{(1)}) - \sigma_{2}( {\bm{M}}^{(1)}) & \geq 1 - o(1).
+\end{align*}
+%
+
+% Preview source code for paragraph 4
+
+As a result, applying Wedin's $\sin\bm{\Theta}$ Theorem gives
+\begin{align}
+\mathsf{dist}\big( {\bm{u}}, {\bm{u}}^{(1)}\big) & \lesssim\frac{\| {\bm{M}}- {\bm{M}}^{(1)}\|}{\sigma_{1}( {\bm{M}}^{(1)})-\sigma_{2}( {\bm{M}}^{(1)})}\lesssim\| {\bm{M}}- {\bm{M}}^{(1)}\|.\label{eq:dist-u-bound}
+\end{align}
+In addition, 
+\begin{align*}
+\| {\bm{M}}- {\bm{M}}^{(1)}\| & \leq\| {\bm{M}}_{1:n,1}\|_{2}+\| {\bm{M}}_{1,1:n}\|_{2}\\
+ & \leq\| {\bm{M}}_{1:n,1}\|_{\infty}\sqrt{\| {\bm{M}}_{1:n,1}\|_{0}}+\| {\bm{M}}_{1,1:n}\|_{\infty}\sqrt{\| {\bm{M}}_{1,1:n}\|_{0}}\\
+ & \lesssim\frac{1}{p}\|\bm{u}^\star\|_{\infty}\|\bm{v}^\star\|_{\infty}\sqrt{np}\\
+ & \lesssim\frac{1}{p}\cdot\frac{\log n}{n}\cdot\sqrt{np}\asymp\frac{\log n}{\sqrt{np}},
+\end{align*}
+where we have used the fact that $\| {\bm{M}}_{1:n,1}\|_{0}\asymp np$
+as long as $p\gg\frac{\log n}{n}$ (Chernoff bound). Substitution
+into (\ref{eq:dist-u-bound}) gives
+\begin{align}
+\mathsf{dist}\big( {\bm{u}}, {\bm{u}}^{(1)}\big) & \lesssim\frac{\log n}{\sqrt{np}}.\label{eq:dist-u-bound-1}
+\end{align}
+
+
+
+}
+
+\newpart{10}
+ Recall that a more refined version of Wedin's $\sin\bm{\Theta}$ Theorem states that: for any two matrices $\bm{A}$ and $\bm{B}$, their leading left singular vectors (denoted by $\bm{u}_A$ and $\bm{u}_B$ respectively) satisfy
+%
+\[
+\mathsf{dist}(\bm{u}_{A},\bm{u}_{B})\leq\frac{\max\big\{\big\|(\bm{A}-\bm{B})\bm{v}_{A}\big\|,\big\|(\bm{A}-\bm{B})^{\top}\bm{u}_{A}\big\|\big\}}{\sigma_{1}\big(\bm{A}\big)-\sigma_{2}(\bm{A})-\|\bm{A}-\bm{B}\|}
+\]
+%
+where $\bm{v}_A$ is the leading right singular vector of $\bm{A}$. Can you use this refined version to derive a sharper upper bound on $\mathsf{dist}({\bm{u}}^{(1)},{\bm{u}})$?  Here, you can assume without proof that $\| {\bm{u}} \|_{\infty} , \| {\bm{u}}^{(1)} \|_{\infty}, \| {\bm{v}} \|_{\infty} , \| {\bm{v}}^{(1)} \|_{\infty} \lesssim \sqrt{ \frac{\log n}{n} }$ with high probability. 
+
+
+\solution{
+% Preview source code from paragraph 5 to 7
+%
+Applying the refined version of Wedin's $\sin\bm{\Theta}$ Theorem
+gives
+\begin{align}
+\mathsf{dist}\big( {\bm{u}}, {\bm{u}}^{(1)}\big) & \lesssim\frac{\max\left\{ \|( {\bm{M}}- {\bm{M}}^{(1)}) {\bm{v}}^{(1)}\|_{2},\|( {\bm{M}}- {\bm{M}}^{(1)})^{\top} {\bm{u}}^{(1)}\|_{2}\right\} }{\sigma_{1}( {\bm{M}}^{(1)})-\sigma_{2}( {\bm{M}}^{(1)})}\label{eq:dist-u-bound-2}\\
+ & \lesssim\max\left\{ \|( {\bm{M}}- {\bm{M}}^{(1)}) {\bm{v}}^{(1)}\|_{2},\|( {\bm{M}}- {\bm{M}}^{(1)})^{\top} {\bm{u}}^{(1)}\|_{2}\right\} .
+\end{align}
+
+To bound $\|( {\bm{M}}- {\bm{M}}^{(1)}) {\bm{v}}^{(1)}\|_{2}$,
+we have
+\begin{align*}
+\|( {\bm{M}}- {\bm{M}}^{(1)}) {\bm{v}}^{(1)}\|_{2}\leq & \big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|+\| {\bm{M}}_{1:n,1}\|_{2}\big| {v}_{1}^{(1)}\big|.
+\end{align*}
+It has been shown above that $\| {\bm{M}}_{1:n,1}\|_{2}\lesssim\frac{\log n}{\sqrt{np}}$,
+which together with the assumption $\| {\bm{v}}^{(1)}\|_{\infty}\lesssim\sqrt{\frac{\log n}{n}}$
+gives
+\[
+\| {\bm{M}}_{1:n,1}\|_{2}\big| {v}_{1}^{(1)}\big|\lesssim\sqrt{\frac{\log^{3}n}{n^{2}p}}.
+\]
+In addition, given that $ {\bm{M}}_{1,1:n}$ and $ {\bm{v}}^{(1)}$
+are statistically independent, we have
+%\begin{align*}
+%\mathsf{Var}\left(\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|\right) & \leq\mathbb{E}\left[\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|^{2}\right]\\
+% & \leq\frac{1}{p}\sum_{i=1}^{n}\left(M_{1,i} {v}_{i}^{(1)}\right)^{2}\\
+% & \leq\frac{1}{p}\|\bm{M}_{1,1:n}\|_{\infty}^{2}\| {\bm{v}}^{(1)}\|_{2}^{2}\\
+% & =\frac{1}{p}\|\bm{M}_{1,1:n}\|_{\infty}^{2}\\
+% & \lesssim\frac{1}{p}\frac{\log^{2}n}{n^{2}},
+%\end{align*}
+
+\begin{align*}
+\mathsf{Var}\left(\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|\right) & \leq\mathbb{E}\left[\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|^{2}\right]\\
+ & =\sum_{i=1}^{n} \mathbb{E}\left[  {M}^2_{1,i} ( {v}_{i}^{(1)})^2 \right] \\
+  & =\sum_{i=1}^{n} \mathbb{E}\left[  {M}^2_{1,i} \right] \mathbb{E}\left[ ( {v}_{i}^{(1)})^2 \right] \\
+ & =\sum_{i=1}^{n} \frac{1}{p} M^{\star2}_{1,i} \mathbb{E}\left[ ( {v}_{i}^{(1)})^2 \right] \\
+ & \leq \frac{1}{p}\|\bm{M}^\star_{1,1:n} \|_{\infty}^{2} \mathbb{E}\left[ \sum_{i=1}^{n} ( {v}_{i}^{(1)})^2 \right] \\
+ & = \frac{1}{p}\|\bm{M}^\star_{1,1:n} \|_{\infty}^{2} \\
+ & \lesssim\frac{1}{p}\frac{\log^{2}n}{n^{2}},
+\end{align*}
+and hence by Chebyshev's inequality, 
+\[
+\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|\lesssim\sqrt{\mathsf{Var}\left(\big| {\bm{M}}_{1,1:n} {\bm{v}}^{(1)}\big|\right)\log n}\lesssim\sqrt{\frac{\log^{3}n}{n^{2}p}}
+\]
+with high probability. In summary, 
+\[
+\|( {\bm{M}}- {\bm{M}}^{(1)}) {\bm{v}}^{(1)}\|_{2}\lesssim\sqrt{\frac{\log^{3}n}{n^{2}p}}.
+\]
+
+Similarly, 
+\[
+\|( {\bm{M}}- {\bm{M}}^{(1)})^{\top} {\bm{u}}^{(1)}\|_{2}\lesssim\sqrt{\frac{\log^{3}n}{n^{2}p}}.
+\]
+Putting the above bounds together, we obtain
+\begin{align}
+\mathsf{dist}\big( {\bm{u}}, {\bm{u}}^{(1)}\big) & \leq\sqrt{\frac{\log^{3}n}{n^{2}p}}.
+\end{align}
+This bound is significantly tighter than the one obtain in Part (a). 
+ 
+
+
+}
+
+\end{problem}
+
+
+\begin{problem}{Community detection experiments}{20}
+Consider the SBM model discussed in class. Fix the number $n$ of nodes in a graph to be $100$. Set $p=\frac{1+ \varepsilon}{2}$ and $q=\frac{1-\varepsilon}{2}$ for some quantity $\varepsilon \in [0,1/2]$. Generate a random graph and then use the spectral method to cluster the nodes. Please plot the mis-clustering rate vs. the probability gap $\varepsilon$. At the minimum, you should take 50 different values of $\varepsilon$ (with linear spacing) in $[0, 1/2]$. For each value of $\varepsilon$, you need to run the experiment with at least 200 Monte-Carlo trials to calculate the average mis-clustering rate across trials. 
+\end{problem}
+
+
+
+
+\end{document}

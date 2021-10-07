@@ -1,4 +1,5 @@
 cp -R ~/Dropbox/UChicago/Courses/STAT37797/Lectures2021 Teaching/STAT37797/
+cp -R ~/Dropbox/UChicago/Courses/STAT37797/Homework2021 Teaching/STAT37797/
 cd Teaching/STAT37797
 python2 jemdoc.py index.jemdoc
 python2 jemdoc.py syllabus.jemdoc

@@ -70,9 +70,12 @@ mathserif,wide,%red,
 \begin{itemize}
   \itemsep1em
   %\item Warm-up: matrix denoising
-  \item Community recovery in stochastic block model
-  \item Low-rank matrix completion
-  \item Ranking from pairwise comparisons
+  \item Community recovery in stochastic block model \\
+  	{\footnotesize \hfill \em --- application of Davis-Kahan's theorem}
+  \item Low-rank matrix completion \\
+  	{\footnotesize \hfill \em --- application of Wedin's theorem}
+  \item Ranking from pairwise comparisons \\
+  	{\footnotesize \hfill \em --- application of eigenvector perturbation of prob. transition matrix}
 \end{itemize}
 
 \end{frame}
@@ -116,7 +119,7 @@ mathserif,wide,%red,
 
 
 \begin{frame}
-	\frametitle{A simple model: stochastic block model (SBM)}
+	\frametitle{Stochastic block model (SBM)}
 
 \vspace{-1em}
 
@@ -265,26 +268,31 @@ q\bm{1}\bm{1}^{\top} & p\bm{1}\bm{1}^{\top}
 
 
 \begin{frame}
-\frametitle{Apply Davis-Kahan's result}
-Let \quad $
+\frametitle{Apply Davis-Kahan's theorem}
+Consider 
+\[
 \bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
 \bm{1}\\
 -\bm{1}
 \end{array}\right]\left[\begin{array}{cc}
 \bm{1}^{\top} & -\bm{1}^{\top}\end{array}\right], 
-$ \\
-\qquad$
+\] \\
+which obeys 
+\begin{align*}
+	\lambda_{1}(\bm{M}^{\star})\coloneqq\frac{(p-q)n}{2},  
+	\quad \text{and} \quad
+	\bm{u}^{\star}  \coloneqq \frac{1}{\sqrt{n}}
+	\left[\begin{array}{c}
+		\bm{1}_{n/2}\\
+		-\bm{1}_{n/2}
+	\end{array}\right].
+\end{align*}
+Also, we have 
+\[
 \bm{M}\coloneqq \bm{A}-\frac{p+q}{2}\bm{1}\bm{1}^{\top}
-$, and 
-$
-\bm{u}^{\star}\coloneqq \frac{1}{\sqrt{n}}\left[\begin{array}{c}
-\bm{1}\\
--\bm{1}
-\end{array}\right]
-$ \\
-
+\]
 \vfill
-Then the Davis-Kahan $\sin\bm{\Theta}$ Theorem yields
+Then Davis-Kahan $\sin\bm{\Theta}$ Theorem yields
 %
 \begin{equation}
 	\label{eq:DK-SBM}
@@ -417,6 +425,30 @@ Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $
 
 \end{frame}
 
+\begin{frame}
+	\frametitle{From estimation error to mis-clustering error}
+	WLOG assume that $\|\bm{u}-\bm{u}^{\star}\|_{2}=\mathsf{dist}\big(\bm{u},\bm{u}^{\star}\big)$. Consider the set
+%
+$$
+	\mathcal{N}\coloneqq \big\{ i\mid |u_{i}-u_{i}^{\star}| \geq {1}/{\sqrt{n}}\big\}.
+$$
+We claim that 
+
+\[
+	\frac{1}{n}\sum_{i=1}^{n} \mathbbm{1} \big\{ x_{i}\neq x_{i}^{\star}\big\}
+	\leq \frac{1}{n}\sum_{i=1}^{n} \mathbbm{1} \Bigg \{ |u_i - u_{i}^{\star}| \geq \frac{1}{\sqrt{n}} \Bigg\}
+	= \frac{|\mathcal{N}|}{n}
+\]
+	
+	To see this, observe that for any $i$ obeying $x_{i}\neq x_{i}^{\star}$, one has $\mathsf{sgn}(u_{i})\neq \mathsf{sgn}(u_{i}^{\star})$,
+thus indicating that $|u_i - u_{i}^{\star}| \geq |u_{i}^{\star}| = 1/\sqrt{n}$
+
+In the end, we have
+\[
+|\mathcal{N}|\leq\frac{\|\bm{u}-\bm{u}^{\star}\|_{2}^{2}}{(1/\sqrt{n})^{2}}=o\big(n\big)
+\]
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Statistical accuracy of spectral clustering}
@@ -477,55 +509,56 @@ Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $
 
 \begin{frame}
 \frametitle{Proof of Lemma \ref{lem:perturbation-SBM}}
+We write $\bm{A}-\mathbb{E}[\bm{A}]$ as sum of independent random matrices
+\[
+\bm{A}-\mathbb{E}[\bm{A}] = \sum_{j > i} \big(A_{i,j}-\mathbb{E}[A_{i,j}]\big) \big ( \bm{e}_{i}\bm{e}_{j}^{\top} +\bm{e}_{j}\bm{e}_{i}^{\top} )
+\]
 
-\vfill
-	To simplify presentation,  assume $A_{i,j}$ and $A_{j,i}$ are independent \\ \medskip \hfill (check: why this assumption does not change our bounds)
-\vfill
-
-\end{frame}
+We only need to consider $\bm{A}_{\mathsf{upper}} \coloneqq \sum_{  i < j} \underbrace{\big(A_{i,j}-\mathbb{E}[A_{i,j}]\big) \bm{e}_{i}\bm{e}_{j}^{\top}}_{\eqqcolon \bm{X}_{i,j}} $
 
 
-\begin{frame}
-\frametitle{Proof of Lemma \ref{lem:perturbation-SBM}}
 
-{\small
-Write $\bm{A}-\mathbb{E}[\bm{A}]$ as $\sum_{i,j}\bm{X}_{i,j}$, where
-$\bm{X}_{i,j}=\big(A_{i,j}-\mathbb{E}[A_{i,j}]\big)\bm{e}_{i}\bm{e}_{j}^{\top}$
-%
 \begin{itemize}
 \itemsep0.5em
+\item First, $\|\bm{X}_{i,j}\|\leq1 \eqqcolon B$
 \item Since $\mathsf{Var}(A_{i,j})\leq p$, one has
 $\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq p\bm{e}_{i}\bm{e}_{i}^{\top}$, which gives
 %
 \[
-\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq\sum\nolimits_{i,j}p \bm{e}_{i}\bm{e}_{i}^{\top} \preceq np\,\bm{I}
+\sum\nolimits_{i < j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq\sum\nolimits_{i<j}p \bm{e}_{i}\bm{e}_{i}^{\top} \preceq np\,\bm{I}_{n}
 \]
 %
-Similarly, $\sum_{i,j}\mathbb{E}\left[ \bm{X}_{i,j}^{\top} \bm{X}_{i,j} \right]\preceq np\,\bm{I}$.
+Similarly, $\sum_{i<j}\mathbb{E}\left[ \bm{X}_{i,j}^{\top} \bm{X}_{i,j} \right]\preceq np\,\bm{I}_{n}$.
 As a result,
 %
 \[
-v=\max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\Big\|,\Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\right]\Big\|\right\} \leq np
+v \coloneqq \max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\Big\|,\Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\right]\Big\|\right\} \leq np
 \]
 %
-\item In addition, $\|\bm{X}_{i,j}\|\leq1 \eqqcolon B$
-	
-\item Take the matrix Bernstein inequality to conclude that with high prob.,
-%
-\begin{equation*}
-	\|\bm{A}-\mathbb{E}[\bm{A}]\|\lesssim\sqrt{v\log n}+B\log n\lesssim \sqrt{np\log n} \quad(\text{since }p\gtrsim \frac{\log n}{n})
-\end{equation*}
+
+
 %
 \end{itemize}
 %
 %
 
-}
+
 
 
 \end{frame}
 
 
+\begin{frame}
+	\frametitle{Proof of Lemma \ref{lem:perturbation-SBM} (cont.)}
+		
+Take the matrix Bernstein inequality to conclude that with high prob.,
+%
+\begin{equation*}
+	\|\bm{A}-\mathbb{E}[\bm{A}]\|\lesssim\sqrt{v\log n}+B\log n\lesssim \sqrt{np\log n} 
+\end{equation*}
+
+\hfill \em --- since $p \gtrsim \frac{\log n}{n}$
+\end{frame}
 
 
 
@@ -614,25 +647,43 @@ v=\max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^
 \begin{frame}
 \frametitle{Statistical accuracy of spectral estimate}
 
-Let's analyze a simple case where $\bm{M}=\bm{u} \bm{v}^{\top}$ with
+Let's analyze a simple case where $\bm{M}^{\star}=\bm{u}^\star \bm{v}^{\star\top}$ with
 %
 \begin{align*}
-	\bm{u} = \frac{1}{\|\tilde{\bm{u}}\|_2} \tilde{\bm{u}}, \quad \bm{v} = \frac{1}{\|\tilde{\bm{v}}\|_2} \tilde{\bm{v}}, \quad \tilde{\bm{u}}, \tilde{\bm{v}} \sim \mathcal{N}(\bm{0},\bm{I}_n)
+	\bm{u}^\star = \frac{1}{\|\tilde{\bm{u}}\|_2} \tilde{\bm{u}}, \quad \bm{v}^\star = \frac{1}{\|\tilde{\bm{v}}\|_2} \tilde{\bm{v}}, \quad \tilde{\bm{u}}, \tilde{\bm{v}} \sim \mathcal{N}(\bm{0},\bm{I}_n)
 \end{align*}
 %
 
 \vfill
 
-From Wedin's Theorem: if $p\gg\log^{3}n/n$, then with high prob.
+From Wedin's Theorem: if $\|\bm{M} - \bm{M}^\star\| \leq \frac{1}{2} \sigma_{1}(\bm{M}^{\star}) = \frac{1}{2}$, then
 %
 \begin{align}
-	\max\left\{ \mathsf{dist}(\hat{\bm{u}},\bm{u} ),\mathsf{dist}( \hat{\bm{v}},\bm{v} )\right\} 
-	& \leq \frac{ \| \hat{\bm{M}} - \bm{M} \|  }{\sigma_1(\bm{M})-\| \hat{\bm{M}} - \bm{M} \| } \asymp \hspace{-1em}  \underset{\alertb{\text{controlled by Bernstein}}}{\underbrace{ \| \hat{\bm{M}} - \bm{M} \| }}  \nonumber\\
-	& \ll 1 \quad \alertb{(\text{nearly accurate estimates})}  \label{eq:MC-perturbation}
+	\max\left\{ \mathsf{dist}({\bm{u}},\bm{u}^{\star} ),\mathsf{dist}( {\bm{v}},\bm{v}^{\star} )\right\} 
+	& \lesssim \frac{ \| {\bm{M}} - \bm{M}^\star \|  }{\sigma_1(\bm{M}^\star)} \asymp \|\bm{M} - \bm{M}^\star\|
 \end{align}
 %
 
 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bounding $\|\bm{M} - \bm{M}^\star\|$}
+Matrix concentration inequalities tell us that 
+%
+\begin{lemma}
+\label{lem:perturbation-SBM}
+%
+Consider matrix completion with $p \gg \frac{\log^{3} n}{n}$. Then with high prob. 
+%
+\begin{equation}
+	\label{eq:MC-perturbation}
+	\|\bm{M}-\bm{M}^{\star}\|\lesssim {\sqrt{\frac{\log^{3} n }{n}}} = o(1)
+\end{equation}
+%
+\end{lemma}
+
+	
 \end{frame}
 
 
@@ -662,27 +713,27 @@ Sample complexity needed to yield reliable spectral estimates is
 
 
 \begin{frame}
-	\frametitle{Proof of \eqref{eq:MC-perturbation}}
+	\frametitle{Proof of inequality \eqref{eq:MC-perturbation}}
 
-{\small
+{
 
 
-Write $\hat{\bm{M}}-\bm{M}=\sum_{i,j}\bm{X}_{i,j}$, where $\bm{X}_{i,j}=(\hat{M}_{i,j}-M_{i,j})\bm{e}_{i}\bm{e}_{j}^{\top}$
+Write ${\bm{M}}-\bm{M}^{\star} =\sum_{i,j}\bm{X}_{i,j}$, where $\bm{X}_{i,j}=({M}_{i,j}-M^{\star}_{i,j})\bm{e}_{i}\bm{e}_{j}^{\top}$
 \begin{itemize}
 
-\item First, 
+\item First, based on Gaussianity, we have
 \[
-	\|\bm{X}_{i,j}\|\leq\frac{1}{p}\max_{i,j} |M_{i,j}| \lesssim\frac{\log n}{pn}:=B \quad (\text{check})
+	\|\bm{X}_{i,j}\|\leq\frac{1}{p}\max_{i,j} |M^{\star}_{i,j}| \lesssim\frac{\log n}{pn}:=B \quad (\text{check})
 \]
 
 
-\item Next, $\mathbb{E}\big[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]=\mathsf{Var}(\hat{M}_{i,j})\bm{e}_{i}\bm{e}_{i}^{\top}$
+\item Next, $\mathbb{E}\big[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]=\mathsf{Var}({M}_{i,j})\bm{e}_{i}\bm{e}_{i}^{\top}$
 and hence
 \[
-\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\preceq\Big\{\max_{i,j}\mathsf{Var}\big(\hat{M}_{i,j}\big)\Big\} n\bm{I}\preceq\Big\{\frac{n}{p}\max_{i,j}M_{i,j}^{2}\Big\}\bm{I}
+\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\preceq\Big\{\max_{i,j}\mathsf{Var}\big({M}_{i,j}\big)\Big\} n\bm{I}\preceq\Big\{\frac{n}{p}\max_{i,j}(M^{\star}_{i,j})^{2}\Big\}\bm{I}
 \]
 \[
-\Longrightarrow\qquad\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\big\|\leq\frac{n}{p}\max_{i,j}M_{i,j}^{2}\lesssim\frac{\log^{2}n}{np}\quad(\text{check})
+\Longrightarrow\qquad\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\big\|\leq\frac{n}{p}\max_{i,j}(M^{\star}_{i,j})^{2}\lesssim\frac{\log^{2}n}{np}\quad(\text{check})
 \]
 Similar bounds hold for $\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\big]\big\|$.
 Therefore, 
@@ -690,11 +741,7 @@ Therefore,
 v:=\max\left\{ \big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\big]\big\|,\big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\big]\big\|\right\} \lesssim\frac{\log^{2}n}{np}
 \]
 
-\item Take the matrix Bernstein inequality to yield: if $p\gg\log^{3}n/n$,
-then
-\[
-\|\hat{\bm{M}}-\bm{M}\|\lesssim\sqrt{v\log n}+B\log n\ll1
-\]
+
 \end{itemize}
 
 
@@ -703,7 +750,14 @@ then
 
 \end{frame}
 
-
+\begin{frame}
+	\frametitle{Proof of inequality \eqref{eq:MC-perturbation}}
+	Take the matrix Bernstein inequality to yield: if $p\gg\log^{3}n/n$,
+then
+\[
+\|\hat{\bm{M}}-\bm{M}\|\lesssim\sqrt{v\log n}+B\log n \asymp \sqrt{\frac{\log^{3} n }{n}}\ll1
+\]
+\end{frame}
 
 
 \begin{frame}[plain]

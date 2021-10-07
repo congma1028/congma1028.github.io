@@ -24,6 +24,7 @@ There are 3 milestones / deliverables to help you through the process.
 .. "Subspace estimation from unbalanced and incomplete data matrices: L2,inf statistical guarantees", C. Cai, G. Li, Y. Chi, H. V. Poor, Y. Chen, Annals of Statistics, 2021
 .. "Partial recovery for top-k ranking: optimality of MLE and sub-optimality of spectral method", P. Chen, C. Gao, and A. Zhang, 2021
 .. "Lagrangian inference for ranking problems", Y. Liu, E. X. Fang, and J. Lu, 2021 
+.. "Clustering a mixture of Gaussians with unknown covariance", D. Davis, M. Diaz, K. Wang, 2021
 . Nonconvex optimization
 .. "On the computational and statistical complexity of over-parameterized matrix sensing", J. Zhuo, J. Kwon, N. Ho, C. Caramanis, 2021
 .. "Rank overspecified robust matrix recovery:

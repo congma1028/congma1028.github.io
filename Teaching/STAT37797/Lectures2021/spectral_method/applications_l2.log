@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 OCT 2021 22:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 OCT 2021 21:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1158,7 +1158,11 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 39.
 
-(./applications_l2.aux)
+(./applications_l2.aux
+
+LaTeX Warning: Label `lem:perturbation-SBM' multiply defined.
+
+)
 \openout1 = `applications_l2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -1177,8 +1181,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
 LaTeX Font Info:    Try loading font information for OT1+lmss on input line 39.
 
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmss.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 *geometry* driver: auto-detecting
@@ -1368,47 +1371,50 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ] [3
 
-] [4
+]
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 81.
+ [4
 
 ] [5
 
 ]
-<../../../Figures/SBM_2.png, id=57, 1263.72125pt x 609.27625pt>
+<../../../Figures/SBM_2.png, id=58, 1263.72125pt x 609.27625pt>
 File: ../../../Figures/SBM_2.png Graphic file (type png)
 <use ../../../Figures/SBM_2.png>
-Package pdftex.def Info: ../../../Figures/SBM_2.png  used on input line 114.
+Package pdftex.def Info: ../../../Figures/SBM_2.png  used on input line 117.
 (pdftex.def)             Requested size: 199.36496pt x 96.11954pt.
  [6
 
  <../../../Figures/SBM_2.png>]
-<../../../Figures/SBM_1.png, id=68, 890.32625pt x 689.57625pt>
+<../../../Figures/SBM_1.png, id=69, 890.32625pt x 689.57625pt>
 File: ../../../Figures/SBM_1.png Graphic file (type png)
 <use ../../../Figures/SBM_1.png>
-Package pdftex.def Info: ../../../Figures/SBM_1.png  used on input line 177.
+Package pdftex.def Info: ../../../Figures/SBM_1.png  used on input line 180.
 (pdftex.def)             Requested size: 93.07266pt x 72.08842pt.
 
-Overfull \hbox (12.97386pt too wide) in paragraph at lines 177--177
+Overfull \hbox (12.97386pt too wide) in paragraph at lines 180--180
  [] 
  []
 
-<../../../Figures/arrow_up.png, id=69, 73.7154pt x 52.0344pt>
+<../../../Figures/arrow_up.png, id=70, 73.7154pt x 52.0344pt>
 File: ../../../Figures/arrow_up.png Graphic file (type png)
 <use ../../../Figures/arrow_up.png>
-Package pdftex.def Info: ../../../Figures/arrow_up.png  used on input line 177.
+Package pdftex.def Info: ../../../Figures/arrow_up.png  used on input line 180.
 
 (pdftex.def)             Requested size: 38.44586pt x 27.13821pt.
 File: ../../../Figures/SBM_2.png Graphic file (type png)
 <use ../../../Figures/SBM_2.png>
-Package pdftex.def Info: ../../../Figures/SBM_2.png  used on input line 177.
+Package pdftex.def Info: ../../../Figures/SBM_2.png  used on input line 180.
 (pdftex.def)             Requested size: 149.51889pt x 72.08842pt.
 [7
 
  <../../../Figures/SBM_1.png> <../../../Figures/arrow_up.png>]
-<../../../Figures/adjacency_random.png, id=80, 678.535pt x 688.5725pt>
+<../../../Figures/adjacency_random.png, id=81, 678.535pt x 688.5725pt>
 File: ../../../Figures/adjacency_random.png Graphic file (type png)
 <use ../../../Figures/adjacency_random.png>
 Package pdftex.def Info: ../../../Figures/adjacency_random.png  used on input l
-ine 204.
+ine 207.
 (pdftex.def)             Requested size: 128.15614pt x 130.04211pt.
  [8
 
@@ -1416,19 +1422,19 @@ ine 204.
 File: ../../../Figures/adjacency_random.png Graphic file (type png)
 <use ../../../Figures/adjacency_random.png>
 Package pdftex.def Info: ../../../Figures/adjacency_random.png  used on input l
-ine 231.
+ine 234.
 (pdftex.def)             Requested size: 73.68654pt x 73.68388pt.
-<../../../Figures/adjacency_mean.png, id=90, 679.53876pt x 687.56876pt>
+<../../../Figures/adjacency_mean.png, id=91, 679.53876pt x 687.56876pt>
 File: ../../../Figures/adjacency_mean.png Graphic file (type png)
 <use ../../../Figures/adjacency_mean.png>
 Package pdftex.def Info: ../../../Figures/adjacency_mean.png  used on input lin
-e 231.
+e 234.
 (pdftex.def)             Requested size: 73.68149pt x 73.68138pt.
-<../../../Figures/adjacency_noise.png, id=91, 675.52374pt x 687.56876pt>
+<../../../Figures/adjacency_noise.png, id=92, 675.52374pt x 687.56876pt>
 File: ../../../Figures/adjacency_noise.png Graphic file (type png)
 <use ../../../Figures/adjacency_noise.png>
 Package pdftex.def Info: ../../../Figures/adjacency_noise.png  used on input li
-ne 231.
+ne 234.
 (pdftex.def)             Requested size: 73.68938pt x 73.68138pt.
  [9
 
@@ -1436,17 +1442,17 @@ ne 231.
 File: ../../../Figures/adjacency_random.png Graphic file (type png)
 <use ../../../Figures/adjacency_random.png>
 Package pdftex.def Info: ../../../Figures/adjacency_random.png  used on input l
-ine 259.
+ine 262.
 (pdftex.def)             Requested size: 73.68654pt x 73.68388pt.
 File: ../../../Figures/adjacency_mean.png Graphic file (type png)
 <use ../../../Figures/adjacency_mean.png>
 Package pdftex.def Info: ../../../Figures/adjacency_mean.png  used on input lin
-e 259.
+e 262.
 (pdftex.def)             Requested size: 73.68149pt x 73.68138pt.
 File: ../../../Figures/adjacency_noise.png Graphic file (type png)
 <use ../../../Figures/adjacency_noise.png>
 Package pdftex.def Info: ../../../Figures/adjacency_noise.png  used on input li
-ne 259.
+ne 262.
 (pdftex.def)             Requested size: 73.68938pt x 73.68138pt.
  [10
 
@@ -1456,96 +1462,114 @@ ne 259.
 
 ] [13
 
-] [14
+]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 450.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [14
 
 ] [15
 
-] [16
+]
+[16
 
 ] [17
+
+] [18
 
 ]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../../../Figures/NetflixMahd
 i.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allow
 ed
-<../../../Figures/NetflixMahdi.pdf, id=177, 1580.90625pt x 1284.29813pt>
+<../../../Figures/NetflixMahdi.pdf, id=186, 1580.90625pt x 1284.29813pt>
 File: ../../../Figures/NetflixMahdi.pdf Graphic file (type pdf)
 <use ../../../Figures/NetflixMahdi.pdf>
 Package pdftex.def Info: ../../../Figures/NetflixMahdi.pdf  used on input line 
-581.
+614.
 (pdftex.def)             Requested size: 144.17686pt x 117.11038pt.
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 581.
+[19
 
-[18
-
- <../../../Figures/NetflixMahdi.pdf>] [19
-
-]
-Overfull \hbox (6.56856pt too wide) detected at line 636
-[]
- []
-
-[20
+ <../../../Figures/NetflixMahdi.pdf>] [20
 
 ] [21
 
-]
-Overfull \vbox (4.88373pt too high) detected at line 704
- []
-
-[22
+]pdfTeX warning (ext4): destination with the same identifier (name{lem:perturba
+tion-SBM}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.687 \end{frame}
+                  [22
 
 ] [23
 
 ]
-<../../../Figures/pairwise-comparison-tennis.png, id=234, 719.68875pt x 657.958
+Overfull \hbox (7.48473pt too wide) detected at line 751
+\OT1/lmr/m/n/10.95 =[]\OMS/lmsy/m/n/10.95 )  []\U/msb/m/n/10.95 E[] [][] \OML/c
+mm/b/it/10.95 X[]X[][][] \OMS/lmsy/m/n/10.95 ^^T [] []\OT1/lmr/m/n/10.95 (\OML/
+lmm/m/it/10.95 M[]\OT1/lmr/m/n/10.95 )[] \U/msa/m/n/10.95 . [] \OT1/lmr/m/n/10.
+95 ([])
+ []
+
+
+Overfull \hbox (0.46008pt too wide) detected at line 751
+\OML/lmm/m/it/10.95 v \OT1/lmr/m/n/10.95 := [] [] \U/msa/m/n/10.95 . []
+ []
+
+[24
+
+] [25
+
+] [26
+
+]
+<../../../Figures/pairwise-comparison-tennis.png, id=265, 719.68875pt x 657.958
 13pt>
 File: ../../../Figures/pairwise-comparison-tennis.png Graphic file (type png)
 <use ../../../Figures/pairwise-comparison-tennis.png>
 Package pdftex.def Info: ../../../Figures/pairwise-comparison-tennis.png  used 
-on input line 728.
+on input line 782.
 (pdftex.def)             Requested size: 192.23909pt x 175.75357pt.
- [24
+ [27
 
  <../../../Figures/pairwise-comparison-tennis.png (PNG copy)>]
-<../../../Figures/preference-score-w.pdf, id=242, 408.52625pt x 250.9375pt>
+<../../../Figures/preference-score-w.pdf, id=273, 408.52625pt x 250.9375pt>
 File: ../../../Figures/preference-score-w.pdf Graphic file (type pdf)
 <use ../../../Figures/preference-score-w.pdf>
 Package pdftex.def Info: ../../../Figures/preference-score-w.pdf  used on input
- line 773.
+ line 827.
 (pdftex.def)             Requested size: 144.17688pt x 88.56076pt.
 
-Overfull \vbox (0.47453pt too high) detected at line 773
+Overfull \vbox (0.47453pt too high) detected at line 827
  []
 
-[25
+[28
 
  <../../../Figures/preference-score-w.pdf>]
 File: ../../../Figures/preference-score-w.pdf Graphic file (type pdf)
 <use ../../../Figures/preference-score-w.pdf>
 Package pdftex.def Info: ../../../Figures/preference-score-w.pdf  used on input
- line 773.
+ line 827.
 (pdftex.def)             Requested size: 144.17688pt x 88.56076pt.
 
-Overfull \vbox (0.47453pt too high) detected at line 773
+Overfull \vbox (0.47453pt too high) detected at line 827
  []
 
-[26
+[29
 
-] [27
+] [30
 
-] [28
+] [31
 
-] [29
+] [32
 
 ]
 
-LaTeX Warning: Reference `thm:mc-perturbation' on page 30 undefined on input li
-ne 873.
+LaTeX Warning: Reference `thm:mc-perturbation' on page 33 undefined on input li
+ne 927.
 
-[30
+[33
 
 ]
 \tf@nav=\write7
@@ -1562,72 +1586,77 @@ ne 873.
 Package caption Warning: Unused \captionsetup[figure] on input line 166.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 876.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 876.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 930.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 930.
 (./applications_l2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 876.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 876.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 930.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 930.
 Package rerunfilecheck Info: File `applications_l2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 34117 strings out of 492616
- 807815 string characters out of 6129482
- 1033796 words of memory out of 5000000
- 37212 multiletter control sequences out of 15000+600000
- 83454 words of font info for 103 fonts, out of 8000000 for 9000
+ 34155 strings out of 492616
+ 808581 string characters out of 6129482
+ 1032796 words of memory out of 5000000
+ 37235 multiletter control sequences out of 15000+600000
+ 84376 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,20n,96p,782b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{thm:mc-perturbation} has been referenced but does
  not exist, replaced by a fixed one
 
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/te
-xlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019
-/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dis
-t/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
-ublic/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
-e1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
-c/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi1
-0.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></us
-r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/tex
-live/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2019/t
-exmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
-mr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/tex
-live/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/lm/lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/lm/lmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
-lmss9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pf
-b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texli
-ve/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
-ublic/lm/lmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfo
-nts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1000.pfb>
-Output written on applications_l2.pdf (30 pages, 2015233 bytes).
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} </Users/congm
+a/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk>{/usr/l
+ocal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texli
+ve/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/te
+xmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
+m/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.
+pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/lm/lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss9
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/
+texlive/2019/texmf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/lm/lmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
+/lm/lmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/s
+ymbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm
+-super/sfrm1000.pfb>
+Output written on applications_l2.pdf (33 pages, 2047808 bytes).
 PDF statistics:
- 497 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
+ 195 words of extra memory for PDF output out of 10000 (max. 10000000)
 
