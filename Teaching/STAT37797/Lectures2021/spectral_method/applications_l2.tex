@@ -61,7 +61,7 @@ mathserif,wide,%red,
 	
 	\vfill
 	\pause
-	{\hfill \em --- we will check their applications today}
+	{\hfill \em --- we will see their applications today}
 \end{frame}
 
 \begin{frame}
@@ -192,7 +192,7 @@ mathserif,wide,%red,
 \end{center}
 
 
-Consider the adjacency matrix $\bm{A}\in \{0,1\}^{n\times n}$ of $\mathcal{G}$: (assume $A_{ii} = p$)
+Consider the adjacency matrix $\bm{A}\in \mathbb{R}^{n\times n}$ of $\mathcal{G}$: (assume $A_{ii} = p$)
 %
 \[
 	A_{i,j} = \begin{cases}  1, \qquad & \text{if } (i,j) \in \mathcal{G} \\ 0, & \text{else} \end{cases}
@@ -251,7 +251,7 @@ q\bm{1}\bm{1}^{\top} & p\bm{1}\bm{1}^{\top}
 	\item[{\color{black}1.}] computing the leading eigenvector $\bm{u}=[u_i]_{1\leq i\leq n}$ of $\bm{A} - \frac{p+q}{2}\bm{1}\bm{1}^{\top}$
 	\item[{\color{black}2.}] rounding:  output
 		${x}_{i}=\begin{cases}
-			1, & \text{if }u_{i}>0\\
+			1, & \text{if }u_{i} \geq 0\\
 			-1, & \text{if }u_{i}<0
 \end{cases}$
 \end{itemize}
@@ -268,8 +268,8 @@ q\bm{1}\bm{1}^{\top} & p\bm{1}\bm{1}^{\top}
 
 
 \begin{frame}
-\frametitle{Apply Davis-Kahan's theorem}
-Consider 
+\frametitle{Analysis of spectral clustering}
+Consider ``ground-truth'' matrix
 \[
 \bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
 \bm{1}\\
@@ -287,18 +287,18 @@ which obeys
 		-\bm{1}_{n/2}
 	\end{array}\right].
 \end{align*}
-Also, we have 
+Also, we have perturbed matrix
 \[
 \bm{M}\coloneqq \bm{A}-\frac{p+q}{2}\bm{1}\bm{1}^{\top}
 \]
 \vfill
-Then Davis-Kahan $\sin\bm{\Theta}$ Theorem yields
+Davis-Kahan implies if $\|\bm{A}-\mathbb{E}[\bm{A}]\| < \lambda_{1}(\bm{M}^{\star})=\frac{(p-q)n}{2}$, then 
 %
 \begin{equation}
 	\label{eq:DK-SBM}
 	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) \leq\frac{\|{\bm{M}} - \bm{M}^{\star}\|}{\lambda_{1}(\bm{M}^{\star})-\|{\bm{M}} - \bm{M}\|}=\frac{\|\bm{A}-\mathbb{E}[\bm{A}]\|}{\frac{(p-q)n}{2}-\|\bm{A}-\mathbb{E}[\bm{A}]\|}
 \end{equation}
-as long as $\|\bm{A}-\mathbb{E}[\bm{A}]\| < \lambda_{1}(\bm{M}^{\star})=\frac{(p-q)n}{2}$
+
 %
 %\vfill
 %
@@ -383,7 +383,7 @@ as long as $\|\bm{A}-\mathbb{E}[\bm{A}]\| < \lambda_{1}(\bm{M}^{\star})=\frac{(p
 \begin{frame}
 \frametitle{Bounding $\| \bm{A}-\mathbb{E}[\bm{A}] \|$}
 
-Matrix concentration inequalities tell us that 
+Matrix Bernstein inequality tells us that 
 %
 \begin{lemma}
 \label{lem:perturbation-SBM}
@@ -398,6 +398,12 @@ Consider SBM with $p>q$ and $p\gtrsim \frac{\log n}{n}$. Then with high prob.
 \end{lemma}
 
 {\hfill \em --- better concentration yields $\sqrt{np}$ bound}
+
+\vfill
+
+\begin{itemize}
+	\item with high probability in this course often means ``with probability at least $1 - O(n^{-8})$''
+\end{itemize}
 \end{frame}
 
 
@@ -405,21 +411,25 @@ Consider SBM with $p>q$ and $p\gtrsim \frac{\log n}{n}$. Then with high prob.
 \begin{frame}
 \frametitle{Statistical accuracy of spectral clustering}
 
-Substitute \eqref{eq:A-perturbation} into \eqref{eq:DK-SBM} to reach
+Substitute ineq.~\eqref{eq:A-perturbation} into  ineq.~\eqref{eq:DK-SBM} to reach
 %
 \begin{align*}
-	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) &\leq \frac{\|\bm{A}-\mathbb{E}[\bm{A}]\|}{\frac{(p-q)n}{2}-\|\bm{A}-\mathbb{E}[\bm{A}]\|}  \lesssim \frac{\sqrt{np \log n}}{(p-q)n}
+	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) &\leq \frac{\|\bm{A}-\mathbb{E}[\bm{A}]\|}{\frac{(p-q)n}{2}-\|\bm{A}-\mathbb{E}[\bm{A}]\|}  \lesssim \frac{\sqrt{np \log n}}{(p-q)n} = o(1)
 \end{align*}
 %
-provided that $(p-q)n \gg \sqrt{np \log n}$
+provided that $\sqrt{np \log n} = o((p-q)n)$
 
-\bigskip
+\vfill 
 
-Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $}, with high prob.~one has
-%
-\begin{align*}
-	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) \ll 1  \qquad \Longrightarrow \qquad  \text{nearly perfect clustering}
-\end{align*}
+Now question is 
+
+
+{\em \hfill --- how to transfer from estimation error to mis-clustering error}
+%Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $}, with high prob.~one has
+%%
+%\begin{align*}
+%	\mathsf{dist}( {\bm{u}}, \bm{u}^{\star}) \ll 1  \qquad \Longrightarrow \qquad  \text{nearly perfect clustering}
+%\end{align*}
 %
 
 
@@ -430,7 +440,7 @@ Thus, under condition \alert{$\frac{p-q}{\sqrt{p}}\gg \sqrt{\tfrac{\log n}{n}} $
 	WLOG assume that $\|\bm{u}-\bm{u}^{\star}\|_{2}=\mathsf{dist}\big(\bm{u},\bm{u}^{\star}\big)$. Consider the set
 %
 $$
-	\mathcal{N}\coloneqq \big\{ i\mid |u_{i}-u_{i}^{\star}| \geq {1}/{\sqrt{n}}\big\}.
+	\mathcal{N}\coloneqq \big\{ i\mid |u_{i}-u_{i}^{\star}| \geq {1}/{\sqrt{n}}\big\}
 $$
 We claim that 
 
@@ -454,13 +464,13 @@ In the end, we have
 \frametitle{Statistical accuracy of spectral clustering}
 
 \[
-	\alert{\frac{p-q}{\sqrt{p}}\gg \sqrt{\frac{\log n}{n}}} \quad \Longrightarrow \quad \text{nearly perfect clustering} 
+	\alert{\frac{p-q}{\sqrt{p}}\gg \sqrt{\frac{\log n}{n}}} \quad \Longrightarrow \quad \text{almost exact recovery} 
 \]
 
 \begin{itemize}
 	\item {\bf dense regime:} if $p\asymp q \asymp 1$, then this condition reads
 	      \[
-			p-q \gg \sqrt{\frac{\log n}{n}}
+			p-q \gg \sqrt{\frac{\log n}{n}} \qquad \text{(extremely small gap)}
 	      \]
         \item {\bf ``sparse'' regime:} if $p = \frac{a\log n}{n}$ and $q = \frac{b \log n}{n}$ for  $a,b\asymp 1$, then 
 	      \[
@@ -511,7 +521,7 @@ In the end, we have
 \frametitle{Proof of Lemma \ref{lem:perturbation-SBM}}
 We write $\bm{A}-\mathbb{E}[\bm{A}]$ as sum of independent random matrices
 \[
-\bm{A}-\mathbb{E}[\bm{A}] = \sum_{j > i} \big(A_{i,j}-\mathbb{E}[A_{i,j}]\big) \big ( \bm{e}_{i}\bm{e}_{j}^{\top} +\bm{e}_{j}\bm{e}_{i}^{\top} )
+\bm{A}-\mathbb{E}[\bm{A}] = \sum_{i < j} \big(A_{i,j}-\mathbb{E}[A_{i,j}]\big) \big ( \bm{e}_{i}\bm{e}_{j}^{\top} +\bm{e}_{j}\bm{e}_{i}^{\top} )
 \]
 
 We only need to consider $\bm{A}_{\mathsf{upper}} \coloneqq \sum_{  i < j} \underbrace{\big(A_{i,j}-\mathbb{E}[A_{i,j}]\big) \bm{e}_{i}\bm{e}_{j}^{\top}}_{\eqqcolon \bm{X}_{i,j}} $
@@ -557,7 +567,7 @@ Take the matrix Bernstein inequality to conclude that with high prob.,
 	\|\bm{A}-\mathbb{E}[\bm{A}]\|\lesssim\sqrt{v\log n}+B\log n\lesssim \sqrt{np\log n} 
 \end{equation*}
 
-\hfill \em --- since $p \gtrsim \frac{\log n}{n}$
+{\hfill \em --- as long as $p \gtrsim \frac{\log n}{n}$}
 \end{frame}
 
 
@@ -650,7 +660,7 @@ Take the matrix Bernstein inequality to conclude that with high prob.,
 Let's analyze a simple case where $\bm{M}^{\star}=\bm{u}^\star \bm{v}^{\star\top}$ with
 %
 \begin{align*}
-	\bm{u}^\star = \frac{1}{\|\tilde{\bm{u}}\|_2} \tilde{\bm{u}}, \quad \bm{v}^\star = \frac{1}{\|\tilde{\bm{v}}\|_2} \tilde{\bm{v}}, \quad \tilde{\bm{u}}, \tilde{\bm{v}} \sim \mathcal{N}(\bm{0},\bm{I}_n)
+	\bm{u}^\star = \frac{1}{\|\tilde{\bm{u}}\|_2} \tilde{\bm{u}}, \quad \bm{v}^\star = \frac{1}{\|\tilde{\bm{v}}\|_2} \tilde{\bm{v}}, \quad \tilde{\bm{u}}, \tilde{\bm{v}} \overset{\mathsf{indep.}}{\sim} \mathcal{N}(\bm{0},\bm{I}_n)
 \end{align*}
 %
 
@@ -669,7 +679,7 @@ From Wedin's Theorem: if $\|\bm{M} - \bm{M}^\star\| \leq \frac{1}{2} \sigma_{1}(
 
 \begin{frame}
 	\frametitle{Bounding $\|\bm{M} - \bm{M}^\star\|$}
-Matrix concentration inequalities tell us that 
+Matrix Bernstein inequality tells us that 
 %
 \begin{lemma}
 \label{lem:perturbation-SBM}
@@ -706,6 +716,11 @@ Sample complexity needed to yield reliable spectral estimates is
 	\underset{\alertb{\text{optimal up to log factor}}}{\underbrace{ n^2 p \asymp n \log ^3 n  }} 
 \]
 %
+
+
+\vfill 
+
+{\hfill \em \footnotesize --- sub-optimal accuracy though}
 
 \end{frame}
 
@@ -751,11 +766,11 @@ v:=\max\left\{ \big\|\mathbb{E}\big[\sum\nolimits _{i,j}\bm{X}_{i,j}\bm{X}_{i,j}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Proof of inequality \eqref{eq:MC-perturbation}}
-	Take the matrix Bernstein inequality to yield: if $p\gg\log^{3}n/n$,
+	\frametitle{Proof of inequality \eqref{eq:MC-perturbation} (cont.)}
+	Take the matrix Bernstein inequality to yield: if $p\gg (\log^{3}n )/n$,
 then
 \[
-\|\hat{\bm{M}}-\bm{M}\|\lesssim\sqrt{v\log n}+B\log n \asymp \sqrt{\frac{\log^{3} n }{n}}\ll1
+ \|\bm{M} - \bm{M}^\star\| \lesssim\sqrt{v\log n}+B\log n \asymp \sqrt{\frac{\log^{3} n }{n}}\ll1
 \]
 \end{frame}
 
@@ -798,7 +813,7 @@ then
 		\itemsep0.5em
 		\item $n$ items to be ranked
 
-		\item assign  a latent score $\{w_i^{\star}\}_{1\leq i\leq n}$ to each item, so that 
+		\item assign  a latent positive score $\{w_i^{\star}\}_{1\leq i\leq n}$ to each item, so that 
 			$$\text{item }i\succ\text{item }j \quad \text{if} \quad w_i^{\star} >w_j^{\star}$$
 
 		\item each pair of items $(i,j)$ is compared independently
@@ -891,40 +906,188 @@ then
 
 	\hfill --- closely related to PageRank
 
-\pause
-\vfill	
-{
-\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
-
-\begin{varblock}[\textwidth]{}
-\begin{center}
-	{\bf Key:} stability of eigenspace against perturbation $\bm{M}-\bm{M}^{\star}$? 
-\end{center}
-\end{varblock}
-}
 \end{frame}
-
-
 
 \begin{frame}
-	\frametitle{Statistical guarantees for spectral ranking}
+	\frametitle{Analysis of spectral ranking}
+	Apply our perturbation bound to see
+	\begin{align}
+	\|\bm{\pi}-\bm{\pi}^{\star}\|_{\bm{\pi}^{\star}}
+	& \leq \frac{\big\Vert \bm{\pi}^{\star\top}\bm{E}\big\Vert _{\bm{\pi}^{\star}}}
+	{1-\max\left\{ \lambda_{2}(\bm{P}^{\star}),-\lambda_{n}(\bm{P}^{\star})\right\} -\left\Vert \bm{E}\right\Vert _{\bm{\pi}^{\star}}} \nonumber
+\end{align}
+%
+provided that
+%
+\begin{align}
+	1-\max\big\{ \lambda_{2}(\bm{P}^{\star}),-\lambda_{n}(\bm{P}^{\star})\big\}
+	-\left\Vert \bm{E}\right\Vert _{\bm{\pi}^{\star}} > 0
+\end{align}
 
-	\hfill --- {\small Negahban, Oh, Shah\,'16, Chen, Fan, Ma, Wang\,'19}
-
-	\vfill
-
-	Suppose $\max_{i,j} \frac{w_i}{w_j} \lesssim 1$. Then with high prob.
-	%
-	\begin{align*}
-		\frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_2 }{\|\bm{\pi} \|_2} \asymp \frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_{\bm{\pi}} }{\|\bm{\pi} \|_{2}} \lesssim  \hspace{-1.2em} \underset{\alertb{\text{nearly perfect estimate}}}{\underbrace{ \frac{1}{\sqrt{n}} ~\rightarrow~ 0 }}
-	\end{align*}
-	%
-
-	\begin{itemize}
-		\item a consequence of Theorem \ref{thm:mc-perturbation} and  matrix Bernstein (exercise)
-	\end{itemize}
-
+\pause 
+\vfill
+{\hfill \em --- need to understand spectral gap and noise size}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Spectral gap of Markov chain}
+	Define condition number
+	\begin{equation*}
+	\kappa \coloneqq\frac{\max_{1\leq i\leq n}w_{i}^{\star}}{\min_{1\leq i\leq n}w_{i}^{\star}}
+\end{equation*}
+	\begin{lemma}
+	\label{lemma:ranking-gap}
+	It follows that
+%
+\[
+1-\max\big\{ \lambda_{2}(\bm{P}^{\star}),-\lambda_{n}(\bm{P}^{\star}) \big\} \geq\frac{1}{2\kappa^{2}}.
+\]
+\end{lemma}
+
+\vfill
+
+\begin{itemize}
+	\item We omit the proof; it's based on comparison between two reversible Markov chains
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bound $\|\bm{E}\|_{\bm{\pi}^\star}$}
+	Recall that $\bm{E}\coloneqq\bm{P}-\bm{P}^{\star}$
+	
+	\vfill
+\begin{lemma}
+	\label{lemma:ranking-noise}
+
+With probability at least $1-O(n^{-8})$,
+%
+\[
+	\|\bm{E}\|_{\bm{\pi}^{\star}}\leq \sqrt{\kappa}\,\|\bm{E}\| \lesssim\sqrt{\frac{\kappa\log n}{n}}.
+\]
+%
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analysis of spectral ranking (cont.)}
+	Recall perturbation bound
+	\begin{align}
+	\|\bm{\pi}-\bm{\pi}^{\star}\|_{\bm{\pi}^{\star}}
+	& \leq \frac{\big\Vert \bm{\pi}^{\star\top}\bm{E}\big\Vert _{\bm{\pi}^{\star}}}
+	{1-\max\left\{ \lambda_{2}(\bm{P}^{\star}),-\lambda_{n}(\bm{P}^{\star})\right\} -\left\Vert \bm{E}\right\Vert _{\bm{\pi}^{\star}}} \nonumber \\
+	& \leq 4 \kappa^2 \big\Vert \bm{\pi}^{\star\top}\bm{E}\big\Vert _{\bm{\pi}^{\star}} \qquad \alertb{(\text{provided that }n \gg \kappa^5 \log n)} \nonumber
+\end{align}
+
+Note that for any $\bm{v}$, one has 
+\[
+	\|\bm{v}\|_{\bm{\pi}^{\star}} \leq \sqrt{\pi^{\star}_{\max }} \, \|\bm{v}\|_2 , \qquad \text{and} \qquad
+	\|\bm{v}\|_2  \leq  \frac{1}{\sqrt{  \pi^{\star}_{\min} } } \, \|\bm{v}\|_{\bm{\pi}^{\star}}
+\]
+As a result, one has
+\begin{align*}
+\|\bm{\pi}-\bm{\pi}^{\star}\|_{2} & \leq\frac{1}{\sqrt{\pi_{\min}^{\star}}}\|\bm{\pi}-\bm{\pi}^{\star}\|_{\bm{\pi}^{\star}}\leq\frac{4\kappa^{2}}{\sqrt{\pi_{\min}^{\star}}}\|\bm{\pi}^{\star\top}\bm{E}\|_{\bm{\pi}^{\star}}\\
+ & \leq4\kappa^{2.5}\|\bm{\pi}^{\star\top}\bm{E}\|_{2} \leq4\kappa^{2.5}\|\bm{E}\|\,\|\bm{\pi}^{\star}\|_{2}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:ranking-noise}}
+	By construction of $\bm{P}$ and $\bm{P}^{\star}$, we see that
+%
+\begin{equation}
+	E_{i,j}=P_{i,j}-P_{i,j}^{\star}=\frac{1}{n} \big( y_{i,j}- \mathbb{E} [ y_{i,j}] \big) \label{eq:ranking-noise-off-diag}
+\end{equation}
+%
+for any $i\neq j$.
+In addition, for all $1\leq i\leq n$, it follows that
+%
+\begin{align}
+E_{i,i} & =P_{i,i}-P_{i,i}^{\star}
+%=\Big(1-\sum_{j:j\neq i}P_{i,j}\Big)-\Big(1-\sum_{j:j\neq i}P_{i,j}^{\star}\Big)
+= -\sum_{j:j\neq i}E_{i,j}
+  =-\frac{1}{n}\sum_{j:j\neq i}\big( y_{i,j}- \mathbb{E} [ y_{i,j}] \big) .\label{eq:ranking-noise-diag}
+\end{align}
+%
+We shall decompose the matrix $\bm{E}$
+into three parts: upper triangular part, diagonal part, and lower triangular
+part:
+%
+\begin{equation}
+\|\bm{E}\|\leq\|\bm{E}_{\mathsf{upper}}\|+\|\bm{E}_{\mathsf{diag}}\|+\|\bm{E}_{\mathsf{lower}}\|\label{eq:ranking-triangle}
+\end{equation}
+	
+\vfill
+{\hfill \em --- we will upper bound $\|\bm{E}_{\mathsf{upper}}\|$}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Control $\|\bm{E}_{\mathsf{upper}}\|$}
+	First of all, we have
+	\[
+	\bm{E}_{\mathsf{upper}} = \sum_{i < j} E_{i,j} \bm{e}_{i} \bm{e}_{j}^{\top} =\sum_{i < j} \underbrace{ \tfrac{1}{n} \big( y_{i,j}- \mathbb{E} [ y_{i,j}] \big) \bm{e}_{i} \bm{e}_{j}^{\top} }_{\eqqcolon \bm{X}_{i,j}}
+	\]
+	Then 
+	\begin{itemize}
+		\item $\|\bm{X}_{i,j}\| \leq \frac{1}{n} \eqqcolon B$
+		\item Since $\mathsf{Var}(y_{i,j})\leq 1$, one has
+$\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq \frac{1}{n^2} \bm{e}_{i}\bm{e}_{i}^{\top}$, which gives
+%
+\[
+\sum\nolimits_{i < j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\preceq\sum\nolimits_{i<j} \frac{1}{n^2} \bm{e}_{i}\bm{e}_{i}^{\top} \preceq \frac{1}{n}\,\bm{I}_{n}
+\]
+%
+Similarly, $\sum_{i<j}\mathbb{E}\left[ \bm{X}_{i,j}^{\top} \bm{X}_{i,j} \right]\preceq \frac{1}{n}\,\bm{I}_{n}$.
+As a result,
+%
+\[
+v \coloneqq \max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm{X}_{i,j}^{\top}\right]\Big\|,\Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}^{\top}\bm{X}_{i,j}\right]\Big\|\right\} \leq \frac{1}{n}
+\]
+
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Control $\|\bm{E}_{\mathsf{upper}}\|$ (cont.)}
+	Invoke matrix Bernstein to obtain
+	\[
+	\|\bm{E}_{\mathsf{upper}}\| \lesssim \sqrt{v \log n} + B \log n \asymp \sqrt{\frac{\log n}{n}}
+	\] 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Putting pieces together}
+	Assuming $\kappa = O(1)$, we have
+	\[
+	\|\bm{\pi}-\bm{\pi}^{\star}\|_{2} \lesssim \sqrt{\frac{\log n}{n}} \|\bm{\pi}^{\star}\|_{2}
+	\]
+	\begin{itemize}
+		\item vanishing relative error when $n$ goes to infinity
+		\item optimal error up to a log factor 
+	\end{itemize}
+	
+	\vfill 	
+	\hfill --- {\small Negahban, Oh, Shah\,'16, Chen, Fan, Ma, Wang\,'19}
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Statistical guarantees for spectral ranking}
+%
+%
+%
+%	\vfill
+%
+%	Suppose $\max_{i,j} \frac{w_i}{w_j} \lesssim 1$. Then with high prob.
+%	%
+%	\begin{align*}
+%		\frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_2 }{\|\bm{\pi} \|_2} \asymp \frac{\| \hat{\bm{\pi}} - \bm{\pi} \|_{\bm{\pi}} }{\|\bm{\pi} \|_{2}} \lesssim  \hspace{-1.2em} \underset{\alertb{\text{nearly perfect estimate}}}{\underbrace{ \frac{1}{\sqrt{n}} ~\rightarrow~ 0 }}
+%	\end{align*}
+%	%
+%
+%	\begin{itemize}
+%		\item a consequence of Theorem \ref{thm:mc-perturbation} and  matrix Bernstein (exercise)
+%	\end{itemize}
+%
+%\end{frame}
 
 
 \end{document}
