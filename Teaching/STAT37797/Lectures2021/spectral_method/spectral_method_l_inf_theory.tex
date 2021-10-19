@@ -1,0 +1,795 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+{Spectral methods: $\ell_{\infty}$ perturbation theory}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{6}
+
+\begin{document}
+
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}
+	\frametitle{Revisit stochastic block model}
+
+\vspace{-1em}
+
+
+\begin{columns}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.25\textwidth}
+\begin{center}
+  \includegraphics[height=0.9\textwidth]{SBM_1.png} \\
+	$\mathcal{G}$
+\end{center}
+\end{column}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.12\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth,angle=-90]{arrow_up.png} 
+\end{center}
+\end{column}
+
+
+\begin{column}{0.5\textwidth}
+\begin{center}
+  \includegraphics[height=0.45\textwidth]{SBM_2.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.03\textwidth}
+\end{column}
+
+\end{columns}
+
+
+\bigskip
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item Community membership vector \\
+	$\qquad x_1^{\star}=\cdots=x_{n/2}^{\star}=1$; $x_{n/2+1}^{\star}=\cdots=x_n^{\star}=-1$ 
+	\item observe a graph $\mathcal{G}$ (assuming $p>q$)
+		\vspace{-0.5em}
+		\begin{align*}
+			(i,j)\in \mathcal{G} \text{ with prob.~} \begin{cases} p,  & \text{if }x_i = x_j \\ q, & \text{else} \end{cases}
+		\end{align*}
+	\item {\bf Goal:}  recover community memberships $\pm \bm{x}^\star$ 
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Revisit spectral clustering}
+
+		
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_random.png} &   & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_mean.png} &  & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_noise.png}\tabularnewline
+	$\bm{A}$ & = & $\underset{\alertb{\text{rank 2}}}{\underbrace{\mathbb{E}[\bm{A}]}}$ & + & $\bm{A}-\mathbb{E}\left[\bm{A}\right]$\tabularnewline
+\end{tabular}
+\end{center}
+
+\vspace{-0.5em}
+\begin{itemize}
+	\item[{\color{black}1.}] computing the leading eigenvector $\bm{u}=[u_i]_{1\leq i\leq n}$ of $\bm{A} - \frac{p+q}{2}\bm{1}\bm{1}^{\top}$
+	\item[{\color{black}2.}] rounding:  output
+		${x}_{i}=\begin{cases}
+			1, & \text{if }u_{i} \geq 0\\
+			-1, & \text{if }u_{i}<0
+\end{cases}$
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Almost exact recovery}
+
+\[
+	\alert{\frac{p-q}{\sqrt{p}}\gg \sqrt{\frac{\log n}{n}}} \quad \Longrightarrow \quad \text{almost exact recovery} 
+\]
+
+\vfill 
+\begin{itemize}
+	\item Almost exact recovery means
+	\[
+	\min \left \{ \frac{1}{n}\sum_{i=1}^{n} \mathbbm{1} \big\{ x_{i}\neq x_{i}^{\star}\big\},  \frac{1}{n}\sum_{i=1}^{n} \mathbbm{1} \big\{ x_{i}\neq -x_{i}^{\star}\big\} \right \} = o(1)
+	\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Empirical performance of spectral clustering}
+	\begin{figure}
+	\includegraphics[width=0.6\textwidth]{SBM_experiment.pdf}
+	\end{figure}
+	
+	
+	{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	$\ell_{2}$ perturbation theory alone cannot explain exact recovery guarantees
+\end{center}
+\end{varblock}
+}
+\hfill --- call for fine-grained analysis
+	\end{frame}
+	
+
+
+
+
+\begin{frame}
+	\frametitle{Reverse engineering}
+
+\begin{columns}
+
+\begin{column}{0.92\textwidth}
+\begin{itemize}
+  \item[] Spectral clustering uses signs of $\bm{u}$ to cluster nodes 
+  \pause
+
+  \vspace{-1em}
+  \begin{figure}
+	\includegraphics[width=0.05\textwidth,angle=180]{arrow_down_3.png} \qquad 
+  \end{figure}
+
+  \item[] It achieves exact recovery iff $u_{i} u_{i}^{\star} > 0$ for all $i$
+
+  \pause
+  \vspace{-1em}
+  \begin{figure}
+	\includegraphics[width=0.05\textwidth,angle=180]{arrow_down_3.png} \qquad 
+  \end{figure}
+
+
+  \item[] A sufficient condition is\alertb{$^*$}  $\|\bm{u} - \bm{u}^{\star}\|_{\infty} < 1/\sqrt{n}$
+
+  
+  \uncover<4->{
+  \vspace{-1em}
+  \begin{figure}
+	\includegraphics[width=0.05\textwidth,angle=180]{arrow_down_3.png}
+  \end{figure}
+
+
+  \item[] Need $\ell_{\infty}$ perturbation theory
+
+  }
+\end{itemize}
+
+
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+
+\begin{itemize}
+  \itemsep1em
+  \item An illustrative example: rank-1 matrix denoising
+  \item General $\ell_{\infty}$ perturbation theory
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	\frametitle{Setup and algorithm}
+	
+	\begin{itemize}
+		\itemsep 0.5em
+		\item Groundtruth: $\bm{M}^{\star} = \lambda^{\star} \bm{u}^{\star} \bm{u}^{\star\top}\in \mathbb{R}^{n\times n}$, with $\lambda^\star > 0$
+		\item Observation: $\bm{M} = \bm{M}^{\star} + \bm{E}$, where $\bm{E}$ is symmetric, and its upper triangular part comprises of i.i.d.~$\mathcal{N}(0, \sigma^2)$ entries
+		\item Estimate $\bm{u}^{\star}$ using $\bm{u}$, leading eigenvector of $\bm{M}$
+		\item Goal: characterize entrywise errror
+		 \begin{align*}
+	\mathsf{dist}_{\infty}\big(\bm{u},\bm{u}^{\star}\big)
+	\coloneqq \min\big\{ \|\bm{u}-\bm{u}^{\star}\|_{\infty}, \|\bm{u}+\bm{u}^{\star}\|_{\infty} \big\}
+\end{align*}
+	\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{$\ell_{2}$ guarantees}
+	
+	We start with characterizing noise size
+	 
+	\begin{lemma}
+	Assume symmetric Gaussian noise model. With high prob., one has
+	\[
+	\|\bm{E}\| \leq 5 \sigma \sqrt{n}
+	\] 
+	\end{lemma}
+	
+	\vfill 
+	This in conjunction with Davis-Kahan's $\sin \bm{\Theta}$ theorem leads to: 
+	\[
+	\mathsf{dist}(\bm{u}, \bm{u}^{\star}) \leq \frac{2\| \bm{E} \|}{ \lambda^\star } \leq \frac{10\sigma \sqrt{n} }{ \lambda^\star},
+	\]
+	as long as $\sigma \sqrt{n} \leq \frac{1 - 1/\sqrt{2} }{5} \lambda^\star$ so that $\|\bm{E}\| \leq (1 - 1 / \sqrt{2}) \lambda^\star$
+	
+	\vfill 
+	{\hfill \em \footnotesize --- implies $\mathsf{dist}_{\infty}\big(\bm{u},\bm{u}^{\star}\big) \leq \mathsf{dist}\big(\bm{u},\bm{u}^{\star}\big) \lesssim \frac{\sigma \sqrt{n} }{ \lambda }$  }
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incoherence}
+	\begin{definition}
+	Fix a unit vector $\bm{u}^\star \in \mathbb{R}^{n}$. Define its incoherence to be
+	\begin{align*}
+	\mu \coloneqq {n\|\bm{u}^{\star}\|_{\infty}^{2}} 
+\end{align*}
+\end{definition}
+
+\vfill
+\begin{itemize}
+	\item Range of possible values of $\mu$: $1 \leq \mu \leq n$
+	\item Two extremes: $\bm{u}^\star = \bm{e}_{1}$, and $\bm{u}^\star = (1 / \sqrt{n}) \cdot \bm{1}_{n}$
+	\item Small $\mu$ indicates energy of eigenvector is spread across different entries
+	\item Consider SBM and random Gaussian vectors
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{$\ell_{\infty}$ guarantees for matrix denoising}
+	\begin{theorem}\label{thm:denoising-inf}
+		Suppose that $\sigma \sqrt{n} \leq c_0 \lambda^\star$ for some sufficiently small constant $c_0 > 0$. Then whp., we have 
+		\[
+		\mathsf{dist}_{\infty} \big(\bm{u},\bm{u}^{\star}\big) \lesssim \frac{\sigma (\sqrt{\log n} + \sqrt{\mu} ) }{ \lambda^\star }
+		\]
+	\end{theorem}
+	
+	\begin{itemize}
+		\item When $\mu \lesssim \log n$ (i.e., no entries are significantly larger than average), our bound reads
+		\[
+		\mathsf{dist}_{\infty} \big(\bm{u},\bm{u}^{\star}\big) \lesssim \frac{\sigma \sqrt{\log n} }{ \lambda^\star }
+		\]
+		\item Much tighter than $\ell_{2}$ bound: $\sqrt{ n / \log n}$ times smaller
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Technical hurdle: dependency}
+	We would like to understand $u_{l}$. Since $\bm{u}$ is eigenvector of $\bm{M}$, we have
+	\[
+	\bm{M} \bm{u} = \lambda \bm{u},
+	\]
+	which yields 
+	\begin{align*}
+	u_l & = \frac{1}{\lambda} [\bm{M}]_{l, :} \bm{u} = \frac{1}{\lambda} [\bm{M}^{\star} + \bm{E} ]_{l, :} \bm{u} \\
+	\end{align*}
+	
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	$\bm{u}$ is dependent on $\bm{E}$; analyzing $[\bm{M}^{\star} + \bm{E} ]_{l, :} \bm{u}$ is challenging
+\end{center}
+\end{varblock}
+}
+{\hfill \em ---how to deal with such dependency}
+\end{frame}
+
+\begin{frame}
+	\frametitle{An independent proxy}
+	Recall our focus is 
+	\[
+	[\bm{M}^{\star} + \bm{E} ]_{l, :} \bm{u}
+	\]
+	
+	\vfill 
+	Suppose we have a proxy $\bm{u}^{(l)}$ which is \alert{independent} of $[ \bm{E} ] _{l, :}$, then 
+	\[
+	[\bm{M}^{\star} + \bm{E} ]_{l, :} \bm{u} = [\bm{M}^{\star} + \bm{E} ]_{l, :} \bm{u}^{(l)} + [\bm{M}^{\star} + \bm{E} ]_{l, :} \left ( \bm{u} - \bm{u}^{(l)} \right )
+	\]
+	
+	\begin{itemize}
+		\item Independence between $\bm{u}^{(l)}$ and $[ \bm{E} ] _{l, :}$
+		\item Proximity between $\bm{u}^{(l)}$ and $\bm{u}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Leave-one-out estimates}
+	For each $1\leq l\leq n$, construct an auxiliary matrix  $\bm{M}^{(l)}$ 
+\begin{align*}
+	\bm{M}^{(l)} \coloneqq \lambda^{\star}\bm{u}^{\star}\bm{u}^{\star\top}+\bm{E}^{(l)} , 
+\end{align*}
+%
+where the noise matrix $\bm{E}^{(l)}$ is generated according to
+%
+\begin{equation*}
+E_{i,j}^{(l)} \coloneqq
+\begin{cases}
+E_{i,j},\qquad & \text{if }i\neq l\text{ and }j\neq l, \\
+0, & \text{else}.
+\end{cases}
+\end{equation*}
+
+\vspace{-1em}
+	\begin{figure}[t]
+\begin{center}
+\includegraphics[width=0.85\textwidth]{loo_illustration}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Leave-one-out estimates (cont.)}
+	For each $1\leq l\leq n$, construct an auxiliary matrix  $\bm{M}^{(l)}$ 
+\begin{align*}
+	\bm{M}^{(l)} \coloneqq \lambda^{\star}\bm{u}^{\star}\bm{u}^{\star\top}+\bm{E}^{(l)} , 
+\end{align*}
+%
+where the noise matrix $\bm{E}^{(l)}$ is generated according to
+%
+\begin{equation*}
+E_{i,j}^{(l)} \coloneqq
+\begin{cases}
+E_{i,j},\qquad & \text{if }i\neq l\text{ and }j\neq l, \\
+0, & \text{else}.
+\end{cases}
+\end{equation*}
+
+Let $\lambda^{(l)}$ and $\bm{u}^{(l)}$ denote respectively leading eigenvalue and leading eigenvector of $\bm{M}^{(l)}$
+
+{\hfill \em ---$\bm{u}^{(l)}$ is independent of $[ \bm {E} ]_{l, :}$}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Intuition}
+	\begin{itemize}
+		\item Since $\bm{u}^{(l)}$ is obtained by dropping only a tiny fraction of data, we expect $\bm{u}^{(l)}$ to be extremely close to $\bm{u}$, i.e., $\bm{u} \approx \pm \bm{u}^{(l)}$
+		\item By construction, 
+		\begin{align*}
+		u_{l}^{(l)} & =\frac{1}{\lambda^{(l)}}\bm{M}_{l,\cdot}^{(l)}\bm{u}^{(l)}=\frac{1}{\lambda^{(l)}}\bm{M}_{l,\cdot}^{\star}\bm{u}^{(l)}=\frac{\lambda^{\star}}{\lambda^{(l)}}u_{l}^{\star}\bm{u}^{\star\top}\bm{u}^{(l)}   \\
+		& \approx \pm u_{l}^{\star}.
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\vfill
+\centering
+\large Proof of Theorem~\ref{thm:denoising-inf}
+\vfill
+\end{frame}
+
+\begin{frame}
+	\frametitle{What we have learned from $\ell_2$ analysis}
+	\begin{subequations}
+\begin{align*}
+  \|\bm{E} \|  &\leq 5\sigma \sqrt{n}    & \|\bm{E}^{(l)} \| &\leq \|\bm{E} \| \leq 5\sigma \sqrt{n}  && \\
+  \mathsf{dist}( \bm{u} , \bm{u}^{\star} )  &\leq \frac{10\sigma\sqrt{n}}{\lambda^{\star}}  ~~
+ & \mathsf{dist}( \bm{u}^{(l)} , \bm{u}^{\star} )  &\leq \frac{10\sigma\sqrt{n}}{\lambda^{\star}} && \\
+	| \lambda - \lambda^{\star} |  &\leq 5\sigma \sqrt{n} & | \lambda^{(l)} - \lambda^{\star} |  &\leq 5\sigma \sqrt{n} &&\\
+	\max_{j: j\geq 2} | \lambda_j(\bm{M})   |  &\leq 5\sigma \sqrt{n} & \max_{j: j\geq 2}| \lambda_j(\bm{M}^{(l)}) |  &\leq 5\sigma \sqrt{n}
+\end{align*}
+%
+\end{subequations}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Addressing ambiguity}
+	Assume WLOG, 
+ \begin{subequations}
+\begin{align*}
+	\|\bm{u} - \bm{u}^{\star}\|_2 &= \mathsf{dist}( \bm{u}, \bm{u}^{\star} ), \quad \\
+	\big\| \bm{u}^{(l)} - \bm{u}^{\star} \big\|_2 &= \mathsf{dist}( \bm{u}^{(l)}, \bm{u}^{\star} ) , \quad 1 \leq l \leq n
+\end{align*}
+\end{subequations}
+
+
+A useful byproduct: if ${20\sigma{\sqrt{n}}} < \lambda^{\star}$, then one necessarily has
+%
+\begin{align*}
+	\big\| \bm{u} -  \bm{u}^{(l)} \big\|_2 = \mathsf{dist}\big( \bm{u}, \bm{u}^{(l)}\big), \qquad 1 \leq l \leq n	
+\end{align*}
+
+{\hfill \em \footnotesize ---check this}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bounding $\|\bm{u} - \bm{u}^{(l)}\|_{2}$}
+	{\bf Key}: view $\bm{M}$ as perturbation of $\bm{M}^{(l)}$; apply ``sharper'' version of Davis-Kahan
+\begin{align*}
+	\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2} &
+	%=\mathsf{dist}\big(\bm{u},\bm{u}^{(l)}\big)
+	\leq\frac{2\|\big(\bm{M}-\bm{M}^{(l)}\big)\bm{u}^{(l)}\|_{2}}{\lambda^{(l)}- \max\limits_{j\geq 2}\big| \lambda_{j}\big(\bm{M}^{(l)}\big) \big| }
+	\leq \frac{4\|\big(\bm{M}-\bm{M}^{(l)}\big)\bm{u}^{(l)}\|_{2}}{\lambda^{\star}}
+\end{align*}
+as long as 
+\begin{align*}
+\|\bm{M}-\bm{M}^{(l)}\| & \leq (1 - 1 / \sqrt{2}) \Big(\lambda^{(l)}-  \max_{j\geq 2}\big| \lambda_{j}\big(\bm{M}^{(l)}\big) \big| \Big), \\
+\lambda^{(l)}-  \max_{j\geq 2}\big| \lambda_{j}\big(\bm{M}^{(l)}\big) \big| & \geq\lambda^{\star}/2 
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bounding $\|\big(\bm{M}-\bm{M}^{(l)}\big)\bm{u}^{(l)}\|_{2}$}
+By design, 	
+\begin{align*}
+\big(\bm{M}-\bm{M}^{(l)}\big)\bm{u}^{(l)} & =\bm{e}_{l}\bm{E}_{l,\cdot}\bm{u}^{(l)}+u_{l}^{(l)}(\bm{E}_{\cdot,l} - E_{l,l}\bm{e}_{l}),
+\end{align*}
+which together with triangle inequality yields
+\begin{align*}
+ & \|\big(\bm{M}-\bm{M}^{(l)}\big)\bm{u}^{(l)}\|_{2}
+	\leq \big|\bm{E}_{l,\cdot}\bm{u}^{(l)}\big|  +
+	 \big\|\bm{E}_{\cdot,l}\big\|_{2} \cdot \big|u_{l}^{(l)}\big| \\
+ & \qquad \leq5\sigma\sqrt{\log n}+\big\|\bm{E}_{\cdot,l}\big\|_{2}\big(\big|u_{l}\big|+\big\|\bm{u}-\bm{u}^{(l)}\big\|_{\infty}\big)\\
+ & \qquad \leq5\sigma\sqrt{\log n}+5\sigma\sqrt{n}\|\bm{u}\|_{\infty}+5\sigma\sqrt{n}\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bounding $\|\bm{u} - \bm{u}^{(l)}\|_{2}$ (cont.)}
+	Combining previous bounds, we arrive at
+\begin{align*}
+\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2}
+ & \leq \frac{20\sigma\sqrt{\log n}+20\sigma\sqrt{n}\|\bm{u}\|_{\infty}+20\sigma\sqrt{n}\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2}}{\lambda^{\star}}\\
+ & \leq\frac{20\sigma\sqrt{\log n}+20\sigma\sqrt{n}\|\bm{u}\|_{\infty}}{\lambda^{\star}}+\frac{1}{2}\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2},
+\end{align*}
+%
+provided that $40\sigma\sqrt{n}\leq \lambda^{\star}$
+
+
+
+Rearranging terms and taking the union bound, we demonstrate that whp.,
+%
+\begin{align*}
+\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2} & \leq\frac{40\sigma\sqrt{\log n}+40\sigma\sqrt{n}\|\bm{u}\|_{\infty}}{\lambda^{\star}} , \qquad 1\leq l\leq n
+\end{align*}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Analyzing leave-one-out iterates}
+	Recall that 
+	\[
+	u_{l}^{(l)} =\frac{1}{\lambda^{(l)}}\bm{M}_{l,\cdot}^{(l)}\bm{u}^{(l)}=\frac{1}{\lambda^{(l)}}\bm{M}_{l,\cdot}^{\star}\bm{u}^{(l)}=\frac{\lambda^{\star}}{\lambda^{(l)}}u_{l}^{\star}\bm{u}^{\star\top}\bm{u}^{(l)}
+	\]
+	This implies 
+	\begin{align*}
+u_{l}^{(l)}-u_{l}^{\star} & %=u_{l}^{\star}\Big(\frac{\lambda^{\star}}{\lambda^{(l)}}\bm{u}^
+%{\star\top}\bm{u}^{(l)}-1\Big)
+=u_{l}^{\star}\Big(\frac{\lambda^{\star}}{\lambda^{(l)}}\bm{u}^{\star\top}\bm{u}^{(l)}-\bm{u}^{\star\top}\bm{u}^{\star}\Big)\\
+ & =u_{l}^{\star}\Big(\frac{\lambda^{\star}-\lambda^{(l)}}{\lambda^{(l)}}\bm{u}^{\star\top}\bm{u}^{(l)}\Big)+u_{l}^{\star}\bm{u}^{\star\top}\big(\bm{u}^{(l)}-\bm{u}^{\star}\big)
+\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analyzing leave-one-out iterates (cont.)}
+	Triangle inequality gives
+\begin{align*}
+\big|u_{l}^{(l)}-u_{l}^{\star}\big|
+& \leq\big|u_{l}^{\star}\big|\cdot\frac{\big|\lambda^{\star}-\lambda^{(l)}\big|}{\big|\lambda^{(l)}\big|} \cdot \|\bm{u}^{\star}\|_{2} \cdot \|\bm{u}^{(l)}\|_{2} \\
+&\quad
+	+ \big|u_{l}^{\star}\big|\cdot\|\bm{u}^{\star}\|_{2} \cdot \big\|\bm{u}^{(l)}-\bm{u}^{\star}\big\|_{2} \notag\\
+ & \leq\big|u_{l}^{\star}\big|\cdot\frac{10\sigma\sqrt{n}}{\lambda^{\star}}+\big|u_{l}^{\star}\big|\cdot\frac{10\sigma\sqrt{n}}{\lambda^{\star}} \notag\\
+ & \leq  \frac{20\sigma\sqrt{n}}{\lambda^{\star}} \big\|\bm{u}^{\star}\big\|_{\infty}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Putting pieces together}
+Now we come to conclude that 
+%
+\begin{align*}
+\big\|\bm{u}-\bm{u}^{\star}\big\|_{\infty} & =\max_{l}\big|u_{l}-u_{l}^{\star}\big|\leq\max_{l}\Big\{\big|u_{l}^{(l)}-u_{l}^{\star}\big|+\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2}\Big\} \notag\\
+ & \leq \frac{20\sigma\sqrt{n}}{\lambda^{\star}} \big\|\bm{u}^{\star}\big\|_{\infty}
+	+ \frac{40\sigma\sqrt{\log n}+40\sigma\sqrt{n}\|\bm{u}\|_{\infty}}{\lambda^{\star}}
+\end{align*}
+%
+One more triangle inequality gives 
+\begin{align*}
+\big\|\bm{u}-\bm{u}^{\star}\big\|_{\infty}
+%\eqref{eq:u-ustar-inf-first-bound}
+%	& \leq\frac{20\sigma\sqrt{n} \big\|\bm{u}^{\star}\big\|_{\infty}}{\lambda^{\star}}
+%	+ \frac{40\sigma\sqrt{\log n}  + 40 \sigma \sqrt{n} \big( \|\bm{u}^{\star}\|_{\infty} + \|\bm{u}-\bm{u}^{\star} \|_{\infty} \big)}{\lambda^{\star}}\\
+	& \leq \frac{40\sigma\sqrt{\log n} + 60 \sigma \sqrt{n}\, \|\bm{u}^{\star}\|_{\infty} }{\lambda^{\star}}+\frac{1}{2}\big\|\bm{u}-\bm{u}^{\star}\big\|_{\infty},
+\end{align*}
+%
+provided that $80\sigma\sqrt{n}\leq\lambda^{\star}$. Rearranging terms yields
+\begin{align*}
+	 \big\|\bm{u}-\bm{u}^{\star}\big\|_{\infty}
+	 &\leq \frac{ 80\sigma\sqrt{\log n} + 120 \sigma \sqrt{n}\, \|\bm{u}^{\star}\|_{\infty} }{\lambda^{\star}}
+	 % \leq  \frac{200\sigma\sqrt{\log n}\, ( \sqrt{n} \|\bm{u}^{\star}\|_{\infty} )}{\lambda^{\star}} \\
+	 = \frac{80\sigma\sqrt{\log n} + 120 \sigma \sqrt{\mu} }{\lambda^{\star}} ,
+\end{align*}
+%
+where the last identity results from the definition of $\mu$
+\end{frame}
+
+\begin{frame}[plain]
+\vfill
+\centering
+{\large \bf General $\ell_{\infty}$ perturbation theory}
+
+{\hfill \em ---rank-1 case}
+\vfill
+\end{frame}
+
+%
+%\begin{frame}
+%	\frametitle{Setup and notation}
+%	{\bf Groundtruth}: consider a rank-$1$ psd matrix $\bm{M}^{\star} = \lambda^{\star} \bm{u}^{\star} \bm{u}^{\star\top}\in \mathbb{R}^{n\times n}$   \\
+%	
+%	\vspace{1em}
+%	{\bf Incoherence}: define
+%	\begin{align*}
+%	%\|\bm{U}^{\star}\|_{2,\infty} \coloneqq \max_i \big\| \bm{e}_i^{\top}\bm{U}^{\star} \big\|_{2} =  \sqrt{\frac{\mu r}{n}} .
+%	\mu \coloneqq {n\|\bm{u}^{\star}\|_{\infty}^{2}} \qquad (1 \leq \mu \leq n)
+%\end{align*}
+%
+%	\vspace{1em}
+%	{\bf Observations}: 
+%	
+%	\begin{align*}
+%	\bm{M}=\bm{M}^{\star}+\bm{E} \in \mathbb{R}^{n\times n}
+%\end{align*}
+%with $\bm{E}$ a symmetric noise matrix
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Noise assumptions}
+%
+%
+%	%[Noise assumptions]
+%	The entries in the lower triangular part of $\bm{E}=[E_{i,j}]_{1\leq i,j\leq n}$ are independently generated obeying
+%%
+%\begin{align*}
+%	\mathbb{E}[E_{i,j}] = 0, \quad \mathbb{E}[E_{i,j}^2]\leq \sigma^2, \quad |E_{i,j}|\leq B, \quad \text{for all }i\geq j
+%\end{align*}
+%%
+%	Further,  assume that 
+%	%there is some positive quantity $c_{\mathsf{b}}=O(1)$ such that 
+%	%
+%	\begin{align*}
+%		c_{\mathsf{b}} \coloneqq \frac{B}{  \sigma  \sqrt{n/(\mu\log n)} } = O(1)
+%	\end{align*}
+%	
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{$\ell_{\infty}$ perturbation theory}
+%\begin{theorem}
+%	With high prob, there exists $z \in \{1, -1\}$ such that 
+%%
+%\begin{subequations}
+%\label{eq:UsgnH-Ustar-MUstar-bound-theorem-general}
+%\begin{align}
+%\big\|z\bm{u}-\bm{u}^{\star}\big\|_{\infty}  &\lesssim \frac{\sigma\sqrt{\mu}+\sigma\sqrt{\log n}}{ \lambda^{\star} },
+%\label{eq:UsgnH-Ustar-bound-theorem-general}\\
+%\big\|z\bm{u}-\frac{1}{\lambda^{\star}}\bm{M}\bm{u}^{\star}\big\|_{\infty} &\lesssim \frac{\sigma\sqrt{\mu}}{ \lambda^{\star} }+ \frac{\sigma^{2}\sqrt{n\log n}+\sigma B\sqrt{\mu \log^{3}n}}{(\lambda^{\star})^{2} }
+%	%\frac{\sigma\kappa\sqrt{\mu r}}{ |\lambda_{r}^{\star} | }+\frac{\sigma^{2}\sqrt{rn\log n}\,(1+c_{\mathsf{b}}\sqrt{\log n})}{\big(\lambda_{r}^{\star}\big)^{2}},
+%\label{eq:UsgnH-MUstar-bound-theorem-general}
+%\end{align}
+%\end{subequations}
+%%
+%provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some sufficiently small constant $c_{\sigma}>0$. 
+%\end{theorem}
+%
+%{\bf Key message}: 
+%\begin{itemize}
+%	\item when $\mu \lesssim \sqrt{\log n}$, (\ref{eq:UsgnH-Ustar-bound-theorem-general}) is $\sqrt{n / \log n}$ smaller than $\ell_{2}$ bound
+%	\[
+%	\big\|z\bm{u}-\bm{u}^{\star}\big\|_{2} \lesssim \sigma \sqrt{n} / \lambda^{\star}
+%	\]
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Back to stochastic block model}
+%	
+%	Recall \quad $
+%\bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
+%\bm{1}\\
+%-\bm{1}
+%\end{array}\right]\left[\begin{array}{cc}
+%\bm{1}^{\top} & -\bm{1}^{\top}\end{array}\right], 
+%$ \\
+%\qquad$
+%\bm{M}\coloneqq \bm{A}-\frac{p+q}{2}\bm{1}\bm{1}^{\top}
+%$, and 
+%$
+%\bm{u}^{\star}\coloneqq \frac{1}{\sqrt{n}}\left[\begin{array}{c}
+%\bm{1}\\
+%-\bm{1}
+%\end{array}\right]
+%$ \\
+%
+%\vspace{2em}
+%	
+%These imply	\begin{align*}
+%\lambda^{\star} & =\tfrac{n(p-q)}{2}\\
+%\mu & =1\\
+%B & =1\\
+%\sigma^{2} & \leq\max\{p,q\}=p
+%\end{align*}\end{frame}
+%
+%\begin{frame}
+%\frametitle{Invoke $\ell_{\infty}$ perturbation theory}
+%$\ell_{\infty}$ perturbation theory (3b) yields
+%\begin{align*}
+%	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} & \lesssim\sigma+\frac{\sigma^{2}\sqrt{n\log n}}{\lambda^{\star}}+\frac{\sigma B\,\log^{3/2}n}{\lambda^{\star}}\nonumber \\
+% 	& \leq  C \Big( \sqrt{p}+\frac{p\sqrt{\log n}}{\sqrt{n}(p-q)}+\frac{\sqrt{p}\log^{3/2}n}{n(p-q)} \Big) \eqqcolon \Delta
+%\end{align*}
+%for some constant $C>0$
+%
+%\vfill
+%{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	it boils down to controlling the entrywise behavior of $\bm{M}\bm{u}^{\star}$
+%\end{center}
+%\end{varblock}
+%}
+%
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Bounding entries in $\bm{M}\bm{u}^{\star}$}
+%
+%Again concentration inequalities tell us that 	
+%\begin{lemma}
+%	\label{lemma:M-ustar-lower-bound-CD}
+%	Suppose that
+%%
+%\begin{align}
+%	\big( \sqrt{p} -\sqrt{q}\big)^2 \geq\left( 1+ \varepsilon  \right) \frac{2\log n}{n} 
+%	\label{eq:H-pq-lower-bound-lemma}
+%\end{align}
+%% 
+%for some quantity $\varepsilon>0$.  Let $\varepsilon_0 \coloneqq \frac{\varepsilon\log n}{\sqrt{n}\log\frac{p(1-q)}{q(1-p)}}-\frac{1}{\sqrt{n}}$. 
+%Then with probability exceeding $1-n^{-\varepsilon/2}$, one has
+%%
+%\begin{align*}
+%	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \varepsilon_0 \,\,\,\text{for all }l\leq \frac{n}{2}
+%	\quad\text{and}\quad
+%	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
+%	\leq - \varepsilon_0 \,\,\, \text{for all } l > \frac{n}{2}. 
+%	%\label{eq:M-ustar-bound-CD-lemma}
+%\end{align*}
+%%
+%\end{lemma}
+%
+%\vfill
+%{\bf Key message}: entries in $\bm{M}\bm{u}^{\star}$ are bounded away from $0$ with correct sign
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Completing the picture}
+%	On one hand 
+%	\begin{align*}
+%	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \varepsilon_0 \,\,\,\text{for all }l\leq \frac{n}{2}
+%	\quad\text{and}\quad
+%	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
+%	\leq - \varepsilon_0 \,\,\, \text{for all } l > \frac{n}{2}. 
+%	%\label{eq:M-ustar-bound-CD-lemma}
+%\end{align*}
+%
+%On the other hand	
+%	\begin{align*}
+%	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} \leq \Delta
+%	\end{align*}
+%
+%
+%In sum,  if one can show 
+%%
+%\begin{align*}
+%	\varepsilon_{0}  > \Delta
+%\end{align*}
+%%
+%then it follows that
+%%
+%\[
+%zu_{l} u_{l}^{\star}>0\quad\text{for all }1\leq l\leq n \quad \Longrightarrow \quad \text{exact recovery}
+%\]
+%
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Exact recovery of SBM}
+%	
+%	\begin{theorem}
+%	\label{thm:community-recovery-linf}
+%	Fix any constant $\varepsilon>0$. Suppose  $p=\frac{\alpha \log n}{n}$ and $q=\frac{\beta \log n}{n}$ for some sufficiently large constants $\alpha > \beta >0$.  In addition, assume that
+%	%
+%	\begin{align}
+%		\big( \sqrt{p} -\sqrt{q}\big)^2 \geq   2\left( 1+ \varepsilon  \right) \frac{\log n}{n} .
+%		\label{eq:H-pq-lower-bound-theorem}
+%	\end{align}
+%	%
+%	With probability  $1-o(1)$, spectral clustering achieves exact recovery. 
+%\end{theorem}
+%
+%\vfill 
+%{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	This  condition is information-theoretically optimal
+%\end{center}
+%\end{varblock}
+%}
+%\end{frame}
+
+
+\end{document}
+

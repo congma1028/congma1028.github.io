@@ -1021,6 +1021,25 @@ part:
 \end{frame}
 
 \begin{frame}
+	\frametitle{Control $\|\bm{E}_{\mathsf{diag}}\|$}
+	Note that
+	\[
+\|\bm{E}_{\mathsf{diag}}\|=\max_{1\leq i\leq n}|E_{i,i}|=\max_{1\leq i\leq n} \frac{1}{n} \Big| \underbrace{\sum_{j:j\neq i}\big( y_{i,j}- \mathbb{E} [ y_{i,j}]}_{\eqqcolon X_{j}} \big) \Big|
+\]
+\begin{itemize}
+	\item First, we have $|X_j| \leq 1 \eqqcolon B$
+	\item Second, one has
+	\[
+	\sum_{j : j \neq i} \mathbb{E} [X_j^2] = \sum_{j : j \neq i} \mathsf{Var} (y_{i,j}) \leq n \eqqcolon v
+	\]
+\end{itemize}
+By Bernstein's inequality and union bound, we have w.h.p.
+\[
+\max_{i} |E_{i,i}| \lesssim \frac{1}{n} \cdot ( \sqrt{v \log n} + B \log n) \asymp \sqrt{\frac{\log n }{n}}
+\]
+\end{frame}
+
+\begin{frame}
 	\frametitle{Control $\|\bm{E}_{\mathsf{upper}}\|$}
 	First of all, we have
 	\[
@@ -1052,6 +1071,9 @@ v \coloneqq \max\left\{ \Big\|\sum\nolimits_{i,j}\mathbb{E}\left[\bm{X}_{i,j}\bm
 	\[
 	\|\bm{E}_{\mathsf{upper}}\| \lesssim \sqrt{v \log n} + B \log n \asymp \sqrt{\frac{\log n}{n}}
 	\] 
+	
+	\vfill
+	{\hfill \em --- same bound holds for  $\|\bm{E}_{\mathsf{lower}}\|$}
 \end{frame}
 
 \begin{frame}
