@@ -3,7 +3,7 @@
 
 ~~~
 {}{img_left}{figure/bio.jpg}{alt text}{320}{240}
-I am an assistant Professor in the [https://stat.uchicago.edu/ Department of Statistics] at the University of Chicago. 
+I am an assistant professor in the [https://stat.uchicago.edu/ Department of Statistics] at the University of Chicago. 
 
 
 
@@ -21,10 +21,12 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
-- A new paper on offline reinforcement learning: [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism]
+- Our new research monograph on spectral methods [Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral Methods for Data Science: A Statistical Perspective] is now published in [https://www.nowpublishers.com/article/Details/MAL-079 Foundations and Trends\R in Machine Learning].\n
+
+- Our paper on offline reinforcement learning: [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] is accepted to Neurips 2021.
 
 - A new paper on off-policy evaluation: [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits]
 
-- A new research monograph on spectral methods: [Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
+
 
 - Yuxin Chen, Yuejie Chi and I gave a tutorial on "Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods" at [https://eusipco2020.org/tutorials/ EUSIPCO 2020]. 

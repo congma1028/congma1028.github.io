@@ -8,7 +8,7 @@
 
 - [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
-
+accepted in part to /Neurips 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n \n
 
 - [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
 *C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
@@ -21,8 +21,9 @@ T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
 == 2020
 
 
-- [Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
+- [Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
 Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
+/Foundations and Trends\R in Machine Learning, 2021、
 
 - [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
 Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
@@ -87,7 +88,7 @@ accepted in part to /AISTATS, 2019/
 - [Publication/Implicit/paper.pdf Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
 *C. Ma*, K. Wang, Y. Chi, Y. Chen \n
 /Foundations of Computational Mathematics, 2020/ \n
-accepted in part to /ICML, 2018/ 
+accepted in part to /ICML 2018/ 
 [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] [Publication/Implicit/implicit_icml.pdf \[ICML version\]] [Publication/Implicit/ImplicitReg_FoCM.pdf \[FoCM version\]]
 
 
