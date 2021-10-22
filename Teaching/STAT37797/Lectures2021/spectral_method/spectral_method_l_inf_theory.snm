@@ -1,1 +1,8 @@
 \beamer@slide {thm:denoising-inf}{14}
+\beamer@slide {eq:UsgnH-Ustar-MUstar-bound-theorem-general}{32}
+\beamer@slide {eq:UsgnH-Ustar-bound-theorem-general}{32}
+\beamer@slide {eq:UsgnH-MUstar-bound-theorem-general}{32}
+\beamer@slide {thm:community-recovery-linf}{35}
+\beamer@slide {eq:H-pq-lower-bound-theorem}{35}
+\beamer@slide {lemma:M-ustar-lower-bound-CD}{39}
+\beamer@slide {eq:H-pq-lower-bound-lemma}{39}

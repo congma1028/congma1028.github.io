@@ -230,6 +230,8 @@ mathserif,wide,%red,
   \itemsep1em
   \item An illustrative example: rank-1 matrix denoising
   \item General $\ell_{\infty}$ perturbation theory
+  \item Application: exact recovery in community detection
+  \item Application: entrywise error in matrix completion
 \end{itemize}
 
 \end{frame}
@@ -508,7 +510,7 @@ provided that $40\sigma\sqrt{n}\leq \lambda^{\star}$
 Rearranging terms and taking the union bound, we demonstrate that whp.,
 %
 \begin{align*}
-\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2} & \leq\frac{40\sigma\sqrt{\log n}+40\sigma\sqrt{n}\|\bm{u}\|_{\infty}}{\lambda^{\star}} , \qquad 1\leq l\leq n
+\big\|\bm{u}-\bm{u}^{(l)}\big\|_{2} & \leq\frac{40\sigma\sqrt{\log n}+40\sigma\sqrt{n}\|\bm{u}\|_{\infty}}{\lambda^{\star}}  \qquad 1\leq l\leq n
 \end{align*}
 \end{frame}
 
@@ -582,66 +584,68 @@ where the last identity results from the definition of $\mu$
 \end{frame}
 
 %
-%\begin{frame}
-%	\frametitle{Setup and notation}
-%	{\bf Groundtruth}: consider a rank-$1$ psd matrix $\bm{M}^{\star} = \lambda^{\star} \bm{u}^{\star} \bm{u}^{\star\top}\in \mathbb{R}^{n\times n}$   \\
-%	
-%	\vspace{1em}
-%	{\bf Incoherence}: define
-%	\begin{align*}
-%	%\|\bm{U}^{\star}\|_{2,\infty} \coloneqq \max_i \big\| \bm{e}_i^{\top}\bm{U}^{\star} \big\|_{2} =  \sqrt{\frac{\mu r}{n}} .
-%	\mu \coloneqq {n\|\bm{u}^{\star}\|_{\infty}^{2}} \qquad (1 \leq \mu \leq n)
-%\end{align*}
+\begin{frame}
+	\frametitle{Setup and notation}
+	{\bf Groundtruth}: consider a rank-$1$ psd matrix $\bm{M}^{\star} = \lambda^{\star} \bm{u}^{\star} \bm{u}^{\star\top}\in \mathbb{R}^{n\times n}$   \\
+	
+	\vspace{1em}
+	{\bf Incoherence}: define
+	\begin{align*}
+	%\|\bm{U}^{\star}\|_{2,\infty} \coloneqq \max_i \big\| \bm{e}_i^{\top}\bm{U}^{\star} \big\|_{2} =  \sqrt{\frac{\mu r}{n}} .
+	\mu \coloneqq {n\|\bm{u}^{\star}\|_{\infty}^{2}} \qquad (1 \leq \mu \leq n)
+\end{align*}
+
+	\vspace{1em}
+	{\bf Observations}: 
+	
+	\begin{align*}
+	\bm{M}=\bm{M}^{\star}+\bm{E} \in \mathbb{R}^{n\times n}
+\end{align*}
+with $\bm{E}$ a symmetric noise matrix
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Noise assumptions}
+
+
+	%[Noise assumptions]
+	The entries in the lower triangular part of $\bm{E}=[E_{i,j}]_{1\leq i,j\leq n}$ are independently generated obeying
 %
-%	\vspace{1em}
-%	{\bf Observations}: 
-%	
-%	\begin{align*}
-%	\bm{M}=\bm{M}^{\star}+\bm{E} \in \mathbb{R}^{n\times n}
-%\end{align*}
-%with $\bm{E}$ a symmetric noise matrix
-%\end{frame}
+\begin{align*}
+	\mathbb{E}[E_{i,j}] = 0, \quad \mathbb{E}[E_{i,j}^2]\leq \sigma^2, \quad |E_{i,j}|\leq B, \quad \text{for all }i\geq j
+\end{align*}
 %
+	Further,  assume that 
+	%there is some positive quantity $c_{\mathsf{b}}=O(1)$ such that 
+	%
+	\begin{align*}
+		c_{\mathsf{b}} \coloneqq \frac{B}{  \sigma  \sqrt{n/(\mu\log n)} } = O(1)
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{$\ell_{\infty}$ perturbation theory}
+\begin{theorem}
+	With high prob, there exists $z \in \{1, -1\}$ such that 
 %
-%\begin{frame}
-%	\frametitle{Noise assumptions}
+\begin{subequations}
+\label{eq:UsgnH-Ustar-MUstar-bound-theorem-general}
+\begin{align}
+\big\|z\bm{u}-\bm{u}^{\star}\big\|_{\infty}  &\lesssim \frac{\sigma\sqrt{\mu}+\sigma\sqrt{\log n}}{ \lambda^{\star} },
+\label{eq:UsgnH-Ustar-bound-theorem-general}\\
+\big\|z\bm{u}-\frac{1}{\lambda^{\star}}\bm{M}\bm{u}^{\star}\big\|_{\infty} &\lesssim \frac{\sigma\sqrt{\mu}}{ \lambda^{\star} }+ \frac{\sigma^{2}\sqrt{n\log n}+\sigma B\sqrt{\mu \log^{3}n}}{(\lambda^{\star})^{2} }
+	%\frac{\sigma\kappa\sqrt{\mu r}}{ |\lambda_{r}^{\star} | }+\frac{\sigma^{2}\sqrt{rn\log n}\,(1+c_{\mathsf{b}}\sqrt{\log n})}{\big(\lambda_{r}^{\star}\big)^{2}},
+\label{eq:UsgnH-MUstar-bound-theorem-general}
+\end{align}
+\end{subequations}
 %
-%
-%	%[Noise assumptions]
-%	The entries in the lower triangular part of $\bm{E}=[E_{i,j}]_{1\leq i,j\leq n}$ are independently generated obeying
-%%
-%\begin{align*}
-%	\mathbb{E}[E_{i,j}] = 0, \quad \mathbb{E}[E_{i,j}^2]\leq \sigma^2, \quad |E_{i,j}|\leq B, \quad \text{for all }i\geq j
-%\end{align*}
-%%
-%	Further,  assume that 
-%	%there is some positive quantity $c_{\mathsf{b}}=O(1)$ such that 
-%	%
-%	\begin{align*}
-%		c_{\mathsf{b}} \coloneqq \frac{B}{  \sigma  \sqrt{n/(\mu\log n)} } = O(1)
-%	\end{align*}
-%	
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{$\ell_{\infty}$ perturbation theory}
-%\begin{theorem}
-%	With high prob, there exists $z \in \{1, -1\}$ such that 
-%%
-%\begin{subequations}
-%\label{eq:UsgnH-Ustar-MUstar-bound-theorem-general}
-%\begin{align}
-%\big\|z\bm{u}-\bm{u}^{\star}\big\|_{\infty}  &\lesssim \frac{\sigma\sqrt{\mu}+\sigma\sqrt{\log n}}{ \lambda^{\star} },
-%\label{eq:UsgnH-Ustar-bound-theorem-general}\\
-%\big\|z\bm{u}-\frac{1}{\lambda^{\star}}\bm{M}\bm{u}^{\star}\big\|_{\infty} &\lesssim \frac{\sigma\sqrt{\mu}}{ \lambda^{\star} }+ \frac{\sigma^{2}\sqrt{n\log n}+\sigma B\sqrt{\mu \log^{3}n}}{(\lambda^{\star})^{2} }
-%	%\frac{\sigma\kappa\sqrt{\mu r}}{ |\lambda_{r}^{\star} | }+\frac{\sigma^{2}\sqrt{rn\log n}\,(1+c_{\mathsf{b}}\sqrt{\log n})}{\big(\lambda_{r}^{\star}\big)^{2}},
-%\label{eq:UsgnH-MUstar-bound-theorem-general}
-%\end{align}
-%\end{subequations}
-%%
-%provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some sufficiently small constant $c_{\sigma}>0$. 
-%\end{theorem}
-%
+provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some sufficiently small constant $c_{\sigma}>0$. 
+\end{theorem}
+
+
+
 %{\bf Key message}: 
 %\begin{itemize}
 %	\item when $\mu \lesssim \sqrt{\log n}$, (\ref{eq:UsgnH-Ustar-bound-theorem-general}) is $\sqrt{n / \log n}$ smaller than $\ell_{2}$ bound
@@ -649,59 +653,146 @@ where the last identity results from the definition of $\mu$
 %	\big\|z\bm{u}-\bm{u}^{\star}\big\|_{2} \lesssim \sigma \sqrt{n} / \lambda^{\star}
 %	\]
 %\end{itemize}
-%\end{frame}
+\end{frame}
+
+\begin{frame}
+	\frametitle{First-order expansion}
+	\vfill
+	\[
+	\bm{u} = \frac{\bm{M} \bm{u}}{\lambda} \approx \frac{\bm{M} \bm{u}^\star}{ \lambda^\star} \approx \frac{\bm{M}^\star \bm{u}^\star}{ \lambda^\star} = \bm{u^\star}
+	\]
+	\vfill
+	\begin{itemize}
+		\item first approximation is much tighter than the second approximation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\vfill
+\centering
+{\large \bf Application: exact recovery in community detection}
+\vfill
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Exact recovery of SBM}
+	We consider the case when (why?)
+	\[
+	p=\frac{\alpha \log n}{n}, \quad \text{and} \quad q=\frac{\beta \log n}{n}
+	\]
+	
+	\begin{theorem}
+	\label{thm:community-recovery-linf}
+	Fix any constant $\varepsilon>0$. Suppose $\alpha > \beta >0$ are sufficiently large*, and	%
+	\begin{align}
+		\big( \sqrt{\alpha} -\sqrt{\beta}\big)^2 \geq   2\left( 1+ \varepsilon  \right) .
+		\label{eq:H-pq-lower-bound-theorem}
+	\end{align}
+	%
+	With probability  $1-o(1)$, spectral clustering achieves exact recovery. 
+\end{theorem}
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Optimality of spectral method}
+	When 
+	\[
+	\big( \sqrt{\alpha} -\sqrt{\beta}\big)^2 \leq   2\left( 1+ \varepsilon  \right),
+	\]
+	no method whatsoever can achieve exact recovery
+	
+	Hellinger distance?
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Fine-grained analysis of spectral clustering}
+Consider ``ground-truth'' matrix
+\[
+\bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]\left[\begin{array}{cc}
+\bm{1}^{\top} & -\bm{1}^{\top}\end{array}\right], 
+\] \\
+which obeys 
+\begin{align*}
+	\lambda_{1}(\bm{M}^{\star})\coloneqq\frac{(p-q)n}{2},  
+	\quad \text{and} \quad
+	\bm{u}^{\star}  \coloneqq \frac{1}{\sqrt{n}}
+	\left[\begin{array}{c}
+		\bm{1}_{n/2}\\
+		-\bm{1}_{n/2}
+	\end{array}\right].
+\end{align*}
+
+	
+These imply	\begin{align*}
+\lambda^{\star} & =\tfrac{n(p-q)}{2}\\
+\mu & =1\\
+B & =1\\
+\sigma^{2} & \leq\max\{p,q\}=p
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Invoke $\ell_{\infty}$ perturbation theory}
+$\ell_{\infty}$ perturbation bound~\eqref{eq:UsgnH-MUstar-bound-theorem-general} yields
+\begin{align*}
+	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} & \lesssim\sigma+\frac{\sigma^{2}\sqrt{n\log n}}{\lambda^{\star}}+\frac{\sigma B\,\log^{3/2}n}{\lambda^{\star}}\nonumber \\
+ 	& \leq  C \Big( \sqrt{p}+\frac{p\sqrt{\log n}}{\sqrt{n}(p-q)}+\frac{\sqrt{p}\log^{3/2}n}{n(p-q)} \Big) \eqqcolon \Delta
+\end{align*}
+for some constant $C>0$
+
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	it boils down to controlling the entrywise behavior of $\bm{M}\bm{u}^{\star}$
+\end{center}
+\end{varblock}
+}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Bounding entries in $\bm{M}\bm{u}^{\star}$}	
+\begin{lemma}
+	\label{lemma:M-ustar-lower-bound-CD}
+	Suppose that
+\begin{align}
+	\big( \sqrt{p} -\sqrt{q}\big)^2 \geq\left( 1+ \varepsilon  \right) \frac{2\log n}{n} 
+	\label{eq:H-pq-lower-bound-lemma}
+\end{align}
+% 
+for some quantity $\varepsilon>0$.   
+Then with probability exceeding $1- o(1)$, one has
 %
-%\begin{frame}
-%	\frametitle{Back to stochastic block model}
-%	
-%	Recall \quad $
-%\bm{M}^{\star}\coloneqq\mathbb{E}[\bm{A}]-\frac{p+q}{2}\bm{1}\bm{1}^{\top}=\frac{p-q}{2}\left[\begin{array}{c}
-%\bm{1}\\
-%-\bm{1}
-%\end{array}\right]\left[\begin{array}{cc}
-%\bm{1}^{\top} & -\bm{1}^{\top}\end{array}\right], 
-%$ \\
-%\qquad$
-%\bm{M}\coloneqq \bm{A}-\frac{p+q}{2}\bm{1}\bm{1}^{\top}
-%$, and 
-%$
-%\bm{u}^{\star}\coloneqq \frac{1}{\sqrt{n}}\left[\begin{array}{c}
-%\bm{1}\\
-%-\bm{1}
-%\end{array}\right]
-%$ \\
+\begin{align*}
+	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \frac{2\eta}{a - b} \,\,\,\text{for all }l\leq \frac{n}{2}
+	\quad\text{and}\quad
+	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
+	\leq - \frac{2\eta}{a - b} \,\,\, \text{for all } l > \frac{n}{2}, 
+	%\label{eq:M-ustar-bound-CD-lemma}
+\end{align*}
+where $\eta > 0$ obeys $(\sqrt{a} - \sqrt{b})^2 - \eta \log (a/b) > 2.$
 %
-%\vspace{2em}
-%	
-%These imply	\begin{align*}
-%\lambda^{\star} & =\tfrac{n(p-q)}{2}\\
-%\mu & =1\\
-%B & =1\\
-%\sigma^{2} & \leq\max\{p,q\}=p
-%\end{align*}\end{frame}
-%
-%\begin{frame}
-%\frametitle{Invoke $\ell_{\infty}$ perturbation theory}
-%$\ell_{\infty}$ perturbation theory (3b) yields
-%\begin{align*}
-%	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} & \lesssim\sigma+\frac{\sigma^{2}\sqrt{n\log n}}{\lambda^{\star}}+\frac{\sigma B\,\log^{3/2}n}{\lambda^{\star}}\nonumber \\
-% 	& \leq  C \Big( \sqrt{p}+\frac{p\sqrt{\log n}}{\sqrt{n}(p-q)}+\frac{\sqrt{p}\log^{3/2}n}{n(p-q)} \Big) \eqqcolon \Delta
-%\end{align*}
-%for some constant $C>0$
-%
-%\vfill
-%{
-%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
-%
-%\begin{varblock}[\textwidth]{}
-%\begin{center}
-%	it boils down to controlling the entrywise behavior of $\bm{M}\bm{u}^{\star}$
-%\end{center}
-%\end{varblock}
-%}
-%
-%\end{frame}
-%
+\end{lemma}
+
+\vfill
+{\bf Key message}: entries in $\bm{M}\bm{u}^{\star}$ are bounded away from $0$ with correct sign
+\end{frame}
+
+
+
 %\begin{frame}
 %	\frametitle{Bounding entries in $\bm{M}\bm{u}^{\star}$}
 %
@@ -731,64 +822,47 @@ where the last identity results from the definition of $\mu$
 %\vfill
 %{\bf Key message}: entries in $\bm{M}\bm{u}^{\star}$ are bounded away from $0$ with correct sign
 %\end{frame}
+
+\begin{frame}
+	\frametitle{Completing the picture}
+	On one hand 
+	\begin{align*}
+	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \varepsilon_0 \,\,\,\text{for all }l\leq \frac{n}{2}
+	\quad\text{and}\quad
+	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
+	\leq - \varepsilon_0 \,\,\, \text{for all } l > \frac{n}{2}. 
+	%\label{eq:M-ustar-bound-CD-lemma}
+\end{align*}
+
+On the other hand	
+	\begin{align*}
+	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} \leq \Delta
+	\end{align*}
+
+
+In sum,  if one can show 
 %
-%\begin{frame}
-%	\frametitle{Completing the picture}
-%	On one hand 
-%	\begin{align*}
-%	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \varepsilon_0 \,\,\,\text{for all }l\leq \frac{n}{2}
-%	\quad\text{and}\quad
-%	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
-%	\leq - \varepsilon_0 \,\,\, \text{for all } l > \frac{n}{2}. 
-%	%\label{eq:M-ustar-bound-CD-lemma}
-%\end{align*}
+\begin{align*}
+	\varepsilon_{0}  > \Delta
+\end{align*}
 %
-%On the other hand	
-%	\begin{align*}
-%	\big\| z\lambda^{\star}\bm{u}-\bm{M}\bm{u}^{\star} \big\|_{\infty} \leq \Delta
-%	\end{align*}
+then it follows that
 %
-%
-%In sum,  if one can show 
-%%
-%\begin{align*}
-%	\varepsilon_{0}  > \Delta
-%\end{align*}
-%%
-%then it follows that
-%%
-%\[
-%zu_{l} u_{l}^{\star}>0\quad\text{for all }1\leq l\leq n \quad \Longrightarrow \quad \text{exact recovery}
-%\]
-%
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Exact recovery of SBM}
-%	
-%	\begin{theorem}
-%	\label{thm:community-recovery-linf}
-%	Fix any constant $\varepsilon>0$. Suppose  $p=\frac{\alpha \log n}{n}$ and $q=\frac{\beta \log n}{n}$ for some sufficiently large constants $\alpha > \beta >0$.  In addition, assume that
-%	%
-%	\begin{align}
-%		\big( \sqrt{p} -\sqrt{q}\big)^2 \geq   2\left( 1+ \varepsilon  \right) \frac{\log n}{n} .
-%		\label{eq:H-pq-lower-bound-theorem}
-%	\end{align}
-%	%
-%	With probability  $1-o(1)$, spectral clustering achieves exact recovery. 
-%\end{theorem}
-%
-%\vfill 
-%{
-%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
-%
-%\begin{varblock}[\textwidth]{}
-%\begin{center}
-%	This  condition is information-theoretically optimal
-%\end{center}
-%\end{varblock}
-%}
-%\end{frame}
+\[
+zu_{l} u_{l}^{\star}>0\quad\text{for all }1\leq l\leq n \quad \Longrightarrow \quad \text{exact recovery}
+\]
+
+\end{frame}
+
+
+
+
+\begin{frame}[plain]
+\vfill
+\centering
+{\large \bf Application: entrywise error in matrix completion}
+\vfill
+\end{frame}
 
 
 \end{document}

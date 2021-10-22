@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 OCT 2021 09:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 OCT 2021 15:09
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **applications_l2.tex
 (./applications_l2.tex
@@ -1479,8 +1480,9 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 
 ]
 
-pdfTeX warning: pdflatex (file ../../../Figures/NetflixMahdi.pdf): PDF inclusio
-n: found PDF version <1.5>, but at most version <1.4> allowed
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../../../Figures/NetflixMahd
+i.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allow
+ed
 <../../../Figures/NetflixMahdi.pdf, id=186, 1580.90625pt x 1284.29813pt>
 File: ../../../Figures/NetflixMahdi.pdf Graphic file (type pdf)
 <use ../../../Figures/NetflixMahdi.pdf>
@@ -1658,7 +1660,7 @@ ic/lm/lmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
 /symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
 cm-super/sfrm1000.pfb>
-Output written on applications_l2.pdf (41 pages, 2072258 bytes).
+Output written on applications_l2.pdf (41 pages, 2072267 bytes).
 PDF statistics:
  599 PDF objects out of 1000 (max. 8388607)
  92 named destinations out of 1000 (max. 500000)
