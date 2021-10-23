@@ -17,7 +17,7 @@
 
 - *References*: 
 The following references also contain topics relevant to this course, and you might want to consult them. 
--- [https://congma1028.github.io/Publication/Spectral/SpectralMethods_FnTarticle.pdf Spectral methods for data science: A statistical perspective], Yuxin chen, Yuejie Chi, Jianqing Fan, Cong Ma, to appear in Foundations and Trends\R in Machine Learning, 2021. 
+-- [https://congma1028.github.io/Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral methods for data science: A statistical perspective], Yuxin chen, Yuejie Chi, Jianqing Fan, Cong Ma, to appear in Foundations and Trends\R in Machine Learning, 2021. 
 -- [https://ieeexplore.ieee.org/document/8811622 Nonconvex optimization meets low-rank matrix factorization: An overview], Yuejie Chi, Yue M. Lu, Yuxin Chen, IEEE Transactions on Signal Processing, vol. 67, no. 20, pp. 5239-5269, Oct. 2019. 
 -- [https://www.nowpublishers.com/article/Details/MAL-048 An introduction to matrix concentration inequalities], Joel Tropp, Foundations and Trends\R in Machine Learning, 2015. 
 

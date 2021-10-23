@@ -229,8 +229,9 @@ mathserif,wide,%red,
 \begin{itemize}
   \itemsep1em
   \item An illustrative example: rank-1 matrix denoising
-  \item General $\ell_{\infty}$ perturbation theory
+  \item General $\ell_{\infty}$ perturbation theory: rank-1
   \item Application: exact recovery in community detection
+  \item General $\ell_{2,\infty}$ perturbation theory: rank-r case
   \item Application: entrywise error in matrix completion
 \end{itemize}
 
@@ -589,7 +590,7 @@ where the last identity results from the definition of $\mu$
 	{\bf Groundtruth}: consider a rank-$1$ psd matrix $\bm{M}^{\star} = \lambda^{\star} \bm{u}^{\star} \bm{u}^{\star\top}\in \mathbb{R}^{n\times n}$   \\
 	
 	\vspace{1em}
-	{\bf Incoherence}: define
+	{\bf Incoherence}: 
 	\begin{align*}
 	%\|\bm{U}^{\star}\|_{2,\infty} \coloneqq \max_i \big\| \bm{e}_i^{\top}\bm{U}^{\star} \big\|_{2} =  \sqrt{\frac{\mu r}{n}} .
 	\mu \coloneqq {n\|\bm{u}^{\star}\|_{\infty}^{2}} \qquad (1 \leq \mu \leq n)
@@ -606,7 +607,7 @@ with $\bm{E}$ a symmetric noise matrix
 
 
 \begin{frame}
-	\frametitle{Noise assumptions}
+	\frametitle{Noise matrix}
 
 
 	%[Noise assumptions]
@@ -657,13 +658,14 @@ provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some
 
 \begin{frame}
 	\frametitle{First-order expansion}
-	\vfill
+	
+	Chain of approximation
 	\[
 	\bm{u} = \frac{\bm{M} \bm{u}}{\lambda} \approx \frac{\bm{M} \bm{u}^\star}{ \lambda^\star} \approx \frac{\bm{M}^\star \bm{u}^\star}{ \lambda^\star} = \bm{u^\star}
 	\]
 	\vfill
 	\begin{itemize}
-		\item first approximation is much tighter than the second approximation
+		\item first approximation is much tighter than the second one
 	\end{itemize}
 \end{frame}
 
@@ -677,7 +679,7 @@ provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some
 
 \begin{frame}
 	\frametitle{Exact recovery of SBM}
-	We consider the case when (why?)
+	We consider the case when
 	\[
 	p=\frac{\alpha \log n}{n}, \quad \text{and} \quad q=\frac{\beta \log n}{n}
 	\]
@@ -704,9 +706,40 @@ provided that $\sigma \sqrt{n \log n}  \leq c_{\sigma}\lambda^{\star} $ for some
 	\]
 	no method whatsoever can achieve exact recovery
 	
-	Hellinger distance?
+	{\hfill \em ---what's special about $\big( \sqrt{\alpha} -\sqrt{\beta}\big)^2 $?}
+	
+	\vfill
+	\begin{definition}[Squared Hellinger distance]
+%
+\label{defn:Hellinger-distance}
+Consider two distributions $P$ and $Q$ over a finite alphabet $\mathcal{Y}$. The squared Hellinger distance $\mathsf{H}^2(P\,\|\,Q)$ between $P$ and $Q$  is defined as follows	%
+\begin{equation}
+\mathsf{H}^2(P\,\|\,Q)\coloneqq\frac{1}{2}\sum\nolimits_{y\in \mathcal{Y}}\Big(\sqrt{P(y)}-\sqrt{Q(y)}\Big)^{2}.
+\label{eq:defn-Hellinger-PQ}
+\end{equation}
+%
+\end{definition}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Optimality of spectral method (cont.)}
+	Cconsider the squared Hellinger distance between $\mathsf{Bern}(p)$ and $\mathsf{Bern}(q)$. It is seen that %
+\begin{align*}
+	\mathsf{H}^2\big( \mathsf{Bern}(p),   \mathsf{Bern}(q) \big) 
+	&\coloneqq \frac{1}{2} \big( \sqrt{p} -\sqrt{q}\big)^2 + \frac{1}{2} \big( \sqrt{1-p} -\sqrt{1-q}\big)^2 \nonumber\\
+	&= (1+o(1)) \frac{1}{2} \big( \sqrt{p} -\sqrt{q}\big)^2,
+\end{align*}
+%
+when $p=o(1)$ and $q=o(1)$. 
+The phase transition phenomenon  can then be alternatively described as
+%
+\begin{align*}
+\text{\text{spectral method works}}\quad & \text{if }\mathsf{H}^{2}\big(\mathsf{Bern}(p),\mathsf{Bern}(q)\big)\geq(1+\varepsilon)\frac{\log n}{n}\\
+\text{no algorithm works}\quad & \text{if }\mathsf{H}^{2}\big(\mathsf{Bern}(p),\mathsf{Bern}(q)\big)\leq(1-\varepsilon)\frac{\log n}{n}
+\end{align*}
+%
+for an arbitrary small constant $\varepsilon >0$
+\end{frame}
 
 
 \begin{frame}
@@ -732,10 +765,8 @@ which obeys
 
 	
 These imply	\begin{align*}
-\lambda^{\star} & =\tfrac{n(p-q)}{2}\\
-\mu & =1\\
-B & =1\\
-\sigma^{2} & \leq\max\{p,q\}=p
+\lambda^{\star} & =\tfrac{n(p-q)}{2}, & \mu & =1,\\
+B & =1, & \sigma^{2} & \leq\max\{p,q\}=p
 \end{align*}
 
 \end{frame}
@@ -768,22 +799,23 @@ for some constant $C>0$
 \begin{lemma}
 	\label{lemma:M-ustar-lower-bound-CD}
 	Suppose that
-\begin{align}
-	\big( \sqrt{p} -\sqrt{q}\big)^2 \geq\left( 1+ \varepsilon  \right) \frac{2\log n}{n} 
-	\label{eq:H-pq-lower-bound-lemma}
-\end{align}
+	
+	\vspace{-2em}
+\begin{align*}
+	\big( \sqrt{\alpha} -\sqrt{\beta}\big)^2 \geq 2 \left ( 1+ \varepsilon  \right)  
+\end{align*}
 % 
 for some quantity $\varepsilon>0$.   
 Then with probability exceeding $1- o(1)$, one has
 %
 \begin{align*}
-	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \frac{2\eta}{a - b} \,\,\,\text{for all }l\leq \frac{n}{2}
-	\quad\text{and}\quad
+	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \frac{\eta \log n}{\sqrt{n}} \,\,\,\text{for all }l\leq \frac{n}{2}
+	\;\text{and}\;
 	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
-	\leq - \frac{2\eta}{a - b} \,\,\, \text{for all } l > \frac{n}{2}, 
+	\leq - \frac{\eta \log n}{\sqrt{n}} \,\,\, \text{for all } l > \frac{n}{2}, 
 	%\label{eq:M-ustar-bound-CD-lemma}
 \end{align*}
-where $\eta > 0$ obeys $(\sqrt{a} - \sqrt{b})^2 - \eta \log (a/b) > 2.$
+where $\eta > 0$ obeys $(\sqrt{\alpha} - \sqrt{\beta})^2 - \eta \log (\alpha/\beta) > 2.$
 %
 \end{lemma}
 
@@ -827,10 +859,10 @@ where $\eta > 0$ obeys $(\sqrt{a} - \sqrt{b})^2 - \eta \log (a/b) > 2.$
 	\frametitle{Completing the picture}
 	On one hand 
 	\begin{align*}
-	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \varepsilon_0 \,\,\,\text{for all }l\leq \frac{n}{2}
-	\quad\text{and}\quad
+	 \bm{M}_{l,\cdot}\bm{u}^{\star}   \geq \frac{\eta \log n}{\sqrt{n}} \,\,\,\text{for all }l\leq \frac{n}{2}
+	\;\text{and}\;
 	   \bm{M}_{l,\cdot} \bm{u}^{\star}  
-	\leq - \varepsilon_0 \,\,\, \text{for all } l > \frac{n}{2}. 
+	\leq - \frac{\eta \log n}{\sqrt{n}} \,\,\, \text{for all } l > \frac{n}{2} 
 	%\label{eq:M-ustar-bound-CD-lemma}
 \end{align*}
 
@@ -842,9 +874,9 @@ On the other hand
 
 In sum,  if one can show 
 %
-\begin{align*}
-	\varepsilon_{0}  > \Delta
-\end{align*}
+\begin{align}\label{eq:key-relation}
+	\frac{\eta \log n}{\sqrt{n}}  > \Delta
+\end{align}
 %
 then it follows that
 %
@@ -854,7 +886,214 @@ zu_{l} u_{l}^{\star}>0\quad\text{for all }1\leq l\leq n \quad \Longrightarrow \q
 
 \end{frame}
 
+\begin{frame}
+	\frametitle{Proof of relation~\eqref{eq:key-relation}}
+	Our goal is to show 
+	\[
+	\frac{\eta \log n}{\sqrt{n}} \geq C \Big( \sqrt{p}+\frac{p\sqrt{\log n}}{\sqrt{n}(p-q)}+\frac{\sqrt{p}\log^{3/2}n}{n(p-q)} \Big)
+	\]
+	
+	\vfill
+	The first two terms are easy. For the last term, one can divide discussion into two cases $\alpha / \beta \leq 2$, and $\alpha / \beta \geq 2$
+\end{frame}
 
+\begin{frame}
+	\frametitle{Compare two sets of Bernoullis}
+	\begin{lemma}\label{lemma:Bern}
+	Suppose $\alpha>\beta$, $\{W_{i}\}_{1\leq i\leq n/2}$ are i.i.d.~$\mathsf{Bern}(\frac{\alpha\log n}{n})$,
+and $\{Z_{i}\}_{1\leq i\leq n/2}$ are i.i.d.~$\mathsf{Bern}(\frac{\beta\log n}{n})$,
+which are independent of $W_{i}$. For any $t>0$, one has
+\[
+\mathbb{P}\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\leq t\log n\right)\leq n^{-(\sqrt{a}-\sqrt{b})^{2}/2+t\log(a/b)/2}.
+\]
+	\end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:M-ustar-lower-bound-CD}}
+	Note that $\bm{M}\bm{u}^{\star} = (\bm{A} - \frac{p+q}{2}\bm{1}\bm{1}^\top)\bm{u}^{\star} = \bm{A} \bm{u}^\star$. Hence
+\[
+\bm{M}_{1,:}\bm{u}^{\star}=\bm{A}_{1,:}\bm{u}^{\star}=\frac{1}{\sqrt{n}}\left(\sum_{j=1}^{n/2}A_{1,j}-\sum_{j=n/2+1}^{n}A_{1,j}\right)
+\]
+
+\vfill
+Apply Lemma~\ref{lemma:Bern} to obtain with probability at least $1- n^{-(\sqrt{a}-\sqrt{b})^{2}/2+\eta\log(a/b)/2} = 1 - o(n^{-1})$
+\[
+\bm{M}_{1,:}\bm{u}^{\star} \geq \frac{\eta \log n}{\sqrt{n}}
+\]
+Invoke union bound to complete proof
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:Bern}}
+	We apply the Laplace transform method: for any $\lambda<0$
+\begin{align*}
+&\mathbb{P}\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\leq t\log n\right) \\
+&\quad =\mathbb{P}\left(\exp\left(\lambda\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\right)\right)\geq\exp\left(\lambda t\log n\right)\right)\\
+ &\quad \leq\frac{\mathbb{E}\left[\exp\left(\lambda\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\right)\right)\right]}{\exp\left(\lambda t\log n\right)}
+\end{align*}
+By independence, one has 
+\[
+\mathbb{E}\left[\exp\left(\lambda\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\right)\right)\right]=\prod_{i=1}^{n/2}\mathbb{E}\left[\exp\left(\lambda W_{i}\right)\right]\mathbb{E}\left[\exp\left(-\lambda Z_{i}\right)\right]
+\]
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:Bern} (cont.)}
+	By definition and using $1+ x \leq e^x$, one has 
+\begin{align*}
+\mathbb{E}\left[\exp\left(\lambda W_{i}\right)\right] & =\frac{\alpha\log n}{n}\exp\left(\lambda\right)+\left(1-\frac{\alpha\log n}{n}\right)\\
+ & \leq\exp\left(\frac{\alpha\log n}{n}\exp\left(\lambda\right)-\frac{\alpha\log n}{n}\right)
+\end{align*}
+Similarly for $Z_{i}$, one has 
+\begin{align*}
+\mathbb{E}\left[\exp\left(-\lambda W_{i}\right)\right]   \leq\exp\left(\frac{\beta\log n}{n}\exp\left(-\lambda\right)-\frac{\beta\log n}{n}\right)
+\end{align*}
+Combine these two to see that 
+\begin{align*}
+&\mathbb{E}\left[\exp\left(\lambda W_{i}\right)\right]\mathbb{E}\left[\exp\left(-\lambda Z_{i}\right)\right] \\
+&\quad\leq\exp\left(\frac{\log n}{n}\left(\alpha\exp\left(\lambda\right)+\beta\exp\left(-\lambda\right)-\alpha-\beta\right)\right)
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:Bern} (cont.)}
+	Combine previous two pages to see
+\begin{align*}
+& \log\mathbb{P}\left(\sum_{i=1}^{n/2}W_{i}-\sum_{i=1}^{n/2}Z_{i}\leq t\log n\right) \\
+&\quad \leq-\lambda t\log n+\frac{n}{2}\frac{\log n}{n}\left(\alpha\exp\left(\lambda\right)+\beta\exp\left(-\lambda\right)-\alpha-\beta\right)
+\end{align*}
+Set $\lambda=-\log\left(\alpha/\beta\right)/2$ to obtain 
+\[
+\alpha\exp\left(\lambda\right)+\beta\exp\left(-\lambda\right)-\alpha-\beta=\alpha\sqrt{\frac{\beta}{\alpha}}+\beta\sqrt{\frac{\alpha}{\beta}}-\alpha-\beta=-\left(\sqrt{\alpha}-\sqrt{\beta}\right)^{2}
+\]
+and proof is finished 
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\vfill
+\centering
+{\large \bf General $\ell_{2,\infty}$ perturbation theory}
+
+{\hfill \em ---rank-r case}
+\vfill
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Setup and notation}
+	{\bf Groundtruth}: consider a rank-$r$ matrix $\bm{M}^{\star} = \bm{U}^{\star}\bm{\Sigma}^{\star}\bm{V}^{\star\top} \in\mathbb{R}^{n_{1}\times n_{2}}$, with singular values $\sigma_{1}^{\star}\geq \sigma_{2}^{\star} \geq \cdots \geq \sigma_{r}^{\star} > 0$ (WLOG, assume $n_1 \leq n_2$)  \\
+	
+	\vspace{1em}
+	{\bf Two convenient notation}:
+	\[
+	\kappa \coloneqq \frac{\sigma_{1}^{\star}}{\sigma_{r}^{\star}}, \qquad n \coloneqq n_1 + n_2 
+	\] 
+	
+	\vspace{1em}
+	{\bf Observations}: 
+	
+	\begin{align*}
+	\bm{M}=\bm{M}^{\star}+\bm{E} \in \mathbb{R}^{n_1 \times n_2}
+\end{align*}
+with $\bm{E}$ a  noise matrix
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Noise matrix}
+
+
+	%[Noise assumptions]
+	The entries in $\bm{E}=[E_{i,j}]_{1 \leq i \leq n_1, 1 \leq j \leq n_2}$ are independently generated obeying
+%
+\begin{align*}
+	\mathbb{E}[E_{i,j}] = 0, \quad \mathbb{E}[E_{i,j}^2]\leq \sigma^2, \quad |E_{i,j}|\leq B, \quad \text{for all }i, j
+\end{align*}
+%
+	Further,  assume that 
+	%there is some positive quantity $c_{\mathsf{b}}=O(1)$ such that 
+	%
+	\begin{align*}
+		c_{\mathsf{b}} \coloneqq \frac{B}{  \sigma  \sqrt{n_1/(\mu\log n)} } = O(1)
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{$\ell_{2,\infty}$ distance}
+	We would like to measure ``$\ell_{2,\infty}$'' distance between $\bm{U}$ and $\bm{U}^\star$
+	
+	{\hfill \em ---again, need to take account rotation ambiguity}
+	
+	\begin{definition} For any square matrix $\bm{Z}$ with SVD $\bm{Z}=\bm{U}_{Z}\bm{\Sigma}_Z\bm{V}_{Z}^{\top}$ (where $\bm{U}_Z$ and $\bm{V}_Z$ represent respectively the left and right singular matrices of $\bm{Z}$, and $\bm{\Sigma}_Z$ is a diagonal matrix composed of the singular values), define
+%
+\begin{align}
+	\mathsf{sgn}(\bm{Z}) \coloneqq \bm{U}_{Z}  \bm{V}_{Z}^{\top}
+	\label{eq:defn-sgn-Z}
+\end{align}
+%
+to be the matrix sign function of $\bm{Z}$.
+\end{definition}
+
+We care about $\|\bm{U}\mathsf{sgn}(\bm{U}^\top. \bm{U}^\star)-\bm{U}^{\star}\|_{2,\infty}$ and $\|\bm{V}\mathsf{sgn}(\bm{H}_{\bm{V}})-\bm{V}^{\star}\|_{2,\infty}$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incoherence}
+	\begin{definition}
+	Fix an orthonormal matrix $\bm{U}^\star \in \mathbb{R}^{n \times r}$. Define its incoherence to be
+	\begin{align*}
+	\mu(\bm{U}^\star) \coloneqq \frac{n\|\bm{U}^{\star}\|_{2,\infty}^{2}}{r} 
+\end{align*}
+\end{definition}
+
+\vfill 
+\begin{itemize}
+	\item For $\bm{M}^{\star} = \bm{U}^{\star}\bm{\Sigma}^{\star}\bm{V}^{\star\top}$, define $\mu(\bm{M}^\star) = \max\{\mu(\bm{U}^\star), \mu(\bm{V}^\star)\}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{$\ell_{2, \infty}$ perturbation theory}
+\begin{theorem}
+\label{thm:2-inf-asymm}
+%
+Consider the settings and
+assumptions in Section~\ref{sec:general-theory-setup-asymm}, and
+define $\bm{H}_{\bm{U}}\coloneqq\bm{U}^{\top}\bm{U}^{\star}$ and
+$\bm{H}_{\bm{V}}\coloneqq\bm{V}^{\top}\bm{V}^{\star}$. With probability
+at least $1-O(n^{-5})$, one has
+%
+\begin{align}
+	& \max\Big\{\|\bm{U}\mathsf{sgn}(\bm{H}_{\bm{U}})-\bm{U}^{\star}\|_{2,\infty},\, \|\bm{V}\mathsf{sgn}(\bm{H}_{\bm{V}})-\bm{V}^{\star}\|_{2,\infty} \Big\} \nonumber\\
+	& \qquad\qquad\qquad\qquad \lesssim\frac{\sigma\sqrt{ r}\big(\kappa\sqrt{\frac{n_{2}}{n_{1}}\mu}+\sqrt{\log n}\big)}{\sigma_{r}^{\star}},\label{eq:main-result-2-infty-general-asymm}
+\end{align}
+%
+provided that $\sigma\sqrt{n\log n}\leq c_{1}\sigma_{r}^{\star}$
+for some sufficiently small constant $c_{1}>0$. 
+%
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entrywise reconstruction error}
+	\begin{corollary}
+	In addition, if $\sigma\kappa\sqrt{n\log n}\leq c_{2}\sigma_{r}^{\star}$
+for some small enough constant $c_{2}>0$, then the following holds with
+probability at least $1-O(n^{-5})$:
+%
+\begin{equation}
+	\|\bm{U}\bm{\Sigma}\bm{V}^{\top}-\bm{M}^{\star}\|_{\infty}\lesssim\sigma\kappa^{2}\mu r\sqrt{\frac{(n_2/n_1) \log n}{n_{1}}}.\label{eq:main-result-infty-general-asymm}
+\end{equation}
+	\end{corollary}
+\end{frame}
 
 
 \begin{frame}[plain]
@@ -862,6 +1101,126 @@ zu_{l} u_{l}^{\star}>0\quad\text{for all }1\leq l\leq n \quad \Longrightarrow \q
 \centering
 {\large \bf Application: entrywise error in matrix completion}
 \vfill
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Low-rank matrix completion}
+
+
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\[
+ \begin{bmatrix}
+   {\color{blue} \checkmark} & {\color{red} ?} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark}  & {\color{red} ?} &{\color{red} ?}  & {\color{blue} \checkmark} \\
+   {\color{blue} \checkmark}  &  {\color{red} ?} & {\color{red} ?} & {\color{red} ?}  & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{blue} \checkmark} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?}  &{\color{red} ?} & {\color{blue} \checkmark} &
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?}
+\end{bmatrix}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}  
+\begin{center}
+\includegraphics[width=0.9\textwidth]{NetflixMahdi} \\
+\hfill {\footnotesize\em figure credit: Cand\`es ~~}
+\end{center}
+\end{column}
+
+\end{columns}
+
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item consider a low-rank matrix $\bm{M}^{\star} = \bm{U}^{\star} \bm{\Sigma}^{\star} \bm{V}^{\star\top}$
+	\item each entry $M_{i,j}^{\star}$   is observed independently with prob.~$p$
+	\item {\bf intermediate goal:} estimate $\bm{U}^{\star}, \bm{V}^{\star}$
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Spectral method for matrix completion}
+
+\begin{itemize}
+	
+	\item[{\color{black}1.}] identify the key matrix $\bm{M}^{\star}$
+	\item[{\color{black}2.}] construct surrogate matrix ${\bm{M}}\in \mathbb{R}^{n\times n}$ as
+	%
+	\[
+		{M}_{i,j} = \begin{cases} \frac{1}{p} M_{i,j}^{\star}, \quad & \text{if }M_{i,j}^{\star}\text{ is observed} \\ 
+					0,  & \text{else}	\end{cases} 
+	\]
+	%
+	\begin{itemize}
+		\item {\bf rationale for rescaling:} ensures $\mathbb{E}[{\bm{M}}] = \bm{M}^{\star}$
+	\end{itemize}
+
+	\bigskip
+
+\item[{\color{black}3.}] compute the rank-$r$ SVD ${\bm{U}}{\bm{\Sigma}}{\bm{V}}^{\top}$ of ${\bm{M}}$, and return $({\bm{U}}, {\bm{\Sigma}}, {\bm{V}})$
+
+	
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Performance guarantees for matrix completion}
+\begin{theorem}
+\label{thm:mc-inf}
+%
+Consider the settings and assumptions in Section~\ref{sec:problem-formulation-MC}, and
+define $\bm{H}_{\bm{U}}\coloneqq\bm{U}^{\top}\bm{U}^{\star}$ and
+$\bm{H}_{\bm{V}}\coloneqq\bm{V}^{\top}\bm{V}^{\star}$.
+Suppose that $n_1\leq n_2$ and $n_{1}p\geq C\kappa^{4}\mu^{2}r^{2}\log n$ for some
+sufficiently large constant $C>0$. Then with probability greater
+than $1-O(n^{-5})$, we have
+%
+\begin{subequations}
+%
+\begin{align}
+\max\{\|\bm{U}\mathsf{sgn}(\bm{H}_{\bm{U}})-\bm{U}^{\star}\|_{2,\infty},\,\,&\|\bm{V}\mathsf{sgn}(\bm{H}_{\bm{V}})-\bm{V}^{\star}\|_{2,\infty}\} \nonumber\\& \leq\kappa^{2}\sqrt{\frac{\mu^{3}r^{3}\log n}{n_{1}^{2}p}};
+\label{eq:mc-inf-claim-1}\\
+\|\bm{U}\bm{\Sigma}\bm{V}^{\top}-\bm{M}^{\star}\|_{\infty} & \lesssim\kappa^{2}\mu^{2}r^{2}\sqrt{\frac{\log n}{n_{1}^{3}p}}\|\bm{M}^{\star}\|.
+\label{eq:mc-inf-claim-2}
+\end{align}
+%
+\end{subequations}
+%
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:mc-inf}}
+	Recall our notation $\bm{E}= \bm{M}  -\bm{M}^{\star}= p^{-1}\mathcal{P}_{\Omega}(\bm{M}^{\star})-\bm{M}^{\star}$.
+ It is straightforward to check
+that $\bm{E}$ satisfies noise assumptions with
+%
+\begin{equation}
+\sigma^{2}\coloneqq\frac{\|\bm{M}^{\star}\|_{\infty}^{2}}{p},\qquad\text{and}\qquad B\coloneqq\frac{\|\bm{M}^{\star}\|_{\infty}}{p}. \label{eq:mc-inf-noise}
+\end{equation}
+%
+In addition, from the relation $B= c_{\mathsf{b}}\sigma\sqrt{n_1/({\mu}\log n)}$, it is seen that $c_{\mathsf{b}}= O(1)$
+holds as long as $n_{1}p\gtrsim\mu\log n$.
+With these preparations in place, the claims in Theorem~\ref{thm:mc-inf} follow
+directly from Theorem~\ref{thm:2-inf-asymm} and the bound (\ref{eq:mc-entry-upper}) on $\|\bm{M}^{\star}\|_{\infty}$
+(and hence on $\sigma$).
 \end{frame}
 
 

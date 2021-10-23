@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  21 OCT 2021 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 OCT 2021 12:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1510,10 +1510,10 @@ Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line
 
 ]
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 283.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 284.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 283.
+(Font)              <9> on input line 284.
  [12
 
 ] [13
@@ -1529,7 +1529,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 File: ../../../Figures/loo_illustration.pdf Graphic file (type pdf)
 <use ../../../Figures/loo_illustration.pdf>
 Package pdftex.def Info: ../../../Figures/loo_illustration.pdf  used on input l
-ine 387.
+ine 388.
 (pdftex.def)             Requested size: 272.3379pt x 117.5751pt.
  [17
 
@@ -1554,7 +1554,7 @@ ine 387.
 ] [27
 
 ]
-Overfull \hbox (6.63246pt too wide) detected at line 575
+Overfull \hbox (6.63246pt too wide) detected at line 576
 []
  []
 
@@ -1562,7 +1562,7 @@ Overfull \hbox (6.63246pt too wide) detected at line 575
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 584.
+(Font)              <12> on input line 585.
  [29
 
 ] [30
@@ -1583,23 +1583,91 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ] [38
 
+] [39
+
 ]
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 792.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 824.
 
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 792.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 824.
 
-
-Overfull \hbox (1.67781pt too wide) detected at line 792
-[]
- []
-
-[39
-
-] [40
+ [40
 
 ] [41
+
+] [42
+
+]
+[43
+
+] [44
+
+] [45
+
+] [46
+
+]
+Overfull \hbox (6.50851pt too wide) detected at line 974
+\OML/lmm/m/it/10.95  [] [] \OT1/lmr/m/n/10.95 + \OML/lmm/m/it/10.95 ^^L [] [] 
+\OMS/lmsy/m/n/10.95 ^^@ \OML/lmm/m/it/10.95  \OMS/lmsy/m/n/10.95 ^^@ \OML/lmm/
+m/it/10.95 ^^L \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 [] \OT1/lmr/m/n/10.95 
++ \OML/lmm/m/it/10.95 ^^L[] \OMS/lmsy/m/n/10.95 ^^@ \OML/lmm/m/it/10.95  \OMS/
+lmsy/m/n/10.95 ^^@ \OML/lmm/m/it/10.95 ^^L \OT1/lmr/m/n/10.95 = \OMS/lmsy/m/n/1
+0.95 ^^@ [][]
+ []
+
+[47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+] [52
+
+]
+
+LaTeX Warning: Reference `sec:general-theory-setup-asymm' on page 53 undefined 
+on input line 1083.
+
+[53
+
+] [54
+
+] [55
+
+]
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../../../Figures/NetflixMahd
+i.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allow
+ed
+<../../../Figures/NetflixMahdi.pdf, id=704, 1580.90625pt x 1284.29813pt>
+File: ../../../Figures/NetflixMahdi.pdf Graphic file (type pdf)
+<use ../../../Figures/NetflixMahdi.pdf>
+Package pdftex.def Info: ../../../Figures/NetflixMahdi.pdf  used on input line 
+1149.
+(pdftex.def)             Requested size: 144.17686pt x 117.11038pt.
+[56
+
+ <../../../Figures/NetflixMahdi.pdf>] [57
+
+]
+
+LaTeX Warning: Reference `sec:problem-formulation-MC' on page 58 undefined on i
+nput line 1207.
+
+[58
+
+]
+
+LaTeX Warning: Reference `eq:mc-entry-upper' on page 59 undefined on input line
+ 1224.
+
+[59
 
 ]
 \tf@nav=\write7
@@ -1611,64 +1679,80 @@ Overfull \hbox (1.67781pt too wide) detected at line 792
 \tf@snm=\write9
 \openout9 = `spectral_method_l_inf_theory.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 868.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 868.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1227.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1227.
  (./spectral_method_l_inf_theory.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 868.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 868.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1227.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1227.
+
 Package rerunfilecheck Info: File `spectral_method_l_inf_theory.out' has not ch
 anged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 34209 strings out of 492616
- 809021 string characters out of 6129482
+ 34343 strings out of 492616
+ 811307 string characters out of 6129482
  1034796 words of memory out of 5000000
- 37261 multiletter control sequences out of 15000+600000
- 97549 words of font info for 133 fonts, out of 8000000 for 9000
+ 37345 multiletter control sequences out of 15000+600000
+ 100264 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,19n,96p,795b,698s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
-cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
-e/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} </Users/congma/Library/texlive/
-2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk>{/usr/local/texlive/2019/
-texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/lm/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmm
-i12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/lm/lmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
-lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss8.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2019/tex
-mf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/lm/lmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
-msy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loc
-al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spectral_method_l_inf_theory.pdf (41 pages, 1438000 bytes).
+pdfTeX warning (dest): name{eq:mc-entry-upper} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sec:problem-formulation-MC} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sec:general-theory-setup-asymm} has been referenced
+ but does not exist, replaced by a fixed one
+
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/loca
+l/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019
+/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} </Users/congma/Library/texlive/20
+19/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk>{/usr/local/texlive/2019/te
+xmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2019/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
+c/lm/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi1
+2.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
+ublic/lm/lmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
+8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/lm/lmsso10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
+c/lm/lmsso9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy1
+0.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on spectral_method_l_inf_theory.pdf (59 pages, 1993338 bytes).
 PDF statistics:
- 672 PDF objects out of 1000 (max. 8388607)
- 91 named destinations out of 1000 (max. 500000)
- 291 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 899 PDF objects out of 1000 (max. 8388607)
+ 141 named destinations out of 1000 (max. 500000)
+ 464 words of extra memory for PDF output out of 10000 (max. 10000000)
 
