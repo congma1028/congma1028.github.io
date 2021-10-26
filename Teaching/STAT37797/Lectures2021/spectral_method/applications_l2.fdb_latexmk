@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1634567978 "applications_l2.tex" "applications_l2.pdf" "applications_l2" 1634617966
+["pdflatex"] 1635042632 "applications_l2.tex" "applications_l2.pdf" "applications_l2" 1635042635
   "../../../Figures/../Figures/UC_logo.png" 1631559918 18302 f75204eb9fe761f78d8cdac788fef89e ""
   "../../../Figures/NetflixMahdi.pdf" 1319095090 461493 8f45019743fc3047a6a2830b4606b253 ""
   "../../../Figures/SBM_1.png" 1466348763 2453056 d262387056a469d78d83b7af8d907802 ""
@@ -368,15 +368,15 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "applications_l2.aux" 1634567980 6999 2d754f1b3acd19b4818b0e0705889766 "pdflatex"
-  "applications_l2.nav" 1634567980 3717 2241f885b2502160895f8e3e1be1a616 "pdflatex"
-  "applications_l2.out" 1634567978 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "applications_l2.tex" 1634188070 29626 87e735454851b1fd2d8adce790e0659a ""
+  "applications_l2.aux" 1635042635 6999 2d754f1b3acd19b4818b0e0705889766 "pdflatex"
+  "applications_l2.nav" 1635042635 3717 2241f885b2502160895f8e3e1be1a616 "pdflatex"
+  "applications_l2.out" 1635042633 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "applications_l2.tex" 1635042621 29628 6188015345f9e80ef160fbe19680d054 ""
   (generated)
-  "applications_l2.pdf"
-  "applications_l2.out"
-  "applications_l2.log"
   "applications_l2.toc"
-  "applications_l2.aux"
-  "applications_l2.snm"
+  "applications_l2.pdf"
   "applications_l2.nav"
+  "applications_l2.snm"
+  "applications_l2.out"
+  "applications_l2.aux"
+  "applications_l2.log"

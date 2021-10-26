@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1633273219 "spectral_method_l2_theory.tex" "spectral_method_l2_theory.pdf" "spectral_method_l2_theory" 1633402198
+["pdflatex"] 1633273219 "spectral_method_l2_theory.tex" "spectral_method_l2_theory.pdf" "spectral_method_l2_theory" 1635042444
   "../../../Figures/../Figures/UC_logo.png" 1631559918 18302 f75204eb9fe761f78d8cdac788fef89e ""
   "../../../Figures/Chandler_Davis.jpg" 1535550495 256836 423f3fdbf4ca64d7332e0833cd0c638f ""
   "../../../Figures/William_Kahan.jpg" 1535554613 14480 fead3295c569b918452c036423910e5c ""
@@ -378,10 +378,10 @@
   "spectral_method_l2_theory.out" 1633273220 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "spectral_method_l2_theory.tex" 1633273209 40964 2fffdbfcec814159c05860b0ef492118 ""
   (generated)
-  "spectral_method_l2_theory.snm"
-  "spectral_method_l2_theory.aux"
-  "spectral_method_l2_theory.pdf"
-  "spectral_method_l2_theory.out"
-  "spectral_method_l2_theory.log"
-  "spectral_method_l2_theory.toc"
   "spectral_method_l2_theory.nav"
+  "spectral_method_l2_theory.pdf"
+  "spectral_method_l2_theory.aux"
+  "spectral_method_l2_theory.out"
+  "spectral_method_l2_theory.toc"
+  "spectral_method_l2_theory.log"
+  "spectral_method_l2_theory.snm"

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1633403134 "matrix_concentration.tex" "matrix_concentration.pdf" "matrix_concentration" 1633403136
+["pdflatex"] 1633403134 "matrix_concentration.tex" "matrix_concentration.pdf" "matrix_concentration" 1635042542
   "../../../Figures/../Figures/UC_logo.png" 1631559918 18302 f75204eb9fe761f78d8cdac788fef89e ""
   "../../../Figures/Elliott-Lieb.jpg" 1534699174 33257 a7a6cba2f861777bc7b0aab0111f6b2d ""
   "../../../Figures/Gaussian_exponential_tail.pdf" 1537805579 178223 95b5771edf4f09094f903561bf74923a ""
@@ -341,15 +341,15 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "matrix_concentration.aux" 1633403136 6357 4a28b9b808eb41c1f353c0dec96da9b5 "pdflatex"
-  "matrix_concentration.nav" 1633403136 3066 4e37ff863218230e6fde596c98b54f26 "pdflatex"
-  "matrix_concentration.out" 1633403135 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "matrix_concentration.aux" 1633738430 6357 4a28b9b808eb41c1f353c0dec96da9b5 "pdflatex"
+  "matrix_concentration.nav" 1633738430 3066 4e37ff863218230e6fde596c98b54f26 "pdflatex"
+  "matrix_concentration.out" 1633738429 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "matrix_concentration.tex" 1633403132 24871 5d297d33f7c2348f9ce511ca9fa44acb ""
   (generated)
+  "matrix_concentration.out"
+  "matrix_concentration.pdf"
   "matrix_concentration.snm"
+  "matrix_concentration.nav"
   "matrix_concentration.aux"
   "matrix_concentration.toc"
-  "matrix_concentration.nav"
-  "matrix_concentration.out"
   "matrix_concentration.log"
-  "matrix_concentration.pdf"

@@ -47,3 +47,5 @@ subgradient method and exact recovery", L. Ding, L. Jiang, Y. Chen, Q. Qu, Z. Zh
 .. "Randomly initialized EM algorithm for two-component Gaussian mixture achieves near optimality in O(sqrt(n)) iterations", Y. Wu, H. H. Zhou, 2019
 .. "The landscape of empirical risk for non-convex losses", S. Mei, Y. Bai, A. Montanari, Annals of Statistics, 2018
 .. "Tensor Completion Made Practical", A. Liu, A. Moitra, 2020 
+.. "Model-Free Nonconvex Matrix Completion: Local Minima Analysis
+and Applications in Memory-Efficient Kernel PCA", J. Chen, X. Li, 2019
