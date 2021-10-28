@@ -1,0 +1,271 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+{Basics of optimization theory}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{7}
+
+\begin{document}
+
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unconstrained optimization}
+	Consider an unconstrained optimization problem
+\[
+	\text{minimize}_{\bm{x}}\qquad f(\bm{x})
+\]
+
+\vfill
+
+\begin{itemize}
+\item For simplicity, we assume $f(\bm{x})$ is twice differentiable
+\item We assume the minimizer $\bm{x}_{\mathsf{opt}}$ exists, i.e., 
+\[
+\bm{x}_{\mathsf{opt}} \coloneqq \underset{\bm{x}}{\arg\min} f(\bm{x})
+\]
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{(Local) strong convexity and smoothness}
+	\begin{definition}
+		A twice differentiable function $f : \mathbb{R}^{n} \mapsto \mathbb{R}$ is said to be $\alpha$-strongly convex in a set $\mathcal{B}$ if for all $\bm{x} \in \mathcal{B}$
+		\[
+		\nabla^2 f(\bm{x}) \succeq \alpha \bm{I}_{n}.
+		\]
+	\end{definition}
+	
+	\vfill
+	\begin{definition}
+		A twice differentiable function $f : \mathbb{R}^{n} \mapsto \mathbb{R}$ is said to be $\beta$-smooth in a set $\mathcal{B}$ if for all $\bm{x} \in \mathcal{B}$
+		\[
+		\| \nabla^2 f(\bm{x}) \| \leq \beta.
+		\]
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Gradient descent theory revisited}
+	Gradient descent method with step size $\eta > 0$
+	\[
+		\bm{x}^{t+1}=\bm{x}^t - \eta \nabla f(\bm{x}^t) 
+	\]
+	
+	\begin{lemma}\label{lemma:GD}
+		Suppose $f$ is $\alpha$-strongly convex and $\beta$-smooth in the local ball $\mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}}) \coloneqq \{\bm{x} \mid \|\bm{x} - \bm{x}_{\mathsf{opt}}\|_2 \leq \delta \}$. Running gradient descent from $\bm{x}^{0} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})$ with $\eta = 1 / \beta$ achieves linear convergence
+		\[
+		\|\bm{x}^{t} -\bm{x}_{\mathsf{opt}}\|_2 \leq \left(1- {\frac{\alpha}{\beta}}  
+\right)^{t}\|\bm{x}^{0} -\bm{x}_{\mathsf{opt}}\|_2, \quad t = 0, 1, 2, \ldots
+		\]
+	\end{lemma}	
+	
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Implications}
+		\begin{itemize}
+	\itemsep0.5em
+	\item Condition number $\alert{\beta / \alpha}$ determines rate of convergence
+	\item Attains $\varepsilon$-accuracy (i.e., $\|\bm{x}^{t} -\bm{x}_{\mathsf{opt}}\|_2 \leq \varepsilon \|\bm{x}_{\mathsf{opt}}\|_2$) within 
+	\[
+	O\left( \alert{ \frac{\beta}{\alpha} } \log\frac{1}{\varepsilon} \right)
+	\]
+	 iterations
+	 \item Needs initialization $\bm{x}^{0} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:GD}}
+	Since $\nabla f(\bm{x}_{\mathsf{opt}}) = \bm{0}$, we can rewrite GD as
+	\begin{align*}
+		\bm{x}^{t+1} - \bm{x}_{\mathsf{opt}} &= \bm{x}^t - \eta \nabla f(\bm{x}^t) - [\bm{x}_{\mathsf{opt}} - \eta \nabla f(\bm{x}_{\mathsf{opt}})] \\
+		&= \left[ \bm{I}_{n} - \eta \int_{0}^{1} \nabla^2 f (\bm{x}(\tau)) \mathsf{d}\tau \right ] (\bm{x}^t - \bm{x}_{\mathsf{opt}}),
+	\end{align*}
+	where $\bm{x}(\tau) \coloneqq \bm{x}_{\mathsf{opt}} + \tau (\bm{x}^t - \bm{x}_{\mathsf{opt}})$. By local strong convexity and smoothness, one has
+	\[
+	\alpha \bm{I}_{n} \preceq \nabla^2 f (\bm{x}(\tau)) \preceq \beta \bm{I}_{n}, \qquad \text{for all } 0 \leq \tau \leq 1
+	\]
+	Therefore $\eta = 1 / \beta$ yields
+	\[
+	\bm{0} \preceq \bm{I}_{n} - \eta \int_{0}^{1} \nabla^2 f (\bm{x}(\tau)) \mathsf{d}\tau \preceq (1 - \frac{\alpha}{\beta}) \bm{I}_{n},
+	\]
+	which further implies 
+	\[
+	\|\bm{x}^{t+1} -\bm{x}_{\mathsf{opt}}\|_2 \leq \left(1- {\frac{\alpha}{\beta}}  
+\right)\|\bm{x}^{t} -\bm{x}_{\mathsf{opt}}\|_2
+	\]
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{Regularity condition}
+More generally, for update rule
+\[
+\bm{x}^{t+1} = \bm{x}^t - \eta \bm{g}(\bm{x}^t),
+\]
+where $g(\cdot) : \mathbb{R}^{n} \mapsto \mathbb{R}^{n}$
+
+\vfill
+\begin{definition}
+\label{def:reg-condition}
+ $\bm{g}(\cdot)$ is said to obey $\mathsf{RC}( \mu,\lambda, \delta )$ for some $ \mu,\lambda, \delta >0 $ if 
+\[
+2 \langle\, \bm{g}(\bm{x}), \bm{x}-   \bm{x}_{\mathsf{opt}} \rangle\geq {\mu}\| \bm{g}(\bm{x})\|^2_2 + \lambda \left\| \bm{x}-   \bm{x}_{\mathsf{opt}} \right\|_2^2 \quad \forall \bm{x} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})
+\]
+\end{definition}
+
+\begin{itemize}
+	\item Negative search direction $\bm{g}$ is positively correlated with error $\bm{x}-   \bm{x}_{\mathsf{opt}}$ $\Longrightarrow$ one-step improvement
+	\item $\mu \lambda \leq 1$ by Cauchy-Schwarz
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{RC = one-point strong convexity + smoothness}
+
+
+\vspace{-4em}
+\uncover<1>{
+
+\begin{itemize}
+	\item One-point $\alpha$-strong convexity: 
+		\begin{align}
+			\label{eq:1point-cvx}
+			f(\bm{x}_{\mathsf{opt}}) - f(\bm{x}) \geq \langle \nabla f(\bm{x}), \bm{x}_{\mathsf{opt} }  - \bm{x}  \rangle + \frac{\alpha}{2} \| \bm{x} - \bm{x}_{\mathsf{opt}} \|_2^2 
+		\end{align}
+
+	\bigskip
+		
+	\item $\beta$-smoothness: 
+\begin{align}
+f(\bm{x}_{\mathsf{opt}})- f(\bm{x}) & \leq f \Big(\bm{x} - \frac{1}{\beta}\nabla f(\bm{x}) \Big)- f(\bm{x})  \nonumber \\
+& \leq \Big\langle \nabla f(\bm{x}), - \frac{1}{\beta}\nabla f(\bm{x}) \Big\rangle + \frac{\beta}{2} \Big\| \frac{1}{\beta}\nabla f(\bm{x}) \Big\|_2^2 \nonumber \\
+	&= -\frac{1}{2\beta} \left\| \nabla f(\bm{x}) \right\|_2^2  \label{eq:smoothness-grad}
+\end{align}
+
+
+\end{itemize}
+}
+
+
+\uncover<2>{
+
+\vspace{-13em}
+
+Combining \eqref{eq:1point-cvx} and \eqref{eq:smoothness-grad} yields
+
+\begin{align*}
+	\langle \nabla f(\bm{x}), \bm{x} - \bm{x}_{\mathsf{opt} }    \rangle  \geq \frac{\alpha}{2} \| \bm{x} - \bm{x}_{\mathsf{opt}} \|_2^2 + \frac{1}{2\beta} \left\| \nabla f(\bm{x}) \right\|_2^2  
+\end{align*}
+
+\hfill --- \alert{\em RC holds with $\mu= 1/\beta$ and $\lambda = \alpha$}
+}
+
+
+ \end{frame}
+
+\begin{frame}
+	\frametitle{Extension of convex functions}
+	When $\bm{g} (\bm{x}) = \nabla f (\bm{x})$, $f$ is not necessarily convex
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{regularity-example.pdf}
+\end{center}
+
+\[
+f(x)=\begin{cases}
+x^{2}, & |x|\leq6,\\
+x^{2}+1.5|x|(cos(|x|-6)-1), & |x|>6
+\end{cases}
+\]
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Convergence  under RC}
+
+ \begin{lemma}\label{lemma:RC}
+ Suppose $\bm{g}(\cdot)$ obeys $\mathsf{RC}( \mu,\lambda, \delta )$. The update rule ($\bm{x}^{t+1} = \bm{x}^t - \eta \bm{g}(\bm{x}^t)$) with $\eta = \mu$  and $\bm{x}^{0} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})$ obeys
+	\[
+		\|\bm{x}^{t} -\bm{x}_{\mathsf{opt}} \|_2^{2} \leq \left(1- \only<1->{\alert{\mu\lambda}} \right)^{t} \|\bm{x}^{0} -\bm{x}_{\mathsf{opt}} \|_2^{2}
+	\]
+ \end{lemma}
+
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item $\bm{g}(\cdot)$: more general search directions
+	\begin{itemize}
+		\item example: in vanilla GD, $\bm{g}(\bx)=\nabla f(\bx)$
+	\end{itemize}
+	\item The product $\alert{\mu\lambda}$ determines the rate of convergence
+	\item Attains $\varepsilon$-accuracy within $O\big( \alert{ \alert{\frac{1}{\mu\lambda}}} \log\frac{1}{\varepsilon} \big)$ iterations
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:RC}}
+	By definition, one has
+	\begin{align*}
+&\|\bm{x}^{t+1}-\bm{x}_{\mathsf{opt}}\|_{2}^{2} =\|\bm{x}^{t}-\eta\bm{g}(\bm{x}^{t})-\bm{x}_{\mathsf{opt}}\|_{2}^{2}\\
+ &\quad =\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta^{2}\|\bm{g}(\bm{x}^{t})\|_{2}^{2}-2\eta\left\langle \bm{g}(\bm{x}^{t}),\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\right\rangle \\
+ &\quad \leq\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta^{2}\|\bm{g}(\bm{x}^{t})\|_{2}^{2}-\eta\left(\lambda\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\mu\|\bm{g}(\bm{x}^{t})\|_{2}^{2}\right)\\
+ &\quad =(1-\eta\lambda)\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta(\eta-\mu)\|\bm{g}(\bm{x}^{t})\|_{2}^{2}\\
+ &\quad \leq(1-\eta\mu)\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}
+\end{align*}
+\end{frame}
+
+
+
+
+
+\end{document}
+
