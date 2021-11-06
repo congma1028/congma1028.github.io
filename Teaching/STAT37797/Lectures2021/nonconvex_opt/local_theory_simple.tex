@@ -1,0 +1,235 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+{Generic analysis of local convergence}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{8}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Outline}
+	\begin{itemize}
+		\item Low-rank matrix sensing
+		\item Phase retrieval
+		\item Low-rank matrix completion
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Low-rank matrix sensing}
+	\begin{itemize}
+		\item Groundtruth: rank-$r$ matrix $\bm{M}^\star \in \mathbb{R}^{n_1 \times n_2}$
+		\item Observations:
+			\begin{align*}
+				 y_{i} = \langle \bm{A}_i, \bm{M}^\star \rangle, \qquad \text{for } 1 \leq i \leq m
+			\end{align*}
+		\item Goal: recover $\bm{M}^\star$ based on linear measurements $\{ \bm{A}_i, y_i\}_{ 1 \leq i \leq m}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How many measurements are needed}
+	\begin{itemize}
+		\item $m \geq n_1 n_2$ ``generic'' measurements suffice given theory of solving linear equations
+		\item But $\bm{M}^{\star}$ only has $O((n_1 + n_2)r)$ degrees of freedom. Ideally, one hope for using only $O((n_1 + n_2)r)$ measurements
+	\end{itemize}
+
+\vfill
+	{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\centering
+Recovery is possible if $\{A_i\}$'s satisfy restricted isometry property
+\end{varblock}
+}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Restricted isometry property (RIP)}
+
+Define linear operator $\mathcal{A}: \mathbb{R}^{n_1 \times n_2 } \mapsto \mathbb{R}^{m}$ t obe
+\[
+\mathcal{A} (\bm{M}) = [ m^{-1/2} \langle \bm{A}_i, \bm{M} \rangle ]_{1 \leq i \leq m}
+\]
+	\begin{definition}
+		The operator $\mathcal{A}$ is said to satisfy $r$-RIP with RIP constant $\delta_{r} < 1$ if 
+		\[
+		(1 - \delta_{r}) \| \bm{M} \|_{\mathsf{F}}^{2} \leq \|\mathcal{A} (\bm{M}) \|_{2}^{2} \leq (1 + \delta_{r}) \| \bm{M} \|_{\mathsf{F}}^{2}
+		\]
+		holds simultaneously for all $\bm{M}$ of rank at most $r$.
+	\end{definition}
+
+	\begin{itemize}
+			\item Many random designs satisfy RIP with high probability
+			\item For instance, when $\bm{A}_{i}$ is composed of i.i.d.~$\mathcal{N}(0,1)$ entries, $\mathcal{A}$ obeys $r$-RIP with constant $\delta_{r}$ as soon as $m \gtrsim (n_1 + n_2) r / \delta_{r}^{2}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{An optimization-based method}
+	Consider the simple case when $\bm{M}^\star$ is psd and rank 1, i.e.,
+	\[
+		\bm{M}^{\star} = \bm{x}^{\star} \bm{x}^{\star \top}
+	\]
+
+	\vfill
+	Then least-squares estimation yields
+	\[
+		\underset{\bm{x} \in \mathbb{R}^{n}}{\text{minimize}}\qquad f(\bm{x}) = \frac{1}{4m} \sum_{i=1}^{m} \left( \langle \bm{A}_{i}, \bm{x} \bm{x}^{\top} \rangle - y_i \right)^{2}
+	\]
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gradient descent}
+	Starting from $\bm{x}^0$, one proceeds by
+	\begin{align*}
+		\bm{x}^{t+1} &= \bm{x}^t - \eta \nabla f ( \bm{x}^t ) \\
+		&= \bm{x}^t - \frac{\eta}{m} \sum_{i=1}^{m} \left( \langle \bm{A}_{i}, \bm{x}^t \bm{x}^{t\top} \rangle - y_i \right) \bm{A}_{i} \bm{x}^t
+	\end{align*}
+
+	Here we made simplifying assumption that $A_{i}$ is symmetric
+
+	\vfill
+	\begin{itemize}
+			\item Under random design, when $m \to \infty$, this mirrors PCA problem with loss $\frac{1}{4} \| \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \|_{\mathrm{F}}^{2}$; GD works locally
+			\item How about finite-sample case? \\
+			{\hfill \em \footnotesize RIP helps}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local convergence of gradient descent}
+	
+	\begin{theorem}\label{thm:sensing-rank-1}
+		Suppose that $\mathcal{A}$ obeys 4-RIP with constant $\delta_{4} \leq 1 /44$. If $\| \bm{x}^0 - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12$, then GD with $\eta = 1 / (3 \|\bm{x}^\star\|_{2}^{2})$ obeys
+		\begin{align*}
+			\| \bm{x}^t - \bm{x}^\star \|_2 \leq (\tfrac{11}{12})^t \| \bm{x}^0 - \bm{x}^\star \|_2, \qquad \text{for }t=0,1,2,\ldots
+		\end{align*}
+	\end{theorem}
+
+	\vfill
+	\begin{itemize}
+		\item local linear convergence within basin of attraction $\{\bm{x} \mid \| \bm{x} - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12\}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1}}
+	In view of theory of gradient descent for locally strongly convex and smooth functions, it suffices to prove that 
+	\[
+		0.25 \|\bm{x}^\star\|_{2}^{2} \bm{I}_{n} \preceq \nabla^2 f (\bm{x}) \preceq 3 \|\bm{x}^\star\|_{2}^{2} \bm{I}_{n}
+	\]
+	holds for all 
+	\[
+	\{\bm{x} \mid \| \bm{x} - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12\}
+	\]
+
+	To analyzing spectral properties of $\nabla^2 f (\bm{x})$, we focus on quadratic forms
+	\[
+	\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} 
+	\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+	Simple calculations show
+	\begin{align*}
+		\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} = \frac{1}{m} \sum_{i=1}^{m} \langle \bm{A}_{i}, \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \rangle (\bm{z}^\top  \bm{A}_{i} \bm{z} ) + 2 (\bm{z}^\top  \bm{A}_{i} \bm{x} )^2,
+	\end{align*}
+	which admits a more ``compact'' expression
+	\begin{align*}
+		\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} &= \langle \mathcal{A} (\bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}), \mathcal{A} (\bm{z} \bm{z}^\top ) \rangle \\
+		&\quad + \frac{1}{2} \langle \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}), \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}) \rangle 
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RIP preserves inner product}
+	\begin{lemma}\label{lemma:RIP-inner-product}
+	Suppose that $\mathcal{A}$ satisfies 2$r$-RIP with constant $\delta_{2r} < 1$, then 
+	\[
+		\left| \langle \mathcal{A}(\bm{X}), \mathcal{A}(\bm{Y}) \rangle - \langle \bm{X}, \bm{Y} \rangle \right| \leq \delta_{2r} \| \bm{X} \|_{\mathrm{F}} \| \bm{X} \|_{\mathrm{F}}
+	\]
+	\end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+	
+	Apply Lemma~\ref{lemma:RIP-inner-product} to obtain
+	\begin{align*}
+		& \left|  \langle \mathcal{A} (\bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}), \mathcal{A} (\bm{z} \bm{z}^\top ) \rangle - \langle \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}, \bm{z} \bm{z}^\top  \rangle \right| \\
+		&\quad \leq \delta_{4} \| \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \|_{\mathrm{F}} \| \bm{z} \bm{z}^\top \|_{\mathrm{F}}  \leq 3 \delta_{4} \| \bm{x}^{\star} \|_{2}^{2} \| \bm{z} \|_{2}^{2}, 
+	\end{align*}
+	while last relation uses $\|\bm{x} - \bm{x}^\star \|_{2} \leq \| \bm{x}^\star \|_{2}$. Similarly, one has
+	\begin{align*}
+		& \left|  \langle \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}), \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}) \rangle -  \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^{2} \right| \\
+		&\quad \leq \delta_{4} \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^2 \leq 4 \delta_{4} \| \bm{x} \|_{2}^{2} \| \bm{z} \|_{2}^{2} \leq 16 \delta_{4} \| \bm{x} \|_{2}^{2} \| \bm{z} \|_{2}^{2}
+	\end{align*}		
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+		Define
+	\begin{align*}
+		g(\bm{x}, \bm{z}) \coloneqq \langle \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}, \bm{z} \bm{z}^\top  \rangle + \frac{1}{2} \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^{2}
+		\end{align*}
+		
+		\vfill
+		Key conclusion so far: when $\|\bm{x} - \bm{x}^\star \|_{2} \leq \| \bm{x}^\star \|_{2}$, $\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z}$ is close to $g(\bm{x}, \bm{z})$ 
+		
+		\vfill
+		It boils down to upper and lower bounding $g(\bm{x}, \bm{z})$---a much easier task
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectral initialization}
+	Construct
+	\[
+	\bm{M} = \frac{1}{m} \sum_{i=1}^{m} y_i \bm{A}_{i}
+	\]
+\end{frame}
+
+\end{document}
+

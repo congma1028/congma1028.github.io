@@ -7,14 +7,14 @@
 \usepackage{array}
 
 
-\newcommand\dueDate{11:59pm on Oct. 21st}
+\newcommand\dueDate{11:59pm on Nov. 19th}
 
 \input assignment_utils
 \usepackage{listings}
 
 
 \begin{document}
-\createHomework{1}
+\createHomework{2}
 %\createHomeworkSolutions{1}
 
 
@@ -32,15 +32,15 @@ Let $X$ be a standard normal random variable. Prove that
 \newpart{5}
 Let $X_1, X_2, \ldots, X_n$ be $n$ i.i.d.~standard normal random variables. Prove that with probability at least $1- O(n^{-10})$, one has
 \[
-\max_{i}  |X_i|  \leq 5 \sqrt{\log n}.
+\max_{1 \leq i \leq n}  |X_i|  \leq 5 \sqrt{\log n}.
 \]
 
 \newpart{10}
-Let $\bm{x} \in \mathbb{R}^{n}$ be a random vector where each coordinate is an independent standard normal random variable. Using the the conclusion above, one can show that $\|\bm{x}\|_{2} \lesssim \sqrt{n \log n}$ with high probability. However, this falls short in two aspects. First, the upper bound on $\|x\|_2$ is not tight. Second, it doesn't provide a high-probability lower bound of $\|x\|_2$. In this part, prove that for all $t \in (0,1)$, one has
+Let $\bm{x} \in \mathbb{R}^{n}$ be a random vector where each coordinate is an independent standard normal random variable. Using the the conclusion above, one can show that $\|\bm{x}\|_{2} \lesssim \sqrt{n \log n}$ with high probability. However, this falls short in two aspects. First, the upper bound on $\|x\|_2$ is not tight. Second, it doesn't provide a high-probability lower bound of $\|\bm{x}\|_2$. In this part, prove that for all $t \in (0,1)$, one has
 \[
 \mathbb{P}( | \| \bm{x} \|_{2}^2 - n | \geq nt) \leq 2 \exp(-nt^2 / 8).
 \]
-(Hint: Laplace transform method with control of moment generating function)
+(Hint: Laplace transform method)
 \end{problem}
 
 \begin{problem}{Norm of Gaussian random matrices}{40}
@@ -49,7 +49,7 @@ Recall that in class, we have used the bound $\| \bm{E} \| \lesssim \sqrt{n}$ wh
 
 \newpart{10} Use matrix Bernstein's inequality to show that with high probability $\|\bm{E}\| \lesssim \sqrt{n \log n}$. (Hint: truncation) \\
 
-As before, the bound proved in part (a) is off by a $\sqrt{\log n}$ factor. In the following, we will prove the tighter version. Recall the definition of $\|\bm{E}\|$:
+As before, the bound proved in part (a) is off by a $\sqrt{\log n}$ factor. In the following, we will prove a tighter bound. Recall the definition of $\|\bm{E}\|$:
 \[
 \|\bm{E}\| = \sup_{\| \bm{v}\|_2 =1} \|\bm{E} \bm{v} \|_2
 \]
@@ -67,7 +67,7 @@ It is tempting to apply ``union bound'' and ``obtain''
 \mathbb{P}( \sup_{\| \bm{v}\|_2 =1} \|\bm{E} \bm{v} \|_2 \geq 10\sqrt{n}) \leq \sum_{\| \bm{v}\|_2 =1} \mathbb{P}( \|\bm{E} \bm{v} \|_2 \geq 10\sqrt{n}).
 \]
 
-However this argument is TOTALLY wrong as one cannot apply union bound to a uncountable set. Therefore, to properly apply union bound, one needs to restrict attention to a finite subset of the unit sphere in $\mathbb{R}^{n}$ that can approximate the unit sphere well. \\
+However this argument is ABSOLUTELY wrong as one cannot apply union bound to a uncountable set. Therefore, to properly apply union bound, one needs to restrict attention to a finite subset of the unit sphere in $\mathbb{R}^{n}$ that well approximates the unit sphere. This motivates the construction of the $\varepsilon$-net. \\
 
 \newpart{10} Let $\mathcal{N}_{\varepsilon}$ be a subset of $\{\bm{v} \in \mathbb{R}^{n}: \| \bm{v}\|_2 =1\}$ such that for any point $\bm{v}$ in $\{\bm{v} \in \mathbb{R}^{n}: \| \bm{v}\|_2 =1\}$, one can find an element $\bm{u} \in \mathcal{N}_{\varepsilon}$ such that $\|\bm{u} - \bm{v}\|_{2} \leq \varepsilon$. In particular, set $\mathcal{N}_{\varepsilon}$ be such a set with smallest cardinality. Prove that 
 \[
@@ -93,13 +93,29 @@ This shows the usefulness of $\mathcal{N}_{\varepsilon}$ in terms of approximati
 	as long as $n p \geq C \mu r \log n$ for some sufficiently large constant $C > 0$.
 \end{problem}
 
-\begin{problem}{Community detection experiments}{20}
-Consider the SBM model discussed in class. Fix the number $n$ of nodes in a graph to be $100$. Set $p=\frac{1+ \varepsilon}{2}$ and $q=\frac{1-\varepsilon}{2}$ for some quantity $\varepsilon \in [0,1/2]$. Generate a random graph and then use the spectral method to cluster the nodes. Please plot the mis-clustering rate vs. the probability gap $\varepsilon$. At the minimum, you should take 50 different values of $\varepsilon$ (with linear spacing) in $[0, 1/2]$. For each value of $\varepsilon$, you need to run the experiment with at least 200 Monte-Carlo trials to calculate the average mis-clustering rate across trials. 
+\begin{problem}{Matrix completion experiments}{20}
+Consider the matrix completion problem introduced in class. Let $\bm{M}^\star = \bm{U}^\star \bm{\Sigma}^\star \bm{V}^{\star\top} $ be the underlying groundtruth matrix. Here $\bm{U}^\star, \bm{V}^\star \in \mathbb{R}^{n \times r}$ are two independent random orthonormal matrices. For simplicity consider $\bm{\Sigma}^\star = \bm{I}_{r}$. Let $p$ be the observation probability for each entry. Let $\hat{\bm{M}}$ be the spectral estimate of the matrix $\bm{M}^\star$.
+
+Fix $n=200, r=5$, and vary $p$ from 0.2 to 1. Please report the relative Euclidean error $\frac{\|\hat{\bm{M}} - \bm{M}^\star\|_{\mathrm{F}}}{\|\bm{M}^\star\|_{\mathrm{F}}}$ and the relative entrywise error $\frac{\|\hat{\bm{M}} - \bm{M}^\star\|_{\infty}}{\|\bm{M}^\star\|_{\infty}}$ vs. the sampling probability $p$. Please choose at least $20$ different $p$'s and for each $p$, use at least 50 Monte-Carlo simulations.
 \end{problem}
 
-\begin{problem}{Matrix completion experiments}{20}
-Consider the SBM model discussed in class. Fix the number $n$ of nodes in a graph to be $100$. Set $p=\frac{1+ \varepsilon}{2}$ and $q=\frac{1-\varepsilon}{2}$ for some quantity $\varepsilon \in [0,1/2]$. Generate a random graph and then use the spectral method to cluster the nodes. Please plot the mis-clustering rate vs. the probability gap $\varepsilon$. At the minimum, you should take 50 different values of $\varepsilon$ (with linear spacing) in $[0, 1/2]$. For each value of $\varepsilon$, you need to run the experiment with at least 200 Monte-Carlo trials to calculate the average mis-clustering rate across trials. 
+\begin{problem}{Community detection experiments}{30}
+
+Consider the SBM model discussed in class, where $p = \alpha \log n / n$ and $q = \beta \log n / n$. Throughout this exercise, we will use the second eigenvector of the adjacency matrix $\bm{A}$, which does not rely on the knowledge of either $p$ or $q$.
+
+\newpart{15}
+In the first part, we are going to investigate the phase transition behavior we discussed in class. Fix $n=300$. Vary $\beta$ from 0 to 10, and $\alpha$ from 0 to 30, with increments 0.1 and 0.3 respectively. For each $\alpha, \beta$, run spectral method for 100 random trials and report the success rate plot. On the same plot, please also add the curves that correspond to $(\sqrt{\alpha}- \sqrt{\beta})^2 = 2$. You should be able to see a sharp transition in terms of success rate around these curves. 
+
+
+\newpart{5}
+In the second part, we will take a closer look at the entrywise behavior of $\hat{\bm{u}}_{2}$---the second eigenvector of the adjacency matrix $\bm{A}$. Fix $n=5000, \alpha = 4.5, b = 0.25$. Check that based on our theory, spectral method should succeed in exact recovery with high probability for this configuration. To verify this, plot the histogram of the entries in $\sqrt{n} \hat{\bm{u}}_{2}$. Are those uniformly close to $\pm 1$? 
+
+
+\newpart{10}
+In class, to prove exact recovery, we actually compare $\hat{\bm{u}}_{2}$ with the linearization $\bm{A} \bm{u}^\star_{2} / \lambda^\star_{2}$, instead of $\bm{u}^\star_{2}$. Here we investigate the reason underlying this. Use the same configuration as above, and run 100 Monte-Carlo simulations. Report the boxplots for $\sqrt{n} \|\hat{\bm{u}}_{2} - \bm{u}^\star_{2}\|_{\infty}$, $\sqrt{n} \| \hat{\bm{u}}_{2} - \bm{A} \bm{u}^\star_{2} / \lambda^\star_{2}\|_{\infty}$, and $\|\bm{A} \bm{u}^\star_{2} / \lambda^\star_{2} - \bm{u}^\star_{2}\|_{\infty}$. Which one is the smallest among the three?
 \end{problem}
+
+
 
 
 

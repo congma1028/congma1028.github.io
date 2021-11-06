@@ -10,7 +10,7 @@ mathserif,wide,%red,
 
 
 \title % (optional, use only with long paper titles)
-{Basics of optimization theory}
+{Introduction to nonconvex optimization}
 
 \defbeamertemplate*{title page}{customized}[1][]
 {
@@ -57,10 +57,116 @@ mathserif,wide,%red,
 \item For simplicity, we assume $f(\bm{x})$ is twice differentiable
 \item We assume the minimizer $\bm{x}_{\mathsf{opt}}$ exists, i.e., 
 \[
-\bm{x}_{\mathsf{opt}} \coloneqq \underset{\bm{x}}{\arg\min} f(\bm{x})
+\bm{x}_{\mathsf{opt}} \coloneqq \underset{\bm{x}}{\arg\min} \; f(\bm{x})
 \]
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Critical/stationary points}
+	\begin{definition}
+A first-order critical point  of $f$ satisfies
+	$$ \nabla f(\bx) = \bm{0} $$ 
+\end{definition} 
+
+\vfill
+
+\begin{itemize}
+	\item If $f$ is convex, any $1$st-order critical point is a global minimizer
+	\item Finding $1$st-order stationary point is sufficient for convex optimization
+	\item Example: gradient descent (GD)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{How about nonconvex optimization?}
+	First-order critical points could be global min, local min, local max, saddle points...
 	
+	\vfill
+	 \begin{center}
+\includegraphics[width=\textwidth]{critical_points}
+\end{center}
+\hfill {\em\footnotesize figure credit: Li et al.\,'16}
+
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+Simple algorithms like GD could stuck at undesired stationary points
+\end{varblock}
+}
+
+
+\end{frame}
+
+
+
+
+\frame{
+\frametitle{Types of critical points}
+
+\begin{definition}
+	\label{def:2nd-criticals}
+	A second-order critical point $\bm{x}$ satisfies  
+	\[
+		\nabla f(\bx)= \bm{0} \quad \text{and} \quad \nabla^2 f(\bx) \succeq \bm{0}
+	\]
+\end{definition}
+
+\vfill
+For any first-order critical point $\bx$:
+\begin{itemize}
+	\itemsep0.1em
+	\item $ \nabla^2 f(\bx) \prec \bm{0}$ \qquad\qquad $\rightarrow$ \quad   local maximum
+	\item $ \nabla^2 f(\bx) \succ \bm{0}$ \qquad\qquad $\rightarrow$ \quad   local minimum
+	%\item $\lambda_{\min}(\nabla^2 f(\bx))=0$, \quad $\rightarrow$ \quad    local minimum or degenerate saddle;
+	\item $\lambda_{\min}(\nabla^2 f(\bx))<0$ \qquad $\rightarrow$ \quad   {\em strict} saddle point
+%\footnote{Note that a local maximum may also belong to the set of  strict saddle points. }
+\end{itemize}
+
+
+
+
+}
+	
+%\begin{frame}
+%\frametitle{Outline}
+%
+%\begin{itemize}
+%  \itemsep1em
+%  \item Algorithms for optimization
+%  \item Geometry of optimization problems
+%  \item An example
+%\end{itemize}
+%
+%\end{frame}
+%	
+%
+%\begin{frame}
+%	\frametitle{Convex vs. nonconvex optimization}
+%	\begin{itemize}
+%		\item XX
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}
+	
+\vfill
+
+\begin{center}
+	{\Large \bf When are nonconvex problems solvable?}
+\end{center}
+
+
+%\centering
+%{\large This talk:  a case study --- phase retrieval}
+
+\vfill
+
+
 \end{frame}
 
 \begin{frame}
@@ -110,7 +216,7 @@ mathserif,wide,%red,
 	O\left( \alert{ \frac{\beta}{\alpha} } \log\frac{1}{\varepsilon} \right)
 	\]
 	 iterations
-	 \item Needs initialization $\bm{x}^{0} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})$
+	 \item Needs initialization $\bm{x}^{0} \in \mathcal{B}_{\delta}(\bm{x}_{\mathsf{opt}})$: basin of attraction
 \end{itemize}
 \end{frame}
 
@@ -197,7 +303,7 @@ f(\bm{x}_{\mathsf{opt}})- f(\bm{x}) & \leq f \Big(\bm{x} - \frac{1}{\beta}\nabla
 
 \vspace{-13em}
 
-Combining \eqref{eq:1point-cvx} and \eqref{eq:smoothness-grad} yields
+Combining relations~\eqref{eq:1point-cvx} and \eqref{eq:smoothness-grad} yields
 
 \begin{align*}
 	\langle \nabla f(\bm{x}), \bm{x} - \bm{x}_{\mathsf{opt} }    \rangle  \geq \frac{\alpha}{2} \| \bm{x} - \bm{x}_{\mathsf{opt}} \|_2^2 + \frac{1}{2\beta} \left\| \nabla f(\bm{x}) \right\|_2^2  
@@ -210,7 +316,7 @@ Combining \eqref{eq:1point-cvx} and \eqref{eq:smoothness-grad} yields
  \end{frame}
 
 \begin{frame}
-	\frametitle{Extension of convex functions}
+	\frametitle{Example of nonconvex functions}
 	When $\bm{g} (\bm{x}) = \nabla f (\bm{x})$, $f$ is not necessarily convex
 	\begin{center}
 	\includegraphics[width=0.5\textwidth]{regularity-example.pdf}
@@ -219,7 +325,7 @@ Combining \eqref{eq:1point-cvx} and \eqref{eq:smoothness-grad} yields
 \[
 f(x)=\begin{cases}
 x^{2}, & |x|\leq6,\\
-x^{2}+1.5|x|(cos(|x|-6)-1), & |x|>6
+x^{2}+1.5|x|(\cos(|x|-6)-1), & |x|>6
 \end{cases}
 \]
 \end{frame}
@@ -236,7 +342,7 @@ x^{2}+1.5|x|(cos(|x|-6)-1), & |x|>6
  \end{lemma}
 
 
-
+\vfill
 \begin{itemize}
 	\itemsep0.5em
 	\item $\bm{g}(\cdot)$: more general search directions
@@ -259,11 +365,385 @@ x^{2}+1.5|x|(cos(|x|-6)-1), & |x|>6
  &\quad =\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta^{2}\|\bm{g}(\bm{x}^{t})\|_{2}^{2}-2\eta\left\langle \bm{g}(\bm{x}^{t}),\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\right\rangle \\
  &\quad \leq\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta^{2}\|\bm{g}(\bm{x}^{t})\|_{2}^{2}-\eta\left(\lambda\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\mu\|\bm{g}(\bm{x}^{t})\|_{2}^{2}\right)\\
  &\quad =(1-\eta\lambda)\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}+\eta(\eta-\mu)\|\bm{g}(\bm{x}^{t})\|_{2}^{2}\\
- &\quad \leq(1-\eta\mu)\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}
+ &\quad \leq(1-\mu \lambda)\|\bm{x}^{t}-\bm{x}_{\mathsf{opt}}\|_{2}^{2}
 \end{align*}
 \end{frame}
 
 
+
+
+
+\begin{frame}
+	
+\vfill
+
+\begin{center}
+	{\Large \bf A toy example: rank-1 matrix factorization}
+\end{center}
+
+
+%\centering
+%{\large This talk:  a case study --- phase retrieval}
+
+\vfill
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Principal component analysis}
+
+
+ \begin{center}
+\includegraphics[width=0.5\textwidth]{PCA3D.png}
+\end{center}
+
+
+\uncover<1>{
+	Given $\bm{M}\succeq \bm{0} \in\mathbb{R}^{n\times n}$ (not necessarily low-rank), find its best rank-$r$ approximation:
+$$ \underset{\alert{\text{nonconvex optimization!}}}{\underbrace{ \widehat{\bm{M}} = \text{argmin}_{\bm{Z}}\; \| \bm{Z}-\bm{M} \|_{\mathrm{F}}^2 \quad \mbox{s.t.} \quad \mbox{rank}(\bm{Z})\leq r }} $$
+}
+%this is a nonconvex optimization problem.
+
+\uncover<2>{
+	\vspace{-8em}
+This problem admits a closed-form solution 
+	%(\alertb{Eckart-Young theorem})
+\begin{itemize}
+\item let $\bM =\sum_{i=1}^n \lambda_i \bm{u}_i\bm{u}_i^{\top}$ be eigen-decomposition of $\bm{M}$  ($\lambda_1\geq \cdots \lambda_{r} > \lambda_{r+1} \geq \lambda_n$), then 
+$$\widehat{\bm{M}} = \sum_{i=1}^r \lambda_i \bm{u}_i\bm{u}_i^{\top}$$
+\end{itemize}
+
+\hfill --- \alert{\em nonconvex, but tractable}
+
+}
+
+\end{frame}
+
+
+ 
+
+\frame{
+
+\frametitle{Optimization viewpoint}
+
+If we factorize $\bZ =\bX\bX^{\top}$ with $\bX\in\mathbb{R}^{n\times r}$, then it leads to a nonconvex problem:
+$$ \text{minimize}_{\bX\in \mathbb{R}^{n\times r}}\quad  f(\bX) = \frac{1}{4} \| \bm{X}\bm{X}^{\top}-\bm{M} \|_{\mathrm{F}}^2$$
+
+
+\medskip
+\bigskip
+
+ 
+To simplify exposition,  set $r=1$:
+$$ \text{minimize}_{\bx}\quad f(\bx) =\frac{1}{4} \| \bm{x}\bm{x}^{\top}-\bm{M} \|_{\mathrm{F}}^2$$
+
+
+
+}
+
+
+
+
+\frame{
+
+\frametitle{Interesting questions}
+
+$$ \text{minimize}_{\bx \in \mathbb{R}^{n}}\quad f(\bx) =\frac{1}{4} \| \bm{x}\bm{x}^{\top}-\bm{M} \|_{\mathrm{F}}^2$$
+
+
+\bigskip
+\bigskip
+
+	\begin{itemize}
+		\itemsep0.5em
+		\item What does the curvature behave like, at least locally around the global minimizer? 
+		%\item Is carefully-designed initialization necessary for fast convergence? 
+		\item Where\,/\,what are the critical points? (Global geometry) 
+		
+	\end{itemize}
+
+
+}
+
+\begin{frame}
+	\frametitle{Local linear convergence of GD}
+	\begin{theorem}\label{thm:PCA}
+	Suppose that $\|\bm{x}_{0} - \sqrt{\lambda_1} \bm{u}_{1} \|_{2} \leq \frac{\lambda_{1}-\lambda_{2}}{15\sqrt{\lambda_{1}}}$ and set $\eta = \frac{1}{ 4.5 \lambda_{1} }$, GD obeys
+	\[
+	\big\|\bm{x}^{t}-\sqrt{\lambda_{1}}\bm{u}_{1}\big\|_{2}\leq\left(1-\frac{\lambda_{1}-\lambda_{2}}{18\lambda_{1}}\right)^{t}\big\|\bm{x}^{0}-\sqrt{\lambda_{1}}\bm{u}_{1}\big\|_{2}, ~~ t\geq 0,
+\]
+	\end{theorem}
+	
+	\vfill
+	
+	\begin{itemize}
+		\item condition number/eigengap determines rate of convergence
+		\item Requires initialization: use spectral method?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:PCA}}
+	It suffices to show that for all $\bm{x}$ obeying $\underbrace{\|\bm{x} - \sqrt{\lambda_1} \bm{u}_{1} \|_2 \leq \frac{\lambda_{1}-\lambda_{2}}{15\sqrt{\lambda_{1}}}}_{\text{\alert{basin of attraction}}}$, 
+\[
+	0.25(\lambda_{1}-\lambda_{2})\bm{I}_n \preceq \nabla^2 f(\bm{x})\preceq4.5\lambda_1 \bm{I}_n
+\]
+
+	\vfill
+	Express gradient and Hessian as
+	\begin{align*}
+		\nabla f(\bx) &= (\bx\bx^{\top}-\bM) \bx \\
+		\nabla^2 f(\bx) &= 2\bx\bx^{\top} + \|\bm{x}\|_2^2 \bm{I}_{n} - \bM
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Preliminary facts}
+	Let $\bm{\Delta} \coloneqq \bm{x} - \sqrt{\lambda_1} \bm{u}_{1}$. It is seen that when $\| \bm{\Delta} \|_{2} \leq \frac{\lambda_{1}-\lambda_{2}}{15\sqrt{\lambda_{1}}}$, one has
+	\begin{align*}
+	\lambda_1 - 0.25 (\lambda_1 - \lambda_2) &\leq \|\bm{x}\|_2^2 \leq 1.15 \lambda_{1}; \\
+	\| \bm{\Delta} \|_{2} &\leq \| \bm{x} \|_2; \\
+	\| \bm{\Delta} \|_{2} \|\bm{x} \|_2 &\leq (\lambda_{1} - \lambda_{2}) / 12
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local smoothness}
+	Triangle inequality gives
+	\begin{align*}
+		\| \nabla^{2} f (\bm{x}) \| &\leq \| 2\bx\bx^{\top} \| +  \|\bm{x}\|_2^2 + \| \bm{M} \| \\
+		& \leq 3 \|\bm{x}\|_2^2 + \lambda_{1} < 4.5 \lambda_{1},
+	\end{align*}
+	where the last relation follows from $\|\bm{x} \|_2^2 \leq 1.15 \lambda_{1}$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local strong convexity}
+	Recall that $\bm{\Delta} = \bm{x} - \sqrt{\lambda_1} \bm{u}_{1}$
+	\begin{align*}
+		\bm{x} \bm{x}^{\top} &= \lambda_{1} \bm{u}_1 \bm{u}_1^\top + \bm{\Delta} \bm{x}^\top 
+		+ \bm{x} \bm{\Delta}^\top - \bm{\Delta} \bm{\Delta}^\top \\
+		& \succeq \lambda_{1} \bm{u}_1 \bm{u}_1^\top - 3 \| \bm{\Delta} \|_{2} \| \bm{x} \|_2 \bm{I}_{n} \qquad \qquad \alertb{(\|\bm{\Delta}\|_2 \leq  \|\bm{x}\|_2)} \\
+		&\succeq \lambda_{1} \bm{u}_1 \bm{u}_1^\top - 0.25 ( \lambda_{1} - \lambda_{2} ) \bm{I}_{n},
+	\end{align*}
+	where last line relies on $\| \bm{\Delta} \|_{2} \|\bm{x} \|_2 \leq (\lambda_{1} - \lambda_{2}) / 12$. Consequently,
+	\begin{align*}
+		& \nabla^2 f(\bx) = 2\bx\bx^{\top} + \|\bm{x}\|_2^2 \bm{I}_{n} - \lambda_{1} \bm{u}_1 \bm{u}_1^\top - \sum\nolimits_{i=2}^{n} \lambda_{i} \bm{u}_i \bm{u}_i^\top \\
+		&\quad \succeq 2 \lambda_{1} \bm{u}_1 \bm{u}_1^\top + (\|\bm{x}\|_2^2 - 0.5) ( \lambda_{1} - \lambda_{2} ) \bm{I}_{n} - \lambda_{1} \bm{u}_1 \bm{u}_1^\top - \sum\nolimits_{i=2}^{n} \lambda_{i} \bm{u}_i \bm{u}_i^\top \\
+		&\quad \succeq (\|\bm{x}\|_2^2  - 0.5 ( \lambda_{1} - \lambda_{2} ) +\lambda_{1})  \bm{u}_1 \bm{u}_1^\top \\
+		&\quad\quad + \sum\nolimits_{i=2}^{n} ( \|\bm{x}\|_2^2 - 0.5 ( \lambda_{1} - \lambda_{2} ) - \lambda_{i} ) \bm{u}_i \bm{u}_i^\top \\
+		&\quad \succeq ( \|\bm{x}\|_2^2 - 0.5 ( \lambda_{1} - \lambda_{2} ) - \lambda_{2} ) \bm{I}_{n} \\
+		&\quad \succeq 0.25 ( \lambda_{1} - \lambda_{2} ) \bm{I}_{n} \qquad \qquad \alertb{(\lambda_1 - 0.25 (\lambda_1 - \lambda_2) \leq \|\bm{x}\|_2^2)}
+	\end{align*}
+\end{frame}
+
+
+\frame{
+\frametitle{Critical points of $f(\cdot)$}
+
+%Any $\bu\in\mathbb{R}^{n}$ satisfies
+$$ \bm{x}\text{ is a critical point, ~i.e., } \nabla f(\bx) = (\bx\bx^{\top}-\bM) \bx = \bm{0} $$
+$$\Updownarrow $$
+$$ \bM\bx = \|\bx\|_2^2  \bx $$
+$$\Updownarrow $$
+$$\bx~\mbox{aligns with an eigenvector of}~\bM \quad \text{or}\quad \bx = \bm{0}$$
+%$$\text{or}\quad  $$
+
+\vfill
+ 
+\alert{Since $ \bM\bu_i = \lambda_i  \bu_i $,  the set of critical points is given by
+$$\{\bm{0} \} \cup \{ \pm \sqrt{\lambda_i } \bu_i, ~~i=1,\ldots, n\}$$}
+}
+ 
+
+
+\begin{frame}
+\frametitle{Categorization of critical points}
+
+The critical points can be further categorized based on the \textbf{Hessian}:
+$$ \nabla^2 f(\bx) = 2\bx\bx^{\top} + \|\bm{x}\|_2^2 \bm{I}_{n} - \bM $$
+
+\begin{itemize}
+\item<1> For any non-zero critical point $\bx_k= \pm \sqrt{\lambda_k } \bu_k$:
+\begin{align*}
+ \nabla^2 f( {\bx}_k)  & = 2\lambda_k \bu_k \bu_k^{\top} + \lambda_k \bI - \bM \\
+ & =  2\lambda_k \bu_k \bu_k^{\top} + \lambda_k \left(\sum_{i=1}^n \bu_i\bu_i^{\top}\right) - \sum_{i=1}^n \lambda_i \bu_i\bu_i^{\top} \\
+ & =  \sum_{i:i\neq k} (\lambda_k - \lambda_i ) \bu_i\bu_i^{\top}  + 2\lambda_k \bu_k\bu_k^{\top}
+\end{align*}
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Categorization of critical points (cont.)}
+	If $\lambda_1 \alert{>}\lambda_2\geq \ldots \geq \lambda_n \alert{\geq} 0$, then
+\vspace{0.2em}
+\begin{itemize}
+\itemsep0.4em
+\item  $\nabla^2 f( {\bx}_1)\succ \bm{0}$ \qquad\qquad $\rightarrow$ \quad \alertb{local minima}
+\item $1< k\leq n$: $\lambda_{\min}(\nabla^2 f( {\bx}_k))< 0$, $\lambda_{\max}(\nabla^2 f( {\bx}_k))>0$ \\ \qquad\qquad\qquad\qquad\qquad $\rightarrow$ \quad \alertb{strict saddle}
+\item $\bm{x}=\bm{0}$: $\nabla^2 f(\bm{0}) = - \bm{M} \preceq \bm{0}$ ~\quad $\rightarrow$ ~\quad \alertb{local maxima, strict saddle}   
+	%(or \alertb{strict saddle})
+\end{itemize}
+
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\centering
+all local are global; all saddle are strict
+\end{varblock}
+}
+
+\end{frame}
+
+
+\frame{
+\frametitle{A pictorial example}
+
+For example, for 2-dimensional case {\small $f(\bm{x})= \left\| \bm{x}\bm{x}^{\top} - \begin{bmatrix}1 & 1\\1 & 1\end{bmatrix} \right\|_{\mathrm{F}}^2$ }
+ \begin{center}
+\includegraphics[width=0.65\textwidth]{Saddle_2d}
+\end{center}
+ 
+{\small
+global minima: $\bm{x} =\pm \begin{bmatrix} 1 \\ 1 \end{bmatrix}$; strict saddles: $\bm{x}=\begin{bmatrix} 0 \\ 0 \end{bmatrix}$,  and $\pm \begin{bmatrix} 1 \\ -1 \end{bmatrix}$\\
+	
+ {\hfill \em --- No ``spurious'' local minima!}}
+
+}
+
+
+ 
+
+\begin{comment}
+
+\begin{frame}
+\frametitle{Extension to the low-rank case}
+
+$$ \  f(\bX): = \frac{1}{4} \| \bm{X}\bm{X}^{\top}-\bm{M} \|_{\mathrm{F}}^2, \quad\quad \bX\in\mathbb{R}^{n\times r} $$
+\medskip
+
+\alert{If $\sigma_r > \sigma_{r+1}$:}
+
+\begin{itemize}
+\itemsep0.5em
+\item \textbf{all local minima are global:} $\bX$ contains top-$r$ eigenvectors (up to orthonormal transformation)
+\item \textbf{strict saddle points:} all stationary points are saddle points except global optimum
+\item \textbf{restricted strong convexity:} locally around the global optimum
+\end{itemize}
+% \begin{center}
+%\includegraphics[width=0.35\textwidth]{Saddle_2d}
+%\end{center}
+\end{frame}
+
+\end{comment}
+
+
+\begin{frame}
+\frametitle{Two vignettes}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\uncover<1->{
+{\bf Two-stage approach:} 
+
+\begin{center}
+ \includegraphics[width=0.82\textwidth]{non_convex_iterate.pdf}
+ \end{center}
+ 
+ \medskip
+ 
+ \begin{center}
+{\em smart initialization \\
+   + \\
+  local refinement}  
+  \end{center}
+  
+ }
+ 
+ \end{column}
+ \begin{column}{0.5\textwidth}
+ 
+ \uncover<2->{
+ 
+{\bf  Global landscape:}
+ \begin{center}
+  \includegraphics[width=0.79\textwidth]{saddle_escaping_illustration.pdf}
+   \end{center}
+   
+    \begin{center}
+{\em benign landscape \\
+   + \\
+  saddle-point escaping}
+  \end{center}
+  
+   }
+ \end{column}
+  \end{columns}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Global landscape}
+
+
+\begin{columns}
+\begin{column}{0.68\textwidth}
+ 
+{\bf Benign landscape: }
+\begin{itemize}
+\item all local minima = global minima
+\item other critical points = strict saddle points
+\end{itemize}
+ 
+ \medskip
+ 
+ {\bf Saddle-point escaping algorithms:}
+ 
+ \begin{itemize}
+ \item trust-region methods
+ \item perturbed gradient descent
+ \item perturbed SGD
+ \item ...
+ \end{itemize}
+ 
+ \end{column}
+ \begin{column}{0.32\textwidth}
+ 
+ \vspace{-0.5in}
+ \begin{center}
+  \includegraphics[width=1.05\textwidth]{saddle_escaping_illustration.pdf}
+   \end{center}
+ 
+ 
+ \end{column}
+  \end{columns}
+  
+ 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Next steps}
+	\begin{itemize}
+		\item Generic local analysis of (regularized) gradient descent
+		\item Refined local analysis for gradient descent
+		\item Global landscape analysis
+		\item Gradient descent with random initialization
+		\item (Maybe) Gradient descent with arbitrary initialization 
+	\end{itemize}
+\end{frame}
 
 
 

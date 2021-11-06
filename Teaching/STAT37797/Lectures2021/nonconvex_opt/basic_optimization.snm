@@ -1,5 +1,7 @@
-\beamer@slide {lemma:GD}{4}
-\beamer@slide {def:reg-condition}{7}
-\beamer@slide {eq:1point-cvx}{8}
-\beamer@slide {eq:smoothness-grad}{8}
-\beamer@slide {lemma:RC}{11}
+\beamer@slide {def:2nd-criticals}{5}
+\beamer@slide {lemma:GD}{8}
+\beamer@slide {def:reg-condition}{11}
+\beamer@slide {eq:1point-cvx}{12}
+\beamer@slide {eq:smoothness-grad}{12}
+\beamer@slide {lemma:RC}{15}
+\beamer@slide {thm:PCA}{22}
