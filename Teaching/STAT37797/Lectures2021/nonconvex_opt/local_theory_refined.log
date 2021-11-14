@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 NOV 2021 10:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  10 NOV 2021 14:05
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**local_theory_simple.tex
-(./local_theory_simple.tex
+**local_theory_refined.tex
+(./local_theory_refined.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2018/12/02 v3.55 A class for typesetting presentations
@@ -1141,24 +1142,24 @@ Package: inputenc 2018/08/11 v1.3c Input encoding file
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2018/08/11 v1.3c Input encoding file
 )))
-(./local_theory_simple.aux)
-\openout1 = `local_theory_simple.aux'.
+(./local_theory_refined.aux)
+\openout1 = `local_theory_refined.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 39.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmss.fd
@@ -1231,7 +1232,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 41.
+Package hyperref Info: Link coloring OFF on input line 39.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1241,13 +1242,13 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count279
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
-LaTeX Info: Redefining \nameref on input line 41.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
 
-(./local_theory_simple.out) (./local_theory_simple.out)
+(./local_theory_refined.out) (./local_theory_refined.out)
 \@outlinefile=\write6
-\openout6 = `local_theory_simple.out'.
+\openout6 = `local_theory_refined.out'.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-basic-dicti
@@ -1281,60 +1282,60 @@ Package caption Info: End \AtBeginDocument code.
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 41.
+ on input line 39.
 
-(./local_theory_simple.nav)
+(./local_theory_refined.nav)
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 46.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 44.
 <../../../Figures/../Figures/UC_logo.png, id=13, 481.8pt x 610.28pt>
 File: ../../../Figures/../Figures/UC_logo.png Graphic file (type png)
 <use ../../../Figures/../Figures/UC_logo.png>
 Package pdftex.def Info: ../../../Figures/../Figures/UC_logo.png  used on input
- line 46.
+ line 44.
 (pdftex.def)             Requested size: 56.9055pt x 72.07573pt.
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../../.
 ./Figures/../Figures/UC_logo.png>]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 55.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 55.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 55.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 84.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 55.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 84.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 55.
+(Font)              <10.95> on input line 84.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 55.
+(Font)              <8> on input line 84.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 55.
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+(Font)              <6> on input line 84.
+LaTeX Font Info:    Try loading font information for U+msa on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 55.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -1345,26 +1346,45 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ] [4
 
 ]
+<../../../Figures/GD2.png, id=55, 528.5346pt x 419.166pt>
+File: ../../../Figures/GD2.png Graphic file (type png)
+<use ../../../Figures/GD2.png>
+Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 131.
+(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
+
+Overfull \hbox (32.63893pt too wide) in paragraph at lines 131--131
+ [] 
+ []
+
 [5
 
-] [6
+ <../../../Figures/GD2.png>]
+File: ../../../Figures/GD2.png Graphic file (type png)
+<use ../../../Figures/GD2.png>
+Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 131.
+(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
 
-] [7
+Overfull \hbox (32.63893pt too wide) in paragraph at lines 131--131
+ [] 
+ []
+
+[6
 
 ]
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 154.
+File: ../../../Figures/GD2.png Graphic file (type png)
+<use ../../../Figures/GD2.png>
+Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 131.
+(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
 
- [8
+Overfull \hbox (32.63893pt too wide) in paragraph at lines 131--131
+ [] 
+ []
 
-]
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 171.
+[7
 
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 171.
+] [8
 
- [9
+] [9
 
 ] [10
 
@@ -1378,282 +1398,416 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <6> not available
 
 ] [15
 
-] [16
+]
+<../../../Figures/arrow_down_3.png, id=184, 45.771pt x 70.8246pt>
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [16
 
-] [17
+ <../../../Figures/arrow_down_3.png>]
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [17
 
 ]
-Overfull \vbox (3.46577pt too high) detected at line 329
- []
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [18
 
-[18
-
-] [19
+]
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+252.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [19
 
 ] [20
 
 ] [21
 
+] [22
+
+] [23
+
+] [24
+
 ]
-<../../../Figures/linear-stat.pdf, id=217, 884.30376pt x 407.5225pt>
-File: ../../../Figures/linear-stat.pdf Graphic file (type pdf)
-<use ../../../Figures/linear-stat.pdf>
-Package pdftex.def Info: ../../../Figures/linear-stat.pdf  used on input line 4
-25.
-(pdftex.def)             Requested size: 304.3745pt x 140.26584pt.
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 425.
-
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 425.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 425.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 425.
- [22
-
- <../../../Figures/linear-stat.pdf>]
-<../../../Figures/quadratic-stat.pdf, id=592, 884.30376pt x 407.5225pt>
-File: ../../../Figures/quadratic-stat.pdf Graphic file (type pdf)
-<use ../../../Figures/quadratic-stat.pdf>
-Package pdftex.def Info: ../../../Figures/quadratic-stat.pdf  used on input lin
-e 425.
-(pdftex.def)             Requested size: 304.3745pt x 140.26584pt.
- [23
-
- <../../../Figures/quadratic-stat.pdf>]
-<../../../Figures/microscopy.png, id=977, 578.16pt x 342.5598pt>
-File: ../../../Figures/microscopy.png Graphic file (type png)
-<use ../../../Figures/microscopy.png>
-Package pdftex.def Info: ../../../Figures/microscopy.png  used on input line 46
-7.
-(pdftex.def)             Requested size: 113.81102pt x 67.42874pt.
- [24
-
- <../../../Figures/microscopy.png>]
-File: ../../../Figures/microscopy.png Graphic file (type png)
-<use ../../../Figures/microscopy.png>
-Package pdftex.def Info: ../../../Figures/microscopy.png  used on input line 46
-7.
-(pdftex.def)             Requested size: 113.81102pt x 67.42874pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
  [25
 
 ]
-<../../../Figures/quadratic_nn-stat.pdf, id=1005, 623.32875pt x 455.7025pt>
-File: ../../../Figures/quadratic_nn-stat.pdf Graphic file (type pdf)
-<use ../../../Figures/quadratic_nn-stat.pdf>
-Package pdftex.def Info: ../../../Figures/quadratic_nn-stat.pdf  used on input 
-line 492.
-(pdftex.def)             Requested size: 160.19762pt x 117.11697pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
  [26
 
- <../../../Figures/quadratic_nn-stat.pdf>] [27
+]
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [27
 
 ]
-Overfull \hbox (5.99379pt too wide) detected at line 558
-[]\OML/cmm/b/it/10.95 a[]a[]\OML/lmm/m/it/10.95 ; \OML/cmm/b/it/10.95 xx[][] \O
-T1/lmr/m/n/10.95 = []\OML/cmm/b/it/10.95 a[]x[][] \OMS/lmsy/m/n/10.95 ^^P k\OML
-/cmm/b/it/10.95 x\OMS/lmsy/m/n/10.95 k[]   )   [] [][] ^^P k\OML/cmm/b/it/10.95
- xx[]\OMS/lmsy/m/n/10.95 k[]
- []
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+File: ../../../Figures/arrow_down_3.png Graphic file (type png)
+<use ../../../Figures/arrow_down_3.png>
+Package pdftex.def Info: ../../../Figures/arrow_down_3.png  used on input line 
+374.
+(pdftex.def)             Requested size: 14.73904pt x 22.8059pt.
+ [28
 
+]
+<../../../Figures/pr_const_stepsize.pdf, id=298, 523.9575pt x 401.5pt>
+File: ../../../Figures/pr_const_stepsize.pdf Graphic file (type pdf)
+<use ../../../Figures/pr_const_stepsize.pdf>
+Package pdftex.def Info: ../../../Figures/pr_const_stepsize.pdf  used on input 
+line 397.
+(pdftex.def)             Requested size: 224.2757pt x 171.85745pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 558.
-[28
+(Font)              <14.4> on input line 397.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 397.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 397.
+ [29
 
-] [29
+ <../../../Figures/pr_const_stepsize.pdf>]
+<../../../Figures/WF_region_0.pdf, id=347, 412.54124pt x 351.3125pt>
+File: ../../../Figures/WF_region_0.pdf Graphic file (type pdf)
+<use ../../../Figures/WF_region_0.pdf>
+Package pdftex.def Info: ../../../Figures/WF_region_0.pdf  used on input line 4
+57.
+(pdftex.def)             Requested size: 192.23909pt x 163.70705pt.
+ [30
 
-] [30
+ <../../../Figures/WF_region_0.pdf>]
+File: ../../../Figures/WF_region_0.pdf Graphic file (type pdf)
+<use ../../../Figures/WF_region_0.pdf>
+Package pdftex.def Info: ../../../Figures/WF_region_0.pdf  used on input line 4
+57.
+(pdftex.def)             Requested size: 192.23909pt x 163.70705pt.
+ [31
 
 ]
-<../../../Figures/GD2.png, id=1121, 528.5346pt x 419.166pt>
-File: ../../../Figures/GD2.png Graphic file (type png)
-<use ../../../Figures/GD2.png>
-Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 667.
-(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
-
-Overfull \hbox (32.63893pt too wide) in paragraph at lines 667--667
- [] 
- []
-
-[31
-
- <../../../Figures/GD2.png>]
-File: ../../../Figures/GD2.png Graphic file (type png)
-<use ../../../Figures/GD2.png>
-Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 667.
-(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
-
-Overfull \hbox (32.63893pt too wide) in paragraph at lines 667--667
- [] 
- []
+<../../../Figures/WF_region_2.pdf, id=379, 412.54124pt x 351.3125pt>
+File: ../../../Figures/WF_region_2.pdf Graphic file (type pdf)
+<use ../../../Figures/WF_region_2.pdf>
+Package pdftex.def Info: ../../../Figures/WF_region_2.pdf  used on input line 4
+57.
+(pdftex.def)             Requested size: 192.23909pt x 163.70705pt.
 
 [32
 
-]
-File: ../../../Figures/GD2.png Graphic file (type png)
-<use ../../../Figures/GD2.png>
-Package pdftex.def Info: ../../../Figures/GD2.png  used on input line 667.
-(pdftex.def)             Requested size: 100.9258pt x 80.03891pt.
+ <../../../Figures/WF_region_2.pdf>]
+<../../../Figures/WF_region_1.pdf, id=554, 412.54124pt x 351.3125pt>
+File: ../../../Figures/WF_region_1.pdf Graphic file (type pdf)
+<use ../../../Figures/WF_region_1.pdf>
+Package pdftex.def Info: ../../../Figures/WF_region_1.pdf  used on input line 4
+57.
+(pdftex.def)             Requested size: 192.23909pt x 163.70705pt.
+ [33
 
-Overfull \hbox (32.63893pt too wide) in paragraph at lines 667--667
- [] 
- []
+ <../../../Figures/WF_region_1.pdf>]
+File: ../../../Figures/WF_region_1.pdf Graphic file (type pdf)
+<use ../../../Figures/WF_region_1.pdf>
+Package pdftex.def Info: ../../../Figures/WF_region_1.pdf  used on input line 4
+57.
+(pdftex.def)             Requested size: 192.23909pt x 163.70705pt.
+[34
 
-[33
+] Excluding 'comment' comment.
+<../../../Figures/shade.png, id=803, 45.2892pt x 45.2892pt>
+File: ../../../Figures/shade.png Graphic file (type png)
+<use ../../../Figures/shade.png>
+Package pdftex.def Info: ../../../Figures/shade.png  used on input line 551.
+(pdftex.def)             Requested size: 12.81364pt x 12.81357pt.
+<../../../Figures/GD_WF_ball4_good.pdf, id=804, 272.01625pt x 257.96375pt>
+File: ../../../Figures/GD_WF_ball4_good.pdf Graphic file (type pdf)
+<use ../../../Figures/GD_WF_ball4_good.pdf>
+Package pdftex.def Info: ../../../Figures/GD_WF_ball4_good.pdf  used on input l
+ine 551.
+(pdftex.def)             Requested size: 134.56541pt x 127.61961pt.
+ [35
 
-] [34
+ <../../../Figures/shade.png> <../../../Figures/GD_WF_ball4_good.pdf>]
+File: ../../../Figures/shade.png Graphic file (type png)
+<use ../../../Figures/shade.png>
+Package pdftex.def Info: ../../../Figures/shade.png  used on input line 551.
+(pdftex.def)             Requested size: 12.81364pt x 12.81357pt.
+<../../../Figures/GD_WF_ball3_good.pdf, id=845, 272.01625pt x 257.96375pt>
+File: ../../../Figures/GD_WF_ball3_good.pdf Graphic file (type pdf)
+<use ../../../Figures/GD_WF_ball3_good.pdf>
+Package pdftex.def Info: ../../../Figures/GD_WF_ball3_good.pdf  used on input l
+ine 551.
+(pdftex.def)             Requested size: 134.56541pt x 127.61961pt.
+ [36
 
-] [35
+ <../../../Figures/GD_WF_ball3_good.pdf>]
+File: ../../../Figures/shade.png Graphic file (type png)
+<use ../../../Figures/shade.png>
+Package pdftex.def Info: ../../../Figures/shade.png  used on input line 551.
+(pdftex.def)             Requested size: 12.81364pt x 12.81357pt.
+<../../../Figures/GD_WF_ball2_good.pdf, id=885, 272.01625pt x 257.96375pt>
+File: ../../../Figures/GD_WF_ball2_good.pdf Graphic file (type pdf)
+<use ../../../Figures/GD_WF_ball2_good.pdf>
+Package pdftex.def Info: ../../../Figures/GD_WF_ball2_good.pdf  used on input l
+ine 551.
+(pdftex.def)             Requested size: 134.56541pt x 127.61961pt.
 
-] [36
+[37
 
-] [37
+ <../../../Figures/GD_WF_ball2_good.pdf>]
+File: ../../../Figures/shade.png Graphic file (type png)
+<use ../../../Figures/shade.png>
+Package pdftex.def Info: ../../../Figures/shade.png  used on input line 551.
+(pdftex.def)             Requested size: 12.81364pt x 12.81357pt.
+<../../../Figures/GD_WF_ball1_good.pdf, id=926, 272.01625pt x 257.96375pt>
+File: ../../../Figures/GD_WF_ball1_good.pdf Graphic file (type pdf)
+<use ../../../Figures/GD_WF_ball1_good.pdf>
+Package pdftex.def Info: ../../../Figures/GD_WF_ball1_good.pdf  used on input l
+ine 551.
+(pdftex.def)             Requested size: 134.56541pt x 127.61961pt.
+ [38
 
-] [38
-
-] [39
+ <../../../Figures/GD_WF_ball1_good.pdf>]
+File: ../../../Figures/shade.png Graphic file (type png)
+<use ../../../Figures/shade.png>
+Package pdftex.def Info: ../../../Figures/shade.png  used on input line 551.
+(pdftex.def)             Requested size: 12.81364pt x 12.81357pt.
+File: ../../../Figures/GD_WF_ball1_good.pdf Graphic file (type pdf)
+<use ../../../Figures/GD_WF_ball1_good.pdf>
+Package pdftex.def Info: ../../../Figures/GD_WF_ball1_good.pdf  used on input l
+ine 551.
+(pdftex.def)             Requested size: 134.56541pt x 127.61961pt.
+ [39
 
 ] [40
 
 ] [41
 
-] [42
-
 ]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 831.
+<../../../Figures/pr_leave_one_out.pdf, id=1006, 879.285pt x 349.305pt>
+File: ../../../Figures/pr_leave_one_out.pdf Graphic file (type pdf)
+<use ../../../Figures/pr_leave_one_out.pdf>
+Package pdftex.def Info: ../../../Figures/pr_leave_one_out.pdf  used on input l
+ine 599.
+(pdftex.def)             Requested size: 272.3379pt x 108.18748pt.
+ [42
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [43
+ <../../../Figures/pr_leave_one_out.pdf>]
+<../../../Figures/LOO_sequence.pdf, id=1107, 346.29375pt x 261.97874pt>
+File: ../../../Figures/LOO_sequence.pdf Graphic file (type pdf)
+<use ../../../Figures/LOO_sequence.pdf>
+Package pdftex.def Info: ../../../Figures/LOO_sequence.pdf  used on input line 
+617.
+(pdftex.def)             Requested size: 144.17688pt x 109.07492pt.
+ [43
 
-]
-Overfull \hbox (7.34084pt too wide) detected at line 847
-[]
- []
+ <../../../Figures/LOO_sequence.pdf>]
+<../../../Figures/LOO_original_sequence.pdf, id=1373, 346.29375pt x 261.97874pt
+>
+File: ../../../Figures/LOO_original_sequence.pdf Graphic file (type pdf)
+<use ../../../Figures/LOO_original_sequence.pdf>
+Package pdftex.def Info: ../../../Figures/LOO_original_sequence.pdf  used on in
+put line 617.
+(pdftex.def)             Requested size: 144.17688pt x 109.07492pt.
+ [44
 
-[44
+ <../../../Figures/LOO_original_sequence.pdf>]
+File: ../../../Figures/LOO_original_sequence.pdf Graphic file (type pdf)
+<use ../../../Figures/LOO_original_sequence.pdf>
+Package pdftex.def Info: ../../../Figures/LOO_original_sequence.pdf  used on in
+put line 617.
+(pdftex.def)             Requested size: 144.17688pt x 109.07492pt.
+ [45
 
-] [45
+] Excluding 'comment' comment.
+<../../../Figures/path_fresh.pdf, id=1779, 660.4675pt x 186.6975pt>
+File: ../../../Figures/path_fresh.pdf Graphic file (type pdf)
+<use ../../../Figures/path_fresh.pdf>
+Package pdftex.def Info: ../../../Figures/path_fresh.pdf  used on input line 66
+3.
+(pdftex.def)             Requested size: 208.25494pt x 58.86699pt.
+<../../../Figures/path_dependent.pdf, id=1780, 657.45625pt x 188.705pt>
+File: ../../../Figures/path_dependent.pdf Graphic file (type pdf)
+<use ../../../Figures/path_dependent.pdf>
+Package pdftex.def Info: ../../../Figures/path_dependent.pdf  used on input lin
+e 663.
+(pdftex.def)             Requested size: 208.25494pt x 59.77351pt.
+ [46
 
-] [46
-
-] [47
+ <../../../Figures/path_fresh.pdf> <../../../Figures/path_dependent.pdf>]
+File: ../../../Figures/path_fresh.pdf Graphic file (type pdf)
+<use ../../../Figures/path_fresh.pdf>
+Package pdftex.def Info: ../../../Figures/path_fresh.pdf  used on input line 66
+3.
+(pdftex.def)             Requested size: 208.25494pt x 58.86699pt.
+File: ../../../Figures/path_dependent.pdf Graphic file (type pdf)
+<use ../../../Figures/path_dependent.pdf>
+Package pdftex.def Info: ../../../Figures/path_dependent.pdf  used on input lin
+e 663.
+(pdftex.def)             Requested size: 208.25494pt x 59.77351pt.
+ [47
 
 ] [48
 
-] [49
-
-]
-
-pdfTeX warning: pdflatex (file ../../../Figures/NetflixMahdi.pdf): PDF inclusio
-n: found PDF version <1.5>, but at most version <1.4> allowed
-<../../../Figures/NetflixMahdi.pdf, id=1287, 1580.90625pt x 1284.29813pt>
-File: ../../../Figures/NetflixMahdi.pdf Graphic file (type pdf)
-<use ../../../Figures/NetflixMahdi.pdf>
-Package pdftex.def Info: ../../../Figures/NetflixMahdi.pdf  used on input line 
-969.
-(pdftex.def)             Requested size: 144.17686pt x 117.11038pt.
-[50
-
- <../../../Figures/NetflixMahdi.pdf>]
-<../../../Figures/../Figures/XY_factor-plain.pdf, id=1311, 347.2975pt x 296.106
-25pt>
-File: ../../../Figures/../Figures/XY_factor-plain.pdf Graphic file (type pdf)
-<use ../../../Figures/../Figures/XY_factor-plain.pdf>
-Package pdftex.def Info: ../../../Figures/../Figures/XY_factor-plain.pdf  used 
-on input line 1000.
-(pdftex.def)             Requested size: 112.14029pt x 95.60986pt.
- [51
-
- <../../../Figures/../Figures/XY_factor-plain.pdf>] [52
-
-] [53
-
-] [54
-
-] [55
-
-] [56
-
-] [57
-
-] [58
-
-] [59
-
 ]
 \tf@nav=\write7
-\openout7 = `local_theory_simple.nav'.
+\openout7 = `local_theory_refined.nav'.
 
 \tf@toc=\write8
-\openout8 = `local_theory_simple.toc'.
+\openout8 = `local_theory_refined.toc'.
 
 \tf@snm=\write9
-\openout9 = `local_theory_simple.snm'.
+\openout9 = `local_theory_refined.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1137.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1137.
-
-(./local_theory_simple.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1137.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1137.
-
-Package rerunfilecheck Info: File `local_theory_simple.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 683.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 683.
+ (./local_theory_refined.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 683.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 683.
+Package rerunfilecheck Info: File `local_theory_refined.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34272 strings out of 492616
- 809939 string characters out of 6129482
- 1032805 words of memory out of 5000000
- 37297 multiletter control sequences out of 15000+600000
- 87213 words of font info for 111 fonts, out of 8000000 for 9000
+ 34108 strings out of 492616
+ 808276 string characters out of 6129482
+ 1031796 words of memory out of 5000000
+ 37182 multiletter control sequences out of 15000+600000
+ 70288 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,19n,96p,786b,708s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
-cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
-e/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} </Users/congma/Library/texlive/
-2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk>{/usr/local/texlive/2019/
-texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
-lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/lm/lmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2019/texmf-
-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/
-type1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/lm/lmsso10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
-msso9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on local_theory_simple.pdf (59 pages, 2673603 bytes).
+ 64i,16n,96p,787b,712s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
+19/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm
+/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi12.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
+/lm/lmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss12
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/201
+9/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on local_theory_refined.pdf (48 pages, 2828122 bytes).
 PDF statistics:
- 1543 PDF objects out of 1728 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
- 485 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2486 PDF objects out of 2487 (max. 8388607)
+ 97 named destinations out of 1000 (max. 500000)
+ 638 words of extra memory for PDF output out of 10000 (max. 10000000)
 

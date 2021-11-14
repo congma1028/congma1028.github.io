@@ -1,2 +1,7 @@
-\beamer@slide {thm:sensing-rank-1}{8}
-\beamer@slide {lemma:RIP-inner-product}{11}
+\beamer@slide {thm:sensing-rank-1}{9}
+\beamer@slide {lemma:RIP-inner-product}{12}
+\beamer@slide {lemma:spectral-matrix-sensing}{17}
+\beamer@slide {slide:PR-example-RIP<1>}{28}
+\beamer@slide {slide:PR-example-RIP}{28}
+\beamer@slide {lemma:pr-concentration}{38}
+\beamer@slide {lemma:local-PR}{40}
