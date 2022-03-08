@@ -9,7 +9,7 @@ I am an assistant professor in the [https://stat.uchicago.edu/ Department of Sta
 
 Previously, I was a postdoctoral researcher at UC~Berkeley, advised by Professor [https://people.eecs.berkeley.edu/~wainwrig/ Martin Wainwright]. I obtained my Ph.D. at Princeton University in 2020, advised by Professor [http://www.princeton.edu/~yc5/ Yuxin Chen] and Professor [https://orfe.princeton.edu/~jqfan/ Jianqing Fan]. Prior to graduate school, I received my bachelor's degree in Electrical Engineering from Tsinghua University in 2015. \n
 \n
-I am broadly interested in mathematics of data science, reinforcement learning, high-dimensional statistics, convex and nonconvex optimization as well as their applications to neuroscience. \n
+I am broadly interested in mathematics of data science, reinforcement learning, transfer learning, high-dimensional statistics, convex and nonconvex optimization as well as their applications to neuroscience. \n
 
 
 
@@ -21,11 +21,16 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
+- A new paper on covariate shift: [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression].
+
+- Our paper on off-policy evaluation [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] has been accepted to 
+IEEE Transactions on Information Theory. 
+
 - Our new research monograph on spectral methods [Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral Methods for Data Science: A Statistical Perspective] is now published in [https://www.nowpublishers.com/article/Details/MAL-079 Foundations and Trends\R in Machine Learning].\n
 
 - Our paper on offline reinforcement learning: [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] is accepted to Neurips 2021.
 
-- A new paper on off-policy evaluation: [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits]
+
 
 
 

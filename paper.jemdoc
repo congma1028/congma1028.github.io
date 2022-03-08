@@ -2,21 +2,29 @@
 = Papers
 
 
+== 2022
+
+
+
+- [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
+R. Pathak, *C. Ma*, M. J. Wainwright \n
+
+
 == 2021
 
-
+- [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
+*C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
+accepted to IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf \[Slides\]] \n
 
 - [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
 accepted in part to /Neurips 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n
 
-- [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
-*C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
-[Publication/OPE/OPE_slides.pdf \[Slides\]] \n
+
 
 - [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
 T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
-
+accepted in part to AISTATS, 2022
 
 == 2020
 
