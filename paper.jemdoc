@@ -5,6 +5,9 @@
 == 2022
 
 
+- [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally tackling covariate shift in RKHS-based nonparametric regression] \n
+*C. Ma*, R. Pathak, M. J. Wainwright \n
+
 
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
 R. Pathak, *C. Ma*, M. J. Wainwright \n

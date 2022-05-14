@@ -21,7 +21,9 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
-- A new paper on covariate shift: [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression].
+- A new paper on covariate shift in RKHS-based regression: [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally tackling covariate shift in RKHS-based nonparametric regression].
+
+- A new paper on covariate shift in nonparametric regression: [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression].
 
 - Our paper on off-policy evaluation [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] has been accepted to 
 IEEE Transactions on Information Theory. 
