@@ -5,7 +5,12 @@
 == 2022
 
 
-- [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally tackling covariate shift in RKHS-based nonparametric regression] \n
+- [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets] \n
+G. Li, *C. Ma*, N. Srebro (alphabetical order) \n
+[Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
+
+
+- [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-based Nonparametric Regression] \n
 *C. Ma*, R. Pathak, M. J. Wainwright \n
 
 
@@ -21,12 +26,14 @@ accepted to IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_s
 
 - [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
+accepted to IEEE Transactions on Information Theory, 2022  \n
 accepted in part to /Neurips 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n
 
 
 
 - [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
 T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
+accepted to /Journal of Machine Learning Research/, 2022\n
 accepted in part to /AISTATS, 2022/
 
 == 2020
