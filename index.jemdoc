@@ -2,7 +2,7 @@
 = Cong Ma
 
 ~~~
-{}{img_left}{figure/bio.jpg}{alt text}{320}{240}
+{}{img_left}{figure/bio_new.jpeg}{alt text}{250}{299.3}
 I am an assistant professor in the [https://stat.uchicago.edu/ Department of Statistics] at the University of Chicago. 
 
 
@@ -21,7 +21,9 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
-- A new paper on covariate shift in RKHS-based regression: [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally tackling covariate shift in RKHS-based nonparametric regression].
+- A new paper on noisy matrix completion: [Publication/SqrtMC/SqrtMC.pdf Optimal tuning-free convex relaxation for noisy matrix completion].
+
+- A new paper on covariate shift: [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression].
 
 - A new paper on offline linear contextual bandit: [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets].
 
@@ -35,10 +37,4 @@ IEEE Transactions on Information Theory 2022.
 
 - Our new research monograph on spectral methods [Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral Methods for Data Science: A Statistical Perspective] is now published in [https://www.nowpublishers.com/article/Details/MAL-079 Foundations and Trends\R in Machine Learning].\n
 
-
-
-
-
-
-
-- Yuxin Chen, Yuejie Chi and I gave a tutorial on "Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods" at [https://eusipco2020.org/tutorials/ EUSIPCO 2020]. 
+ 

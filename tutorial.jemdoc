@@ -1,0 +1,4 @@
+# jemdoc: menu{menu}{tutorial.html}
+= Tutorial
+
+- Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods together with Yuxin Chen, Yuejie Chi at [https://eusipco2020.org/tutorials/ EUSIPCO 2020].

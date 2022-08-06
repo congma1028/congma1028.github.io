@@ -1,0 +1,152 @@
+# jemdoc: menu{menu}{paper-topic.html}
+= Papers by topic
+
+
+== Transfer learning
+
+- [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression] \n
+*C. Ma*, R. Pathak, M. J. Wainwright \n
+
+
+- [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
+R. Pathak, *C. Ma*, M. J. Wainwright \n
+accepted to /ICML, 2022/ (long presentation)
+
+
+== Reinforcement learning
+
+- [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets] \n
+G. Li, *C. Ma*, N. Srebro (alphabetical order) \n
+[Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
+
+
+- [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
+*C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
+accepted to IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf \[Slides\]] \n
+
+- [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
+P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
+accepted to IEEE Transactions on Information Theory, 2022  \n
+accepted in part to /Neurips 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n
+
+== Nonconvex statistical estimation
+
+- [Publication/SqrtMC/SqrtMC.pdf Optimal tuning-free convex relaxation for noisy matrix completion] \n
+Y. Yang, *C. Ma* \n
+
+
+- [Publication/RandomInit/main.pdf Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
+/Mathematical Programming, 2019/ 
+[Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]] [Publication/RandomInit/random_init_PR_MP.pdf \[MP version\]] 
+
+- [Publication/RankOne/noncvx_covsketch_latest.pdf Nonconvex Matrix Factorization from Rank-One Measurements]\n
+Y. Li, *C. Ma*, Y. Chen, Y. Chi \n
+/IEEE Transactions on Information Theory, 2020/ \n
+accepted in part to /AISTATS, 2019/
+
+
+- [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
+T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
+accepted to /Journal of Machine Learning Research/, 2022\n
+accepted in part to /AISTATS, 2022/
+
+
+- [Publication/Implicit/paper.pdf Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
+*C. Ma*, K. Wang, Y. Chi, Y. Chen \n
+/Foundations of Computational Mathematics, 2020/ \n
+accepted in part to /ICML 2018/ 
+[Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] [Publication/Implicit/implicit_icml.pdf \[ICML version\]] [Publication/Implicit/ImplicitReg_FoCM.pdf \[FoCM version\]]
+
+
+- [Publication/NoisyMC/NoisyMC.pdf Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization] \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+/SIAM Journal on Optimization, 2020/ 
+[Publication/NoisyMC/Slides/NoisyMC_slides.pdf \[Slides\]] \n
+
+- [Publication/BalancingFree/RectangularMF_TSP.pdf Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing] \n
+*C. Ma*, Y. Li, Y. Chi \n
+ /accepted to IEEE Transactions on Signal Processing, 2021/ \n
+ accepted in part to /Asilomar 2019/
+
+
+
+- [Publication/MC_inference/MC_inference.pdf Inference and Uncertainty Quantification for Noisy Matrix Completion] \n
+Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+ /Proceedings of the National Academy of Sciences, 2019/ 
+[Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf \[Slides\]] [Publication/MC_inference/MC_inference_pnas.pdf \[PNAS version\]] \n
+
+
+
+
+
+- [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
+Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
+accepted to /Annals of Statistics/, 2021\n
+
+- [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
+Y. Chen, *C. Ma*, H. V. Poor, Y. Chen\n
+accepted to /IEEE Transactions on Information Theory/, 2021\n
+
+
+- [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
+T. Tong, *C. Ma*, Y. Chi\n
+accepted to /IEEE Transactions on Signal Processing/, 2021\n
+
+
+- [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
+T. Tong, *C. Ma*, Y. Chi\n
+accepted to /Journal of Machine Learning Research/, 2021\n
+
+
+== Spectral methods
+
+
+
+- [Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
+Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
+/Foundations and Trends\R in Machine Learning, 2021/
+
+
+- [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking ]  \n
+Y. Chen, J. Fan, *C. Ma*, K. Wang (alphabetical order)\n
+/Annals of Statistics, 2019/
+[Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]] [Publication/Ranking/topK_AOS.pdf \[AoS version\]]
+
+== Others
+
+
+- [Publication/DL_survey/DL_survey.pdf A Selective Overview of Deep Learning] \n
+J. Fan, *C. Ma*, Y. Zhong (alphabetical order)\n
+/Statistical Science, 2020/ \n
+
+
+- [Publication/ISA/jasa.pdf Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach] \n
+*C. Ma*, J. Lu, H. Liu \n
+/Journal of the American Statistical Association, 2020/ 
+[Publication/ISA/Slides/ISA.pdf \[Slides\]]\n
+
+
+
+- [Publication/Panther/TOIS.pdf Fast and Flexible Top-k Similarity Search on Large Networks] \n
+J. Zhang, J. Tang, *C. Ma*, H. Tong, Y. Jing, J. Li, W. Luyten,   M. Moens \n
+/ACM Transactions on Information Systems, 2017/ \n
+accepted in part to /KDD, 2015/ 
+  [Publication/Panther/panther.pdf \[KDD version\]] [Publication/Panther/TOIS.pdf \[TOIS version\]] \n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
