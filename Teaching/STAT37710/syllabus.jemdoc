@@ -1,0 +1,16 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 37710: Syllabus \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Autumn 2022
+
+A tentative one:
+
+. Week 1: The statistical learning framework, bias-variance tradeoffs
+. Week 2: Point estimation (MOME, MLE, MAP)
+. Week 3: Model complexity
+. Week 4: Classification (logistic regression; Naive Bayes, LDA)
+. Week 5: Ensemble methods (bagging, random forests, boosting)
+. Week 6: Graphical models (mixtures of Gaussians, graphical models)
+. Week 7: Multi-layer perceptrons and neural networks
+. Week 8: Nonparametric models (Kernel ridge regression, Gaussian processes)
+. Week 9: Support vector machines; active learning
+

@@ -1,16 +1,16 @@
 # jemdoc: menu{menu}{paper.html}
-= Papers
+= Publications
 
 
 == 2022
 
 
-- [Publication/SqrtMC/SqrtMC.pdf Optimal tuning-free convex relaxation for noisy matrix completion] \n
+- [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] \n
 Y. Yang, *C. Ma* \n
 
 - [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets] \n
 G. Li, *C. Ma*, N. Srebro (alphabetical order) \n
-[Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
+accepted to /Neurips, 2022/  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
 
 
 - [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-based Nonparametric Regression] \n

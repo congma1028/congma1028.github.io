@@ -1,0 +1,469 @@
+\documentclass{article}
+\usepackage{color,cite,array,comment}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{subfigure,epsfig}
+\usepackage{algorithm,algpseudocode}
+\usepackage{caption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\title{Problems}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+
+\item Why is L2 norm a vector norm?
+
+\emph{Solution.}\\
+
+We have to show that for any $\mathbf{v}\in\mathbb{R}^n$,
+	\begin{align}
+	&\|\mathbf{v}\|_2\geq 0,\label{eqn:pos}\\
+	&\|\alpha \mathbf{v}\|_2=|\alpha|\|\mathbf{v}\|_2,\quad\forall\alpha\in\mathbb{R},\label{eqn:scalar}\\
+	&\|\mathbf{v}\|_2=0 \iff \mathbf{v}=\mathbf{0},\label{eqn:zero}\\
+	&\|\mathbf{v}+\mathbf{u}\|_2\leq \|\mathbf{v}\|_2+\|\mathbf{u}\|_2.\label{eqn:tri}
+	\end{align}
+\eqref{eqn:pos} is straightforward by the definition of L2 norm.
+\eqref{eqn:scalar} is followed as
+	\begin{align}
+	\|\alpha \mathbf{v}\|_2=&\|(\alpha v_1,\cdots,\alpha v_n)\|_2
+	=\sqrt{(\alpha v_1)^2+\cdots+(\alpha v_n)^2}\\
+	=&\sqrt{\alpha^2}\sqrt{v_1^2+\cdots+v_n^2}	=|\alpha| \|\mathbf{v}\|_2.
+	\end{align}
+\eqref{eqn:zero} holds, because
+	\begin{align*}
+	\|\mathbf{v}\|_2=\mathbf{0} \iff v_1^2+\cdots+v_n^2=0 \iff v_1=\cdots=v_n=0 \iff \mathbf{v}=\mathbf{0}.	
+	\end{align*}
+The inequality \eqref{eqn:tri}, which is called as triangle inequality for vectors, is derived as
+	\begin{align*}
+	\|\mathbf{u}+\mathbf{v}\|^2=&(\mathbf{u}+\mathbf{v})	\cdot (\mathbf{u}+\mathbf{v})\\
+	=& \|\mathbf{u}\|_2^2 +2(\mathbf{u}\cdot\mathbf{v})+\|\mathbf{v}\|_2^2\\
+	\leq & \|\mathbf{u}\|_2^2 +2|\mathbf{u}\cdot\mathbf{v}|+\|\mathbf{v}\|_2^2 \\
+	\stackrel{(a)}{\leq}& \|\mathbf{u}\|_2^2 +2\|\mathbf{u}\|\|\mathbf{v}\|+\|\mathbf{v}\|_2^2\\
+	=&(\|\mathbf{v}\|_2+\|\mathbf{u}\|_2)^2,
+	\end{align*}
+where $(a)$ holds by Cauchy-Schwarz inequality.
+
+\item Verify that the Cauchy-Schwarz inequality holds for 
+	\begin{align*}
+	\mathbf{u}=(1,3,5,2,0,1),~\mathbf{v}=(0,2,4,1,3,5).	
+	\end{align*}
+\emph{Solution.}\\
+	\begin{align*}
+	&\|\mathbf{u}\|_2=\sqrt{1^2+3^2+5^2+2^2+0^2+1^2}=\sqrt{40},\\
+	&\|\mathbf{v}\|_2=\sqrt{0^2+2^2+4^2+1^2+3^2+5^2}=\sqrt{55},\\
+	&\mathbf{u}\cdot\mathbf{v}=1\cdot0+3\cdot2+5\cdot4+2\cdot1+0\cdot3+1\cdot5=33,\\
+	&(\mathbf{u}\cdot\mathbf{v})^2=1089\leq 	\|\mathbf{u}\|_2^2\|\mathbf{v}\|_2^2=2200.
+	\end{align*}
+
+
+\item Let $W_1$ and $W_2$ be a subspaces of $\mathbb{R}^n$. Prove that the intersection $W_1\cap W_2$ is a subspace of $\mathbb{R}^n$.
+
+\emph{Solution.}
+
+Since every subspace includes the zero vector, 
+	\begin{align*}
+	\mathbf{0}\in W_1\cap W_2,	
+	\end{align*}
+and therefore, we know that $W_1\cap W_2$ is nonempty.
+Assume $\mathbf{x}\in W_1\cap W_2$. Then, $\mathbf{x}\in W_1$ and $\mathbf{x}\in W_2$. 
+By the definition of subspaces, for any $c\in\mathbb{R}$, $c\mathbf{x}\in W_1$ and $c\mathbf{x}\in W_2$. Thus, $c\mathbf{x}\in W_1\cap W_2$, and $W_1\cap W_2$ is closed under scalar multiplication.
+Also, by the definition of subspaces, for any $\mathbf{v},\mathbf{u}\in W_1\cap W_2$, 
+	\begin{align*}
+	\mathbf{v}+\mathbf{u}\in W_1,~\mathbf{v}+\mathbf{u}\in W_2.	
+	\end{align*}
+Hence, $\mathbf{v}+\mathbf{u}\in W_1\cap W_2$, which holds for any vectors. 
+It was shown that $W_1\cap W_2$ is closed under addition.
+Therefore, $W_1\cap W_2$ is also a subspace.
+
+\item Prove that if $\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ is a linearly independent set, then so is the set $\{k\mathbf{v}_1,k\mathbf{v}_2,k\mathbf{v}_3\}$ for every nonzero scalar $k$.
+
+\emph{Solution.}
+
+Since $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$ are linearly independent,
+	\begin{align*}
+	c_1\mathbf{v}_1+c_2\mathbf{v}_2+c_3\mathbf{v}_3=\mathbf{0}\implies c_1=c_2=c_3=0.	
+	\end{align*}
+Based on this, it is shown that $k\mathbf{v}_1,k\mathbf{v}_2,k\mathbf{v}_3$ are also linearly independent.
+	\begin{align*}
+	c_1(k\mathbf{v}_1)+c_2(k\mathbf{v}_2)+c_3(k\mathbf{v}_3)=\mathbf{0}	\implies (c_1k)\mathbf{v}_1+(c_2k)\mathbf{v}_2+(c_3k)\mathbf{v}_3=\mathbf{0}\\
+	\stackrel{(a)}{\implies} c_1k=c_2k=c_3k=0 \stackrel{(b)}{\implies} c_1=c_2=c_3=0,
+	\end{align*}
+where $(a)$ holds by the linear independence of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$, and $(b)$ holds because $k$ is nonzero.
+
+\item
+Find all values of $\lambda$ for which $\det(A)=0$.
+	\begin{align*}
+	A=\left[\begin{array}{lll} \lambda-4&0&0 \\ 0&\lambda&2 \\ 0&3&\lambda-1 \end{array}\right]	
+	\end{align*}
+	
+\emph{Solution.}
+Cofactors and minors are denoted as $C_{ij},M_{ij}$.
+Using cofactor expansion,
+	\begin{align*}
+	\det(A)=&a_{11}C_{11}+a_{21}C_{21}+a_{31}C_{31}\\
+	=&	(\lambda-4) M_{11}\\
+	=&( \lambda-4 )\left|\begin{array}{ll} \lambda&2 \\ 3&\lambda-1 \end{array}\right|\\
+	=&(\lambda-4) (\lambda^2-\lambda-6)\\
+	=&(\lambda-4) (\lambda+2)(\lambda-3).
+	\end{align*}
+The values of $\lambda$ satisfying $\det(A)=0$ are $\lambda=4,-2,3$.
+
+
+\item Find the determinant of the following matrix by inspection, not by calculation.
+	\begin{align*}
+	\left[ \begin{array}{llll} 1&1&1&1 \\ 0&2&2&2 \\ 0&0&3&3 \\ 0&0&0&4 \end{array}\right].	
+	\end{align*}
+
+\emph{Solution.}
+
+Since the determinant is not affected by adding a multiple of row to another row, we can add $-1/4,-2/4,-3/4$ times the 4th row to 1st, 2nd, 3rd rows, respectively.
+Then, every element in the 4th column except for 4 becomes 0.
+In a similar way, every element except for those in the main diagonal becomes zero. 
+Thus, the determinant of the given matrix is the same as that of
+	\begin{align*}
+	\left[ \begin{array}{llll} 1&0&0&0 \\ 0&2&0&0 \\ 0&0&3&0 \\ 0&0&0&4 \end{array}\right],
+	\end{align*}
+which is $\det(A)=1\cdot 2\cdot3\cdot4=24$.
+
+\item Find the eigenvalues and corresponding eigenvectors of the matrix
+	\begin{align*}
+	A=\left[ \begin{array}{ll} 1&3\\ 4&2 \end{array}\right].	
+	\end{align*}
+
+\emph{Solution.}
+
+To find the eigenvalues we will solve the characteristic equation of $A$.
+Since
+	\begin{align*}
+	\lambda I-A=\lambda \left[\begin{array}{ll} 1&0 \\ 0&1\end{array}\right]-\left[\begin{array}{ll} 1&3 \\ 4&2\end{array}\right]	=\left[\begin{array}{ll} \lambda-1&-3 \\ -4&\lambda-2\end{array}\right],
+	\end{align*}
+the characteristic equation $\det(\lambda I-A)=0$ is
+	\begin{align*}
+	\left|\begin{array}{ll} \lambda-1&-3 \\-4&\lambda-2 \end{array}\right|=0.	
+	\end{align*}
+Expanding and simplifying the determinant yields
+	\begin{align*}
+	\lambda^2-3\lambda-10=(\lambda+2)(\lambda-5)=0.	
+	\end{align*}
+
+To find the eigenspaces corresponding to these eigenvalues we must solve the system
+	\begin{align*}
+	\left[\begin{array}{ll} \lambda-1&-3 \\ -4&\lambda-2\end{array}\right]\left[\begin{array}{l} x\\y \end{array}\right]=\left[\begin{array}{l}0\\0\end{array}\right]	.
+	\end{align*}
+With $\lambda=-2$, it becomes
+	\begin{align*}
+	\left[\begin{array}{ll} -3&-3 \\ -4&-4\end{array}\right]\left[\begin{array}{l} x\\y \end{array}\right]=\left[\begin{array}{l}0\\0\end{array}\right]	.	
+	\end{align*}
+Solving this system yields 
+	\begin{align*}
+	\left[\begin{array}{l} x\\y \end{array}\right]=t\left[\begin{array}{l} -1\\1 \end{array}\right].
+	\end{align*}
+With $\lambda=-5$, it becomes
+	\begin{align*}
+	\left[\begin{array}{ll} 4&-3 \\ -4&3\end{array}\right]\left[\begin{array}{l} x\\y \end{array}\right]=\left[\begin{array}{l}0\\0\end{array}\right]	.	
+	\end{align*}
+Solving this system yields 
+	\begin{align*}
+	\left[\begin{array}{l} x\\y \end{array}\right]=t\left[\begin{array}{l} 3\\4 \end{array}\right].
+	\end{align*}
+
+
+\item 	
+\begin{enumerate}
+\item
+Compute the operator norm of the following matrix.
+	
+	\begin{align*}
+	A=\left[\begin{array}{ll}1 &2\\3&4\\5&6\end{array}\right].	
+	\end{align*}
+\emph{Solution.}\\
+Since the operator norm of $A$ is the same as $\sqrt{\lambda_{\text{max}}(A^TA)}$, it suffices to figure out the eigenvalue of the following matrix:
+	\begin{align*}
+	A^TA=\left[\begin{array}{ll} 35&44\\ 44&56\end{array}\right]	.
+	\end{align*}
+The characteristic equation is
+	\begin{align*}
+	\text{det}( A^TA-\lambda I)=\lambda^2-91\lambda+24=0
+	\end{align*}
+and we have eigenvalues
+	\begin{align*}
+	\lambda_1\approx 90.7,\quad\lambda_2\approx 0.265.	
+	\end{align*}
+	Thus, choosing the maximal one,
+	\begin{align*}
+	\|A^TA\|=\sqrt{90.7}\approx 9.53.
+	\end{align*}
+
+\item What is the vector achieving the following maximum?
+	\begin{align*}
+	\max_{\|\mathbf{x}\|\neq 0} \frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}
+	\end{align*}
+\emph{Solution.}\\
+The vector achieving the maximum is an eigenvector corresponding to the maximal eigenvalue of $A^TA$.
+Solving the following system,
+	\begin{align*}
+	A^TA\mathbf{x}=\lambda_1\mathbf{x}
+	\end{align*}
+we have 
+	\begin{align*}
+	\mathbf{x}=t\left[\begin{array}{l} 0.62\\0.785\end{array}\right]	.
+	\end{align*}
+We can check that this achieves the maximum as
+	\begin{align*}
+	\frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}=\left\|\left[\begin{array}{l} 2.19\\5.00\\7.81\end{array}\right]\right\|=9.53
+	\end{align*}
+
+\end{enumerate}
+
+\item Show that the vectors
+	\begin{align*}
+	&\mathbf{v}_1=(1,0,0),~\mathbf{v}_2=(0,2,0),\\
+	&\mathbf{v}_3=(0,0,3),~\mathbf{v}_4=(1,1,1)
+	\end{align*}
+span $\mathbb{R}^3$ but do not form a basis for $\mathbb{R}^3$.
+
+\emph{Solution.}
+
+We have to show first that
+	\begin{align*}
+	\text{span}\{\mathbf{v}_1,\cdots,\mathbf{v}_4\}=\mathbb{R}^3.	
+	\end{align*}
+Since $\mathbf{v}_1,\cdots,\mathbf{v}_4\in\mathbb{R}^3$, any linear combination of them is also in $\mathbb{R}^3$, and therefore, 
+	\begin{align*}
+	\text{span}\{\mathbf{v}_1,\cdots,\mathbf{v}_4\}\subset \mathbb{R}^3.	
+	\end{align*}
+For any $(x,y,z)\in\mathbb{R}^3$,
+	\begin{align*}
+	(x,y,z)=x\cdot(1,0,0)+ \frac{y}{2}\cdot(0,2,0)+\frac{z}{3}\cdot(0,0,3)
+	=x\mathbf{v}_1+\frac{y}{2}\mathbf{v}_2+\frac{z}{3}\mathbf{v}_3,	
+	\end{align*}
+and $(x,y,z)\in\text{span}\{\mathbf{v}_1,\cdots,\mathbf{v}_4\}$. Thus,
+	\begin{align*}
+	 \mathbb{R}^3 \subset \text{span}\{\mathbf{v}_1,\cdots,\mathbf{v}_4\}.
+	\end{align*}
+
+Even though the vectors span $\mathbb{R}^3$, they are not a basis, because they are linearly dependent.
+In $\mathbb{R}^3$, the maximum number of elements in a linearly independent set is 3, so the vectors cannot be linearly independent.
+
+\item
+Prove that if $\mathbf{u}$ is a nonzero $n\times 1 $ column vector, then the outer product $\mathbf{u}\mathbf{u}^T$ is a symmetric matrix of rank 1.
+
+\emph{Solution.}
+
+	\begin{align*}
+	\mathbf{u}\mathbf{u}^T=\left[\begin{array}{l} u_1\\ \vdots\\ u_n\end{array}\right] \left[ \begin{array}{lll} u_1 & \cdots & u_n\end{array}\right]
+	=\left[\begin{array}{llll} u_1^2 & u_1u_2 & \cdots & u_1u_n \\ u_2u_1 & u_2^2& \cdots & u_2u_n \\ \vdots &\vdots & &\vdots \\ u_nu_1& u_nu_2 & \cdots & u_n^2\end{array}\right].	
+	\end{align*}
+It is symmetric, because
+	\begin{align*}
+	&\left(\mathbf{u}\mathbf{u}^T\right)_{ij}=(\mathbf{u})_i \left(\mathbf{u}^T	\right)_j=u_iu_j,\\
+	&\left(\mathbf{u}\mathbf{u}^T\right)_{ji}=(\mathbf{u})_j \left(\mathbf{u}^T	\right)_i=u_iu_j
+	\end{align*}
+for any $1\leq i,j\leq n$.
+The $m$-th row of $\mathbf{u}\mathbf{u}^T$ is
+	\begin{align*}
+	\mathbf{r}_m\left(\mathbf{u}\mathbf{u}^T\right)=u_m \cdot \mathbf{u}^T.	
+	\end{align*}
+Thus, every row is a scalar multiple of $\mathbf{u}^T$, which implies that the row space has dimension 1.
+
+
+\item
+Prove that if $V=\{\mathbf{v}_1,\cdots,\mathbf{v}_k\}$ is a linearly independent set of vectors in $\mathbb{R}^n$, and if $W=\{\mathbf{w}_1,\cdots,\mathbf{w}_{n-k}\}$ is a basis for the null space of the matrix $A$ that has the vectors $\mathbf{v}_1,\cdots,\mathbf{v}_k$ as its successive rows, then 
+$V\cup W$ is a basis for $\mathbb{R}^n$.
+
+\emph{Solution.}
+
+Since $V\cup W$ contains $n$ vectors, it suffices to show that $V\cup W$ is linearly independent.
+Assume
+	\begin{align*}
+	\sum_{i=1}^k c_i\mathbf{v}_i+\sum_{j=1}^{n-k}d_j \mathbf{w}_j=0.	
+	\end{align*}
+Equivalently,
+\begin{align*}
+	\sum_{i=1}^k c_i\mathbf{v}_i=\sum_{j=1}^{n-k}(-d_j) \mathbf{w}_j.	
+	\end{align*}
+The left-hand side is a linear combination of elements of $V$ and is included in the row space of $A$.
+The right-hand side is a linear combination of elements of $W$ and is included in the null space of $A$.
+The only vector that is in the row space and the null space of a matrix is the zero vector, 
+	\begin{align*}
+	\sum_{i=1}^k c_i\mathbf{v}_i=\sum_{j=1}^{n-k}(-d_j) \mathbf{w}_j=\mathbf{0}.
+	\end{align*}
+Since $V$ and $W$ is linearly independent sets, $c_i=d_j=0$ for all $i,j$. Thus,
+$V\cup W$ is a linearly independent set. 
+
+\item
+Find the least squares solution of $A\mathbf{x}=\mathbf{b}$ by solving the associated normal system,
+and show that the least square error vector is orthogonal to the column space of $A$.
+	\begin{align*}
+	A=\left[ \begin{array}{ll} 1&-1 \\ 2&3 \\ 4&5 \end{array}\right]; \quad\mathbf{b}=\left[\begin{array}{l} 2\\-1\\5\end{array}\right].	
+	\end{align*}
+	
+\emph{Solution.}
+The normal system for the equation $A\mathbf{x}=\mathbf{b}$ is $A^TA\mathbf{x}=A^T\mathbf{b}$, or,
+	\begin{align*}
+	\left[\begin{array}{ll} 21&25\\ 25&35\end{array}\right]\mathbf{x}=\left[\begin{array}{l} 20\\20\end{array}\right].
+	\end{align*}
+The solution of this is
+	\begin{align*}
+	\mathbf{x}=\frac{1}{11}\left[\begin{array}{l} 20 \\ -8\end{array}\right],	
+	\end{align*}
+which is the least squares solution of $A\mathbf{x}=\mathbf{b}$.
+The least square error vector is
+	\begin{align*}
+	\mathbf{b}-A\mathbf{x}=	\left[\begin{array}{l} 2\\-1\\5\end{array}\right]-\frac{1}{11}\left[\begin{array}{l} 28\\16\\40\end{array}\right]
+	=\frac{1}{11}\left[\begin{array}{l} -6\\-27\\15\end{array}\right].
+	\end{align*}
+This is orthogonal to the column space of $A$, because
+	\begin{align*}
+	\frac{1}{11}\left[\begin{array}{l} -6\\-27\\15\end{array}\right]^T \left[\begin{array}{l} 1\\2\\4\end{array}\right]	=0,\\
+	\frac{1}{11}\left[\begin{array}{l} -6\\-27\\15\end{array}\right]^T \left[\begin{array}{l} -1\\3\\5\end{array}\right]	=0.
+	\end{align*}
+
+
+\item Find the eigenvalue decomposition of 
+	\begin{align*}
+	A=\left[ \begin{array}{lll} 1&1&1\\ 1&1&1\\ 1&1&1\end{array}\right].	
+	\end{align*}
+\emph{Solution.}
+
+Following the method from Problem 7, eigenvalues and corresponding eigenvectors are
+	\begin{align*}
+	&\lambda=0, ~\mathbf{x}_1=(1,0,-1), \mathbf{x}_2(0,1,-1),\\
+	&\lambda=3, ~\mathbf{x}_3=(1,1,1).	
+	\end{align*}
+In order to find the orthonormal basis of eigenspace, we have to find the orthonormal basis of $\mathbf{x}_1,\mathbf{x}_2$.
+First, normalize $\mathbf{x}_1,\mathbf{x}_2$ into $\frac{1}{\sqrt{2}}(1,0,-1),\frac{1}{\sqrt{2}}(0,1,-1)$. 
+Subtract projection of the second one onto the first one as
+	\begin{align*}
+	\frac{1}{\sqrt{2}}(0,1,-1)-\left[\frac{1}{\sqrt{2}}(0,1,-1)\cdot 	\frac{1}{\sqrt{2}}(1,0,-1)\right] \frac{1}{\sqrt{2}}(1,0,-1)=\frac{1}{\sqrt{2}}\left(-\frac{1}{2},1,-\frac{1}{2}\right).
+	\end{align*}
+This vector is normalized into $\frac{1}{\sqrt{6}}(1,-2,1)$.
+So, an orthonormal basis for $\text{span}(\mathbf{x}_1,\mathbf{x}_2)$ is
+	\begin{align*}
+	\left\{ \frac{1}{\sqrt{2}}(1,0,-1),~ 	\frac{1}{\sqrt{6}}(1,-2,1)\right\}.
+	\end{align*}
+Since $\mathbf{x}_3$ is orthogonal to the other two eigenvectors, it suffices to normalize it as
+	\begin{align*}
+	\frac{\mathbf{x}_3}{\|\mathbf{x}_3\|}=\frac{1}{\sqrt{3}}(1,1,1).	
+	\end{align*}
+Based on these results, $A$ is decomposed as
+	\begin{align*}
+	A=	\left[ \begin{array}{lll} \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}} \\ 0&-\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{3}}\\ -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}}\end{array}\right]\left[ \begin{array}{lll} 0&0&0 \\ 0&0&0 \\ 0&0&3\end{array}\right]\left[ \begin{array}{lll} \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}} \\ 0&-\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{3}}\\ -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}}\end{array}\right]^T.
+	\end{align*}
+
+\item
+Find a singular value decomposition of $A$.
+	\begin{align*}
+	A=\left[\begin{array}{ll} 1&-1\\ 1&1\end{array}\right].	
+	\end{align*}
+
+\emph{Solution.}
+
+(SVD is not unique. The following solution shows one of possible options.)
+	\begin{align*}
+	A^TA	=\left[\begin{array}{ll} 2 & 0\\0&2\end{array}\right]=2I.
+	\end{align*}
+The eigenvalue is $2$ and every nonzero vector is an eigenvector corresponding to this eigenvalue.
+We can choose any orthonormal basis of $\mathbb{R}^2$, one of which is
+	\begin{align*}
+	\{(0,1),~(1,0)\}.	
+	\end{align*}
+Using these as column vectors, construct an orthogonal matrix $V$, which orthogonally diagonalizes $A^TA$, as
+	\begin{align*}
+	V=\left[\begin{array}{ll}\mathbf{v}_1 &\mathbf{v}_2\end{array} \right]=\left[\begin{array}{ll} 0&1\\ 1&0\end{array}\right].	
+	\end{align*}
+Another orthogonal matrix for SVD is made as
+	\begin{align*}
+	&A\mathbf{v}_1=\left[\begin{array}{l}-1\\1\end{array}\right],&\mathbf{u}_1=\frac{A\mathbf{v}_1}{\|A\mathbf{v}_1\|}=\frac{1}{\sqrt{2}}\left[\begin{array}{l}-1\\1\end{array}\right],\\
+	&A\mathbf{v}_2=\left[\begin{array}{l}1\\1\end{array}\right],&\mathbf{u}_2=\frac{A\mathbf{v}_1}{\|A\mathbf{v}_1\|}=\frac{1}{\sqrt{2}}\left[\begin{array}{l}1\\1\end{array}\right],
+	\end{align*}
+	\begin{align*}
+	U=	\left[\begin{array}{ll}\mathbf{u}_1 &\mathbf{u}_2\end{array} \right]=\frac{1}{\sqrt{2}}\left[\begin{array}{ll} -1&1\\ 1&1\end{array}\right].
+	\end{align*}
+Since a singular value of $A$ is 1, 
+	\begin{align*}
+	\Sigma=\left[\begin{array}{ll} 1&0\\0&1\end{array}\right]=I,	
+	\end{align*}
+and the decomposition is
+	\begin{align*}
+	A=	U\Sigma V^T=\frac{1}{\sqrt{2}}\left[\begin{array}{ll} -1&1\\ 1&1\end{array}\right]\left[\begin{array}{ll} 1&0\\0&1\end{array}\right]\left[\begin{array}{ll} 0&1\\ 1&0\end{array}\right]^T.
+	\end{align*}
+
+\item
+Suppose that $A$ has the singular value decomposition
+	\begin{align*}
+	A=\left[ \begin{array}{rrrr} \frac{1}{2}	&\frac{1}{2}&\frac{1}{2}&\frac{1}{2} \\ \frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&\frac{1}{2} \\ \frac{1}{2}&-\frac{1}{2}&\frac{1}{2}&-\frac{1}{2} \\ \frac{1}{2}&\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}\end{array}\right]\left[\begin{array}{lll} 24&0&0 \\ 0&12&0 \\ 0&0&0 \\ 0&0&0 \end{array}\right] \left[\begin{array}{rrr}\frac{2}{3} &-\frac{1}{3} & \frac{2}{3}\\ \\\frac{2}{3} & \frac{2}{3} & -\frac{1}{3} \\\\ -\frac{1}{3} & \frac{2}{3} & \frac{2}{3}\end{array}\right].
+	\end{align*}
+\begin{enumerate}
+\item Find orthonormal bases for the four fundamental spaces of $A$.
+
+\emph{Solution.}
+
+We can use the columns of $U,V$ in the decomposition to construct bases of the fundamental spaces.
+Since the rank $A$ is 2, the first two columns of $U$ form an orthonormal basis for $\text{col}(A)$:
+	\begin{align*}
+	\left\{ \left(\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}\right),\left(\frac{1}{2},-\frac{1}{2},-\frac{1}{2},\frac{1}{2}\right)\right\}.
+	\end{align*}
+The last two columns of $U$ form an orthonormal basis for $\text{null}(A^T)$:
+	\begin{align*}
+	\left\{ \left(\frac{1}{2},-\frac{1}{2},\frac{1}{2},-\frac{1}{2}\right),\left(\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}\right)\right\}.
+	\end{align*}
+The first two rows of $V$ form an orthonormal basis for $\text{row}(A)$:
+	\begin{align*}
+	\left\{\left(\frac{2}{3},-\frac{1}{3},\frac{2}{3}\right),\left(\frac{2}{3},\frac{2}{3},-\frac{1}{3}\right)\right\}.	
+	\end{align*}
+The last row of $V$ forms an orthonormal basis for $\text{null}(A)$:
+	\begin{align*}
+	\left\{\left(-\frac{1}{3},\frac{2}{3},\frac{2}{3}\right)\right\}.	
+	\end{align*}
+
+\item Find the reduced singular value decomposition of $A$.
+
+\emph{Solution.}
+
+	\begin{align*}
+	A=\left[ \begin{array}{rrr} \frac{1}{2}	&\frac{1}{2} \\ \frac{1}{2}&-\frac{1}{2}\\ \frac{1}{2}&-\frac{1}{2} \\ \frac{1}{2}&\frac{1}{2}\end{array}\right]\left[\begin{array}{lll} 24&0 \\ 0&12 \end{array}\right] \left[\begin{array}{rrr}\frac{2}{3} &-\frac{1}{3} & \frac{2}{3}\\ \\\frac{2}{3} & \frac{2}{3} & -\frac{1}{3} \end{array}\right].
+	\end{align*}
+\end{enumerate}
+
+\item Prove that nuclear norm has the following property:
+	\begin{align*}
+	\|A\|_*\triangleq \sum_{i=1}^{\min(m,n)} \sigma_i=\text{tr}(\sqrt{A^TA}),	
+	\end{align*}
+for $A\in\mathbb{R}^{m\times n}$, where $\sqrt{A^TA}$ if a matrix $B$ such that $B^2=A^TA$.
+
+\emph{Solution.}
+
+$\sqrt{A^TA}$ is well-defined, because it is positive semidefinite.
+Since $A^TA$ is symmetric, it can be decomposed as
+	\begin{align*}
+	A^TA=VDV^T,	
+	\end{align*}
+where $D$ is nonnegative and diagonal, and $V$ is orthogonal, and the elements of $D$ are eigenvalues of $A^TA$, which are the squares of singular values of $A$.
+Let $B=V\sqrt{D}V^T$. Then,
+	\begin{align*}
+	B^2=V\sqrt{D}V^TV\sqrt{D}V^T=V\sqrt{D} \sqrt{D}V^T=VDV^T=A^TA.	
+	\end{align*}
+However,
+	\begin{align*}
+	\text{tr}(B)=&	\sum_{i=1}^n B_{ii}=\sum_{i=1}^n \sum_{j=1}^n \left(V\sqrt{D}\right)_{ij}\left(V^T\right)_{ji}=\sum_{i=1}^n \sum_{j=1}^n \left(V\sqrt{D}\right)_{ij}v_{ij}\\
+	\stackrel{(a)}{=}&\sum_{i=1}^n \sum_{j=1}^n v_{ij} \sigma_j v_{ij}=\sum_{j=1}^n \sigma_j\sum_{i=1}^n v_{ij}^2\stackrel{(b)}{=}\sum_{j=1}^n \sigma_j
+	\end{align*}
+where $(a)$ holds because $D$ is diagonal, and  $(b)$ holds since every column of $V$ has unit norm.
+When $m<n$, $\sigma_j=0$ for $j>\min(m,n)$. Thus, it becomes
+	\begin{align*}
+	\text{tr}(B)=	\sum_{i=1}^{\min(m,n)} \sigma_i.
+	\end{align*}
+
+
+
+
+
+\end{enumerate}
+
+
+
+\end{document}

@@ -1,0 +1,23 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 37710: References \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Autumn 2022
+
+
+
+
+- *Textbooks*: We recommend the following books, although we will not follow them closely.
+-- [https://probml.github.io/pml-book/book1.html Probabilistic Machine Learning: An Introduction], Kevin P. Murphy, 2022. 
+-- [https://link.springer.com/book/9780387310732 Pattern Recognition and Machine Learning], Christopher M. Bishop, 2006. 
+-- [https://hastie.su.domains/ElemStatLearn/ The Elements of
+Statistical Learning:
+Data Mining, Inference, and Prediction], Trevor Hastie, Robert Tibshirani, Jerome Friedman, 2017.
+-- [https://www.routledge.com/Statistical-Foundations-of-Data-Science/Fan-Li-Zhang-Zou/p/book/9781466510845 Statistical foundations of data science], Jianqing Fan, Runze Li, Cun-Hui Zhang, Hui Zou,  Chapman and Hall, 2020.
+#-- High-dimensional data analysis with sparse models: Theory, algorithms, and applications,  John Wright, Yi Ma, Allen Yang, 2018. 
+
+#-- [http://web.stanford.edu/~hastie/StatLearnSparsity Statistical learning with sparsity: the Lasso and generalizations], Trevor Hastie, Robert Tibshirani, and Martin Wainwright,  Chapman and Hall/CRC, 2015.
+#-- [http://human-robot.sysu.edu.cn/ebook/preprint093.pdf A mathematical introduction to compressive sensing], Simon Foucart, and Holger Rauhut, Springer, 2013.
+
+
+
+
+# 

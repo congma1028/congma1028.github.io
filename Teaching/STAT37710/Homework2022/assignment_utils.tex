@@ -1,0 +1,113 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{bm}
+
+
+\input testpoints
+
+\newcommand\courseName{STAT 37710: Machine Learning}
+\newcommand\semester{Autumn 2022}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Assignments include homeworks, quizzes, and exams.
+
+\newcommand\createAssignment[1]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in {\small  {\bf \courseName} \hfill \semester}
+      \vspace{4mm}
+        \hbox to 5.78in {{\bf \hfill #1   \hfill} } 
+      \vspace{2mm}
+    \hbox to 5.78in {\em \hfill Due date: \dueDate   \hfill} 
+    }
+  }
+  
+    \end{center}
+  \vspace*{4mm}
+
+\newcommand\solution[1]{}
+\newcommand\solutionWithSpacing[2]{\vspace{##1}}
+\newcommand\answerSpace{\newpage}
+}
+
+\newcommand\createAssignmentSolutions[1]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in {\small  {\bf \courseName} \hfill \semester}
+      \vspace{4mm}
+        \hbox to 5.78in {{\bf \hfill #1  Solutions \hfill} } 
+      \vspace{2mm}
+    \hbox to 5.78in {\em  \hfill Please do not distribute. \hfill} 
+    }
+  }
+    \end{center}
+  \vspace*{4mm}
+
+\newcommand\solution[1]{ \medskip { {\bf Solution:} \em ##1} \medskip}
+\newcommand\solutionWithSpacing[2]{ \medskip { {\bf Solution:} \em ##2} \medskip}
+\newcommand\answerSpace{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specific to homeworks.
+
+\newcommand\createHomework[1]{
+\setcounter{problemspacing}{2} % integer value in em
+\createAssignment{Homework #1}
+% Please structure your writeups hierarchically: convey the overall plan
+% before diving into details.  You should justify with words why something's true (by algebra, convexity, etc.).
+% There's no need to step through a long sequence of trivial algebraic operations.
+% % Be careful not to mix assumptions with things which are derived.
+{\centering{\em You are allowed to drop 1 subproblem without penalty. But you cannot drop problems on simulation.}}
+}
+
+\newcommand\createHomeworkSolutions[1]{
+\setcounter{problemspacing}{2} % integer value in em; 6 em / inch
+\createAssignmentSolutions{Homework #1}
+}
+
+\newcommand\w{\mathbf{w}}
+\renewcommand\P{\mathbb{P}}
+\newcommand\E{\mathbb{E}}
+\newcommand\R{\mathbb{R}}
+\newcommand\sI{\mathcal{I}}
+\newcommand\sN{\mathcal{N}}
+\newcommand\sX{\mathcal{X}}
+\newcommand\sY{\mathcal{Y}}
+\newcommand\sA{\mathcal{A}}
+\newcommand\sL{\mathcal{L}}
+\newcommand\bE{\mathbb{E}}
+\newcommand\bP{\mathbb{P}}
+\newcommand{\1}{\mathbb{I}} % Indicator (don't use \mathbbm{1} because bbm is not TrueType)
+\newcommand\tr{\text{tr}}
+\newcommand\sign{\text{sign}}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Regret}{Regret}
+\newcommand\inv[1]{\ensuremath{\frac{1}{#1}}}
+\newcommand\inner[2]{\ensuremath{\left< #1, #2 \right>}} % Inner product
+\newcommand\KL[2]{\ensuremath{\text{KL}\left( #1 \| #2 \right)}} % KL-divergence
+\newcommand\sH{\ensuremath{\mathcal{H}}}
+\newcommand\sD{\ensuremath{\mathcal{D}}}
+\newcommand\sF{\ensuremath{\mathcal{F}}}
+\newcommand\vc{\text{VC}}
+\newcommand\eqdef{\ensuremath{\stackrel{\rm def}{=}}} % Equal by definition
+
+\newcommand\pb[1]{\ensuremath{\left[ #1 \right]}} % []
+\newcommand\p[1]{\ensuremath{\left( #1 \right)}} % Parenthesis ()
+
+\usepackage{color}
+\newcommand{\hl}[2]{\colorbox{#2}{#1}}
+\newcommand{\hly}[1]{\hl{yellow}{#1}}
+\def\todo#1{\hl{{\bf TODO:} #1}{yellow}}
+\def\needfig{\hl{Figure X}{green}}
