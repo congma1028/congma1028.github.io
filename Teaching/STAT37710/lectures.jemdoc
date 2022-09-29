@@ -2,9 +2,11 @@
 = STAT 37710: Lecture Notes \n
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Autumn 2022
 
-#These lecture notes will be updated frequently.
-- Lecture 1: XXX
+Slides are adapted from [https://sites.google.com/uchicago.edu/stat-37710-cmsc-35400-s22 Yuxin Chen's version]. 
 
+- Lecture 0: [Slides2022/STAT-37710-ML-1.0-logistics.pdf Logistics]
+- Lecture 1: [Slides2022/STAT-37710-ML-1.1-intro.pdf Introduction] 
+- Lecture 2: [Slides2022/STAT-37710-ML-1.2-statisticalml.pdf Linear regression] 
 
 
 
