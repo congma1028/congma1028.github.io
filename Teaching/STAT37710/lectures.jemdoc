@@ -10,6 +10,9 @@ Slides are adapted from [https://sites.google.com/uchicago.edu/stat-37710-cmsc-3
 - Lecture 3: [Slides2022/STAT-37710-ML-2.1-MLE.pdf Linear regression and maximum likelihood estimation] 
 - Lecture 4: [Slides2022/STAT-37710-ML-2.2-BayesianMethods.pdf Regularized linear regression and maximum a posteriori]
 - Lecture 5: [Slides2022/STAT-37710-ML-3.1-modelsel.pdf Model selection]  
-
+- Lecture 6: [Slides2022/STAT-37710-ML-3.2-logisticreg.pdf Logistic regression]
+- Lecture 7: [Slides2022/STAT-37710-ML-4.1-generativemodeling.pdf Generative models for classification] 
+- Lecture 8: [Slides2022/STAT-37710-ML-4.2-svm.pdf Support vector machine] (credit: Simon Du)
+- Lecture 9: [Slides2022/STAT-37710-ML-5.1-kernel.pdf Kernel methods] (credit: Simon Du)
 
 
