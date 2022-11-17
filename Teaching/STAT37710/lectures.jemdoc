@@ -5,16 +5,22 @@
 Slides are adapted from [https://sites.google.com/uchicago.edu/stat-37710-cmsc-35400-s22 Yuxin Chen's version]. 
 
 - Lecture 0: [Slides2022/STAT-37710-ML-1.0-logistics.pdf Logistics]
-- Lecture 1: [Slides2022/STAT-37710-ML-1.1-intro.pdf Introduction] 
-- Lecture 2: [Slides2022/STAT-37710-ML-1.2-statisticalml.pdf Linear regression] 
-- Lecture 3: [Slides2022/STAT-37710-ML-2.1-MLE.pdf Linear regression and maximum likelihood estimation] 
-- Lecture 4: [Slides2022/STAT-37710-ML-2.2-BayesianMethods.pdf Regularized linear regression and maximum a posteriori]
-- Lecture 5: [Slides2022/STAT-37710-ML-3.1-modelsel.pdf Model selection]  
-- Lecture 6: [Slides2022/STAT-37710-ML-3.2-logisticreg.pdf Logistic regression]
-- Lecture 7: [Slides2022/STAT-37710-ML-4.1-generativemodeling.pdf Generative models for classification] 
-- Lecture 8: [Slides2022/STAT-37710-ML-4.2-svm.pdf Support vector machine] (credit: Simon Du)
-- Lecture 9: [Slides2022/STAT-37710-ML-5.1-kernel.pdf Kernel methods] (credit: Simon Du)
-- Lecture 10: [Slides2022/STAT-37710-ML-6.1-MLP.pdf Multi-layer perceptrons] (credit: Simon Du)
-- Lecture 9: [Slides2022/STAT-37710-ML-6.2-CNN.pdf Convolutional neural networks] (credit: Simon Du)
+- Lecture 1-1: [Slides2022/STAT-37710-ML-1.1-intro.pdf Introduction] 
+- Lecture 1-2: [Slides2022/STAT-37710-ML-1.2-statisticalml.pdf Linear regression] 
+- Lecture 2-1: [Slides2022/STAT-37710-ML-2.1-MLE.pdf Linear regression and maximum likelihood estimation] 
+- Lecture 2-2: [Slides2022/STAT-37710-ML-2.2-BayesianMethods.pdf Regularized linear regression and maximum a posteriori]
+- Lecture 3-1: [Slides2022/STAT-37710-ML-3.1-modelsel.pdf Model selection]  
+- Lecture 3-2: [Slides2022/STAT-37710-ML-3.2-logisticreg.pdf Logistic regression]
+- Lecture 4-1: [Slides2022/STAT-37710-ML-4.1-generativemodeling.pdf Generative models for classification] 
+- Lecture 4-2: [Slides2022/STAT-37710-ML-4.2-svm.pdf Support vector machine] (credit: Simon Du)
+- Lecture 5-1: [Slides2022/STAT-37710-ML-5.1-kernel.pdf Kernel methods] (credit: Simon Du)
+- Lecture 6-1: [Slides2022/STAT-37710-ML-6.1-MLP.pdf Multi-layer perceptrons] (credit: Simon Du)
+- Lecture 6-2: [Slides2022/STAT-37710-ML-6.2-CNN.pdf Convolutional neural networks] (credit: Simon Du)
+- Lecture 7-1: [Slides2022/STAT-37710-ML-7.1-dt.pdf Decision trees]
+- Lecture 7-2: [Slides2022/STAT-37710-ML-7.2-bagging.pdf Bagging and random forests]
+- Lecture 8-1: [Slides2022/STAT-37710-ML-8.1-boosting.pdf Boosting]
+- Lecture 8-2: [Slides2022/STAT-37710-ML-8.2-clustering.pdf Clustering: k-means and Gaussian mixture models]
+
+
 
 
