@@ -23,16 +23,13 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 - A new paper on overparameterized matrix recovery: [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing].
 
-- Our paper on solving Markov games: [Publication/OFTRL/OFTRL.pdf O(1/T) Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] has been accepted to ICLR 2023.
+
+- Our paper on covariate shift [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression] has been accepted to the Annals of Statistics. 
+
+- Our paper on solving Markov games [Publication/OFTRL/OFTRL.pdf O(1/T) Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] has been accepted to ICLR 2023.
 
 - Our paper on offline linear contextual bandit [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets] has been accepted to Neurips 2022.
 
-- A new paper on noisy matrix completion: [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion].
-
-- A new paper on covariate shift: [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression].
-
-
-- Our paper on covariate shift in nonparametric regression [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] has been accepted for a long presentation at ICML 2022.
 
 
  
