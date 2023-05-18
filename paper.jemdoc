@@ -5,15 +5,24 @@
 
 == 2023
 
+
+- [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
+Y. Gui, R. F. Barber, * C. Ma* \n
+
 - [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n 
 X. Xu, Y. Shen, Y. Chi, * C. Ma* \n
-
+accepted to /ICML, 2023/
 
 == 2022
 
-- [Publication/OFTRL/OFTRL.pdf O(1/T) Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
+
+- [Publication/JSRL/jsrl.pdf Jump-Start Reinforcement Learning] \n
+I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu, *C. Ma*, J. Jiao, S Levine, K Hausman \n
+accepted to /ICML, 2023/
+
+- [Publication/OFTRL/OFTRL.pdf O(1T) Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
 Y. Yang, *C. Ma* \n
-accepted to ICLR, 2023 \n
+accepted to /ICLR, 2023/ \n
 
 - [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] \n
 Y. Yang, *C. Ma* \n
@@ -25,7 +34,7 @@ accepted to /Neurips, 2022/  [Publication/ContextualBandit/lcb_bounds_poster.pdf
 
 - [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-based Nonparametric Regression] \n
 *C. Ma*, R. Pathak, M. J. Wainwright \n
-accepted to the /Annals of Statistics/, 2023
+accepted to the /Annals of Statistics, 2023/
 
 
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
@@ -36,18 +45,18 @@ accepted to /ICML, 2022/ (long presentation)
 
 - [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
 *C. Ma*, B. Zhu, J. Jiao, M. J. Wainwright \n
-accepted to IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf \[Slides\]] \n
+/IEEE Transactions on Information Theory, 2022/ [Publication/OPE/OPE_slides.pdf \[Slides\]] \n
 
 - [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, *C. Ma*, J. Jiao, S. Russell \n
-accepted to IEEE Transactions on Information Theory, 2022  \n
+/IEEE Transactions on Information Theory, 2022/  \n
 accepted in part to /Neurips 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n
 
 
 
 - [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
 T. Tong, *C. Ma*, A. Prater-Bennette, E. Tripp, Y. Chi\n
-accepted to /Journal of Machine Learning Research/, 2022\n
+/Journal of Machine Learning Research, 2022/\n
 accepted in part to /AISTATS, 2022/
 
 == 2020
@@ -59,21 +68,21 @@ Y. Chen, Y. Chi, J. Fan, *C. Ma* (alphabetical order)\n
 
 - [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
 Y. Chen, J. Fan, *C. Ma*, Y. Yan (alphabetical order)\n
-/Annals of Statistics/, 2021\n
+/Annals of Statistics, 2021/\n
 
 - [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
 Y. Chen, *C. Ma*, H. V. Poor, Y. Chen\n
-/IEEE Transactions on Information Theory/, 2021\n
+/IEEE Transactions on Information Theory, 2021/\n
 
 
 - [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
 T. Tong, *C. Ma*, Y. Chi\n
-/IEEE Transactions on Signal Processing/, 2021\n
+/IEEE Transactions on Signal Processing, 2021/\n
 
 
 - [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
 T. Tong, *C. Ma*, Y. Chi\n
-/Journal of Machine Learning Research/, 2021\n
+/Journal of Machine Learning Research, 2021/\n
 
 
 
