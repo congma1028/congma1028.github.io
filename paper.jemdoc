@@ -21,7 +21,7 @@ accepted to /ICML, 2023/
 I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu, *C. Ma*, J. Jiao, S Levine, K Hausman \n
 accepted to /ICML, 2023/
 
-- [Publication/OFTRL/OFTRL.pdf O(1T) Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
+- [Publication/OFTRL/OFTRL.pdf $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
 Y. Yang, *C. Ma* \n
 accepted to /ICLR, 2023/ \n
 
@@ -134,7 +134,7 @@ accepted in part to /ICML 2018/
 [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] [Publication/Implicit/implicit_icml.pdf \[ICML version\]] [Publication/Implicit/ImplicitReg_FoCM.pdf \[FoCM version\]]
 
 
-- [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking ]  \n
+- [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking ]  \n
 Y. Chen, J. Fan, *C. Ma*, K. Wang (alphabetical order)\n
 /Annals of Statistics, 2019/
 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]] [Publication/Ranking/topK_AOS.pdf \[AoS version\]]
@@ -147,7 +147,7 @@ Y. Chen, J. Fan, *C. Ma*, K. Wang (alphabetical order)\n
 
 == 2015
 
-- [Publication/Panther/TOIS.pdf Fast and Flexible Top-k Similarity Search on Large Networks] \n
+- [Publication/Panther/TOIS.pdf Fast and Flexible Top-$K$ Similarity Search on Large Networks] \n
 J. Zhang, J. Tang, *C. Ma*, H. Tong, Y. Jing, J. Li, W. Luyten, 	M. Moens \n
 /ACM Transactions on Information Systems, 2017/ \n
 accepted in part to /KDD, 2015/ 
