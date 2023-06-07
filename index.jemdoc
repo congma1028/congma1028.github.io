@@ -21,7 +21,12 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
+- A new paper on contrastive learning: [Publication/SSL/ssl.pdf Unraveling Projection Heads in Contrastive Learning:
+Insights from Expansion and Shrinkage].
+
 - A new paper on distribution-free uncertainty quantification for matrix completion: [Publication/CMC/cmc.pdf Conformalized Matrix Completion].
+
+- Our paper on tuning-free matrix completion [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] has been accepted to the IEEE Transactions on Information Theory. 
 
 - Our paper on overparameterized matrix recovery: [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] has been accepted to ICML 2023.
 
