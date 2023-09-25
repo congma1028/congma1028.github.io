@@ -12,40 +12,40 @@ Y. Gui, * C. Ma*, Y. Zhong \n
 
 - [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
 Y. Gui, R. F. Barber, * C. Ma* \n
-[https://github.com/yugjerry/conf-mc \[Code\]]
+to appear in /Neurips, 2023/ [https://github.com/yugjerry/conf-mc \[Code\]] \n
 
 - [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n 
 X. Xu, Y. Shen, Y. Chi, * C. Ma* \n
-accepted to /ICML, 2023/
+/ICML, 2023/
 
 == 2022
 
 
 - [Publication/JSRL/jsrl.pdf Jump-Start Reinforcement Learning] \n
 I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu, *C. Ma*, J. Jiao, S Levine, K Hausman \n
-accepted to /ICML, 2023/
+/ICML, 2023/
 
 - [Publication/OFTRL/OFTRL.pdf $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
 Y. Yang, *C. Ma* \n
-accepted to /ICLR, 2023/ \n
+/ICLR, 2023/ \n
 
 - [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] \n
 Y. Yang, *C. Ma* \n
-accepted to /IEEE Transactions on Information Theory, 2023/  \n
+/IEEE Transactions on Information Theory, 2023/  \n
 
 - [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using Lp Confidence Sets] \n
 G. Li, *C. Ma*, N. Srebro (alphabetical order) \n
-accepted to /Neurips, 2022/  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
+/Neurips, 2022/  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
 
 
 - [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-based Nonparametric Regression] \n
 *C. Ma*, R. Pathak, M. J. Wainwright \n
-accepted to the /Annals of Statistics, 2023/ [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]] \n
+/Annals of Statistics, 2023/ [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]] \n
 
 
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
 R. Pathak, *C. Ma*, M. J. Wainwright \n
-accepted to /ICML, 2022/ (long presentation)
+/ICML, 2022/ (long presentation)
 
 == 2021
 
