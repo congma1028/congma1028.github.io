@@ -1,0 +1,515 @@
+%\documentclass[letterpaper,draft]{beamer}
+%\documentclass[letterpaper,handout]{beamer}
+\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+\usepackage{amsfonts}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\Sum{\sum\nolimits}
+\def\Prod{\prod\nolimits}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\V{\mathrm{Var}}
+\def\CV{\mathrm{Cov}}
+\def\X{\mathcal{X}}
+\def\dt{\Delta}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+\def\hid#1#2{\onslide<#1>{\alert{#2}}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{20}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Winter 2022 Lecture \chapnum} \date{} \author{Cong Ma}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}\maketitle
+\bigskip
+
+\begin{center}\large
+\begin{tabular}{ll}
+8.2.2 & Steady-State Probabilities\\
+8.5 & The System $M/G/1$
+\end{tabular}
+\end{center}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{8.2.2. Steady-State Probabilities}
+For a general queueing model, we are interested in three different limiting probabilities:
+\begin{align*}
+P_n &=\lim_{t\to\infty}\p(X(t)=n),\\[-3pt]
+    &\qquad\mbox{where $X(t)=\#$ of customers in the system at time $t$}\\
+a_n &=\mbox{proportion of customers arrive finding $n$ in the system}\\
+d_n &=\mbox{proportion of customers depart leaving $n$ behind in the system}
+\end{align*}
+Here we assume they exist.
+
+Though the three are defined differently, the latter two are identical in most of the queueing models.\bigskip
+
+\textbf{Proposition 8.1} In any system in which customers arrive and depart one at a time
+$$
+\mbox{the rate at which arrivals find }n = \mbox{the rate at which departures leave }n
+$$
+and
+$$a_n = d_n$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Proposition 8.1}
+Let
+\begin{align*}
+N_{i,j}(t)&=\mbox{number of times the number of customers in the system}\\
+&\quad\mbox{ goes from $i$ to $j$ by time }t\\
+A(t)&=\mbox{number of customers arrived by time }t\\
+D(t)&=\mbox{number of customers departed by time }t
+\end{align*}
+Note that an arrival will see $n$ in the system whenever the number in the system
+goes from $n$ to $n + 1$; similarly, a departure will leave behind $n$ whenever the
+number in the system goes from $n + 1$ to $n$.
+Thus we know
+\begin{align*}
+&\mbox{the rate at which arrivals find }n = \lim_{t\to\infty}\frac{N_{n,n+1}(t)}{t}\\
+&\mbox{the rate at which departures leave }n = \lim_{t\to\infty}\frac{N_{n+1,n}(t)}{t}\\
+&a_n=\lim_{t\to\infty}\frac{N_{n,n+1}(t)}{A(t)},\quad d_n=\lim_{t\to\infty}\frac{N_{n+1,n}(t)}{D(t)}
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Proposition 8.1 (Cont'd)}
+Since between any two transitions from $n$ to $n+1$, there must be one from
+$n + 1$ to $n$, and vice versa, we have
+$$N_{n,n+1}(t)=N_{n+1,n}(t)\pm 1\quad \mbox{for all }t.$$
+Thus
+\begin{align*}
+\mbox{rate at which arrivals find }n
+&= \lim_{t\to\infty}\frac{N_{n,n+1}(t)}{t}\\
+&= \lim_{t\to\infty}\frac{N_{n+1,n}(t)\pm 1}{t}\\
+&=\mbox{rate at which departures leave }n
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Proposition 8.1 (Cont'd)}
+For $a_n$ and $d_n$, obviously $A(t)\ge D(t)$ and hence
+\[
+\lim_{t\to\infty}\frac{A(t)}{t}\ge\lim_{t\to\infty}\frac{D(t)}{t}
+\]
+Combining with the fact $\lim_{t\to\infty}\frac{N_{n,n+1}(t)}{t}
+= \lim_{t\to\infty}\frac{N_{n+1,n}(t)}{t}$ we just shown, we obtain
+\[
+a_n%=\lim_{t\to\infty}\frac{N_{n,n+1}(t)}{A(t)}
+=\lim_{t\to\infty}\frac{N_{n,n+1}(t)\hid{2-}{/t}}{A(t)\hid{2-}{/t}}
+\le
+\lim_{t\to\infty}\frac{N_{n+1,n}(t)\hid{2-}{/t}}{D(t)\hid{2-}{/t}}=d_n
+\]
+
+There are two possibilities:
+\begin{itemize}
+\item if $\displaystyle\lim_{t\to\infty}A(t)/t=\lim_{t\to\infty}D(t)/t$, then obviously $a_n=d_n$ for all $n$
+\item if $\displaystyle\lim_{t\to\infty}A(t)/t>\lim_{t\to\infty}D(t)/t$, then the queue size will go to infinity, implying that
+$a_n = d_n = 0.$ The equality is still valid.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 8.1}
+Here is an example where $P_n\neq a_n$. Consider a queueing model in which
+\begin{itemize}
+\item service times $= 1$, always
+\item interarrival times  are always $> 1$ [e.g., Uniform(1.5,2)].
+\end{itemize}
+Hence, as every arrival finds the system empty and every departure leaves it empty, we have
+$$a_0 = d_0 = 1$$
+However,
+$P_0 \neq 1$
+as the system is not always empty of customers.\bigskip
+
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{PASTA}
+
+\textbf{Proposition 8.2}\;\ (PASTA Principle)
+\begin{center}
+\fbox{\ul{P}oisson \ul{A}rrivals \ul{S}ee \ul{T}ime \ul{A}verages}
+\end{center}
+If the arrival process is Poisson, then
+$$P_n=a_n,$$
+and hence $P_n=d_n.$
+
+
+\begin{itemize}
+\item By time $T$, the total amount of time there are $n$ customers in the system is about $P_nT$
+\item Regardless of how many customers in the system, Poisson arrivals always arrive at rate $\lambda$. Thus
+by time $T$, the total number of arrivals that find $n$ in the system  is $\approx \lambda P_nT$.
+\item the overall number of customers arrived by time $T$ is $\approx\lambda T$
+\item the proportion of arrivals that find the system in state $n$ is
+$$a_n=\frac{\lambda P_n T}{\lambda T} = P_n$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example 5.5 (M/M/1 Queueing w/ Finite Capacity)}
+\begin{itemize}
+\item single-server service station. Service times are i.i.d. $\sim Exp(\mu)$
+\item Poisson arrival of customers with rate $\lambda$
+\item Upon arrival, a customer would
+\begin{itemize}\normalsize
+\item go into service if the server is free (queue length $=0$)
+\item join the queue if 1 to $N-1$ customers in the station, or
+\item \alert{walk away} if $N$ or more customers in the station
+\end{itemize}
+\end{itemize}
+{\bf Q}: What fraction of potential customers are lost?\par\medskip
+
+Let $X(t)$ be the number of customers in the station at time $t$. \smallskip
+
+$\{X(t), ~t\ge 0\}$ is a birth-death process with the birth and death rates below
+$$
+\mu_n=
+\begin{cases}
+0   & \text{if }n = 0\\
+\mu & \text{if }n\ge 1
+\end{cases}\quad\text{and}\quad
+\lambda_n =
+\begin{cases}
+\lambda&\text{if $0\le n<N$}\\
+0& \text{if }n\ge N
+\end{cases}
+$$\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 5.5 (M/M/1 Queueing w/ Finite Capacity)}
+Solving $\lambda_n P_n= \mu_{n+1}P_{n+1}$ for the limiting distribution
+\begin{align*}
+P_1&=(\lambda/\mu)P_0\\
+P_2&=(\lambda/\mu)P_1=(\lambda/\mu)^2P_0\\
+&\vdots\\
+P_i&=(\lambda/\mu)^iP_0, & i=1,2,\ldots,N
+\end{align*}
+Plugging $P_i=(\lambda/\mu)^iP_0$ into $\sum_{i=0}^N P_i=1$, one can solve for $P_0$ and get
+$$
+P_i=\frac{1-\lambda/\mu}{1-(\lambda/\mu)^{N+1}}(\lambda/\mu)^{i}
+$$
+Answer: The fraction of customers lost is $P_N=\frac{1-\lambda/\mu}{1-(\lambda/\mu)^{N+1}}(\lambda/\mu)^{N}$
+\end{frame}
+
+\begin{frame}
+	\vfill
+	\center
+	\bf \large M/G/1
+	\vfill
+\end{frame}
+
+% ----------------------------------------------------------------------
+\begin{frame}{$M/G/1$}
+The $M/G/1$ model assumes
+\begin{itemize}
+\item Poisson arrivals at rate $\lambda$;
+\item i.i.d service times with a general distribution G, $S_i\sim G$;
+\item a single server; and
+\item first come, first serve
+\end{itemize}
+A necessary condition for an $M/G/1$ to be stable is that the mean of service time $\E[S_n]$ must satisfies
+$$\lambda\E[S_n] < 1.$$
+This condition is necessary. Otherwise if
+\begin{align*}
+&\mbox{the average service time }\E[S_n] \\
+&>\;\mbox{the average interarrival time of customers }1/\lambda,
+\end{align*}
+the queue will become longer and longer and the system will ultimately explode.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{A Markov Chain embedded in $M/G/1$}
+Let $X(t)=\#$ of customers in the system at time $t$.
+
+Unlike $M/M/k$ or $M/M/\infty$ systems, the process $\{X(t),t\ge 0\}$ in a $M/G/1$ system is NOT a continuous time Markov chain.% because the service time is not exponential. %Future events will depend on the current service time.
+\par\medskip
+
+Fortunately, there is a discrete-time Markov chain embedded in an $M/G/1$ system.
+
+ 
+Let
+\begin{align*}
+Y_0 &=0\\
+Y_n &=\#\mbox{ of customers in the system}\\
+&\quad\mbox{ leaving behind at the $n$th departure},\; n\ge 1\\
+\end{align*}
+
+
+\begin{center}
+\fbox{$\{Y_n, n\ge 0\}$ is a Markov chain.}
+\end{center}
+\end{frame}
+
+\begin{frame}{A Markov Chain embedded in $M/G/1$ (Cont'd)}
+
+
+To see this, let us define
+\begin{align*}
+A_n &=\#\mbox{ of customers that enter the system}\\
+&\quad\mbox{ during the service time of the $n$th customer},\; n\ge 1
+\end{align*}
+Observed that $\{Y_n, n\ge 0\}$ and $\{A_n,n\ge 1\}$ are related as follows
+$$
+Y_{n+1} =A_{n+1}+(Y_n-1)_+=
+\begin{cases}
+Y_n-1+A_{n+1} & \mbox{if } Y_n>0\\
+A_{n+1} & \mbox{if } Y_n=0
+\end{cases}
+$$
+
+Example: $Y_1 = A_1$, $Y_2 = A_2 + (Y_1 - 1)_+$ \\
+
+%Need to show $A_n$'s are i.i.d.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{A Markov Chain embedded in $M/G/1$ (Cont'd)}
+
+Recall that $S_n$ denotes the length of time to serve the $n$th customer.\par\smallskip
+
+Given $S_n$, $A_n$ is Poisson with mean $\lambda S_n$.
+From this we can conclude that $A_1,A_2,\ldots$ are i.i.d. since
+\begin{itemize}
+\item the service times $S_1, S_2,\ldots$ are i.i.d., and
+\item there is only 1 server, the service times of different customers are disjoint, and the number of events occurred in disjoint intervals are independent in a Poisson process.
+\end{itemize}
+That $\{A_n,n\ge 1\}$ are i.i.d. and $Y_n$ is independent of $A_{n+1}$ implies that $Y_n$ forms a Markov chain.
+
+%Recall we have seen this Markov chain in Lecture 1 and in HW4.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Transition probabilities of the Markov chain}
+Moreover, as $A_n$ given $S_n$ is Poisson with mean $\lambda S_n$, we can find the distribution of $A_n$
+\begin{align*}
+\alpha_k = \p(A_n=k)&=\int_0^{\infty} \p(A_n=k|S_n=y)G(dy)\\
+&=\int_0^{\infty} \frac{(\lambda y)^k}{k!}e^{-\lambda y}G(dy)
+\end{align*}
+from which we can find the transition probability $P_{ij}$ for the Markov chain $\{Y_n, n\ge 0\}$:
+\begin{align*}
+P_{ij} &= \p(Y_{n+1}=j|Y_n=i)=\p(A_{n+1}=j-(i-1)^+)\\
+&=
+\begin{cases}
+\alpha_j,       & \mbox{if }i=0\\
+\alpha_{j-i+1}, & \mbox{if }i\ge 1, j\ge i-1\\
+0 &\mbox{if }i\ge 1, j<i-1
+\end{cases}
+\end{align*}
+We can show that the Markov chain is irreducible and aperiodic and has a limiting distribution if and only if $\lambda \E[S_1]<1.$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Idle Periods in $M/G/1$}
+Using the equation $Y_{n+1} =A_{n+1}+(Y_n-1)^+$, we can find many properties of the Markov chain. First write the equation as
+$$
+Y_{n+1}=A_{n+1}+Y_n-1+\mathbf{1}_{\{Y_n=0\}}
+$$
+Taking expectations we get
+\[\E[Y_{n+1}]=\underbrace{\E[A_{n+1}]}_{{\alert{=\lambda\E[S]}}}+\E[Y_n]-1+\p(Y_n=0)\]
+where $\E[A_{n+1}]=\lambda\E[S_{n+1}]$ since $A_{n+1}$ given $S_{n+1}$ is Poisson with mean $\lambda S_{n+1}$ and
+$\E[S_{n+1}]=\E[S]$ since $S_i$'s are i.i.d.\medskip
+
+Let $n\to\infty$, since the MC has a limiting distribution, we have $\lim_{n\to\infty}\E[Y_{n+1}]=\lim_{n\to\infty}\E[Y_n]$ and from which we can get
+$$
+\lim_{n\to\infty}\p(Y_n=0)=1-\lambda\E[S]
+$$
+By the PASTA principle, $\lim_{n\to\infty}\p(Y_n=0)=d_0=P_0$ is also the long-run proportion of time that the system is idle.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Length of Busy Periods in $M/G/1$}
+As in a birth \& death queueing model,
+there is a alternating renewal process embedded in an $M/G/1$ system.
+We say a renewal occurs if the system become empty, then the system idles for a period of time until the next customer enters the system, and then a busy period begins until the system become empty again.
+
+Using the alternating renewal theory, the long-run proportion of time that the system is empty is
+$$
+\frac{\E[\mbox{Idle}]}{\E[\mbox{Idle}]+\E[\mbox{Busy}]},
+$$
+and we just derived that it is $\lim_{t\to\infty}\p(X(t)=0)=1-\lambda\E[S]$.
+Since the length of an idle period $\sim Exp(\lambda)$, we have $\E[\mbox{Idle}]=1/\lambda.$
+In summary, we have that
+$$
+1-\lambda\E[S]=\frac{1/\lambda}{(1/\lambda)+\E[\mbox{Busy}]}\quad\Rightarrow\quad
+\E[\mbox{Busy}]=\frac{\E[S]}{1-\lambda\E[S]}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{$L$ of $M/G/1$ (Cont'd)}
+By the PASTA principle, we know $\displaystyle\lim_{n\to\infty}\E[Y_n]=\lim_{t\to\infty}\E[X(t)]=L$.
+From the equation $Y_{n+1}=A_{n+1}-1+Y_n+\mathbf{1}_{\{Y_n=0\}}$, we have
+\begin{align}
+&\V(Y_{n+1})\cr
+={}&\V(A_{n+1}-1+Y_n+\mathbf{1}_{\{Y_n=0\}})\cr
+={}&\V(A_{n+1})+\V(Y_n+\mathbf{1}_{\{Y_n=0\}})\qquad(\mbox{$A_{n+1}$ and $Y_n$ are indep.})\cr
+={}&\V(A_{n+1})+\V(Y_n)\cr
+&\quad+2\CV(Y_n,\mathbf{1}_{\{Y_n=0\}})+\V(\mathbf{1}_{\{Y_n=0\}}),&\label{eq:var}
+\end{align}
+in which
+
+\vspace{-18pt}
+\begin{align}
+\V(\mathbf{1}_{\{Y_n=0\}})&=\p(Y_n=0)(1-\p(Y_n=0))\label{eq:V1}\\
+\CV(Y_n,\mathbf{1}_{\{Y_n=0\}})
+&=\E[{Y_n\mathbf{1}_{\{Y_n=0\}}}]-\E[Y_n]\p(Y_n=0)\cr
+&=-\E[Y_n]\p(Y_n=0)\label{eq:cov}\\
+\V(A_n)&=\E[\V(A_n|S_n)]+\V(\E[A_n|S_n])\cr
+&=\E[\lambda S_n]+\V(\lambda S_n)\cr
+&=\lambda \E[S]+\lambda^2\V(S)\label{eq:ES}
+\end{align}
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{$L$ of $M/G/1$ (Cont'd)}
+Plugging in \eqref{eq:V1} \eqref{eq:cov} \eqref{eq:ES} into \eqref{eq:var}, letting $n\to\infty$, we have
+\begin{align*}
+\lim_{n\to\infty}\V(Y_{n+1})&=\lambda \E[S]+\lambda^2\V(S)+\lim_{n\to\infty}\V(Y_n)\\
+&\quad-2\lim_{n\to\infty}\E[Y_n]\p(Y_n=0)\\
+&\quad+\lim_{n\to\infty}\p(Y_n=0)(1-\p(Y_n=0))\\
+&=\lambda \E[S]+\lambda^2\V(S)+\lim_{n\to\infty}\V(Y_n)\\
+&\quad-2\lim_{n\to\infty}\E[Y_n](1-\lambda\E[S])+(1-\lambda\E[S])\lambda\E[S]
+\end{align*}
+Again since the MC has a limiting distribution, we have $\lim_{n\to\infty}\V[Y_{n+1}]=\lim_{n\to\infty}\V[Y_n]$,
+and can get
+\begin{align*}
+\lim_{n\to\infty}\E[Y_n]&=\frac{\lambda \E[S]+\lambda^2\V(S)}{2(1-\lambda\E[S])}+\frac{\lambda\E[S]}{2}\\
+&=\frac{\lambda^2\E[S^2]}{2(1-\lambda\E[S])}+\lambda\E[S]\quad (\text{since }\V(S)=\E[S^2]-(\E[S])^2)
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{$L$ of $M/G/1$ (Cont'd)}
+
+From the cost identity $L=\lambda_a W$ and $L_Q=\lambda_a W_Q$, and that $\lambda_a=\lambda$, we have
+\begin{align*}
+L&=\frac{\lambda^2\E[S^2]}{2(1-\lambda\E[S])}+\lambda\E[S]\\
+W&=L/\lambda = \frac{\lambda\E[S^2]}{2(1-\lambda\E[S])}+\E[S]\\
+W_Q &= W-\E[S]=\frac{\lambda\E[S^2]}{2(1-\lambda\E[S])}\\
+L_Q &=\lambda W_Q=\frac{\lambda^2\E[S^2]}{2(1-\lambda\E[S])}
+\end{align*}
+Since $\E[S^2]=(\E[S])^2+\V(S)$, from the equations above we see for fixed mean service time $\E[S]$,
+\begin{center}
+$L$, $L_Q$, $W$, and $W_Q$ all increase as $\V(S)$ increases.
+\end{center}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example}
+For an $M/M/1$ system, we have shown that
+if the service time is exponential with mean $1/\mu$ that the average waiting time is
+$$W=\frac{1}{\mu-\lambda}$$
+
+If the service time is exactly $1/\mu$, the average waiting time can be reduced to
+\begin{align*}
+W&=\frac{\lambda\E[S^2]}{2(1-\lambda\E[S])}+\E[S]=\frac{\lambda/\mu^2}{2(1-\lambda/\mu)}+1/\mu=\frac{1}{\mu-\lambda}-\frac{\lambda/\mu}{2(\mu-\lambda)}
+\end{align*}
+For example, for $\lambda=1/12$, $\mu=1/8$
+$$
+W=\begin{cases}
+24 & \mbox{for } M/M/1\\
+16 & \mbox{if service time is exactly $1/\mu=8$}
+\end{cases}
+$$
+For $\lambda=1/10$, $\mu=1/8$
+$$
+W=\begin{cases}
+40 & \mbox{for } M/M/1\\
+24 & \mbox{if service time is exactly $1/\mu=8$}
+\end{cases}
+$$
+\end{frame}
+\end{document}
+% ----------------------------------------------------------------------
+\begin{frame}{8.5.1 Work and Another Cost Identity}
+For an arbitrary queueing system, the \structure{\em work} in the system at any time $t$ is defined as
+\begin{align*}
+V(t)&=\mbox{the sum of the remaining service times of}\\
+    &\quad\quad\mbox{all customers in the system at time }t.
+\end{align*}
+For example, suppose the $i$th customer enters the system at time $T_i$, spends $W^Q_i$ units of time in queue, and his service time is $S_i$. That is, the $i$th customer will start being served at time $T_i+W^Q_i$, and leave the system at time $T_i+W^Q_i+S_i$. At time $t$ the remaining service time $R_i(t)$ of the $i$th customer is
+$$
+R_i(t)=
+\begin{cases}
+0          &\mbox{if } t < T_i\\
+S_i        &\mbox{if }T_i\le t < T_i+W^Q_i\\
+S_i-(t-T_i-W^Q_i)&\mbox{if }T_i+W^Q_i\le t\le T_i+S_i+W^Q_i\\
+0          &\mbox{if }t > T_i+S_i+W^Q_i
+\end{cases}
+$$
+Then $V(t)=\Sum_{i=1}^{\infty}R_i(t)$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Another Cost Identity}
+%Define $V$ as the (time) average work in the system
+Recall the fundamental cost equation:
+\begin{align*}
+&\mbox{average rate at which the system earns}\\
+&= \lambda_a\times \mbox{average amount an entering customer pays}
+\end{align*}
+Consider the following cost rule:
+\begin{quote}
+Each customer pays at a rate of $R(t)$/unit time
+when his remaining service time is $R(t)$,
+whether he is in queue or in service
+\end{quote}
+
+Then the amount the system earns by time $t$ is
+$$\int_0^t\sum_{i=1}^{\infty}R_i(s)ds=\int_0^t V(s)ds$$
+and hence the average rate the system earns is
+$$
+V = \lim_{t\to\infty}\frac{\int_0^t V(s)ds}{t}
+$$
+$V$ is called \structure{\em the (time) average work in the system}.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Another Cost Identity (Cont'd)}
+The total amount paid by the $i$th customer is
+\begin{align*}
+\int_0^{\infty} R_i(s)ds&=\int_0^{T_i}0 ds + \int_{T_i}^{T_i+W^Q_i}S_ids\\
+&\quad+\int_{T_i+W^Q_i}^{T_i+W^Q_i+S_i}S_i-(t-T_i-W^Q_i)ds + \int_{T_i+W^Q_i+S_i}^{\infty}0 ds\\
+&=S_iW^Q_i+S_i^2/2
+\end{align*}
+The average amount an entering customer pays is thus
+$$
+\lim_{n\to\infty}\sum_{i=1}^{n}\frac{S_iW^Q_i+S_i^2/2}{n}=\E[S_iW^Q_i]+\E[S_i^2]/2
+$$
+From the Cost Equation, we have a new cost identity
+$$
+V=\lambda_a\E[S_iW^Q_i]+\lambda_a\E[S_i^2]/2
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Application of Work to $M/G/1$}
+Recall the new cost identity $V=\lambda_a\E[S_iW^Q_i]+\lambda_a\E[S_i^2]/2.$
+If a customer's service time $S_i$ is independent of his wait in queue $W^Q_i$,
+then we have
+$$
+V=\lambda_a\E[S_i]\E[W^Q_i]+\lambda_a\E[S_i^2]/2.
+$$
+This condition is true for $M/G/1$ and most of the queueing models. (There are exceptions.)
+\medskip
+
+For an arbitrary customer in an $M/G/1$ system, since there is only a single server
+\begin{align*}
+&\mbox{the $i$th customer's wait in queue }W^Q_i\\
+&=\mbox{ work in the system when he arrives } V(T_i)
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document}
+\begin{frame}{}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}
+\end{frame}
+% ----------------------------------------------------------------------

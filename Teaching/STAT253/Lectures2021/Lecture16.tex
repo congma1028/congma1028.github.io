@@ -1,0 +1,289 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+\usepackage{amsfonts}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\Sum{\sum\nolimits}
+\def\Prod{\prod\nolimits}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\V{\mathrm{Var}}
+\def\X{\mathcal{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{16}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Lecture \chapnum} \date{} \author{Yibi Huang}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}\maketitle\begin{center}7.3\; Limit Theorems\end{center}\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Revision of Example 7.7}
+A coin with probability $p$ to land heads (and $q=1-p$ to land tails) is tossed continually.
+\begin{itemize}
+\item What is the probability to get {\bf $k$ heads in a row} before getting {\bf $k$ tails in a row}?
+\item How many tosses is expected to get $k$ heads in a row or $k$ tails in a row?
+\end{itemize}\medskip
+
+\textbf{Solution.}
+\begin{itemize}
+\item Suppose the coin is tossed at every integer time points $t=1,2,3\ldots.$
+\item An {\em event} occurs whenever getting $k$ heads in a row.\\
+Here we required the rows of heads for different events must be \underline{non-overlapping}.
+\item Define
+$N_H(t)=\mbox{\# of events occurred at or before time }t.$\\
+$\{N_H(t),\; t\ge 0\}$ is a renewal processes (why?).
+\item What is the mean length of the interarrival times for $\{N_H(t)\; t\ge 0\}$?
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Revision of Example 7.7 (Cont'd)}
+Let $T_k=$  the \# of tosses required to get $k$ heads in a row.\\
+To get $k$ consecutive heads, one must first get $k-1$ consecutive heads, which takes $T_{k-1}$ steps.
+So
+$$
+T_k=
+\begin{cases}
+T_{k-1}+1 &\mbox{w/ prob. } p, \quad\text{ (if heads in the next toss)}\\
+T_{k-1}+1+T'_k   &\mbox{w/ prob. } 1-p \text{ (if tails in the next toss)}.
+\end{cases}
+$$
+Here $T_k'\sim T_k$ and $T_k'$ is independent of the past, and hence is independent of $T_{k-1}.$
+So
+\begin{align*}
+\E[T_k|T_{k-1}]
+&=T_{k-1}+1+(1-p)\E[T'_k|T_{k-1}]\\
+&=T_{k-1}+1+(1-p)\E[T'_k]\quad(\text{since $T'_k, T_{k-1}$ are indep.})\\
+&=T_{k-1}+1+(1-p)\E[T_k]\quad(\text{since $T'_k\sim T_k$})
+\end{align*}
+and hence
+\begin{align*}
+\E[T_k]=\E[\E[T_k|T_{k-1}]]&=\E[T_{k-1}]+1+(1-p)\E[T_k]
+\end{align*}
+Subtracting $(1-p)\E[T_k]$ from both sides we get
+$$p\E[T_k] = \E[T_{k-1}] + 1,\quad k=2, 3, 4, \ldots.$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Revision of Example 7.7 (Cont'd)}
+Observe that $T_1$ has a geometric distribution and hence$\E[T_1]=1/p.$
+Using the iterative relation, we get that
+\begin{align*}
+\E[T_2]&=(\E[T_1] + 1)/p=1/p^2+1/p\\
+\E[T_3]&=(\E[T_2] + 1)/p=1/p^3+1/p^2+1/p\\[-3pt]
+\vdots\\[-8pt]
+\E[T_k]&=(\E[T_{k-1}] + 1)/p=1/p^k+\ldots+1/p^2+1/p=\frac{1-p^k}{p^k(1-p)}
+\end{align*}
+By Proposition 7.1, we know
+$$\lim_{t\to\infty}\frac{N_H(t)}{t}=\frac{1}{\E[T_k]}=\frac{p^k(1-p)}{1-p^k}=\frac{p^kq}{1-p^k}.$$
+
+Similarly, considering the renewal process
+$$N_T(t)=\mbox{\# of times to see $k$ tails in a row by time }t.$$
+By Proposition 7.1, we also have
+$\displaystyle\lim_{t\to\infty}\frac{N_T(t)}{t}=\frac{q^kp}{1-q^k}.$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 7.7  Solution (Cont'd)}
+Consider the counting process $N(t)=N_H(t)+N_T(t).$
+\begin{itemize}
+\item $\{N(t): t\ge 0\}$ is also a renewal process (Why?)\\
+Here an event occurs whenever one gets $k$ heads in a row  or $k$ tails in a row.
+\item As $t\to\infty,$
+$$
+\frac{N(t)}{t}=\frac{N_H(t)}{t}+\frac{N_T(t)}{t}\to\frac{p^kq}{1-p^k}+\frac{q^kp}{1-q^k}.
+$$
+which is the reciprocal of mean length $\E[T]$ of interarrival times for $\{N(t): t\ge 0\}$.
+\item From the above we can answer the 2nd question:
+the expected number of tosses required to get $k$ heads in a row or $k$ tails in a row is
+$$\E[T]=\frac{1}{p^kq/(1-p^k)+q^kp/(1-q^k)}.$$
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 7.7  Solution (Cont'd)}
+With probability 1, the long run proportion of events that are $k$-heads is
+\begin{align*}
+\lim_{t\to\infty}\frac{N_H(t)}{N(t)}&=\lim_{t\to\infty}\frac{N_H(t)}{N_H(t)+N_T(t)}
+=\lim_{t\to\infty}\frac{N_H(t)/t}{N_H(t)/t+N_T(t)/t}\\
+&=\frac{p^kq/(1-p^k)}{p^kq/(1-p^k)+q^kp/(1-q^k)}
+\end{align*}
+
+The probability of getting $k$-heads before $k$-tails is,
+by SLLN,
+equal to the long-run proportion of events that are $k$-heads.
+$$\p(\text{$k$-heads before $k$-tails})=\frac{p^kq/(1-p^k)}{p^kq/(1-p^k)+q^kp/(1-q^k)}$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Theorem 7.2\; CLT for Renewal Processes}
+Suppose that $\mu$ and $\sigma^2$ are, respectively, the mean and variance
+of the interarrival times of a renewal process $\{N(t),t\ge 0\}$. Then
+$$\lim_{t\to\infty}\frac{\V(N(t))}{t}=\frac{\sigma^2}{\mu^3},$$
+and $N(t)$ is asymptotically $N(t/\mu, \sigma^2t/\mu^3)$, i.e.,
+$$
+\lim_{t\to\infty}\p\left(\frac{N(t)-t/\mu}{\sqrt{t\sigma^2/\mu^3}}<x\right)=\Phi(x)
+$$
+where $\Phi(x)=\int_{-\infty}^x\frac{1}{\sqrt{\pi}}e^{-z^2/2}dz$ is the CDF of the standard normal distribution.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Theorem 7.2}
+
+\vspace{-10pt}
+\begin{align*}
+&\p\left(\frac{N(t)-t/\mu}{\sqrt{t\sigma^2/\mu^3}}<x\right)\\
+=\,&\p\left(N(t)<\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x\right)\\
+=\,&\p(N(t)\le n)&\Big(\mbox{Let }n=\Big\lfloor\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x\Big\rfloor\Big)\\
+=\,&\p(S_n\ge t)&\mbox{(Recall } N(t)\le n \Leftrightarrow S_n\ge t)\\
+=\,&\p\left(\frac{S_n-n\mu}{\sqrt{n}\sigma}\ge \frac{t-n\mu}{\sqrt{n}\sigma}\right)\\
+\longrightarrow\,&1-\Phi\left(\frac{t-n\mu}{\sqrt{n}\sigma}\right)&\mbox{as }n\to\infty\mbox{ by the CLT for }S_n\\
+=\,&\Phi\left(-\frac{t-n\mu}{\sqrt{n}\sigma}\right)&(\mbox{since }1-\Phi(z)=\Phi(-z))
+\end{align*}
+\hrule\medskip
+\footnotesize{\quad Here $\lfloor y\rfloor$ means the greatest integer less or equal to $y$}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Theorem 7.2 (Cont'd)}
+It remains to show that
+$$-\frac{t-n\mu}{\sqrt{n}\sigma}\longrightarrow x\quad\mbox{as }t\to\infty.
+$$
+Since $n\le \frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x$, as $t\to\infty$, we have
+$$\frac{t-n\mu}{\sqrt{n}\,\sigma}\ge \frac{t-(\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x)\mu}{\sigma\sqrt{\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x}}
+=\frac{-\sigma x\sqrt{t/\mu}}{\sigma\sqrt{\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x}}\longrightarrow -x.$$
+Similarly because $n\ge \frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}-1$, we have
+$$\frac{t-n\mu}{\sqrt{n}\,\sigma}\le \frac{t-(\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x-1)\mu}{\sigma\sqrt{\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x}}
+=\frac{-\sigma x\sqrt{t/\mu}-\mu}{\sigma\sqrt{\frac{t}{\mu}+\frac{\sigma}{\mu}\sqrt{\frac{t}{\mu}}x-1}}\longrightarrow -x$$
+as $t\to\infty$.
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document}
+\begin{frame}{7.4 Renewal Reward Processes}
+Let $\{N(t),t\ge 0\}$ be a renewal process with i.i.d. interarrival times $X_i$, $i=1,2,\ldots.$
+Let $R_i$, $i=1,2,\ldots$ be i.i.d random variables.
+$R_i$ may depend on the $i$th interarrival time $X_i$,
+but $(X_i,R_i)$ are i.i.d. random variable pairs.
+The compound process
+$$R(t)=\Sum_{i=1}^{N(t)}R_i$$
+is called a \structure{\em renewal reward process}.
+$R_i$ may be considered as reward earned during the $i$th cycle,
+and $R(t)$ represents the total reward earned up to time $t$.\bigskip
+
+\textbf{Proposition 7.3} If $\E[R_1] <\infty$ and $\E[X_1] <\infty$, then
+
+(a) with probability 1,
+$\displaystyle{\lim_{t\to\infty}\frac{R(t)}{t}= \frac{\E[R_1]}{\E[X_1]}}$
+
+(b) $\displaystyle{\lim_{t\to\infty}\frac{\E[R(t)]}{t}= \frac{\E[R_1]}{\E[X_1]}}$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proof of Proposition 7.3(a)}
+We give the proof for (a) only. To prove this, write
+$$\frac{R(t)}{t}=\frac{\sum^{N(t)}_{n=1} R_n}{t}=\frac{\sum^{N(t)}_{n=1} R_n}{N(t)}\times\frac{N(t)}{t}$$
+By the strong law of large numbers we obtain
+$$\frac{\sum^{N(t)}_{n=1} R_n}{N(t)}\to\E[R]\quad\mbox{as }t\to\infty$$
+and by Proposition 7.1
+$$\frac{N(t)}{t}\to\frac{1}{\E[X_1]}\quad\mbox{as }t\to\infty$$
+The result thus follows.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 7.12 (A Car Buying Model)}
+\begin{itemize}
+\item Mr. Brown buy a new car whenever his old one breaks down or reaches the age of $T$ years
+\item Let $Y_i$ be the lifetime of his $i$th car. Suppose $Y_i$'s are i.i.d with
+$$\mbox{CDF }\;H(y)=\p(Y\le y),\quad \mbox{and density } h(y)=H'(y).$$
+\item Cost to by a new car $=C_1$;
+\item If the car breaks down, an additional cost of $C_2$ is incurred.
+\item What's Mr. Brown's long run average cost?
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 7.12 (A Car Buying Model) Solution}
+\begin{itemize}
+\item An event occurs whenever Mr. Brown buys a new car
+\item Interarrival times: $X_i=\min(Y_i,T)$
+\item Cost incurred in the $i$th cycle: $R_i=C_1+C_2\mathbf{1}_{\{Y_i\le T\}}$
+\item Are $(X_i, R_i)$, $i=1,2,\ldots$ i.i.d?
+\item $$\E[X_i]=\int_0^{\infty} \min(y,T)h(y)dy=\int_0^{T} yh(y)dy+T(1-H(T))$$
+\item $$\E[R_i]=C_1+C_2\p(Y_i\le T)=C_1+C_2H(T)$$
+\item long-run average cost
+$$=\frac{C_1+C_2H(T)}{\int_0^{T} yh(y)dy+T(1-H(T))}$$
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 7.16 \& 7.17}
+Let $\{N(t),t\ge 0\}$ be a renewal process with i.i.d. interarrival times $X_i$, $i=1,2,\ldots.$
+Consider the current age of the item in use at time $t$
+$$A(t)=t-S_{N(t)}.$$
+What is the long-run average of age $$\lim_{t\to\infty}\frac{\int_0^t A(s)ds}{t}?$$
+Also consider the residual life of the item in use at time $t$
+$$Y(t)=S_{N(t)+1}-t.$$
+What is the long-run average of residual life $$\lim_{t\to\infty}\frac{\int_0^t Y(s)ds}{t}?$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Solution to Example 7.16}
+Let's try to turn $\int_0^t A(s)ds$ into a renewal reward process:
+
+Note $\int_0^{S_{N(t)}} A(s)ds\le\int_0^t A(s)ds<\int_0^{S_{N(t)+1}} A(s)ds,$
+and
+\begin{align*}
+\int_0^{S_{N(t)}} A(s)ds&=\sum_{i=1}^{N(t)}\int_{S_{i-1}}^{S_i} A(s)ds=\sum_{i=1}^{N(t)}\int_{S_{i-1}}^{S_i} s-S_{i-1}ds\\
+&=\sum_{i=1}^{N(t)}\int_{0}^{X_i} udu\quad(\mbox{let }u=s-S_{i-1})\\
+&=\sum_{i=1}^{N(t)}\frac{X_i^2}{2}=R(t),
+\end{align*}
+where $R(t)=\Sum_{i=1}^{N(t)}R_i$ is a renewal reward process with $R_i=X_i^2/2$.
+Similarly, one can show that
+$$\int_0^{S_{N(t)+1}} A(s)ds=\Sum_{i=1}^{N(t)+1}R_i=R(t)+R_{N(t)+1}.$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Solution to Example 7.16 (Cont'd)}
+Since $$R(t)\le\int_0^t A(s)ds<R(t)+R_{N(t)+1},$$
+and $$\frac{R_{N(t)+1}}{t}=\frac{X_{N(t)+1}^2}{2t}\to 0\quad\mbox{ as }t\to\infty,$$
+by Proposition 7.3, the long-run average age of the item in use is
+$$
+\lim_{t\to\infty}\frac{\int_0^t A(s)ds}{t}
+=\lim_{t\to\infty}\frac{R(t)}{t}=\frac{\E[R_1]}{\E[X_1]}=\frac{\E[X_1^2]}{2\E[X_1]}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Solution to Example 7.17}
+Similarly, from that
+$$\int_0^{S_{N(t)}} Y(s)ds\le\int_0^t Y(s)ds<\int_0^{S_{N(t)+1}} Y(s)ds,$$
+one can show that
+\begin{align*}
+\int_0^{S_{N(t)}} Y(s)ds &=\sum_{i=1}^{N(t)}\int_{S_{i-1}}^{S_i}(S_{i}-s)ds=\sum_{i=1}^{N(t)}\int_{0}^{X_i} udu\quad(\mbox{let }u=S_{i}-s)\\
+&=\sum_{i=1}^{N(t)}\frac{X_i^2}{2}=R(t)
+\end{align*}
+and that $\int_0^{S_{N(t)+1}} Y(s)ds=\sum_{i=1}^{N(t)+1}\frac{X_i^2}{2}=R(t)+R_{N(t)+1}.$
+By the same argument, the long-run average of residual life of the item in use is
+$$
+\lim_{t\to\infty}\frac{\int_0^t Y(s)ds}{t}
+=\lim_{t\to\infty}\frac{R(t)}{t}=\frac{\E[R_1]}{\E[X_1]}=\frac{\E[X_1^2]}{2\E[X_1]}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document}
+\begin{frame}{}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}
+\end{frame}
+% ----------------------------------------------------------------------

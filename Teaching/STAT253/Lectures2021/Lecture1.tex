@@ -1,0 +1,343 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,mathserif,handout]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage[misc]{ifsym} % for the dice symbol \Cube{}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+%\usepackage{pgf,tikz}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\P{\mathbb{P}}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\Sum{\sum\nolimits}
+\def\X{\mathfrak{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+\def\hid#1#2{\onslide<#1>{\alert{#2}}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{1}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+\title{STAT253/317 Lecture \chapnum}
+\date{}
+\author{Cong Ma}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}
+\maketitle\bigskip
+\begin{center}
+4.1 Introduction to Markov Chains
+\end{center}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Stochastic Processes}
+A stochastic process is a family of random variables $\{X_t: t\in\mathcal{T}\}$ such that
+\begin{itemize}
+\item For each $t\in\mathcal{T}$, $X_t$ is a random variable
+\end{itemize}
+The index set $\mathcal{T}$ can be discrete or continuous
+\begin{itemize}\normalsize
+\item $\mathcal{T}=\{0,1,2,3,4\}$
+\item $\mathcal{T}=\mathbb{R}, \mathbb{R}^+, \mathbb{R}^2, \mathbb{R}^3$
+\end{itemize}
+
+Examples:
+\begin{itemize}
+\item Discrete Time Markov Chains \dotfill Chapter 4
+\item Poisson Processes, Counting Processes \dotfill Chapter 5
+\item Continuous Time Markov Chains \dotfill Chapter 6
+\item Renewal Theory  \dotfill Chapter 7
+\item Queuing Theory  \dotfill Chapter 8
+\item Brownian Motion \dotfill Chapter 10
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{4.1 Introduction to Markov Chain}
+Consider a stochastic process $\{X_n : n=0,1,2,\ldots\}$ taking values in a finite or countable set $\X$.
+\begin{itemize}
+\item $\X$ is called the {\bf state space}
+\item If $X_n=i$, $i\in \X$, we say the process is in state $i$ at time $n$
+\item Since $\X$ is countable, there is a 1-1 map from $\X$ to the set of non-negative integers $\{0,1,2,3,\ldots\}$\\
+    From now on, we assume $\X=\{0,1,2,3,\ldots\}$
+\end{itemize}
+\begin{block}{Definition}
+A stochastic process $\{X_n:\; n=0,1,2,\ldots\}$ is called a \structure{\bf Markov chain} if it has the following property:
+\begin{align*}
+&P(X_{n+1}=j \mid X_n=i,X_{n-1}=i_{n-1},\ldots,X_2=i_2,X_1=i_1,X_0=i_0)\\
+&=P(X_{n+1}=j \mid X_n=i)
+\end{align*}
+for all states $i_0$, $i_1$, $i_2,\ldots, i_{n-1}$, $i$, $j\in \X$ and $n\ge 0$.\par
+\end{block}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Transition Probability Matrix}
+If $\alert{P(X_{n+1}=j|X_n=i)=P_{ij}}$ does not depend on $\alert{n}$, then the process $\{X_n:\; n=0,1,2,\ldots\}$ is called a \structure{\bf stationary Markov chain}. From now on, we consider stationary Markov chain only.\medskip\pause
+
+$\alert{\{P_{ij}\}}$  is called the \structure{\bf transition probabilities}.\pause
+
+The matrix
+$$
+\P=
+\begin{pmatrix}
+P_{00} & P_{01} & P_{02} & \cdots &P_{0j} & \cdots\\
+P_{10} & P_{11} & P_{12} & \cdots &P_{1j} & \cdots\\
+\vdots & \vdots & \vdots & \ddots &\vdots & \ddots\\
+P_{i0} & P_{i1} & P_{i2} & \cdots &P_{ij} & \cdots\\
+\vdots & \vdots & \vdots & \ddots &\vdots & \ddots
+\end{pmatrix}
+$$
+is called the \structure{\bf transition probability matrix}. \pause
+
+Naturally, the transition probabilities $\{P_{ij}\}$ satisfy the following
+\begin{itemize}
+\item $P_{ij}\ge 0$ for all $i,j$
+\item Rows sums are 1: $\Sum_j P_{ij}=1$ for all $i$.
+\end{itemize}
+In other words, $\mathbb{P}\mathbf{1}=\mathbf{1}$, where $\mathbf{1}=(1,1,\ldots,1,\ldots)^\top$
+\end{frame}
+
+
+\begin{frame}{Example 1: construct Markov Chain from i.i.d.~sequence}
+Let $\{ Y_n \}_{n \geq 0}$ be an i.i.d.~sequence. The following two stochastic 
+processes $\{ X_n \}_{n \geq 0}$ are Markov chains
+
+\begin{itemize}
+	\item $X_n = Y_n$
+	\item $X_n = \sum_{k = 0}^{n} Y_n$
+\end{itemize}
+\end{frame}
+
+
+
+% ----------------------------------------------------------------------
+%\begin{frame}{Example 1: Busy Phone Line}
+%Consider the status of a phone line on discrete time intervals: 1, 2, \ldots.
+%\begin{itemize}
+%\item Suppose calls come in independently at constant rate: for each time interval, there is a probability \alert{$\alpha$} that one call comes in that interval.  Assume there is at most one call per interval.
+%
+%\item An incoming call can go through only if the line is free when the call comes in, and will occupy the line until the call ends.
+%\item All unanswered calls are missed. (Cannot ``stay on the line'')
+%\item Suppose the length of calls is fixed at 2 (time intervals).
+%\end{itemize}
+%Can you find a Markov chain in this model?
+%\end{frame}
+%% ----------------------------------------------------------------------
+%
+%
+%
+%\begin{frame}{Example 1: Busy Phone Line (Cont'd)}
+%
+%Let $X_n$ be the status (busy or free) of the phone line in the $n$th time interval.
+%Is $\{X_n\}$ a Markov chain?\pause\bigskip
+%
+%{\bf Answer}: No. Observe that
+%\begin{align*}
+%P(X_3=\text{free}|X_2=\text{busy}, X_1=\text{free})&=0\\
+%P(X_3=\text{free}|X_2=\text{busy}, X_1=\text{busy})&>0
+%\end{align*}
+%The distribution of $X_3$ depends on not just $X_2$ but also
+%the $X_1$ and hence $\{X_n\}$ is NOT a Markov Chain.
+%
+%\end{frame}
+%% ----------------------------------------------------------------------
+%\begin{frame}{Example 1: Busy Phone Line (Cont'd)}
+%
+%Let $Y_n$ be the remaining time of the call in the $n$th time interval if the line is busy,
+%and $Y_n=0$ if the line is free in the $n$th time interval. Is $\{Y_n\}$ a Markov chain?\pause
+%
+%\[
+%Y_{n+1}=
+%\begin{cases}
+%Y_n - 1 & \text{if }Y_n>0\\
+%2 & \text{with prob $\alpha$ if $Y_n=0$}\\
+%0 & \text{with prob $1-\alpha$ if $Y_n=0$}
+%\end{cases}
+%\]
+%The transition matrix is
+%$$\P=\bordermatrix{%
+% & 0   & 1 & 2\cr
+%0& 1-\alpha & 0 & \alpha\cr
+%1& 1   & 0 & 0\cr
+%2& 0   & 1 & 0\cr
+%}$$
+%
+%\end{frame}
+%% ----------------------------------------------------------------------
+%\begin{frame}{Example 1: Busy Phone Line (Cont'd)}
+%Is $\{Y_n\}$ still a Markov chain if the lengths of calls are random:
+%50\% of the calls are of length 1, 30\% of length 2 and 20\% of length 3?
+%Assume the lengths of calls are independent of each other.\pause
+%$$
+%Y_{n+1}=
+%\begin{cases}
+%Y_n - 1 & \text{if }Y_n>0\\
+%1 & \text{with prob $0.5\alpha$ if $Y_n=0$}\\
+%2 & \text{with prob $0.3\alpha$ if $Y_n=0$}\\
+%3 & \text{with prob $0.2\alpha$ if $Y_n=0$}\\ 0 & \text{with prob $1-\alpha$ if $Y_n=0$} \end{cases}
+%$$\pause
+%
+%The transition matrix is
+%$$\P=\bordermatrix{%
+% & 0   & 1 & 2 & 3\cr
+%0& 1-\alpha & 0.5\alpha & 0.3\alpha & 0.2\alpha\cr
+%1& 1   & 0 & 0 & 0\cr
+%2& 0   & 1 & 0 & 0\cr
+%3& 0   & 0 & 1 & 0\cr
+%}$$
+%
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 2: Random Walk}
+Consider the following random walk on integers
+$$
+X_{n+1}=
+\begin{cases}
+X_n + 1 &\text{with prob } p\\
+X_n - 1 &\text{with prob } 1-p
+\end{cases}
+$$\pause
+This is a Markov chain because given $X_n, X_{n-1}, X_{n-2}, \ldots$,
+ the distribution of $X_{n+1}$ depends only on $X_n$ but not $X_{n-1}, X_{n-2}, \ldots.$\pause
+
+The state space is
+\begin{align*}
+\X &= \{\cdots, -3, -2, -1, 0, 1, 2, 3,\cdots\}=\mathbb{Z}=\mbox{all integers}
+\end{align*}\pause
+
+The transition probability is
+$$
+P_{ij}=
+\begin{cases}
+p   & \mbox{if }j=i+1\\
+1-p & \mbox{if }j=i-1\\
+0   & \mbox{otherwise}
+\end{cases}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 2: Random Walk (Cont'd)}
+\small
+$$\P=
+\bordermatrix{%
+       & \cdots & -3  & -2  & -1  &  0  &  1  &  2  &  3   & \cdots\cr
+\vdots & \ddots &\ddots&    &     &     &     &     &      &       \cr
+-3     & \ddots &  0  &  p  &     &     &     &     &      &       \cr
+-2     &        & 1\!-\!p &  0  &  p  &     &     &     &      &       \cr
+-1     &        &     & 1\!-\!p &  0  &  p  &     &     &      &       \cr
+ 0     &        &     &     & 1\!-\!p &  0  &  p  &     &      &       \cr
+ 1     &        &     &     &     & 1\!-\!p &  0  &  p  &      &       \cr
+ 2     &        &     &     &     &     & 1\!-\!p &  0  &  p   &       \cr
+ 3     &        &     &     &     &     &     & 1\!-\!p &  0   & \ddots\cr
+\vdots &        &     &     &     &     &     &     &\ddots& \ddots
+}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 3: Ehrenfest Diffusion Model}
+Two containers $A$ and $B$, containing a sum of $\alert{K}$ balls.
+At each stage, a ball is selected at random from the totality of $K$ balls, and move to the other container.
+Let
+\begin{align*}
+X_0 &= \mbox{\# of balls in container $A$ in the beginning}\\
+X_n &= \mbox{\# of balls in container $A$ after $n$ movements},\;n=1,2,3,\ldots
+\end{align*}
+$$
+\X=\{\hid{2-}{0,1,2,\ldots,K}\}
+$$
+
+$$
+P_{ij}=
+\begin{cases}
+\dfrac{i}{K}    & \mbox{if }j=i-1\\[10pt]
+\dfrac{K-i}{K} & \mbox{if }j=i+1\\
+0   & \mbox{otherwise}
+\end{cases}
+$$
+\end{frame}
+
+
+\begin{frame}{Joint Distribution of Random Variables in a Markov Chain}
+Suppose $\{X_n:\; n=0,1,2,\ldots\}$ is a stationary Markov chain with
+\begin{itemize}
+\item state space $\X$ and
+\item transition probabilities $\{P_{ij}: i,j\in\X\}$.
+\end{itemize}
+Define $\pi_0(i)=\p(X_0=i)$, $i\in\X$ to be the distribution of $X_0$.
+\medskip
+
+What is the joint distribution of $X_0, X_1, X_2$?\pause
+\begin{align*}
+&\p(X_0=i_0,X_1=i_1,X_2=i_2)\\
+&=\p(X_0=i_0)\p(X_1=i_1|X_0=i_0)\p(X_2=i_2|X_1=i_1,X_0=i_0)\\
+&=\p(X_0=i_0)\p(X_1=i_1|X_0=i_0)\p(X_2=i_2|X_1=i_1)\quad(\text{Markov})\\
+&=\pi_0(i_0)P_{i_0i_1}P_{i_1i_2}
+\end{align*}\pause
+
+In general,
+\begin{align*}
+&\p(X_0=i_0,X_1=i_1,X_2=i_2,\ldots,X_{n-1}=i_{n-1},X_n=i_n)\\
+&=\pi_0(i_0)P_{i_0i_1}P_{i_1i_2}\ldots P_{i_{n-1}i_n}
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Example 4: Discrete Queuing Process}
+%A line of customers await in front of 1 server.
+%\begin{itemize}
+%\item It takes one unit of time to serve 1 customer
+%\item During each period of time, only 1 customer is served.
+%\item If no customer awaits, the server idles
+%\end{itemize}
+%Let $\xi_n=\#$ of customers arriving in the $n$-th period.
+%Suppose $\{\xi_n,n=0,1,2,\ldots\}$ are i.i.d. with
+%\begin{align*}
+%\p(\xi_n=k)&=a_k,\quad k=0,1,2,\ldots\\
+%a_k \ge 0&\mbox{ for all }k,\quad\mbox{and } \Sum_{k=0}^{\infty}a_k = 1
+%\end{align*}
+%Let $X_n=\#$ of customers await during the $n$-th period, including the one being served. Then
+%$$
+%X_{n+1}=
+%\begin{cases}
+%X_{n}-1+\xi_{n}  & \mbox{if }X_n\ge 1\\
+%\xi_{n}          & \mbox{if }X_n = 0
+%\end{cases}
+%$$
+%\end{frame}
+%% ----------------------------------------------------------------------
+%\begin{frame}{Example 4: Discrete Queuing Process (Cont'd)}
+%First, observe that $P_{0k}=P(X_{n+1}=k|X_n=0)=P(\xi_n=k)=a_k$ since $X_{n+1}=\xi_n$ if $X_n = 0$.\par\medskip
+%
+%Second, as $X_{n+1}=X_{n}-1+\xi_{n}=i-1+\xi_{n}$ if $X_n=i>0$,
+%$X_{n+1}=k$ implies $\xi_n=k-i+1$ and hence,
+%$$P_{ik}=P(X_{n+1}=k|X_n=i)=P(\xi_{n}=k-i+1)=a_{k-i+1}.$$\pause
+%The transition probability matrix is then
+%$$\P=
+%\bordermatrix{%
+%   &  0  &  1  &  2  &  3  &  4  &\cdots\cr
+%0  & a_0 & a_1 & a_2 & a_3 & a_4 &\cdots \cr
+%1  & a_0 & a_1 & a_2 & a_3 & a_4 &\cdots \cr
+%2  &  0  & a_0 & a_1 & a_2 & a_3 &\cdots \cr
+%3  &  0  &  0  & a_0 & a_1 & a_2 &\cdots \cr
+%4  &  0  &  0  &  0  & a_0 & a_1 &\cdots \cr
+%\vdots&\vdots&\vdots&\vdots&\vdots&\vdots& \ddots
+%}
+%$$
+%\end{frame}
+\end{document} 

@@ -1,0 +1,227 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+\usepackage{amsfonts}
+\usepackage{cancel}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\Sum{\sum\nolimits}
+\def\Prod{\prod\nolimits}
+\def\P{\mathbb{P}}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\V{\mathrm{Var}}
+\def\CV{\mathrm{Cov}}
+\def\X{\mathcal{X}}
+\def\dt{\Delta}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{25}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Lecture \chapnum} \date{} \author{Yibi Huang}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}\maketitle
+\bigskip
+\begin{center}\large
+\begin{tabular}{ll}
+10.5 & The Maximum of Brownian Motion with Drift\\
+     & (11th edition only, not in 10th edition)
+\end{tabular}
+\end{center}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Maximum of a Brownian Motion with drift}
+Let $\{X(t),t\ge 0\}$ be a Brownian Motion with drift coefficient $\mu$ and variance parameter $\sigma^2$.
+Consider the maximum of the process up to time $t$
+\[M(t)=\max_{0\le s\le t} X(s)\]
+Also consider the hitting time to the value $a>0$
+\[
+T_a=\min\{t: X(t)=a\}.
+\]
+
+\vspace{-6pt}\begin{itemize}
+\item It remains true that $P(T_a<t)=P(M(t)\ge a).$
+\item Recall for Brownian motion without drift, we use the Reflection principle to find $P(T_a<t)$
+\item Reflection principle doesn't apply to Brownian motion with drift.
+We need other tools.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Theorem 10.2}
+Let $X(t)$ be the Brownian motion process $\{B(t), t \ge 0\}$ with drift coefficient $\mu$ and variance
+parameter $\sigma^2$.
+Given that $X(t) = x$, the conditional distribution of
+$\{X(s): 0 \le s \le t\}$ does not depend on the value of $\mu.$\medskip
+
+{\it Proof.}
+Given $X(t) = x$, $\{X(s): 0 \le s \le t\}$ remains a Gaussian process.
+As a Gaussian process is uniquely determined by its mean function and the covariance function,
+it suffices to show that the mean function
+\[
+m(s)=\E[X(s)|X(t)=x], \quad 0 \le s \le t
+\]
+and covariance
+\[
+C(s,u)=\CV(X(s),X(u)|X(t)=x), \quad 0 \le s,u \le t
+\]
+do not depend on the value of $\mu$.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}%{Theorem 10.2 (Proof Continued)}
+\small
+For jointly normal random variables, zero covariance implies independence.
+If we can find a scalar $\alert{c}$ such that \[\CV(X(s)-\alert{c}X(t),X(t))=0,\]
+then
+$X(s)-\alert{c}X(t)$ and $X(t)$ would be indep..
+The conditional distribution of of $X(s)-\alert{c} X(t)$ given $X(t)=x$ would simply be its unconditional distribution
+\begin{align*}
+X(s)&=c\underbrace{X(t)}_{x}+\underbrace{X(s)-cX(t)}_{\sim N(\mu s-c\mu t,\,\sigma^2(s-2cs+c^2t))}\\
+&\sim N\left(cx+\mu s-c\mu t,\sigma^2(s-2cs+c^2t)\right).
+\end{align*}
+
+\vspace{-8pt}To make
+\begin{align*}
+\CV(X(s)-cX(t),X(t))&=\CV(X(s),X(t))-\CV(cX(t),X(t))\\
+&=\sigma^2s-c\sigma^2t=\sigma^2(s-ct)=0,
+\end{align*}
+we must let $\alert{c=s/t}$. Thus given $X(t)=x$ for $s<t$,
+\[ X(s)\sim N\bigg(\frac{sx}{t}+\underbrace{\mu s-(s/t)\mu t}_{=\mu s -\mu s = 0},\sigma^2\frac{s(t-s)}{t}\bigg)
+=N\left(\frac{sx}{t},\;\sigma^2\frac{s(t-s)}{t}\right).\]
+So the mean function $m(s)=\E[X(s)|X(t)=x]=\frac{sx}{t}$ and the covariance function
+$C(s,u)=\CV(X(s),X(u)|X(t)=x)=\sigma^2\frac{s(t-s)}{t}$
+don't depend on the drift coefficient $\mu.$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Theorem 10.3 on p.626-627}
+
+\vspace{-20pt}\[
+P(M(t) \ge y|X(t) = x) =
+\begin{cases}
+1 & \text{if }x\ge y\ge 0\\
+e^{-2y(y-x)/t\sigma^2}&\text{if }x<y, y\ge 0
+\end{cases}
+\]
+{\it Proof.}
+\begin{itemize}
+\item The equality is trivial when $x\ge y$ as $M(t)\ge X(t)= x\ge y$.
+\item When $x<y$, as Theorem 10.2
+implies the conditional distribution of
+$M(t)= \max_{0 \le s \le t}X(s)$ given $X(t)=x$ is identical for all values of $\mu$,
+we just need to show the identity for the case with drift $\mu=0$,
+to which the \structure{Reflection Principle} is applicable.
+\item For $h>0$ small enough that $y-x-h>0$, by the Reflection Principle,
+\begin{align*}
+&P(M(t) \ge y, x\le X(t) \le x+h)\\
+=\,&P(M(t) \ge y, 2y-x-h\le X(t) \le 2y-x)\\
+=\,&P(2y-x-h\le X(t) \le 2y-x)
+\end{align*}
+where the last equality is valid since
+$M(t)\ge X(t)\ge 2y\!-\!x\!-\!h>y$ as $y-x-h>0$.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}
+
+\begin{align*}
+P(M(t) \ge y|X(t) = x)
+&=\lim_{h\to 0}\frac{P(M(t) \ge y, x\le X(t) \le x+h)}{P(x\le X(t) \le x+h)}\\
+&=\lim_{h\to 0}\frac{P(2y-x-h\le X(t) \le 2y-x)}{P(x\le X(t) \le x+h)}\\
+&=\frac{f(2y-x)}{f(x)}
+\end{align*}
+where
+\[
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2t}}\exp\left(-\frac{x^2}{2\sigma^2t}\right)
+\]
+is the density function of $X(t)\sim N(0,\sigma^2t)$ with drift $\mu=0$.
+So
+\begin{align*}
+P(M(t) \ge y|X(t) = x)
+&=\frac{f(2y-x)}{f(x)}
+=\frac{\exp(-(2y-x)^2/(2\sigma^2t))}{\exp(-x^2/(2\sigma^2t))}\\
+&=\exp\left(-\frac{(2y-x)^2-x^2}{2\sigma^2t}\right)
+=e^{-\frac{2y(y-x)}{t\sigma^2}}
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Corollary 10.1 on p.627-628}\small
+Conditioning on $X(t)$ and using Theorem 10.3 yields
+\begin{align*}
+P(M(t) \ge y)
+&=\int_{-\infty}^{\infty}P(M(t) \ge y|X(t) = x)f_{X(t)}(x)dx\\
+&=\int_{-\infty}^y\underbrace{e^{-\frac{2y(y-x)}{t\sigma^2}}f_{X(t)}(x)}_{\text{see below}}dx+
+\underbrace{\int_y^{\infty}1\cdot f_{X(t)}(x)dx}_{=P(X(t)>y)}
+\end{align*}
+\[
+e^{-\frac{2y(y-x)}{t\sigma^2}}f_{X(t)}(x)
+=e^{-\frac{2y(y-x)}{t\sigma^2}}\frac{1}{\sqrt{2\pi\sigma^2t}}e^{-\frac{(x-\mu t)^2}{2\sigma^2t}}
+=\frac{1}{\sqrt{2\pi\sigma^2t}}e^{-\frac{\alert{(x-\mu t)^2+4y(y-x)}}{2\sigma^2t}}
+\]
+in which
+\begin{align*}
+\alert{(x\!-\!\mu t)^2+4y(y\!-\!x)}&=x^2-2\mu tx+\mu^2t^2+4y^2-4xy\\
+&=x^2\!-\!2(\mu t+y)x
++\underbrace{\mu^2t^2\overbrace{+4\mu t y}^{\text{add a term}}+4y^2}_{=(\mu t+2y)^2}\overbrace{-4\mu t y}^{\text{subtract a term}}\\
+&=\underbrace{x^2\!-\!2(\mu t+y)x+(\mu t+2y)^2}_{=(x-(\mu t+2y))^2}-4\mu t y
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Corollary 10.1 on p.627-628 (Cont'd)}
+Putting everything together, we get
+\[
+P(M(t) \ge y)
+=e^{\frac{2\mu ty}{\sigma^2t}}\int_{-\infty}^y\frac{1}{\sqrt{2\pi\sigma^2t}}e^{-\frac{(x-(\mu t+2y))^2}{2\sigma^2t}}dx
++P(X(t)>y)
+\]
+Making the change of variable $u = x-2y$ gives
+\begin{align*}
+P(M(t) \ge y)
+&=e^{\frac{2\mu yt}{\sigma^2t}}\int_{-\infty}^{-y}
+\underbrace{\frac{1}{\sqrt{2\pi\sigma^2t}}e^{-\frac{(u-\mu t)^2}{2\sigma^2t}}}_{\text{density of }X(t)}du
++P(X(t)>y)\\
+&=e^{\frac{2\mu y}{\sigma^2}}P(X(t)<-y)+P(X(t)>y)\\
+&=e^{\frac{2\mu y}{\sigma^2}}\Phi\left(\frac{-y-\mu t}{\sigma\sqrt{t}}\right)+1-\Phi\left(\frac{y-\mu t}{\sigma\sqrt{t}}\right)
+\end{align*}
+since $X(t)\sim N(\mu t, \sigma^2 t).$\medskip
+
+Note that for $\mu=0$, we get $P(M(t) \ge y)=P(X(t)<-y)+P(X(t)>y)=P(|X(t)|>y)$, which agrees with our calculation before.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Hitting Time for Brownian Motion with drift}
+Also consider the hitting time to the value $y>0$
+\[
+T_y=\min\{t: X(t)=y\}.
+\]
+It remains true that $T_y<t$ if and only if $M(t)\ge y.$ So
+\[
+P(T_y<t)=
+e^{\frac{2\mu y}{\sigma^2}}\Phi\left(\frac{-y-\mu t}{\sigma\sqrt{t}}\right)+1-\Phi\left(\frac{y-\mu t}{\sigma\sqrt{t}}\right)
+\]
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Hitting Time for Brownian Motion with drift}
+%Using the first Wald's identity $\E[B(T)]=\mu\E[T]$,
+%\end{frame}
+\end{document} 

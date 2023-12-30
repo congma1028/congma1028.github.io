@@ -1,0 +1,415 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout, mathserif]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+\usepackage{amsfonts}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\Sum{\sum\nolimits}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\V{\mathrm Var}
+\def\X{\mathcal{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{12}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Lecture \chapnum} \date{} \author{Cong Ma}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}\maketitle\begin{center}Chapter 6 \ Continuous-Time Markov Chains\end{center}\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{6.2 Continuous-Time Markov Chains (CTMC)}
+\textbf{Definitions.} A stochastic process $\{X(t),t\ge 0\}$ with state space $\X$ is called a \structure{\em continuous-time Markov chain} if for any two states $i$, $j\in\X$,
+\begin{align*}
+&\p(\underbrace{X(t+s)=j}_{\mbox{future}}|\underbrace{X(s)=i}_{\mbox{present}},\underbrace{X(u)=x(u),\mbox{for }0\le u<s}_{\mbox{past}})\\
+&=\p(\underbrace{X(t+s)=j}_{\mbox{future}}|\underbrace{X(s)=i}_{\mbox{present}})
+\end{align*}
+If $\p(X(t+s)=j|X(s)=i)$ does not depend on $s$ for all $i,j\in\X$, then it is denoted as
+$$P_{ij}(t)=\p(X(t+s)=j|X(s)=i),$$
+and we say the CTMC is \structure{\em homogeneous} in time.\medskip
+
+In STAT253/317, we focus on homogeneous CTMC only.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exponential Waiting Time}
+Let $\{X(t),t\ge 0\}$ be a homogeneous continuous-time Markov chain.
+For $i\in\X$, let $T_i$ denote the amount of time that $X(t)$ stays in state $i$ before making a transition into
+a different state. \medskip
+
+{\bf Claim}: $T_i$ has the \structure{\em memoryless property}.
+\begin{align*}
+&\p(T_i\ge t+s|T_i\ge s)\\
+&=\p(X(u)=i,\mbox{ for } s\le u\le s+t|X(u)=i,\mbox{ for } 0\le u\le s)\\
+&=\p(X(u)=i,\mbox{ for } s\le u\le s+t|X(s)=i)\quad(\mbox{Markov property})\\
+&=\p(X(u)=i,\mbox{ for } 0\le u\le t|X(0)=i)\qquad(\mbox{time homogeneity})\\
+&=\p(T_i\ge t) \quad\Rightarrow\quad  \mbox{So $T_i$ is memoryless.}
+\end{align*}
+Recall that the exponential distribution is the only continuous distribution having the memoryless property.
+
+Thus \structure{$T_i\sim Exp(\nu_i)$} for some rate $\nu_i$.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{An Alternative Definition of CTMC}
+A stochastic process $\{X(t),t\ge 0\}$ with state space $\X$ is a \structure{\em continuous-time Markov chain} if
+\begin{itemize}
+\item (exponential waiting time)
+ when the chain reaches a state $i$, the time it stays at state $i\sim Exp(\nu_i)$, where $\nu_i$ is the transition rate at state $i$
+\item (embedded with a discrete time Markov chain)
+ when the process leaves state $i$, it enters anther state $j$ with probability $P_{ij}$, such that
+    $$P_{ii}=0, \quad\Sum_{j\in\X} P_{ij}=1\quad\mbox{for all }i,j \in\X.$$
+\end{itemize}
+\textbf{Remark}: The amount of time $T_i$ the process spends in
+state $i$, and the next state visited, must be independent.
+For if the next state visited were dependent on $T_i$, then information as to how long the
+process has already been in state $i$ would be relevant to the prediction of the next
+state---and this contradicts the Markovian assumption.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{6.3 Birth and Death Processes}
+Let $X(t)=$ the number of people in the system at time $t$.\\
+Suppose that whenever there are $n$ people in the system, then
+\begin{itemize}
+\item [(i)] new arrivals enter the system at an exponential rate $\lambda_n$, and
+\item [(ii)] people leave the system at an exponential rate $\mu_n.$
+\end{itemize}
+Such an $\{X(t),t\ge 0\}$ is called a \structure{\em birth and death process}.
+$$
+\arraycolsep=4pt
+\begin{array}{ccccccccccccccc}
+  & \lambda_0  && \lambda_1 && \lambda_2 && \cdots&  & \lambda_{n-1} && \lambda_n && \cdots\\[-3pt]
+0 & \rightleftarrows & 1 & \rightleftarrows & 2 &\rightleftarrows& 3 & \cdots & n\!-\!1&\rightleftarrows & n &\rightleftarrows& n\!+\!1 & \cdots\\[-5pt]
+  & \mu_1      && \mu_2     &&  \mu_3   && \cdots& & \mu_n && \mu_{n+1} && \cdots
+\end{array}
+$$
+Suppose the process is at state $i>0$ at time $t$. Then
+\begin{align*}
+B_i &=\text{waiting time until the next birth} \sim \text{Exp}(\lambda_i)\\
+D_i &=\text{waiting time until the next death} \sim \text{Exp}(\mu_i)
+\end{align*}
+Hence, the waiting time until the next transition out of state $i$ is
+$\min(B_i, D_i)\sim \text{Exp}(\lambda_i+\mu_i)$, from which we can get
+$$
+\nu_i = \lambda_i + \mu_i,\;\text{for } i>0
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{6.3 Birth and Death Processes (Cont'd)}
+
+%\vspace{-12pt}$$
+%\arraycolsep=4pt
+%\begin{array}{ccccccccccccccc}
+%  & \lambda_0  && \lambda_1 && \lambda_2 && \cdots&  & \lambda_{n-1} && \lambda_n && \cdots\\[-3pt]
+%0 & \rightleftarrows & 1 & \rightleftarrows & 2 &\rightleftarrows& 3 & \cdots & n\!-\!1&\rightleftarrows & n &\rightleftarrows& n\!+\!1 & \cdots\\[-5pt]
+%  & \mu_1      && \mu_2     &&  \mu_3   && \cdots& & \mu_n && \mu_{n+1} && \cdots
+%\end{array}
+%$$
+Moreover, given the process is at state $i>0$ at time $t$,
+the probability that the next transition is a birth rather than a death is
+$$
+P_{i,i+1}=P(B_i<D_i)= \frac{\lambda_i}{\lambda_i +\mu_i},
+$$ which implies $P_{i,i-1}=P(D_i<B_i) = \frac{\mu_i}{\lambda_i +\mu_i}$, for $i>0.$\smallskip\pause
+
+As only birth is possible at state $0$, we know $\nu_0 = \lambda_0$ and $P_{01}=1$.\smallskip\pause
+
+To sum up, a birth and death process is a CTMC with state space $\X=\{0,1,2,\ldots\}$ such that
+\begin{align*}
+\nu_i &= \lambda_i + \mu_i, i>0,\quad \nu_0 = \lambda_0,\\
+P_{i,i+1} &= \frac{\lambda_i}{\lambda_i +\mu_i},\; P_{i,i-1} = \frac{\mu_i}{\lambda_i +\mu_i}, i>0\\
+P_{01} &= 1,\; P_{i,j}=0 \quad\mbox{if }|i-j|>1
+\end{align*}
+The parameters $\{\lambda_n\}^{\infty}_{n=0}$ and $\{\mu_n\}^{\infty}_{n=1}$ are called, respectively, the arrival (or birth) and departure (or death) rates.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Examples of Birth and Death Processes}
+\begin{itemize}
+\item Poisson Processes: $\mu_n=0$, $\lambda_n=\lambda$ for all $n\ge 0$
+\item Pure Birth Process: $$\mu_n=0\quad \Rightarrow\quad \nu_i=\lambda_i,\; P_{i,i+1}=1,\; P_{i,i-1}=0$$
+\item Yule Processes (Pure Birth Process with Linear Growth rate):
+If there are $n$ people and each independently gives birth at at an exponential rate $\lambda$, then the total rate at which births occur is $n\lambda.$ $$\mu_n=0,\quad \lambda_n=n\lambda$$\pause
+
+\vspace{-6pt}\textit{Reason}: Let
+$$B_i = \text{time until the ith individual give birth}\sim Exp(\lambda),\; i=1,\ldots,n$$
+So the time until the next (first) birth when there are $n$ individuals in the population is
+$$
+\min(B_1,B_2,\ldots,B_n) \sim Exp(\lambda+\lambda+\cdots+\lambda)=Exp(n\lambda)
+$$
+So the rate until the next birth is $\lambda_n=n\lambda$.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example: Linear Growth Model with Immigration}
+\begin{itemize}
+\item each individual independently gives birth at an exponential rate $\lambda$
+\item each individual independently die at at an exponential rate $\mu$
+\item new immigrants come in at an exponential rate $\theta$
+\end{itemize}
+Such a process is a birth-death process with birth and death rates
+$$\mu_n=n\mu,\quad \lambda_n=n\lambda+\theta$$
+
+\vspace{-6pt}\textit{Reason}: Let
+\begin{align*}
+B_i &= \text{time until the ith individual give birth}\sim Exp(\lambda),\; i=1,\ldots,n\\
+T &=\text{time until the next new immigrant comes in}\sim Exp(\theta)
+\end{align*}
+So the time until the population size increase from $n$ to $n+1$ is
+$$
+\min(B_1,\ldots,B_n, T) \sim Exp(\lambda+\cdots+\lambda+\theta)=Exp(n\lambda+\theta)
+$$
+So the rate until the next birth is $\lambda_n=n\lambda+\theta$.\par\smallskip
+
+Similarly, one can show that the death rate is $\mu_n=n\mu$.
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example: $M/M/s$ Queueing Model}
+\begin{itemize}
+\item $s$ servers
+\item Poisson arrival of customers, rate $=\lambda$
+\item Exponential service time,  rate $=\mu$
+\end{itemize}
+$\Rightarrow$ a birth and death process with constant birth rate $\lambda_n=\lambda$, and death (departure)rate $\mu_n = \min(n,s)\mu.$\medskip\pause
+
+\textit{Reason}:
+Suppose, there are $n$ customer in the system at time $t$.
+At most $\min(n,s)$ of them are being served. Let 
+$S_i$ be remaining service time of the $i$th server $\sim$ Exp$(\mu).$
+Then, the waiting time until the next departure is 
+$$
+\min(S_1, \ldots, S_{\min(s,n)})\sim \text{Exp}(\min(s,n)\mu).
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{6.4 The Transition Probability Function $P_{ij}(t)$}
+Recall the transition probability function $P_{ij}(t)$ of a CTMC $\{X(t),t\ge 0\}$ is
+$$P_{ij}(t)=\p(X(t+s)=j|X(s)=i)$$
+
+\textbf{Example.} (Poisson Processes with rate $\lambda$)
+\begin{align*}
+P_{ij}(t)&=\p(N(t+s)=j|N(s)=i)\\
+&=\p(N(t+s)-N(s)=j-i)
+=\begin{cases}
+e^{-\lambda{t}}\frac{(\lambda t)^{j-i}}{(j-i)!} & \mbox{if }j\ge i\\
+0&\mbox{if }j<i
+\end{cases}
+\end{align*}
+
+\textbf{Properties of Transition Probability Functions}
+\begin{itemize}
+\item $P_{ij}(t)\ge 0$ for all $i,j\in\X$ and $t\ge 0$
+\item (Row sums are 1) $\sum_j P_{ij}(t)=1$ for all $i\in\X$ and $t\ge 0$
+\end{itemize}
+\end{frame}
+
+% ----------------------------------------------------------------------
+\begin{frame}{Lemma 6.3 Chapman-Kolmogorov Equation}
+For all $i,j\in\X$ and $t\ge 0$,
+$$P_{ij}(t+s)=\sum_{k\in\X} P_{ik}(t)P_{kj}(s)$$
+{\em Proof.}\small
+\begin{align*}
+&P_{ij} (t +s)\\
+&= \p(X(t + s) = j |X(0) = i)\\
+&=\sum_{k\in\X}\p(X(t + s) = j,X(t) = k|X(0) = i)\\
+&=\sum_{k\in\X}\p(X(t + s) = j |X(t) = k,X(0) = i)\p(X(t) = k|X(0) = i)\\
+&=\sum_{k\in\X}\p(X(t + s) = j |X(t) = k)\p(X(t) = k|X(0) = i)\;\mbox{(Markov Property)}\\
+&=\sum_{k\in\X}P_{kj} (s)P_{ik}(t)
+\end{align*}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The matrix notation}
+	
+	Let $\mathbf{P}(t) = [P_{ij}(t)]$ be the transition matrix at time $t$. 
+	
+	We have $\mathbf{P}(0) = \mathbf{I}$.
+	And C-K equations read
+	\begin{align*}
+		\mathbf{P} (t+s) = \mathbf{P} (t) \mathbf{P}(s)
+	\end{align*}
+	
+	\vfill
+	One way to specify a CTMC is through $\{ \mathbf{P}(t) \}_{ t \geq 0}$. But 
+	this requires an infinite number of matrices. Can we simplify it?
+	
+	\vfill
+	Key: use derivatives $\mathbf{P}'(t)$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Transition rate matrix / infinitesimal generator $\mathbf{Q}$}
+	Assume that 
+	\begin{align*}
+		\mathbf{P}'(0) = \lim_{h \to 0} \frac{\mathbf{P}(h) - \mathbf{P}(0)}{h} \quad \text{ exists}.
+	\end{align*}
+	
+	In other words, for each $i,j$,
+	\begin{align*}
+		P_{ij}'(0) = \lim_{h \to 0} \frac{{P}_{ij}(h) - {P}_{ij}(0)}{h} \quad \text{ exists}.
+	\end{align*}
+	\vfill
+	We will denote such limit as $\mathbf{Q} = [q_{ij}]$, the transition rate matrix.
+	
+	How about $\mathsf{P}'(t)$ for $t > 0$?
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kolmogorov's equations}
+	
+	
+	By definition, one has
+	\begin{align*}
+		\mathsf{P}'(t) &= \lim_{h \to 0} \frac{\mathbf{P}(t+h) - \mathbf{P}(t) }{h} 
+		= \lim_{h \to 0} \frac{\mathbf{P}(t)\mathbf{P}(h) - \mathbf{P}(t)}{h} \\
+		       &=  \lim_{h \to 0} \frac{\mathbf{P}(t) ( \mathbf{P}(h) - \mathbf{I}) }{h} 
+		       = \mathbf{P}(t) \mathbf{Q}.
+	\end{align*}
+	This is the so-called Kolmogorov's forward equations.
+	
+	\vfill
+	Similarly you can prove backward equations
+	\begin{align*}
+		\mathbf{P}'(t) = \mathbf{Q} \mathbf{P}(t).
+	\end{align*}
+	
+	\vfill These imply $\mathbf{P}(t) = \exp(t\mathbf{Q})$.
+\end{frame}
+
+
+\begin{frame}{Transition rate matrix}
+\vfill
+\large How to compute $\mathbf{Q}$?
+\vfill
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Lemma 6.2a}
+For any $i,j\in\X$, we have
+$$q_{ii} = \lim_{h\to 0}\frac{P_{ii}(h) - 1}{h} = -\nu_i$$
+
+{\em Proof.}
+Let $T_i$ be the amount of time the process stays in state $i$ before moving to other states.
+\begin{align*}
+P_{ii}(h)&=\p(X(h)=i|X(0) = i)\\
+&=\p(X(h)=i,\mbox{no transition in (0,h]}|X(0) = i)\\
+&\quad+\p(X(h)=i,\mbox{2 or more transition in (0,h]}|X(0) = i)\\
+&=\p(T_i>h)+o(h)\\
+&=e^{-\nu_ih}+o(h)\\
+&=1-\nu_i h+o(h)
+\end{align*}\vspace{-30pt}
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Lemma 6.2b}
+For any $i \neq j\in\X$, we have
+$$q_{ij} = \lim_{h\to 0}\frac{P_{ij}(h)}{h}=\nu_iP_{ij}$$
+\par\medskip
+
+{\em Proof.}
+\begin{align*}
+P_{ij}(h)&=\p(X(h)=j|X(0) = i)\\
+&=\p(X(h)=j,\mbox{1 transition in (0,h]}|X(0) = i)\\
+&\quad+\p(X(h)=j,\mbox{2 or more transition in (0,h]}|X(0) = i)\\
+&=\p(T_i<h)P_{ij}+o(h)\\
+&=(1\!-\!e^{-\nu_ih})P_{ij}+o(h)\\
+&=\nu_iP_{ij}h+o(h)
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Theorem 6.1 Kolmogorov's Backward Equations}
+%%For all states $i, j\in\X$ , and times $t\ge 0$,
+%%$$P'_{ij} (t) =\Sum_{k\neq j}q_{ik}P_{kj}(t)-\nu_iP_{ij} (t)$$
+%% {\em Proof.}
+%From Lemma 6.3 (Chapman-Kolmogorov equations), we obtain
+%\begin{align*}
+%P_{ij}(h+t)-P_{ij}(t)&=\sum_{k\in\X} P_{ik}(h)P_{kj}(t)-P_{ij}(t)\\
+%&=\sum_{k\in\X,k\neq i} P_{ik}(h)P_{kj}(t)-(1-P_{ii}(h))P_{ij}(t)
+%\end{align*}
+%and thus
+%$$\lim_{h\to0}\frac{P_{ij} (t +h)-Pij (t)}{h}
+%= \lim_{h\to0}\left\{\sum_{k\neq i} \frac{P_{ik}(h)}{h}P_{kj}(t)-\frac{1-P_{ii}(h)}{h}P_{ij}(t)\right\}$$
+%Now assuming that we can interchange the limit and the summation in the preceding
+%and applying Lemma 6.2, we obtain
+%$$P'_{ij} (t) =\sum_{k\in\X,k\neq i}q_{ik}P_{kj}(t)-\nu_iP_{ij} (t)$$
+%It turns out that this interchange can indeed be justified.
+%\end{frame}
+%% ----------------------------------------------------------------------
+%\begin{frame}{Theorem 6.2 Kolmogorov's Forward Equations}
+%From Lemma 6.3 (Chapman-Kolmogorov equations), we obtain
+%\begin{align*}
+%P_{ij}(t+h)-P_{ij}(t)&=\sum_{k\in\X} P_{ik}(t)P_{kj}(h)-P_{ij}(t)\\
+%&=\sum_{k\in\X,k\neq j} P_{ik}(t)P_{kj}(h)-(1-P_{jj}(h))P_{ij}(t)
+%\end{align*}
+%and thus
+%$$\lim_{h\to0}\frac{P_{ij} (h+t)-Pij (t)}{h}
+%= \lim_{h\to0}\left\{\sum_{k\neq j} P_{ik}(t)\frac{P_{kj}(h)}{h}-\frac{1-P_{jj}(h)}{h}P_{ij}(t)\right\}$$
+%Now assuming that we can interchange the limit and the summation in the preceding
+%and applying Lemma 6.2, we obtain
+%$$P'_{ij} (t) =\Sum_{k\neq j}P_{ik}(t)q_{kj}-\nu_jP_{ij} (t)$$
+%Unfortunately, this interchange is not always justifiable. However, the forward equations do hold in most models,
+%including all birth and death processes and all finite state models.
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}
+%Recall that we define the instantaneous transition rates
+%$$q_{ij}=\nu_iP_{ij},\quad\mbox{for} i,j\in\X, i\neq j$$
+%If we define $q_{ii}$ as $-\nu_i$.
+For finite state space case $\X=\{1,2,\ldots,m\}$, define the matrices
+\begin{align*}
+\mathbf{P}(t)&=
+\begin{bmatrix}
+P_{11}(t)&\cdots&P_{1m}(t)\\
+\vdots   &      &\vdots\\
+P_{m1}(t)&\cdots&P_{mm}(t)
+\end{bmatrix},\quad
+\mathbf{P}'(t)=
+\begin{bmatrix}
+P'_{11}(t)&\cdots&P'_{1m}(t)\\
+\vdots   &      &\vdots\\
+P'_{m1}(t)&\cdots&P'_{mm}(t)
+\end{bmatrix},\\
+\mathbf{Q}&=
+\begin{bmatrix}
+q_{11}&\cdots&q_{1m}\\
+\vdots&      &\vdots\\
+q_{m1}&\cdots&q_{mm}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\nu_1& \nu_1 P_{12} &\cdots&\nu_1 P_{1m}\\
+\nu_2 P_{21}& -\nu_2 &\cdots&\nu_2 P_{2m}\\
+\vdots&\vdots&      &\vdots\\
+\nu_mP_{m1}&\nu_mP_{m2}&\cdots&-\nu_m
+\end{bmatrix}
+\end{align*}
+In matrix notation,
+
+Forward equation: $\mathbf{P}'(t)=\mathbf{P}(t)\mathbf{Q}$
+
+Backward equation: $\mathbf{P}'(t)=\mathbf{Q}\mathbf{P}(t)$
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document}
+\begin{frame}{}
+\end{frame}
+% ----------------------------------------------------------------------

@@ -1,0 +1,409 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout, mathserif]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage[misc]{ifsym} % for the dice symbol \Cube{}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+%\usepackage{pgf,tikz}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\P{\mathbb{P}}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\Sum{\sum\nolimits}
+\def\X{\mathfrak{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+\def\hid#1#2{\onslide<#1>{\alert{#2}}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{5}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Winter 2019 Lecture \chapnum}
+\date{January 16, 2019}
+\author{Yibi Huang}
+\begin{document}
+% ----------------------------------------------------------------------
+\begin{frame}{STAT253/317 Lecture \chapnum: 4.4 Limiting Distribution II}
+
+\begin{block}{Positive Recurrence and Null Recurrence}
+For a Markov chain, consider the return time to a recurrent state $i$
+$$
+T_i=\min\{n>0: X_n=i|X_0=i\}
+$$
+%Define
+%$$I^{(n)}_{i}=\begin{cases}1 &\mbox{if }X_n=i\\0&\mbox{if }X_n\neq i\end{cases},\quad n\ge 0,\;i\in\X.$$
+%Then the long-run fraction of time that Markov chain is in state $i$ is
+%$$\frac{1}{n}\Sum_{k=1}^n I^{(n)}_{i}$$
+
+We say a state $i$ is
+\begin{itemize}
+\item \structure{\bf positive recurrent} if i is recurrent and $\E[T_i]<\infty.$
+\item \structure{\bf null recurrent} if i is recurrent but $\E[T_i]=\infty.$
+%\item \structure{\bf transient} if $\p(T_i<\infty)<1$
+\end{itemize}
+\end{block}
+\bigskip
+\hrule\medskip
+We say a state is \structure{\bf ergodic} if it is aperiodic and positive recurrent.
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{The Fundamental Limit Theorem of Markov Chains I}
+Consider an irreducible aperiodic Markov chain. Then
+$$
+\lim_{n\to\infty}P^{(n)}_{ij}=\frac{1}{\E[T_j]}
+$$
+Moreover, if a Markov chain is irreducible and every state is ergodic, then limiting distribution exists: 
+$$\pi_j=\lim_{n\to\infty}P^{(n)}_{ij}=\frac{1}{\E[T_j]}$$
+and is uniquely determined by the set of equations
+$$
+\pi_j\ge 0,\quad\Sum_{j\in\X}\pi_j=1,\quad\pi_j=\Sum_{i\in\X}\pi_i P_{ij}
+$$
+Proof. See Theorem 1.1, 1.2, 1.3 on p.81-86 in Karlin \& Taylor (1975).
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Why $\pi_i=1/\E(T_i)$?}
+Consider a Markov chain started from state $j$. Let $S_k$ be the time till the $k$-th visit to state $i$. Then
+$$
+S_k = T_{ji}+T_{ii}(1)+\ldots+T_{ii}(k-1)
+$$
+Here
+\begin{itemize}
+\item $T_{ji}=$ the first time the process visits state $i$ from state $j$, and
+\item $T_{ii}(m)=$ the time between the $m$th and $(m+1)$st visit to state $i$.
+\end{itemize}
+Observe that $T_{ii}(1)$, $T_{ii}(2),\ldots T_{ii}(k-1)$ are i.i.d. and have the same distribution as $T_i.$
+
+For $k$ large, the Law of Large Numbers tells us
+$$
+\frac{1}{k}[T_{ji}+T_{ii}(1)+T_{ii}(2)+\cdots+T_{ii}(k-1)]\approx\E(T_i)
+$$
+i.e., the chain visits state $i$ about $k$ times in $k\E(T_i)$ steps.
+
+In $n$ steps, we expect about $n\pi(i)$ visits to the state $i$.
+Hence setting $n = k\E (T_i)$, we get the relation $$\pi_i=1/\E(T_i).$$
+
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Remark}
+%
+%From the result in the previous page, we can see that a state $i$ is {\bf null recurrent}, i.e., $\E(T_i)=\infty$, if and only if
+%$$
+%\lim_{n\to\infty}P^{(n)}_{ji}=0, \quad\mbox{for all }j\in\X.
+%$$
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Proposition 4.5 Positive Recurrence is a Class Property}
+\begin{itemize}
+\item From the Fundamental Limit Theorem of Markov Chains I
+\[\pi_i=1/\E[T_i]\]
+and that a state $i$ is positive recurrent if and only if $\E[T_i]<\infty$
+it follows that a state $i$ is positive current if and only if $\pi_i>0$
+
+\item If a state $j$ communicate with a positive recurrent state $i$,
+then state $j$ is also positive recurrent. \medskip
+
+{\it Proof.} Since $i\leftrightarrow j$, there exists $n$ such that $P^{(n)}_{ij}>0$.
+Along with the fact that $i$ is positive recurrent, $\pi_i > 0$, we know
+$\pi_j = \sum_k \pi_k P^{(n)}_{kj} \ge \pi_i P^{(n)}_{ij} >0$.
+So $j$ is also positive recurrent.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Corollary: Null Recurrence is a Class Property}
+If state $i$ is null recurrent and $i\leftrightarrow j$,
+then state $j$ is also null recurrent.\smallskip
+
+{\it Proof.} Since recurrence is a class property, state $j$ can only be positive or null recurrent
+as it communicates with a null recurrent state $i$.
+Suppose state $j$ is positive recurrent.
+As positive recurrence is a class property,
+state $i$ must also be positive recurrent not null recurrent if it communicates with state $j$.
+So state $j$ can only be null recurrent.
+ \end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Finite-State Markov Chains Have No Null Recurrent States}
+In an irreducible finite-state Markov chain all states are positive recurrent.\smallskip
+
+{\em Proof}. \smallskip
+
+%It suffices to consider irreducible Markov chains only since a Markov chain restricted to one of its recurrent class is also a Markov chain.
+
+Recall an irreducible Markov chain must be recurrent. (Why?)
+Also recall that positive/null recurrence is a class property.
+Thus if one state is null recurrent, then all states are null recurrent.
+However, since $\Sum_{j\in \X} P^{(n)}_{ij}=1$. As there are only finite number of states,
+it is impossible that $\lim_{n\to\infty}P^{(n)}_{ij}=0$ for all $j\in\X$.
+Thus no state can be null recurrent.\bigskip
+
+%\bigskip\hrule\medskip
+%\begin{itemize}
+% \item An alternative proof is in HW4, Problem 2
+
+\underline{Remark}. For a finite state Markov chain, a limiting distribution exists if it is irreducible and aperiodic
+% \item~[IPM10e] Exercise 4.10, 4.24, 4.46 (See HW4 for solutions)
+%\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{The Fundamental Limit Theorem of Markov Chain II ($\star\star\star\star\star$)}
+If a Markov chain is {\bf irreducible}, then the Markov chain is {\bf positive recurrent} if
+and only if there exists a solution to the set of equations:
+$$
+\pi_i\ge 0,\quad\Sum_{i\in\X}\pi_i=1,\quad\pi_j=\Sum_{i\in\X}\pi_i P_{ij}
+$$
+
+If a solution exists then
+\begin{itemize}
+\item it will be unique, and
+$$
+\frac{1}{\E [T_j] }=\pi_j=
+\begin{cases}
+\lim_{n\to\infty}\frac{1}{n}\Sum_{k=1}^n P^{(k)}_{ij} &\mbox{if the chain is periodic}\\
+\lim_{n\to\infty} P^{(n)}_{ij}&\mbox{if the chain is aperiodic}
+\end{cases}
+$$
+\end{itemize}
+{\bf Remark.} When a Markov chain is periodic, though its limiting distribution
+$\lim_{n\to\infty} P^{(n)}_{ij}$ doesn't exist, another limit
+$\lim_{n\to\infty}\frac{1}{n}\Sum_{k=1}^n P^{(k)}_{ij}$ exists and
+is equal to the stationary distribution.
+The later limit can be interpret as the {\bf long run proportion of time that
+the Markov chain is in state $j$}.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 1: One-Dimensional Random Walk}
+In Lecture 4, we have shown that 1-dim symmetric random walk has no stationary distribution.
+\begin{itemize}
+\item Conclusion from 2nd limit theorem: 1-dim symmetric random walk is null recurrent, i.e. $$\E[T_i]=\infty\quad\text{for all state }i$$
+\end{itemize}
+In fact, in Lecture 3 we have shown that
+$$
+P^{(n)}_{ii}=
+\begin{cases}
+0 & \text{if $n$ is odd}\\
+{n\choose n/2}(\frac{1}{2})^n\approx\sqrt{\frac{2}{\pi n}} & \text{if $n$ is even}
+\end{cases}
+$$
+Thus $\pi_i = \lim_{n\to\infty}P^{(n)}_{ii} = 0,$ and hence $\E[T_i]=1/\pi_i=\infty.$ (This relation holds even if the chain considered here is not positive recurrent.)
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Ex 2: 1-D Random Walk w/ Partially Reflective Boundary}
+\bigskip
+\begin{align*}
+P_{i,i+1}&=p\quad\mbox{for all }i=0,1,2,\ldots\\
+P_{i,i-1}&=1-p\quad\mbox{for all }i=1,2,\ldots\\
+p_{00}&=1-p
+\end{align*}
+Try to solve $\pi_j=\Sum_{i\in\X}\pi_iP_{ij}$
+$$\arraycolsep=2pt
+\begin{array}{cll}
+\pi_0&=\pi_0P_{00}+\pi_1 P_{10}=(1-p)(\pi_0+\pi_1)&\Rightarrow\pi_1=\frac{p}{1-p}\pi_0\\
+\pi_1&=\pi_0P_{01}+\pi_2 P_{21}=p\pi_0+(1-p)\pi_2&\Rightarrow\pi_2=\left(\frac{p}{1-p}\right)^2\pi_0\\
+\pi_2&=\pi_0P_{12}+\pi_3 P_{32}=p\pi_1+(1-p)\pi_3&\Rightarrow\pi_3=\left(\frac{p}{1-p}\right)^3\pi_0\\
+&\vdots&\\
+\pi_{j}&=p\pi_{j-1}+(1-p)\pi_{j+1}&\Rightarrow\pi_{j+1}=\left(\frac{p}{1-p}\right)^{j+1}\pi_0
+\end{array}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Ex 2: 1-D Random Walk w/ Partially Reflective Boundary}
+$$
+\sum_{i=0}^{\infty}\pi_i=\pi_0\sum_{i=0}^{\infty}\left(\frac{p}{1-p}\right)^{i}=
+\begin{cases}
+\pi_0\left(\frac{1-p}{1-2p}\right)&\mbox{if }p<1/2\\
+\infty&\mbox{if }p\ge 1/2\\
+\end{cases}
+$$
+Conclusion: The process is positive recurrent iff $p<1/2$, in which case
+$$
+\pi_i=\frac{1-2p}{1-p}\left(\frac{p}{1-p}\right)^i,\quad i=0,1,2,\ldots
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Ex 3: Ehrenfest Diffusion Model with $N$ Balls}
+Recall that in Lecture 4, we
+show that Ehrenfest Diffusion Model is irreducible, has period = 2,
+and there exists a solution to the set of equations
+$$
+\pi_i\ge 0,\quad\Sum_{i\in\X}\pi_i=1,\quad\pi_j=\Sum_{i\in\X}\pi_i P_{ij}
+$$
+which is
+$$
+\pi_i={N\choose i}\left(\frac{1}{2}\right)^{N}\quad\text{for }i=0,1,2,\ldots,N
+$$
+Though the limiting distribution $\lim_{n\to\infty}P^{(n)}_{ij}$ does not exist,
+we can show that
+\begin{align*}
+\lim_{n\to\infty}P^{(2n)}_{ij}&= 2{N\choose j}(\frac{1}{2})^{N},\quad \lim_{n\to\infty}P^{(2n+1)}_{ij}=0&\text{if $i+j$ is even}\\
+\lim_{n\to\infty}P^{(2n)}_{ij}&= 0,\quad \lim_{n\to\infty}P^{(2n+1)}_{ij}=2{N\choose j}(\frac{1}{2})^{N}&\text{if $i+j$ is odd}
+\end{align*}
+From the above, one can verify that $\lim_{n\to\infty}\frac{1}{n}\Sum_{k=1}^n P^{(k)}_{ij}={N\choose j}(\frac{1}{2})^{N}=\pi_j.$
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Proposition 4.6 (LLN for Markov Chain) on p.217}
+%Let $\{X_n, n \ge 1\}$ be an irreducible Markov chain with stationary
+%probabilities $\pi_j$, $j \ge 0$, and let $r$ be a bounded function on the state space. Then,
+%with probability 1,
+%$$\lim_{N\to\infty}\frac{\sum_{n=1}^{N}r(X_n)}{N}=\Sum_{j\in\X}r(j)\pi_j$$
+%{\em Proof}. If we let $a_j(N)$ be the amount of time the Markov chain spends in state $j$
+%during time periods $1,\cdots,N$, then
+%$$\Sum_{n=1}^{N}r(X_n)=\Sum_{j\in\X} a_j(N)r(j)$$
+%Since $a_j(N)/N\to\pi_j$ the result follows from the preceding upon dividing by $N$
+%and then letting $N\to\infty.$\footnote{Proposition 4.3 on p.228 in 10ed.}
+%\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Markov Chain Monte Carlo (MCMC) method}
+%The LLN for Markov Chain is the core of the Markov Chain Monte Carlo (MCMC) method.
+
+%\begin{itemize}
+%\item Suppose $X$ has a complicated or unknown probability distribution
+%that the expected value of $\E[h(X)]$ is hard or cannot be computed analytically,
+%if it's possible to generate variables
+%\end{itemize}
+
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exercise 4.50 on p.284}
+A Markov chain has transition probability matrix
+\[
+P=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & 0.2 & 0.4 &  0  & 0.3 &  0  & 0.1\cr
+2 & 0.1 & 0.3 &  0  & 0.4 &  0  & 0.2\cr
+3 &  0  &  0  & 0.3 & 0.7 &  0  &  0 \cr
+4 &  0  &  0  & 0.6 & 0.4 &  0  &  0 \cr
+5 &  0  &  0  &  0  &  0  & 0.5 & 0.5\cr
+6 &  0  &  0  &  0  &  0  & 0.2 & 0.8
+}
+\]
+Communicating classes:
+\[
+\begin{array}{ccc}
+\{1,2\}&\{3,4\}&\{5,6\}\\
+\uparrow &\uparrow &\uparrow \\
+\text{transient}&\text{recurrent}&\text{recurrent}
+\end{array}
+\]
+Find $\lim_{n\to\infty}P^{(n)}.$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exercise 4.50 on p.284 (Cont'd)}
+Observe that
+$\lim_{n\to\infty}P^{(n)}_{ij}=0$ if $j$ is transient, hence,
+\[
+\lim_{n\to\infty}P^{(n)}=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ? \cr
+2 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ? \cr
+3 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ? \cr
+4 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ? \cr
+5 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ? \cr
+6 & \alert{0} & \alert{0} &  ?  &  ?  &  ?  &  ?
+}
+\]
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exercise 4.50 on p.284 (Cont'd)}
+Observe that
+$\lim_{n\to\infty}P^{(n)}_{ij}=0$ if $j$ is NOT accessible from $i$
+\[
+\lim_{n\to\infty}P^{(n)}=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+2 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+3 & 0 & 0 &  ?  &  ?  & \alert{0} & \alert{0}\cr
+4 & 0 & 0 &  ?  &  ?  & \alert{0} & \alert{0}\cr
+5 & 0 & 0 & \alert{0} & \alert{0} &  ?  &  ? \cr
+6 & 0 & 0 & \alert{0} & \alert{0} &  ?  &  ?
+}
+\]
+The two classes \{3,4\} and \{5,6\} do not communicate
+and hence the transition probabilities in between are all 0.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exercise 4.50 on p.284 (Cont'd)}
+Recall we have shown that the limiting distribution of a two-state Markov chain
+with the transition matrix
+$\left(
+\begin{array}{cc}
+1-\alpha  & \alpha\cr
+\beta & 1-\beta
+\end{array}\right)
+$
+is $\left(\frac{\beta}{\alpha+\beta},\frac{\alpha}{\alpha+\beta}\right).$
+As the Markov chain restricted to the class \{3,4\} is also a Markov chain
+with the transition matrix
+$
+\bordermatrix{%
+  &  3  &  4  \cr
+3 & 0.3 & 0.7 \cr
+4 & 0.6 & 0.4
+}
+$.
+Hence,
+\[
+\lim_{n\to\infty}P^{(n)}=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+2 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+3 & 0 & 0 & \alert{6/13} & \alert{7/13} & 0 & 0\cr
+4 & 0 & 0 & \alert{6/13} & \alert{7/13} & 0 & 0\cr
+5 & 0 & 0 & 0 & 0 &  ?  &  ? \cr
+6 & 0 & 0 & 0 & 0 &  ?  &  ?
+}
+\]
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Exercise 4.50 on p.284 (Cont'd)}
+\[
+P=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & 0.2 & 0.4 &  0  & 0.3 &  0  & 0.1\cr
+2 & 0.1 & 0.3 &  0  & 0.4 &  0  & 0.2\cr
+3 &  0  &  0  & 0.3 & 0.7 &  0  &  0 \cr
+4 &  0  &  0  & 0.6 & 0.4 &  0  &  0 \cr
+5 &  0  &  0  &  0  &  0  & 0.5 & 0.5\cr
+6 &  0  &  0  &  0  &  0  & 0.2 & 0.8
+}
+\]
+For the same reason,
+\[
+\lim_{n\to\infty}P^{(n)}=
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6 \cr
+1 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+2 & 0 & 0 &  ?  &  ?  &  ?  &  ? \cr
+3 & 0 & 0 & \alert{6/13} & \alert{7/13} & 0 & 0\cr
+4 & 0 & 0 & \alert{6/13} & \alert{7/13} & 0 & 0\cr
+5 & 0 & 0 & 0 & 0 & \alert{2/7} & \alert{5/7} \cr
+6 & 0 & 0 & 0 & 0 & \alert{2/7} & \alert{5/7}
+}
+\]
+
+\end{frame}
+\end{document}

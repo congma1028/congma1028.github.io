@@ -1,0 +1,379 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+\usepackage{amsfonts}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\Sum{\sum\nolimits}
+\def\Prod{\prod\nolimits}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\V{\mathrm Var}
+\def\X{\mathcal{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{13}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Lecture \chapnum} \date{} \author{Yibi Huang}
+
+\begin{document}
+% ----------------------------------------------------------------------
+%\begin{frame}\maketitle
+%\begin{center}
+%Chapter 6 \ Continuous-Time Markov Chains\par\medskip
+%
+%6.5. Limiting Probabilities\par
+%6.6. Time Reversibility
+%\end{center}
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{STAT253/317 Lecture \chapnum}
+\begin{block}{\bf 6.5. Limiting Probabilities}
+\textbf{Definition.} Just like discrete-time Markov chains, if the probability that
+a continuous-time Markov chain will be in state $j$ at time $t$, $P_{ij}(t)$, converges to
+a limiting value $P_j$ independent of the initial state $i$, for all $i\in\X$
+$$
+P_j = \lim_{t\to\infty}P_{ij}(t) \typo{>0}
+$$
+then we say $P_j$ is the \structure{\em limiting probability} of state $j$.
+If $P_j$ exists for all $j\in\X$, we say $\{P_j\}_{j\in\X}$ is the \structure{\em limiting distribution} of the process.
+
+\bigskip
+
+\textbf{Remark.}
+If $\lim_{t\to\infty}P_{ij}(t)$ exists, we must have
+$$\lim_{t\to\infty}P'_{ij}(t)=0.$$
+\end{block}
+\end{frame}
+
+\begin{frame}{Balanced equations}
+ Recall the forward equations $\mathbf{P}'(t) = \mathbf{P}(t) \mathbf{Q}$ \\
+ 
+ \medskip
+ If you set $t \to \infty$, you have 
+ \begin{align*}
+ 	0 = p^\top \mathbf{Q}, 
+ \end{align*}
+ where $p = (P_1, P_2, \ldots)^\top$
+ 
+ This is the same as saying that 
+ $$
+\nu_jP_j= \sum_{k\in\X,k\neq j}P_k q_{kj} \quad\mbox{for all }j\in\X
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}
+%Recall the forward equations are
+%$$P'_{ij} (t) =\left(\sum_{k\in\X,k\neq j}P_{ik}(t)q_{kj}\right)-\nu_jP_{ij} (t)$$
+%
+%If we let $t\to\infty$, and assume that we can interchange limit and summation, we obtain
+%$$
+%\begin{array}{c@{\;}c@{\;}c@{\;}c@{\;}c}
+%\displaystyle{\lim_{t\to\infty}}P'_{ij} (t)
+%&=&\displaystyle{\lim_{t\to\infty}}\left(\sum_{k\in\X,k\neq j}P_{ik}(t)q_{kj}\right)&-&\nu_jP_{ij} (t)\\
+%\downarrow && \downarrow && \downarrow\\
+%0&=&\sum_{k\in\X,k\neq j}P_k q_{kj}&-&\nu_jP_j
+%\end{array}
+%$$
+%Hence we get the \structure{\em balanced equations}.
+%$$
+%\nu_jP_j= \sum_{k\in\X,k\neq j}P_k q_{kj} \quad\mbox{for all }j\in\X
+%$$
+%\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Taking $\lim_{t\to\infty}$ of the Backward Equation Leads to $\ldots$}
+%Taking the limit $t\to\infty$ of the Backward Equation $\mathbf{P}'(t) =  \mathbf{Q} \mathbf{P}(t)$
+%$$
+%\begin{array}{c@{\;}c@{\;}c@{\;}c@{\;}c}
+%\displaystyle{\lim_{t\to\infty}}P'_{ij} (t)
+%&=&\displaystyle{\lim_{t\to\infty}}\left(\sum_{k\in\X,k\neq i}q_{ik}P_{kj}(t)\right)&-&\nu_jP_{ij} (t)\\
+%\downarrow && \downarrow && \downarrow\\
+%0&=&\sum_{k\in\X,k\neq j} q_{ik}P_j&-&\nu_jP_j
+%\end{array}
+%$$
+%we get the identity
+%$$
+%P_j\sum_{k\in\X,k\neq j} q_{ik}=\nu_jP_j.
+%$$
+%which is trivial since $\sum_{k\in\X,k\neq j} q_{ik}=\nu_j.$
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Interpretation of the Balanced Equations}
+$$\nu_jP_j= \sum_{k\in\X,k\neq j}P_k q_{kj}$$
+\begin{align*}
+\nu_jP_j &= \mbox{rate at which the process {\bf leaves} state } j\\
+\sum_{k\in\X,k\neq j}P_{k}q_{kj} &= \mbox{rate at which the process {\bf enters} state }j
+\end{align*}
+Balanced equations means that the rates at which the
+process enters and leaves state $j$ are equal.\medskip
+
+\hrule\medskip
+
+The limiting distribution $\{P_j\}_{j\in\X}$ can be obtained by solving the balanced equations
+along with the equation $\sum_{j\in\X}P_j=1$.\medskip
+
+\hrule\medskip
+\textbf{Remarks.}
+Just like discrete-time Markov chains, a sufficient condition for the existence of a limiting distribution is that
+the chain is irreducible and positive recurrent.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Examples}
+\begin{itemize}[<+->]
+\item {\bf Poisson processes}: $\mu_n=0$, $\lambda_n=\lambda$ for all $n\ge 0$
+$$\nu_i=\lambda,\;P_{i,i+1}=1,\quad q_{i,i+1}=\nu_iP_{i,i+1}=\lambda$$
+Balanced equations:
+$$\nu_jP_j= P_{j-1}q_{j-1,j}\quad\Rightarrow\quad \lambda P_j=\lambda P_{j-1}
+\quad\Rightarrow\quad P_j=P_{j-1}$$
+No limiting distribution exists. The chain is not irreducible. All states are transient.
+
+\item {\bf Pure birth processes with $\lambda_n>0$ for all $n$}
+
+No limiting distribution exists. All states are transient.
+
+%\item {\bf Pure birth processes} with
+%$$\lambda_n>0\; \mbox{for } n\le 10,\mbox{ and }\lambda_n=0\mbox{ for all }n>10.$$
+%State space $\X=\{0,1,2,\ldots,10\}$.\par
+%State $10$ is the only absorbing state. All others are transient.
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Birth and Death Processes}
+For a birth and death process,
+$$
+\begin{array}{r@{\;\,}l@{\;\,}ll}
+\nu_0 &= \lambda_0,\\
+\nu_i &= \lambda_i + \mu_i,& i>0\\
+P_{01} &= 1,\\
+P_{i,i+1} &= \frac{\lambda_i}{\lambda_i +\mu_i}, &i>0\\
+P_{i,i-1} &= \frac{    \mu_i}{\lambda_i +\mu_i}, &i>0\\
+P_{i,j}&=0 &\mbox{if }|i-j|>1
+\end{array}\Rightarrow
+\begin{array}{l}
+q_{i,i+1} =\nu_iP_{i,i+1}=\lambda_i,\; i\ge 0\\
+q_{i,i-1} =\nu_iP_{i,i-1}=\mu_i, i\ge 1
+\end{array}
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Balanced Equations for Birth and Death Processes}
+The balanced equations $\nu_jP_j= \sum_{k\in\X,k\neq j}P_k q_{kj}$ for
+a birth and death process are
+\begin{align*}
+\lambda_0 P_0 &= \mu_1  P_1\\
+(\mu_1+\lambda_1) P_1&=\lambda_0 P_{0}+\mu_2 P_{2},\\
+(\mu_2+\lambda_2) P_2&=\lambda_1 P_{1}+\mu_3 P_{3},\\
+&\vdots\\
+(\mu_{n-1}+\lambda_{n-1}) P_{n-1}&=\lambda_{n-2} P_{n-2}+\mu_n P_n\\
+(\mu_n+\lambda_n) P_n&=\lambda_{n-1} P_{n-1}+\mu_{n+1} P_{n+1}
+\end{align*}
+Adding up all the equations above and eliminating the common terms on both sides, we get
+$$\lambda_n P_n= \mu_{n+1}P_{n+1}\quad n\ge 0,$$
+
+We hence just need to solve $\lambda_n P_n= \mu_{n+1}P_{n+1}$ for the limiting distribution.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{6.6. Time Reversibility}
+\textbf{Definition.} A continuous-time Markov chain with state space $\X$ is \structure{\em time reversible} if
+$$
+P_iq_{ij} = P_j q_{ji},\quad\mbox{for all }i, j\in\X\quad(\mbox{detailed balanced equation})
+$$
+If a distribution $\{P_j\}$ on $\X$ satisfies the detailed balanced equation, then it is a stationary distribution for the process.\par\bigskip
+
+\textbf{Example.} We have just shown that for Birth and Death processes,
+the balanced equations would lead to the detailed balanced equations, which are
+$$\lambda_n P_n= \mu_{n+1}P_{n+1},\quad n \ge 0$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Limiting Dist'n for Birth and Death Processes}
+Solving $\lambda_n P_n= \mu_{n+1}P_{n+1}$, $n\ge 0$ for the limiting distribution, we get
+$$
+P_n=\frac{\lambda_{n-1}}{\mu_{n}}P_{n-1}=\frac{\lambda_{n-1}}{\mu_{n}}\frac{\lambda_{n-2}}{\mu_{n-1}}P_{n-2}
+=\ldots=\frac{\lambda_{n-1}\lambda_{n-2}\cdots\lambda_{0}}{\mu_{n}\mu_{n-1}\cdots\mu_{1}}P_0
+$$
+To meet the requirement $\sum_{n=0}^{\infty}P_n=1$, we need
+$$\sum_{n=0}^{\infty}P_n=P_0+P_0\sum_{n=1}^{\infty}\frac{\lambda_{n-1}\lambda_{n-2}\cdots\lambda_{0}}{\mu_{n}\mu_{n-1}\cdots\mu_{1}}=1$$
+In other words, to have a limiting distribution, it is necessary that
+$$
+\sum_{n=1}^{\infty}\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}< \infty
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Limiting Dist'n for Birth and Death Processes (Cont'd)}
+
+If $\sum_{n=1}^{\infty}\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}$ is finite,
+ the limiting distribution is
+$$P_0=\frac{1}{1+\sum_{n=1}^{\infty}\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}}$$
+and
+$$P_k=\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{k-1}/(\mu_{1}\mu_{2}\cdots\mu_{k})}{1+\sum_{n=1}^{\infty}\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}},\quad k\ge 1$$
+\end{frame}
+
+
+\begin{frame}
+\textbf{Lemma: (Ratio Test)}
+If $a_n\ge 0$ for all $n$, then
+$$
+\sum_{n=1}^{\infty}a_n
+\begin{cases}
+< \infty & \mbox{if } \lim_{n\to\infty}a_n/a_{n-1}<1\\
+= \infty & \mbox{if } \lim_{n\to\infty}a_n/a_{n-1}> 1
+\end{cases}
+$$
+
+For $a_n=\displaystyle{\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}}$,
+$a_n/a_{n-1}=\lambda_{n-1}/\mu_n$. By the ratio test, if
+$$\lim_{n\to\infty}\frac{\lambda_{n-1}}{\mu_n}<1,$$
+then $\sum_{n=1}^{\infty}a_n=\sum_{n=1}^{\infty}\frac{\lambda_{0}\lambda_{1}\cdots\lambda_{n-1}}{\mu_{1}\mu_{2}\cdots\mu_{n}}<\infty$, the limiting distribution exists.
+
+\textbf{Example 6.4 Linear Growth Model with Immigration}
+$$\mu_n=n\mu,\quad \lambda_n=n\lambda+\theta$$
+Using the Ratio Test,
+$$
+\lim_{n\to\infty}\frac{\lambda_{n-1}}{\mu_n}=\lim_{n\to\infty}\frac{(n-1)\lambda+\theta}{n\mu}=\frac{\lambda}{\mu}
+$$
+So the linear growth model has a limiting distribution if $\lambda<\mu.$
+\end{frame}
+
+% ----------------------------------------------------------------------
+\begin{frame}{Example 5.5 (M/M/1 Queueing w/ Finite Capacity)}
+\begin{itemize}
+\item single-server service station. Service times are i.i.d. $\sim Exp(\mu)$
+\item Poisson arrival of customers with rate $\lambda$\pause
+\item Upon arrival, a customer would
+\begin{itemize}\normalsize
+\item go into service if the server is free (queue length $=0$)
+\item join the queue if 1 to $N-1$ customers in the station, or
+\item \alert{walk away} if $N$ or more customers in the station
+\end{itemize}\pause
+\end{itemize}
+{\bf Q}: What fraction of potential customers are lost?\par\pause\medskip
+
+Let $X(t)$ be the number of customers in the station at time $t$. \smallskip
+
+$\{X(t), ~t\ge 0\}$ is a birth-death process with the birth and death rates below
+$$
+\mu_n=
+\begin{cases}
+0   & \text{if }n = 0\\
+\mu & \text{if }n\ge 1
+\end{cases}\quad\text{and}\quad
+\lambda_n =
+\begin{cases}
+\lambda&\text{if $0\le n<N$}\\
+0& \text{if }n\ge N
+\end{cases}
+$$\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 5.5 (M/M/1 Queueing w/ Finite Capacity)}
+Solving $\lambda_n P_n= \mu_{n+1}P_{n+1}$ for the limiting distribution
+\begin{align*}
+P_1&=(\lambda/\mu)P_0\\
+P_2&=(\lambda/\mu)P_1=(\lambda/\mu)^2P_0\\
+&\vdots\\
+P_i&=(\lambda/\mu)^iP_0, & i=1,2,\ldots,N
+\end{align*}
+Plugging $P_i=(\lambda/\mu)^iP_0$ into $\sum_{i=0}^N P_i=1$, one can solve for $P_0$ and get
+$$
+P_i=\frac{1-\lambda/\mu}{1-(\lambda/\mu)^{N+1}}(\lambda/\mu)^{i}
+$$
+Answer: The fraction of customers lost is $P_N=\frac{1-\lambda/\mu}{1-(\lambda/\mu)^{N+1}}(\lambda/\mu)^{N}$
+\end{frame}
+% ----------------------------------------------------------------------
+
+% ----------------------------------------------------------------------
+\begin{frame}{Duration Times for Birth and Death Processes}
+Let
+$$T_i=\mbox{time to move from state }i\mbox{ to state }i+1,\quad i=0,1,\ldots.$$
+%Then $T_i$, $i=0,1,\ldots$ are independent random variables.
+Suppose at some moment $X(t)=i$.
+Let
+\begin{align*}
+B_i&=\text{time until the next birth}\sim Exp(\lambda_i)\\
+D_i&=\text{time until the next death}\sim Exp(\mu_i)
+\end{align*}
+Then
+\begin{align*}
+T_i &=
+\begin{cases}
+B_i &\text{if the next step is }i\to i+1,\text{ i.e., }B_i<D_i\\
+D_i+T_{i-1}+T_i^* &\text{if the next step is }i\to i-1,\text{ i.e., }D_i<B_i
+\end{cases}\\
+&=\min(B_i, D_i)+
+\begin{cases}
+0 &\text{if }B_i<D_i\text{, occur w/ prob. }\frac{\lambda_i}{\lambda_i+\mu_i}\\
+T_{i-1}+T_i^* & \text{if }D_i<B_i\text{, occur w/ prob. }\frac{\mu_i}{\lambda_i+\mu_i}
+\end{cases}
+\end{align*}
+Note
+\begin{itemize}
+\item $T_i^*$ has the same distribution as $T_i$
+\item $T_{i-1}$ and $T_i^*$ are indep. of $B_i$ and $D_i$ because it's Markov
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Duration Times for Birth and Death Processes}
+
+Taking expected value of
+$$
+T_i
+=\min(B_i, D_i)+
+\begin{cases}
+0 &\text{if }B_i<D_i\text{, occur w/ prob. }\frac{\lambda_i}{\lambda_i+\mu_i}\\
+T_{i-1}+T_i^* & \text{if }D_i<B_i\text{, occur w/ prob. }\frac{\mu_i}{\lambda_i+\mu_i}
+\end{cases}
+$$
+we get
+\begin{align*}
+\E[T_i]&=\E[\min(B_i, D_i)]+\left(\E[T_{i-1}]+\E[T_i]\right)\frac{\mu_i}{\lambda_i+\mu_i}\\
+&=\frac{1}{\lambda_i+\mu_i}+\frac{\mu_i}{\lambda_i+\mu_i}(\E[T_{i-1}]+\E[T_i])
+\end{align*}
+We obtain the recursive formula
+$$
+\lambda_i\E[T_i]=1+\mu_i\E[T_{i-1}]
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Duration Times for Birth and Death Processes (Cont'd)}
+Since $T_0\sim Exp(\lambda_0)$, $\E[T_0]=1/\lambda_0$.
+
+Using the recursive formula $\lambda_i\E[T_i]=1+\mu_i\E[T_{i-1}]$,
+we have
+\begin{align*}
+\E[T_0]&=\frac{1}{\lambda_0}\\
+\E[T_1]&=\frac{1}{\lambda_1}+\frac{\mu_1}{\lambda_1}\E[T_0]=\frac{1}{\lambda_1}+\frac{\mu_1}{\lambda_1\lambda_0}\\
+\E[T_2]&=\frac{1}{\lambda_2}+\frac{\mu_2}{\lambda_2}\left(\frac{1}{\lambda_1}+\frac{\mu_1}{\lambda_1\lambda_0}\right)
+=\frac{1}{\lambda_2}+\frac{\mu_2}{\lambda_2\lambda_1}+\frac{\mu_2\mu_1}{\lambda_2\lambda_1\lambda_0}\\
+&\vdots\\
+\E[T_i]&=\frac{1}{\lambda_i}+\frac{\mu_i}{\lambda_i}\E[T_{i-1}]
+=\frac{1}{\lambda_i}+\frac{\mu_i}{\lambda_i\lambda_{i-1}}+\cdots+\frac{\mu_i\mu_{i-1}\cdots\mu_2\mu_1}{\lambda_i\lambda_{i-1}\cdots\lambda_2\lambda_1\lambda_0}\\
+&=\frac{1}{\lambda_i}\left(1+\sum_{k=1}^i\prod_{j=1}^k\frac{\mu_{i-j+1}}{\lambda_{i-j}}\right)
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document}
+% ----------------------------------------------------------------------
+\begin{frame}
+\end{frame}
+% ----------------------------------------------------------------------

@@ -1,0 +1,492 @@
+%\documentclass[letterpaper,draft]{beamer}
+\documentclass[letterpaper,handout]{beamer}
+%\documentclass[letterpaper]{beamer}
+
+%---multiple pages on one sheet, ADD for handout--
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[letterpaper, landscape, border shrink=1mm]
+%-------------------------------------------------
+\usepackage{amsmath,amsfonts}
+%\usepackage[misc]{ifsym} % for the dice symbol \Cube{}
+%\usepackage{booktabs}
+%\usepackage{mdwlist}
+%\usepackage{pgf,tikz}
+%\usetheme{Copenhagen}
+%\usetheme{warsaw}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[english]{babel}
+\def\ul{\underline}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+\subject{Talks}
+
+\def\P{\mathbb{P}}
+\def\p{\mathrm P}
+\def\E{\mathbb E}
+\def\Sum{\sum\nolimits}
+\def\X{\mathfrak{X}}
+\def\typo#1{\alert{#1}}
+%-------------Answers------------
+\def\Hide#1#2{\ul{~~~\onslide<#1>{\alert{#2}}~~~}}
+\def\hide#1#2{\ul{~~\onslide<#1>{\alert{#2}}~~}}
+\def\hid#1#2{\onslide<#1>{\alert{#2}}}
+%------Centered Page Number------
+\input{Centerpgn}
+\def\chapnum{4}
+%--------------------------------
+\setbeamertemplate{footline}[centered page number]
+
+\title{STAT253/317 Winter 2013 Lecture \chapnum}
+\date{January 14, 2013}
+\author{Yibi Huang}
+\begin{document}
+% ----------------------------------------------------------------------
+%\begin{frame}\maketitle\bigskip
+%\begin{center}4.4 Limiting Distribution\end{center}
+%\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{STAT253/317 Lecture \chapnum: 4.4 Limiting Distribution I}
+
+\begin{block}{Stationary Distribution}
+Define $\pi^{(n)}_i=\p(X_n=i)$, $i\in\X$ to be the marginal distribution of $X_n$, $n=1,2,\ldots,$
+and let $\pi^{(n)}$ be the row vector
+$$
+\pi^{(n)}=(\pi^{(n)}_0,\,\pi^{(n)}_1,\,\pi^{(n)}_2,\ldots),
+$$
+From Chapman-Kolmogrov Equation, we know that
+$$\pi^{(n)}=\pi^{(n-1)}\P\quad\text{i.e.}\quad\pi^{(n)}_j=\Sum_{i\in\X}\pi^{(n-1)}_iP_{ij}\text{ for all }j\in\X,$$
+
+If $\pi$ is a distribution on $\X$ satisfying
+$$\pi\P=\pi\quad\text{i.e.}\quad\pi_j=\Sum_{i\in\X}\pi_iP_{ij}\text{ for all }j\in\X,$$
+then $\pi^{(0)}=\pi$ implies $\pi^{(n)}=\pi$ for all $n$.\medskip
+
+We say $\pi$ is a \structure{\bf stationary distribution} of the Markov chain.
+\end{block}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 1: 2-state Markov Chain}
+$$
+\X = \{0, 1\},\qquad
+\P=\bordermatrix{%
+ & 0  & 1\cr
+0& 1-\alpha  & \alpha\cr
+1& \beta & 1-\beta\cr
+}$$
+\begin{align*}
+\pi\P=\pi&\Rightarrow
+\begin{cases}
+\pi_0&=(1-\alpha)\pi_0+\beta\pi_1\\
+\pi_1&=   \alpha \pi_0+(1-\beta)\pi_1
+\end{cases}\\
+&\Rightarrow
+\begin{cases}
+\alpha\pi_0&=\beta\pi_1\\
+\beta \pi_1&=\alpha\pi_0
+\end{cases}
+\end{align*}
+Need one more constraint: $\pi_0+\pi_1=1$
+$$
+\Rightarrow \pi=(\pi_0,\pi_1)=\left(\frac{\beta}{\alpha+\beta},\frac{\alpha}{\alpha+\beta}\right)
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example 2: Ehrenfest Diffusion Model with $N$ Balls}
+$$
+P_{ij}=
+\begin{cases}
+\dfrac{i}{N}    & \text{if }j=i-1\\[5pt]
+\dfrac{N-i}{N}  & \text{if }j=i+1\\
+0   & \text{otherwise}
+\end{cases}
+$$
+$$
+\arraycolsep=1pt
+\begin{array}{crrcl}
+\pi_0=&            \pi_1P_{10}=&                     &\frac{1}{N}\pi_1&\Rightarrow\pi_1=N\pi_0={N\choose 1}\pi_0\\[5pt]
+\pi_1=&\pi_0P_{01}+\pi_2P_{21}=&               \pi_0+&\frac{2}{N}\pi_2&\Rightarrow\pi_2=\frac{N(N-1)}{2}\pi_0={N\choose 2}\pi_0\\[5pt]
+\pi_2=&\pi_1P_{12}+\pi_3P_{32}=&\frac{N-1}{N}\pi_1+&\frac{3}{N}\pi_3&\Rightarrow\pi_3=\frac{N(N-1)(N-2)}{6}\pi_0={N\choose 3}\pi_0\\
+\vdots&\vdots
+\end{array}
+$$
+In general, you'll get $\pi_i={N\choose i}\pi_0$.\par
+As $1=\sum_{i=0}^N\pi_i=\pi_0\sum_{i=0}^N{N\choose i}$ and $\sum_{i=0}^N{N\choose i}=2^N,$ we have
+$$
+\pi_i={N\choose i}\left(\frac{1}{2}\right)^{N}\quad\text{for }i=0,1,2,\ldots,N.
+$$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Stationary Distribution May Not Be Unique}
+Consider a Markov chain with transition matrix $\P$ of the form
+$$
+\P=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  *  &  *  &  0  &  0  &  0 \cr
+1 &  *  &  *  &  0  &  0  &  0 \cr
+2 &  0  &  0  &  *  &  *  &  * \cr
+3 &  0  &  0  &  *  &  *  &  * \cr
+4 &  0  &  0  &  *  &  *  &  *
+}
+=
+\begin{pmatrix}
+\P_x & 0\\
+0 & \P_y
+\end{pmatrix}
+$$
+This Markov chain has 2 classes \{0,1\} and \{2, 3, 4\}; both are recurrent.
+Note that this Markov chain can be reduced to two sub-Markov chains, one with state space \{0,1\} and the other \{2, 3, 4\}.
+Their transition matrices are respectively $\P_x$ and $\P_y$.\par\medskip
+
+Say $\pi_x=(\pi_0,\pi_1)$ and $\pi_y=(\pi_2,\pi_3,\pi_4)$ be respectively the stationary distributions of the two sub-Markov chains, i.e.,
+$$
+\pi_x\P_x=\pi_x,\quad \pi_y\P_y=\pi_y
+$$
+Verify that $\pi = (c\pi_0,c\pi_1,(1-c)\pi_2,(1-c)\pi_3,(1-c)\pi_4)$ is a stationary distribution of $\{X_n\}$ for any $c$ between 0 and 1.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Not All Markov Chains Have a Stationary Distribution}
+For one-dimensional symmetric random walk, the transition probabilities are
+$$P_{i,i+1}=P_{i,i-1}=1/2$$
+The stationary distribution $\{\pi_j\}$ would satisfy the equation:
+$$\pi_j=\Sum_{i\in\X}\pi_iP_{ij}=\frac{1}{2}\pi_{j-1}+\frac{1}{2}\pi_{j+1}.$$
+Once $\pi_0$ and $\pi_1$ are determined, all $\pi_j$'s can be determined from the equations as
+$$\pi_j=\pi_0+(\pi_1-\pi_0)j,\quad\text{ for all integer }j.$$
+As $\pi_j\ge 0$ for all integer $j$, $\Rightarrow \pi_1=\pi_0$. Thus
+$$\pi_j=\pi_0 \quad\text{ for all integer }j$$
+Impossible to make $\Sum_{j=-\infty}^{\infty}\pi_j=1.$\bigskip
+
+Conclusion: 1-dim symmetric random walk does not have a stationary distribution.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Limiting Distribution}
+A probability distribution $\pi = [\pi_0, \pi_1, \pi_2, \ldots]$ is called the limiting distribution of a Markov chain $X_n$ if for all $i,j\in\X$,
+\begin{align*}
+\pi_j = \lim_{n\to\infty}P^{(n)}_{ij}
+= \lim_{n \to \infty} \p (X_n = j \mid X_0 = i)
+\end{align*}
+
+Matrix version
+$$\text{i.e.,}\quad\lim_{n\to\infty}\P^{(n)}=
+\begin{pmatrix}
+\pi_0 & \pi_1 & \pi_2 & \pi_3 &\cdots \cr
+\pi_0 & \pi_1 & \pi_2 & \pi_3 &\cdots \cr
+\pi_0 & \pi_1 & \pi_2 & \pi_3 &\cdots \cr
+\vdots&\vdots&\vdots&\vdots&\ddots
+\end{pmatrix}$$
+\end{frame}
+
+
+\begin{frame}{Example: Two-State Markov Chain}
+$$
+\X = \{0, 1\},\qquad
+\P=\bordermatrix{%
+ & 0  & 1\cr
+0& 1-\alpha  & \alpha\cr
+1& \beta & 1-\beta\cr
+}$$
+By induction, one can show that
+\begin{align*}
+\P^{(n)}&=
+\begin{pmatrix}
+\dfrac{\beta }{\alpha+\beta}+\dfrac{\alpha}{\alpha+\beta}(1\!-\!\alpha\!-\!\beta)^n &
+\dfrac{\alpha}{\alpha+\beta}-\dfrac{\alpha}{\alpha+\beta}(1\!-\!\alpha\!-\!\beta)^n\\[8pt]
+\dfrac{\beta }{\alpha+\beta}+\dfrac{\beta }{\alpha+\beta}(1\!-\!\alpha\!-\!\beta)^n &
+\dfrac{\alpha}{\alpha+\beta}-\dfrac{\beta }{\alpha+\beta}(1\!-\!\alpha\!-\!\beta)^n
+\end{pmatrix}\\
+&\to
+\begin{pmatrix}
+\dfrac{\beta }{\alpha+\beta} &
+\dfrac{\alpha}{\alpha+\beta}\\[8pt]
+\dfrac{\beta }{\alpha+\beta} &
+\dfrac{\alpha}{\alpha+\beta}
+\end{pmatrix}\quad\text{as }n\to\infty
+\end{align*}
+The limiting distribution $\pi$ is $(\frac{\beta }{\alpha+\beta},\frac{\alpha}{\alpha+\beta}).$
+\end{frame}
+
+%
+%\begin{frame}{Example 1: 2-state Markov Chain}
+%$$
+%\X = \{0, 1\},\qquad
+%\P=\bordermatrix{%
+% & 0  & 1\cr
+%0& 1-\alpha  & \alpha\cr
+%1& \beta & 1-\beta\cr
+%}$$
+%
+%It can be shown that 
+%$$\lim_{n\to\infty}\P^{(n)}=
+%\begin{pmatrix}
+%\frac{\beta}{\alpha +\beta} & \frac{\alpha}{\alpha +\beta}  \cr
+%\frac{\beta}{\alpha +\beta} & \frac{\alpha}{\alpha +\beta}  \cr
+%\end{pmatrix}$$
+%
+%The limiting distribution coincides with the stationary distribution
+%\end{frame}
+
+% ----------------------------------------------------------------------
+\begin{frame}{Limiting Distribution is a Stationary Distribution}
+The limiting distribution of a Markov chain is a stationary distribution of the Markov chain.\medskip
+
+{\em \textbf{Proof} (not rigorous).} By Chapman Kolmogorov Equation,
+$$P^{(n+1)}_{ij}=\Sum_{k\in\X}P^{(n)}_{ik}P_{kj}$$
+Letting $n\to\infty$, we get
+\begin{align*}
+\pi_j=\lim_{n\to\infty}P^{(n+1)}_{ij}&=\lim_{n\to\infty}\Sum_{k\in\X}P^{(n)}_{ik}P_{kj}\\
+&=^*\Sum_{k\in\X}\lim_{n\to\infty}P^{(n)}_{ik}P_{kj} \quad\text{(needs justification)}\\
+&=\Sum_{k\in\X}\pi_kP_{kj}
+\end{align*}
+Thus the limiting distribution $\pi_j$'s satisfies the equations $\pi_j=\Sum_{k\in\X}\pi_kP_{kj}$ for all $j\in\X$
+and is a stationary distribution.\smallskip
+\hrule\smallskip
+
+{\footnotesize See Karlin \& Taylor (1975), Theorem 1.3 on p.85-86 for a rigorous proof.}
+\end{frame}
+% ----------------------------------------------------------------------
+%\begin{frame}{Limiting Distribution is Unique}
+%If a Markov chain has a limiting distribution $\pi$, then $$\lim_{n\to\infty}\pi^{(n)}_j=\pi_j\text{ for all }j\in\X, \text{ whatever $\pi^{(0)}$ is}$$
+%
+%{\em \textbf{Proof} (not rigorous).} Since
+%$$\pi^{(n)}_j=\Sum_{k\in\X}\pi^{(0)}_kP^{(n)}_{kj}$$
+%Letting $n\to\infty$, we get
+%\begin{align*}
+%\lim_{n\to\infty}\pi^{(n)}_j&=\lim_{n\to\infty}\Sum_{k\in\X}\pi^{(0)}_kP^{(n)}_{kj}\\
+%&=^*\Sum_{k\in\X}\pi^{(0)}_k\lim_{n\to\infty}P^{(n)}_{kj} \quad\text{(needs justification)}\\
+%&=\underbrace{\Sum_{k\in\X}\pi^{(0)}_k}_{=1}\pi_j=\pi_j
+%\end{align*}
+%i.e.,
+%if a limiting distribution exists, it is the unique stationary distribution.
+%\end{frame}
+% ----------------------------------------------------------------------
+
+% ----------------------------------------------------------------------
+\begin{frame}{Not All Markov Chains Have Limiting Distributions}
+
+Consider the simple random walk $X_n$ on $\{0,1,2,3,4\}$ with absorbing boundary at 0 and 4. That is,
+\[
+X_{n+1}
+=\begin{cases}
+X_n+1 &\text{with probability 0.5 if } 0<X_n <4\\
+X_n-1 &\text{with probability 0.5 if } 0<X_n <4\\
+X_n & \text{if $X_n=$ 0 or 4}
+\end{cases}
+\]
+The transition matrix is hence
+{\small
+\[
+\P=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  1  &  0  &  0  &  0  &  0 \cr
+1 & 0.5 &  0  & 0.5 &  0  &  0 \cr
+2 &  0  & 0.5 &  0  & 0.5 &  0 \cr
+3 &  0  &  0  & 0.5 &  0  & 0.5\cr
+4 &  0  &  0  &  0  &  0  &  1
+}
+\]}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Not All Markov Chains Have Limiting Distributions}\linespread{1.1}
+The $n$-step transition matrix of the simple random walk $X_n$ on $\{0,1,2,3,4\}$ with absorbing boundary at 0 and 4
+can by shown by induction using the Chapman-Kolmogorov Equation to be
+{\small
+\begin{align*}
+\P^{(2n-1)}&=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  1  &  0  &  0  &  0  &  0 \cr
+1 & 0.75-0.5^{n+1} &  0  & 0.5^n &  0  & 0.25-0.5^{n+1}\cr
+2 & 0.5-0.5^n & 0.5^n &  0  & 0.5^n & 0.5-0.5^n\cr
+3 & 0.25-0.5^{n+1}  &  0  & 0.5^n &  0  & 0.75-0.5^{n+1}\cr
+4 &  0  &  0  &  0  &  0  &  1
+}\\
+\P^{(2n)}&=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  1  &  0  &  0  &  0  &  0 \cr
+1 & 0.75-0.5^{n+1} & 0.5^{n+1} &  0 & 0.5^{n+1} & 0.25-0.5^{n+1}\cr
+2 & 0.5 -0.5^{n+1} &  0  & 0.5^n & 0 & 0.5-0.5^{n+1}\cr
+3 & 0.25-0.5^{n+1} & 0.5^{n+1} &  0 & 0.5^{n+1} & 0.75-0.5^{n+1}\cr
+4 &  0  &  0  &  0  &  0  &  1
+}
+\end{align*}}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Not All Markov Chains Have Limiting Distributions}
+The limit of the $n$-step transition matrix as $n\to\infty$ is
+$$
+\P^{(n)}\to
+\bordermatrix{%
+  &  0   &  1  &  2  &  3  &  4 \cr
+0 &  1   &  0  &  0  &  0  &  0 \cr
+1 & 0.75 &  0  &  0  &  0  & 0.25\cr
+2 & 0.5  &  0  &  0  &  0  & 0.5\cr
+3 & 0.25 &  0  &  0  &  0  & 0.75\cr
+4 &  0   &  0  &  0  &  0  &  1
+}.
+$$
+Though $\lim_{n\to\infty}P^{(n)}_{ij}$ exists but the limit depends on the initial state $i$,
+this Markov chain has no limiting distribution.\medskip
+
+This Markov chain has two distinct absorbing states 0 and 4.
+Other transient states may be absorbed to either 0 or 4 with
+different probabilities depending how close those states are to 0 or 4.
+\end{frame}
+
+\begin{frame}
+	\vfill
+	When does a Markov chain have limiting distribution?
+	\vfill
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Periodicity}
+A state of a Markov chain is said to have \structure{\bf period $d$} if
+$$P^{(n)}_{ii}=0,\quad\text{whenever $n$ is not a multiple of $d$}$$
+In other words, $d$ is the \structure{\em greatest common divisor} of all the $n$'s such that
+$$
+P^{(n)}_{ii}>0
+$$
+We say a state is \structure{\bf aperiodic} if $d=1$, and \structure{\bf periodic} if $d>1$.\bigskip
+
+
+{\bf Fact}: Periodicity is a class property.\par That is, all states in the same class have the same period.\medskip
+
+For a proof, see Problem 2\&3 on p.77 of Karlin \& Taylor (1975).
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Examples (Periodicity)}
+\begin{itemize}
+\item All states in the Ehrenfest diffusion model are of period $d=2$ since
+it's impossible to move back to the initial state in odd number of steps.
+\item 1-D (2-D) Simple random walk on all integers (grids on a 2-d plane) are of period $d=2$
+%\item Suppose a 2-D random walk can move to the nearest grid point in any direction, horizontally,
+%vertically or diagonally, each with probability 1/8.
+%\begin{center}\tabcolsep=2pt
+%\begin{tabular}{ccccc}
+%$\bullet$ &            & $\bullet$  &            & $\bullet$\\[-1pt]
+%          & $\nwarrow$ & $\uparrow$ & $\nearrow$ &          \\[-1pt]
+%$\bullet$ &$\leftarrow$& $\bullet$  & $\to$      & $\bullet$\\[-1pt]
+%          & $\swarrow$ &$\downarrow$& $\searrow$ &          \\[-1pt]
+%$\bullet$ &            & $\bullet$  &            &$\bullet$
+%\end{tabular}
+%\end{center}
+%
+%What is the period of this Markov chain?
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example (Periodicity)}
+Specify the classes of a Markov chain
+with the following transition matrix, and find the periodicity for each state. \[
+\bordermatrix{%
+  &  1  &  2  &  3  &  4  &  5  &  6  &  7 \cr
+1 &  0  & 0.5 &  0  & 0.5 &  0  &  0  &  0 \cr
+2 &  0  &  0  &  1  &  0  &  0  &  0  &  0 \cr
+3 & 0.5 &  0  &  0  &  0  &  0  & 0.5 &  0 \cr
+4 &  0  &  0  & 0.5 &  0  & 0.5 &  0  &  0 \cr
+5 &  1  &  0  &  0  &  0  &  0  &  0  &  0 \cr
+6 &  0  &  0  &  0  &  0  &  0  & 0.1 & 0.9\cr
+7 &  0  &  0  &  0  &  0  &  0  & 0.7 & 0.3
+}
+\qquad
+\onslide<2->{{\color{red}
+\begin{array}{ccccc}
+5        & \to      & 1        & \to      & 2\\
+\uparrow & \swarrow & \uparrow & \swarrow &  \\
+4        & \to      & 3        & &\\
+         &          & \downarrow &&\\
+7 &\leftrightarrow & 6 &&\\
+\end{array}}
+}
+\]
+\color{red}{Classes: \{1,2,3,4,5\}, \{6,7\}.\\\pause
+Period is $d=1$ for state 6 and 7.\\\pause
+Period is $d=3$ for state 1,2,3,4,5 since $\{1\}\to\{2,4\}\to\{3,5\}\to \{1\}.$
+}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Periodic Markov Chains Have No Limiting Distributions}
+For example, in the Ehrenfest diffusion model with 4 balls,
+it can be shown by induction that the $(2n-1)$-step transition matrix is
+{\footnotesize
+\begin{align*}
+\P^{(2n-1)}&=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  0  & 1/2\!+\!1/2^{2n-1} &  0  & 1/2\!-\!1/2^{2n-1} &  0 \cr
+1 & 1/8\!+\!1/2^{2n+1} &  0  & 3/4 &  0  & 1/8\!-\!1/2^{2n+1}\cr
+2 &  0  & 1/2 &  0  & 1/2 & 0 \cr
+3 & 1/8\!-\!1/2^{2n+1} &  0  & 3/4 &  0  & 1/8\!+\!1/2^{2n+1}\cr
+4 &  0  & 1/2\!-\!1/2^{2n-1} &  0  & 1/2\!+\!1/2^{2n-1} &  0
+}\\
+&\to
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 &  0  & 1/2 &  0  & 1/2 &  0 \cr
+1 & 1/8 &  0  & 3/4 &  0  & 1/8\cr
+2 &  0  & 1/2 &  0  & 1/2 & 0 \cr
+3 & 1/8 &  0  & 3/4 &  0  & 1/8\cr
+4 &  0  & 1/2 &  0  & 1/2 &  0
+}\quad\text{as }n\to\infty.
+\end{align*}
+
+}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Periodic Markov Chains Have No Limiting Distributions}
+and the $2n$-step transition matrix is
+\footnotesize
+\begin{align*}
+\P^{(2n)}&=
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 & 1/8\!+\!1/2^{2n+1} &  0  & 3/4 &  0  & 1/8\!-\!1/2^{2n+1}\cr
+1 &  0  & 1/2\!+\!1/2^{2n+1} &  0  & 1/2\!-\!1/2^{2n+1} &  0 \cr
+2 & 1/8             &  0  & 3/4 &  0  & 1/8\cr
+3 &  0  & 1/2\!-\!1/2^{2n+1} &  0  & 1/2\!+\!1/2^{2n+1} &  0 \cr
+4 & 1/8\!-\!1/2^{2n+1} &  0  & 3/4 &  0  & 1/8\!+\!1/2^{2n+1}
+}\\
+&\to
+\bordermatrix{%
+  &  0  &  1  &  2  &  3  &  4 \cr
+0 & 1/8 &  0  & 3/4 &  0  & 1/8\cr
+1 &  0  & 1/2 &  0  & 1/2 &  0 \cr
+2 & 1/8 &  0  & 3/4 &  0  & 1/8\cr
+3 &  0  & 1/2 &  0  & 1/2 &  0 \cr
+4 & 1/8 &  0  & 3/4 &  0  & 1/8
+}\quad\text{as }n\to\infty.
+\end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Periodic Markov Chains Have No Limiting Distributions}
+
+In general for Ehrenfest diffusion model with $N$ balls, as $n\to\infty,$
+\begin{align*}
+P^{(2n)}_{ij}
+&\to\begin{cases}
+2{N\choose j}(\frac{1}{2})^{N}&\text{if $i+j$ is even}\\
+ 0            &\text{if $i+j$ is odd}\\
+ \end{cases}\\
+P^{(2n+1)}_{ij}
+&\to\begin{cases}
+ 0            &\text{if $i+j$ is even}\\
+2{N\choose j}(\frac{1}{2})^{N}&\text{if $i+j$ is odd}\\
+ \end{cases}
+\end{align*}
+\bigskip
+
+$\lim_{n\to\infty}P^{(n)}_{ij}$ doesn't exist for all $i,j\in\X$
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Summary}
+\begin{itemize}
+\item Stationary distribution may not be unique if the Markov chain is not irreducible
+\item Stationary distribution may not exist
+\item A limiting distribution is always a stationary distribution
+\item If it exists, limiting distribution is unique
+\item Limiting distribution do not exist if the Markov chain is periodic
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\end{document} 
