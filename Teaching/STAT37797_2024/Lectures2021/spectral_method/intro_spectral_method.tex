@@ -1,0 +1,559 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+[Intro to spectral methods]{Introduction to spectral methods}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{2}
+
+\begin{document}
+
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+
+\begin{itemize}
+  \itemsep1em
+  \item A motivating application: community detection
+  \item A general recipe for spectral methods and more applications
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large\bf A motivating application: community detection}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Community detection\,/\,graph clustering}
+
+\bigskip
+
+
+Community structures are common in many social networks
+
+\vspace{-0.5em}
+\begin{center}
+
+\begin{tabular}{ccc}
+ \includegraphics[width=0.35\textwidth]{web-community.png}  &\quad & 
+ \includegraphics[width=0.35\textwidth]{community-social-media.png}
+ \vspace{0.5em}
+\tabularnewline
+{\footnotesize\em figure credit: The Future Buzz} & & {\footnotesize\em figure credit: S.~Papadopoulos} \tabularnewline
+\end{tabular}
+
+\end{center}
+
+\vfill
+
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	{\bf Goal:} ~partition users into several clusters based on their friendships\,/\,similarities
+\end{center}
+\end{varblock}
+}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+	\frametitle{A simple model: stochastic block model (SBM)}
+
+
+\vspace{-1em}
+
+\begin{center}
+	\includegraphics[height=0.3\textwidth]{SBM_2.png}  \\
+	  {\small $x_i^{\star}=1$: $1^{\text{st}}$ community}   \qquad   {\small $x_i^{\star}=-1$: $2^{\text{nd}}$ community}
+\end{center}
+
+\begin{itemize}
+	\itemsep0.5em
+	\item  $n$ nodes $\{1,\ldots,n\}$
+	\item  2 communities
+	\item  $n$ unknown variables:  $x_1^{\star}, \ldots, x_n^{\star} \in \{1,-1\}$ 
+	\begin{itemize}
+		\item encode community memberships
+	\end{itemize}
+
+	
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{A simple model: stochastic block model (SBM)}
+
+\vspace{-1em}
+
+
+\begin{columns}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.25\textwidth}
+\begin{center}
+  \includegraphics[height=0.9\textwidth]{SBM_1.png} \\
+	$\mathcal{G}$
+\end{center}
+\end{column}
+
+\begin{column}{0.05\textwidth}
+\end{column}
+
+
+\begin{column}{0.12\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth,angle=-90]{arrow_up.png} 
+\end{center}
+\end{column}
+
+
+\begin{column}{0.5\textwidth}
+\begin{center}
+  \includegraphics[height=0.45\textwidth]{SBM_2.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.03\textwidth}
+\end{column}
+
+\end{columns}
+
+
+\bigskip
+
+
+\begin{itemize}
+	\itemsep0.5em
+	
+	\item observe a graph $\mathcal{G}$
+		\vspace{-0.8em}
+		\begin{align*}
+			(i,j)\in \mathcal{G} \text{ with prob.~} \begin{cases} p,  & \text{if }i\text{ and }j \text{ are from same community} \\ q, & \text{else} \end{cases}
+		\end{align*}
+		%
+		Here, $p>q$
+	\item {\bf Goal:}  recover community memberships  of all nodes, i.e., $\{x_i^{\star}\}$
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Adjacency matrix}
+
+
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{adjacency_random.png} 
+\end{center}
+
+
+Consider the adjacency matrix $\bm{A}\in \{0,1\}^{n\times n}$ of $\mathcal{G}$: 
+%
+\[
+	A_{i,j} = \begin{cases}  1, \qquad & \text{if } (i,j) \in \mathcal{G} \\ 0, & \text{else} \end{cases}
+\]
+
+\vspace{-0.5em}
+\begin{itemize}
+	\item WLOG, suppose $x_1^{\star}=\cdots=x_{n/2}^{\star}=1$; $x_{n/2+1}^{\star}=\cdots=x_n^{\star}=-1$ 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Adjacency matrix}
+
+
+		
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_random.png} &   & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_mean.png} &  & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_noise.png}\tabularnewline
+	$\bm{A}$ & = & $\underset{\alertb{\text{rank 2}}}{\underbrace{\mathbb{E}[\bm{A}]}}$ & + & $\bm{A}-\mathbb{E}\left[\bm{A}\right]$\tabularnewline
+\end{tabular}
+\end{center}
+
+
+{\small $$\mathbb{E}[\bm{A}]=\left[\begin{array}{cc}
+p\bm{1}\bm{1}^{\top} & q\bm{1}\bm{1}^{\top}\\
+q\bm{1}\bm{1}^{\top} & p\bm{1}\bm{1}^{\top}
+\end{array}\right]=\underset{\alertb{\text{uninformative bias}}}{\underbrace{\frac{p+q}{2}\bm{1}\bm{1}^{\top}}} \hspace{-0.3em} +\frac{p-q}{2} \hspace{-0.5em}\underset{\alertb{=\bm{x}^{\star}=[x_i]_{1\leq i\leq n}}}{\underbrace{\left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]}} \hspace{-1em} \left[\bm{1}^{\top},-\bm{1}^{\top}\right]$$ }
+
+		
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Spectral clustering}
+
+		
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_random.png} &   & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_mean.png} &  & \includegraphics[width=0.23\textwidth,height=0.23\textwidth]{adjacency_noise.png}\tabularnewline
+	$\bm{A}$ & = & $\underset{\alertb{\text{rank 2}}}{\underbrace{\mathbb{E}[\bm{A}]}}$ & + & $\bm{A}-\mathbb{E}\left[\bm{A}\right]$\tabularnewline
+\end{tabular}
+\end{center}
+
+\vspace{-0.5em}
+\begin{itemize}
+	\item[{\color{black}1.}] computing the leading eigenvector $\bm{u}=[u_i]_{1\leq i\leq n}$ of $\bm{A} - \frac{p+q}{2}\bm{1}\bm{1}^{\top}$
+	\item[{\color{black}2.}] rounding:  output
+		${x}_{i}=\begin{cases}
+			1, & \text{if }u_{i}>0\\
+			-1, & \text{if }u_{i}<0
+\end{cases}$
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Rationale behind spectral clustering}
+
+\bigskip
+
+Recovery is reliable if $\underset{\alertb{\text{perturbation}}}{\underbrace{ \bm{A}-\mathbb{E}[\bm{A}] }}$ is sufficiently small
+
+\begin{itemize}
+	\item if $\bm{A}-\mathbb{E}[\bm{A}]=\bm{0}$, then
+\[
+\bm{u} ~\propto~ \pm \left[\begin{array}{c}
+\bm{1}\\
+-\bm{1}
+\end{array}\right]  \quad \Longrightarrow \quad \text{perfect clustering}
+\]
+\end{itemize}
+
+
+%{
+%\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+%
+%\begin{varblock}[\textwidth]{}
+%\begin{center}
+%	{\bf Key:} stability of eigenvector against perturbation $\bm{A}-\mathbb{E}[\bm{A}]$? 
+%\end{center}
+%\end{varblock}
+%}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{A general recipe for spectral methods}
+	
+	Three key steps: 
+	\vspace{1em}
+	\begin{itemize}
+		\item identify a key matrix $\bm{M}^{\star}$, whose eigenvectors disclose crucial information 
+		\item construct a surrogate matrix $\bm{M}$ of $\bm{M}^{\star}$ using data 
+		\item compute corresponding eigenvectors of~$\bm{M}$
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Low-rank matrix completion}
+
+
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\[
+ \begin{bmatrix}
+   {\color{blue} \checkmark} & {\color{red} ?} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark}  & {\color{red} ?} &{\color{red} ?}  & {\color{blue} \checkmark} \\
+   {\color{blue} \checkmark}  &  {\color{red} ?} & {\color{red} ?} & {\color{red} ?}  & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{blue} \checkmark} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?}  &{\color{red} ?} & {\color{blue} \checkmark} &
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?}
+\end{bmatrix}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}  
+\begin{center}
+\includegraphics[width=0.9\textwidth]{NetflixMahdi} \\
+\hfill {\footnotesize\em figure credit: Cand\`es ~~}
+\end{center}
+\end{column}
+
+\end{columns}
+
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item consider a low-rank matrix $\bm{M}^{\star} = \bm{U}^{\star} \bm{\Sigma}^{\star} \bm{V}^{\star\top}$
+	\item each entry $M_{i,j}^{\star}$   is observed independently with prob.~$p$
+	\item {\bf intermediate goal:} estimate $\bm{U}^{\star}, \bm{V}^{\star}$
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Spectral method for matrix completion}
+
+\begin{itemize}
+	
+	\item[{\color{black}1.}] identify the key matrix $\bm{M}^{\star}$
+	\item[{\color{black}2.}] construct surrogate matrix ${\bm{M}}\in \mathbb{R}^{n\times n}$ as
+	%
+	\[
+		{M}_{i,j} = \begin{cases} \frac{1}{p} M_{i,j}^{\star}, \quad & \text{if }M_{i,j}^{\star}\text{ is observed} \\ 
+					0,  & \text{else}	\end{cases} 
+	\]
+	%
+	\begin{itemize}
+		\item {\bf rationale for rescaling:} ensures $\mathbb{E}[{\bm{M}}] = \bm{M}^{\star}$
+	\end{itemize}
+
+	\bigskip
+
+\item[{\color{black}3.}] compute the rank-$r$ SVD ${\bm{U}}{\bm{\Sigma}}{\bm{V}}^{\top}$ of ${\bm{M}}$, and return $({\bm{U}}, {\bm{\Sigma}}, {\bm{V}})$
+
+	
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Ranking from pairwise comparisons}
+
+
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{pairwise-comparison-tennis.png} \\
+		 pairwise comparisons for ranking tennis players  \\
+		\hfill {\footnotesize figure credit: Boz\'{o}ki, Csat\'{o}, Temesi}
+	\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Bradley-Terry-Luce (logistic) model}
+
+
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{preference-score-w.pdf} 
+	\end{center}
+
+	\vspace{-1.2em}
+
+	\begin{itemize}
+		\itemsep0.5em
+		\item $n$ items to be ranked
+
+		\item assign  a latent score $\{w_i^{\star}\}_{1\leq i\leq n}$ to each item, so that 
+			$$\text{item }i\succ\text{item }j \quad \text{if} \quad w_i^{\star} >w_j^{\star}$$
+
+		\item each pair of items $(i,j)$ is compared independently
+		\uncover<1>{
+		%
+		\begin{equation*}
+			\mathbb{P}\left\{ \text{item }j\text{ beats item }i\right\} =\frac{w_{j}^{\star}}{w_{i}^{\star}+w_{j}^{\star}}
+		\end{equation*}
+		%
+		}
+
+		\uncover<2>{
+		\vspace{-4.5em}
+		%
+		\begin{equation*}
+			y_{i,j} ~ \overset{\text{ind.}}{=} ~ \begin{cases}
+			1,\quad & \text{with prob. }\frac{w_{j}^{\star}}{w_{i}^{\star}+w_{j}^{\star}} \\
+			0, & \text{else}
+			\end{cases}
+		\end{equation*}
+		%
+		\item {\bf intermediate goal:} estimate score vector $\bm{w}^{\star}$ (up to scaling)
+		}
+			\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+	\frametitle{Spectral ranking}
+
+
+
+	\begin{itemize}
+		\item[{\color{black}1.}] identify key matrix  ${\bm{P}}^{\star}$---\alert{probability transition matrix}
+		\[
+			{P}^{\star}_{i,j}=\begin{cases}
+			\frac{1}{n}\cdot\frac{w_j^{\star}}{w_i^{\star}+w_j^{\star}}, & \text{if }i\neq j\\
+			1-\sum\nolimits _{l:l\neq i} {P}^{\star}_{i,l},\qquad & \text{if }i=j
+			\end{cases}
+		\]
+		Rationale:
+		\begin{itemize}
+		\item  $\bm{P}^{\star}$ obeys
+		\[
+			w_i^{\star} P_{i,j}^{\star} = w_j^{\star} P_{j,i}^{\star} \qquad \alertb{\text{(detailed balance)}}
+		\]
+		\item Thus, the stationary distribution $\bm{\pi}^{\star}$ of $\bm{P}^{\star}$ obeys
+		\[
+			\bm{\pi}^{\star}  ~=~ \frac{1}{\sum_{l}w_l^{\star}} \bm{w}^{\star} \qquad \alertb{(\text{reveals true scores})}
+		\]
+
+
+	\end{itemize}
+
+	\end{itemize}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Spectral ranking}
+	\begin{itemize}
+		
+		\item[{\color{black}2.}] construct a surrogate matrix ${\bm{P}}$ obeying
+		%
+		\[
+			{P}_{i,j}=\begin{cases}
+			\frac{1}{n}y_{i,j}, & \text{if }i\neq j\\
+			1-\sum\nolimits _{l:l\neq i} {P}_{i,l},\qquad & \text{if }i=j
+			\end{cases}
+		\]
+		%
+		\bigskip
+
+		\item[{\color{black}3.}] return leading left eigenvector ${\bm{\pi}}$ of ${\bm{P}}$ as score estimate
+	
+	\end{itemize}
+
+
+	\vfill
+
+	\hfill --- closely related to PageRank
+
+\pause
+\vfill	
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+	{\bf Key:} stability of eigenspace against perturbation $\bm{M}-\bm{M}^{\star}$? 
+\end{center}
+\end{varblock}
+}
+\end{frame}
+
+
+
+\end{document}
+

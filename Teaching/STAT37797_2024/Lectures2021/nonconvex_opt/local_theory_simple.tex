@@ -1,0 +1,1138 @@
+\pdfminorversion=4
+\documentclass[compress,
+mathserif,wide,%red,
+%handout
+]{beamer}
+
+\newcommand{\indicator}{\ensuremath{\mathbbm{1}}}
+
+\input{../StyleFiles/lec_style}
+
+\graphicspath{{../../../Figures/}}
+
+
+\title % (optional, use only with long paper titles)
+{Generic analysis of local convergence}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+
+  \hfill {\em \courseTitle}
+
+  \begin{center}
+    \vspace{2.5em}
+    \usebeamerfont{title} {\Large\bf\inserttitle} \par
+  
+    \vspace{1.5em}
+    \includegraphics[width=2cm]{\LectureFigs/UC_logo.png} 
+  
+    \vspace{1em}
+    {\large Cong Ma \par }
+
+    \vspace{0.2em}
+    { \large \quad University of Chicago, Autumn 2021 }
+  \end{center}
+
+  \vfill
+}
+
+\setcounter{subsection}{8}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Outline}
+	\begin{itemize}
+		\item Low-rank matrix sensing
+		\item Phase retrieval
+		\item Low-rank matrix completion
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large \bf Low-rank matrix sensing}
+\end{center}
+\vfill
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Low-rank matrix sensing}
+	\begin{itemize}
+		\item Groundtruth: rank-$r$ matrix $\bm{M}^\star \in \mathbb{R}^{n_1 \times n_2}$
+		\item Observations:
+			\begin{align*}
+				 y_{i} = \langle \bm{A}_i, \bm{M}^\star \rangle, \qquad \text{for } 1 \leq i \leq m
+			\end{align*}
+		\item Goal: recover $\bm{M}^\star$ based on linear measurements $\{ \bm{A}_i, y_i\}_{ 1 \leq i \leq m}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How many measurements are needed}
+	\begin{itemize}
+		\item $m \geq n_1 n_2$ ``generic'' measurements suffice given theory of solving linear equations
+		\item But $\bm{M}^{\star}$ only has $O((n_1 + n_2)r)$ degrees of freedom. Ideally, one hope for using only $O((n_1 + n_2)r)$ measurements
+	\end{itemize}
+
+\vfill
+	{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\centering
+Recovery is possible if $\{A_i\}$'s satisfy restricted isometry property
+\end{varblock}
+}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Restricted isometry property (RIP)}
+
+Define linear operator $\mathcal{A}: \mathbb{R}^{n_1 \times n_2 } \mapsto \mathbb{R}^{m}$ t obe
+\[
+\mathcal{A} (\bm{M}) = [ m^{-1/2} \langle \bm{A}_i, \bm{M} \rangle ]_{1 \leq i \leq m}
+\]
+
+\vspace{-0.5em}
+	\begin{definition}
+		The operator $\mathcal{A}$ is said to satisfy $r$-RIP with RIP constant $\delta_{r} < 1$ if 
+		\[
+		(1 - \delta_{r}) \| \bm{M} \|_{\mathsf{F}}^{2} \leq \|\mathcal{A} (\bm{M}) \|_{2}^{2} \leq (1 + \delta_{r}) \| \bm{M} \|_{\mathsf{F}}^{2}
+		\]
+		holds simultaneously for all $\bm{M}$ of rank at most $r$.
+	\end{definition}
+
+	\begin{itemize}
+			\item Many random designs satisfy RIP with high probability
+			\item For instance, when $\bm{A}_{i}$ is composed of i.i.d.~$\mathcal{N}(0,1)$ entries, $\mathcal{A}$ obeys $r$-RIP with constant $\delta_{r}$ as soon as $m \gtrsim (n_1 + n_2) r / \delta_{r}^{2}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{An optimization-based method}
+	Consider the simple case when $\bm{M}^\star$ is psd and rank 1, i.e.,
+	\[
+		\bm{M}^{\star} = \bm{x}^{\star} \bm{x}^{\star \top}
+	\]
+
+	\vfill
+	Then least-squares estimation yields
+	\[
+		\underset{\bm{x} \in \mathbb{R}^{n}}{\text{minimize}}\qquad f(\bm{x}) = \frac{1}{4m} \sum_{i=1}^{m} \left( \langle \bm{A}_{i}, \bm{x} \bm{x}^{\top} \rangle - y_i \right)^{2}
+	\]
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gradient descent}
+	Starting from $\bm{x}^0$, one proceeds by
+	\begin{align*}
+		\bm{x}^{t+1} &= \bm{x}^t - \eta \nabla f ( \bm{x}^t ) \\
+		&= \bm{x}^t - \frac{\eta}{m} \sum_{i=1}^{m} \left( \langle \bm{A}_{i}, \bm{x}^t \bm{x}^{t\top} \rangle - y_i \right) \bm{A}_{i} \bm{x}^t
+	\end{align*}
+
+	Here we made simplifying assumption that $A_{i}$ is symmetric
+
+	\vfill
+	\begin{itemize}
+			\item Under random design, when $m \to \infty$, this mirrors PCA problem with loss $\frac{1}{4} \| \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \|_{\mathrm{F}}^{2}$; GD works locally
+			\item How about finite-sample case? \\
+			{\hfill \em \footnotesize --- RIP helps}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local convergence of gradient descent}
+	
+	\begin{theorem}\label{thm:sensing-rank-1}
+		Suppose that $\mathcal{A}$ obeys 4-RIP with constant $\delta_{4} \leq 1 /44$. If $\| \bm{x}^0 - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12$, then GD with $\eta = 1 / (3 \|\bm{x}^\star\|_{2}^{2})$ obeys
+		\begin{align*}
+			\| \bm{x}^t - \bm{x}^\star \|_2 \leq (\tfrac{11}{12})^t \| \bm{x}^0 - \bm{x}^\star \|_2, \qquad \text{for }t=0,1,2,\ldots
+		\end{align*}
+	\end{theorem}
+
+	\vfill
+	\begin{itemize}
+		\item local linear convergence within basin of attraction $\{\bm{x} \mid \| \bm{x} - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12\}$
+		\item how do we initialize GD? spectral method
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1}}
+	In view of theory of gradient descent for locally strongly convex and smooth functions, it suffices to prove that 
+	\[
+		0.25 \|\bm{x}^\star\|_{2}^{2} \bm{I}_{n} \preceq \nabla^2 f (\bm{x}) \preceq 3 \|\bm{x}^\star\|_{2}^{2} \bm{I}_{n}
+	\]
+	holds for all 
+	\[
+	\{\bm{x} \mid \| \bm{x} - \bm{x}^\star \|_{2} \leq \|\bm{x}^\star\|_{2} / 12\}
+	\]
+
+	To analyze spectral properties of $\nabla^2 f (\bm{x})$, we focus on quadratic forms
+	\[
+	\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} 
+	\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+	Simple calculations show
+	\begin{align*}
+		\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} = \frac{1}{m} \sum_{i=1}^{m} \langle \bm{A}_{i}, \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \rangle (\bm{z}^\top  \bm{A}_{i} \bm{z} ) + 2 (\bm{z}^\top  \bm{A}_{i} \bm{x} )^2,
+	\end{align*}
+	which admits a more ``compact'' expression
+	\begin{align*}
+		\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z} &= \langle \mathcal{A} (\bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}), \mathcal{A} (\bm{z} \bm{z}^\top ) \rangle \\
+		&\quad + \frac{1}{2} \langle \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}), \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}) \rangle 
+	\end{align*}
+	
+	\vfill
+	{\em \hfill --- requires analyzing $\langle \mathcal{A}(\bm{X}), \mathcal{A}(\bm{Y}) \rangle$}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RIP preserves inner product}
+	
+	A consequence of RIP 
+	
+	\vfill 
+	\begin{lemma}\label{lemma:RIP-inner-product}
+	Suppose that $\mathcal{A}$ satisfies 2$r$-RIP with constant $\delta_{2r} < 1$, then 
+	\[
+		\left| \langle \mathcal{A}(\bm{X}), \mathcal{A}(\bm{Y}) \rangle - \langle \bm{X}, \bm{Y} \rangle \right| \leq \delta_{2r} \| \bm{X} \|_{\mathrm{F}} \| \bm{Y} \|_{\mathrm{F}}
+	\]
+	holds for any $\bm{X}, \bm{Y}$ of rank no more than $r$
+	\end{lemma}
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+	
+	Apply Lemma~\ref{lemma:RIP-inner-product} to obtain
+	\begin{align*}
+		& \left|  \langle \mathcal{A} (\bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}), \mathcal{A} (\bm{z} \bm{z}^\top ) \rangle - \langle \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}, \bm{z} \bm{z}^\top  \rangle \right| \\
+		&\quad \leq \delta_{4} \| \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top} \|_{\mathrm{F}} \| \bm{z} \bm{z}^\top \|_{\mathrm{F}}  \leq 3 \delta_{4} \| \bm{x}^{\star} \|_{2}^{2} \| \bm{z} \|_{2}^{2}, 
+	\end{align*}
+	while last relation uses $\|\bm{x} - \bm{x}^\star \|_{2} \leq \| \bm{x}^\star \|_{2}$. \\
+	
+	\vfill
+	Similarly, one has
+	\begin{align*}
+		& \left|  \langle \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}), \mathcal{A} (\bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top}) \rangle -  \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^{2} \right| \\
+		&\quad \leq \delta_{4} \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^2 \leq 4 \delta_{4} \| \bm{x} \|_{2}^{2} \| \bm{z} \|_{2}^{2} \leq 16 \delta_{4} \| \bm{x}^\star \|_{2}^{2} \| \bm{z} \|_{2}^{2}
+	\end{align*}		
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Theorem~\ref{thm:sensing-rank-1} (cont.)}
+		Define
+	\begin{align*}
+		g(\bm{x}, \bm{z}) \coloneqq \langle \bm{x} \bm{x}^\top  - \bm{x}^{\star} \bm{x}^{\star \top}, \bm{z} \bm{z}^\top  \rangle + \frac{1}{2} \| \bm{z} \bm{x}^\top  + \bm{x} \bm{z}^{\top} \|_{\mathrm{F}}^{2}
+		\end{align*}
+		
+		\vfill
+		Key conclusion so far: when $\|\bm{x} - \bm{x}^\star \|_{2} \leq \| \bm{x}^\star \|_{2}$, $\bm{z}^\top  \nabla^2 f (\bm{x}) \bm{z}$ is close to $g(\bm{x}, \bm{z})$ 
+		
+		\vfill
+		It boils down to upper and lower bounding $g(\bm{x}, \bm{z})$---a much easier task
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:RIP-inner-product}}
+	Without loss of generality, assume that $\| \bm{X} \|_{\mathrm{F}} = \| \bm{Y} \|_{\mathrm{F}} = 1$ \\
+	
+	Since $\bm{X} + \bm{Y}$ and $\bm{X} - \bm{Y}$ have rank at most $2r$, we can leverage $2r$-RIP to obtain
+	\begin{align*}
+	(1 - \delta_{2r}) \| \bm{X} + \bm{Y} \|_{\mathsf{F}}^{2} \stackrel{(1)}{\leq} \|\mathcal{A} (\bm{X} + \bm{Y}) \|_{2}^{2} \stackrel{(2)}{\leq} (1 + \delta_{2r}) \| \bm{X} + \bm{Y} \|_{\mathsf{F}}^{2} \\
+	(1 - \delta_{2r}) \| \bm{X} - \bm{Y} \|_{\mathsf{F}}^{2} \stackrel{(3)}{\leq} \|\mathcal{A} (\bm{X} - \bm{Y}) \|_{2}^{2} \stackrel{(4)}{\leq} (1 + \delta_{2r}) \| \bm{X} - \bm{Y} \|_{\mathsf{F}}^{2} 
+	\end{align*}
+	Combine (2) and (3) to see
+	\begin{align*}
+		4  \langle \mathcal{A}(\bm{X}), \mathcal{A}(\bm{Y}) \rangle & = \|\mathcal{A} (\bm{X} + \bm{Y}) \|_{2}^{2} - \|\mathcal{A} (\bm{X} - \bm{Y}) \|_{2}^{2} \\
+		& \leq (1 + \delta_{2r}) \| \bm{X} + \bm{Y} \|_{\mathsf{F}}^{2} - (1 - \delta_{2r}) \| \bm{X} - \bm{Y} \|_{\mathsf{F}}^{2} \\
+		&= 4 \delta_{2r} + 4 \langle \bm{X}, \bm{Y} \rangle
+	\end{align*}
+	
+	Combine (1) and (4) to finish the proof
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectral initialization}
+	Construct a surrogate matrix
+	\[
+	\bm{M} = \frac{1}{m} \sum_{i=1}^{m} y_i \bm{A}_{i}
+	\]
+	
+	Define adjoint operator of $\mathcal{A}$: $\mathcal{A}^*(\cdot) : \mathbb{R}^{m} \to \mathbb{R}^{n_1 \times n_2}$
+	\[
+	\mathcal{A}^*(\bm{v}) = \frac{1}{ \sqrt{m} }\sum_{i=1}^{m} v_i \bm{A}_{i}
+	\]
+	
+	As a result, one has $\bm{M} = \mathcal{A}^*( \mathcal{A} (\bm{M}^\star) )$ \\
+	
+	\vfill
+	\begin{itemize}
+		\item Let $\lambda_{1} \bm{u}_1 \bm{u}_{1}^\top$ be the top eigendecomposition of $\bm{M}$; return $\bm{x}^0 = \sqrt{\lambda_{1}} \bm{u}_1$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Performance guarantee of spectral initialization}
+	\begin{lemma}\label{lemma:spectral-matrix-sensing}
+		Suppose that $\mathcal{A}$ obeys 2-RIP with RIP constant $\delta_{2} \leq 1/4$. Then one has 
+		\[
+		\| \bm{x}^0 - \bm{x}^\star \|_2 \lesssim \delta_{2} \|\bm{x}^\star\|_{2}.
+		\]
+	\end{lemma}
+	
+	\vfill
+	\begin{itemize}
+		\item as long as $\delta_{4}$ is small enough, spectral initialization + GD works for low-rank matrix sensing since $\delta_{2} \leq \delta_{4}$
+		\item under Gaussian design, we only need $O((n_1 + n_2)r)$ linear measurements
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:spectral-matrix-sensing}}
+	By definition, one has
+	\begin{align*}
+		\| \bm{M} - \bm{M}^\star \| &= \| \mathcal{A}^*( \mathcal{A} (\bm{M}^\star) ) - \bm{M}^\star \| \\
+		 &= \sup_{\bm{v}: \|\bm{v}\|_2 = 1} \bm{v}^\top \left( \mathcal{A}^*( \mathcal{A} (\bm{M}^\star) ) - \bm{M}^\star \right) \bm{v} \\
+		 &= \sup_{\bm{v}: \|\bm{v}\|_2 = 1} \langle  \mathcal{A}^*( \mathcal{A} (\bm{M}^\star) ) - \bm{M}^\star, \bm{v} \bm{v}^\top \rangle \\
+		 &\leq \sup_{\bm{v}: \|\bm{v}\|_2 = 1} \delta_{2} \| \bm{M}^\star \|_{\mathsf{F}} \|\bm{v} \bm{v}^\top\|_{\mathsf{F}} \\
+		 &\leq \delta_{2} \| \bm{x}^\star \|_2^2
+	\end{align*}
+	
+	Consequently, by Wely's inequality and Davis-Kahan's theorem, we have
+	\begin{align*}
+		\lambda_1 - \lambda_1^\star & \leq \|\bm{M} - \bm{M}^\star \| \leq \delta_{2} \| \bm{x}^\star \|_2^2 \\
+		\| \bm{u}_1 -  \bm{u}^\star_1 \|_{2} & \lesssim \frac{\|\bm{M} - \bm{M}^\star \|}{ \| \bm{M}^\star \| } \lesssim \delta_{2} 
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:spectral-matrix-sensing}}
+	Note that 
+	\begin{align*}
+		\left \| \sqrt{\lambda_1} \bm{u}_1 - \sqrt{\lambda_1^\star} \bm{u}^\star_1 \right \|_2  &\leq \left \| \left ( \sqrt{\lambda_1} - \sqrt{\lambda_1^\star} \right) \bm{u}_1  \right \|_2 + \left \| \sqrt{\lambda_1^\star} \left(  \bm{u}_1 -  \bm{u}^\star_1 \right) \right \|_2 \\
+		&=  \left( \sqrt{\lambda_1} - \sqrt{\lambda_1^\star}  \right) + \| \bm{x}^\star \|_2 \cdot \| \bm{u}_1 -  \bm{u}^\star_1 \|_{2} \\
+		&= \frac{ \lambda_1 - \lambda_1^\star }{ \sqrt{\lambda_1} + \sqrt{\lambda_1^\star} } + \| \bm{x}^\star \|_2 \cdot \| \bm{u}_1 -  \bm{u}^\star_1 \|_{2} \\
+		&\lesssim \delta_{2} \|\bm{x}^\star\|_2
+	\end{align*}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Sampling operators that do NOT satisfy RIP} 
+
+
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+   \begin{center}
+     Unfortunately, many sampling operators fail to satisfy RIP 
+   \end{center}
+\end{varblock}
+}
+
+\vfill
+
+{\bf Two important examples:}
+\bigskip
+
+\begin{itemize}
+  \itemsep1em
+  \item Phase retrieval / solving random quadratic systems of equations
+  \item Matrix completion
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+
+\vfill
+
+
+\begin{center}
+  {\Large\bf Phase retrieval / solving random quadratic systems of equations}
+\end{center}
+%\vfill
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{\only<1>{Solving linear systems (linear regression)}\only<2>{Solving quadratic systems of equations}}
+
+\only<1>{
+\vspace{-0.5em}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\textwidth]{linear-stat.pdf}
+\end{figure}
+
+Estimate $\bm{\beta}^{\star} \in \mathbb{R}^d$ from $n$ linear samples
+%
+\begin{eqnarray*}
+	y_i = \bm{x}_i^\top\bm{\beta}^{\star} + \varepsilon_i, \qquad i = 1, \ldots, n  
+\end{eqnarray*}
+%
+%\medskip
+\hfill {\small \em --- {assume w.l.o.g.~}$\|\bm{\beta}^{\star}\|_2=1$}
+}
+
+\only<2>{
+\vspace{-0.5em}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\textwidth]{quadratic-stat.pdf}
+\end{figure}
+
+Estimate $\bm{\beta}^{\star} \in \mathbb{R}^d$ from $n$ \alert{quadratic} samples
+%
+\begin{eqnarray*}
+	y_i = \big(\bm{x}_i^\top\bm{\beta}^{\star}\big)^{\text{\alert{2}}}, \qquad i = 1, \ldots, n  
+\end{eqnarray*}
+%
+
+}
+
+%\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Motivation: phase retrieval}
+
+
+
+  \begin{itemize}
+	\item electric field $\bm{\beta}^\star(t_1, t_2)$  $\longrightarrow$ Fourier transform $\mathcal{F}\bm{\beta}^\star(f_1, f_2)$
+  \end{itemize}
+  \vfill
+\begin{center}
+\includegraphics[width=4cm]{microscopy.png} 
+\end{center}
+
+\begin{itemize}
+	\item detectors record \alert{intensities} $\big| \mathcal{F}\bm{\beta}^\star(f_1, f_2) \big|^2 $ of Fourier transform
+  \end{itemize}
+  
+
+%{\small
+%\[
+%\text{intensity: }\big| \mathcal{F}\bm{\beta}^\star(f_1, f_2) \big|^2 = \Big|{ \int}\bm{\beta}^{\star}(t_{1},t_{2}) e^{-i2\pi(f_{1}t_{1}+f_{2}t_{2})}\mathrm{d}t_{1}\mathrm{d}t_{2}\Big|^{2}
+%\]
+%}
+\pause
+
+
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+\begin{varblock}[\textwidth]{}
+\begin{center}
+   {\bf Phase retrieval:}  recover signal $\bm{\beta}^{\star}(t_{1},t_{2})$ from $| \mathcal{F}\bm{\beta}^\star(f_1, f_2) \big|^2$
+\end{center}
+\end{varblock}
+}
+%\alert{a huge field by itself}
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Motivation: learning neural nets with quadratic activations}
+
+	\hfill --- {\footnotesize \em Soltanolkotabi, Javanmard, Lee\,'17,  Li, Ma, Zhang\,'17}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{quadratic_nn-stat.pdf}
+\end{center}
+
+\vspace{-0.5em}
+input features: $\bm{x}$ \quad weights: $\bm{\beta}^{\star}=[\bm{\beta}_1^{\star},\cdots,\bm{\beta}_r^{\star}]$
+
+\vspace{0.3em}
+output: $\quad	y  = \sum_{k=1}^r \sigma(\bm{x}^{\top}\bm{\beta}_k^{\star})  + \varepsilon {\quad \stackrel{\sigma(z)=z^2}{\Longrightarrow} \quad \sum_{k=1}^r (\bx^{\top}\bm{\beta}_k^{\star})^2 + \varepsilon}$
+% = \big\|\ba^{\top}\bx^{\star}\big\|_2^2 }
+
+
+	%\hfill {\em --- reduces to phase retrieval if there is a single neuron}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Rank-one measurements in matrix space} 
+
+Equivalent representation for measurements: 
+
+\[
+y_{i}=\bm{a}_{i}^{\top}\underset{\alertb{:=\bm{M}^\star}}{\underbrace{\bm{x}^\star \bm{x}^{\star \top}}}\bm{a}_{i}
+= \big\langle \underset{\alertb{:=\bm{A}_{i}}}{\underbrace{\bm{a}_{i}\bm{a}_{i}^{\top}}},\bm{M}^\star \big\rangle , 
+\qquad 1 \leq i \leq m
+\]
+
+\vfill
+Using operator notation
+\[
+\mathcal{A}\left(\bm{X}\right)=\left[\begin{array}{c}
+\langle\bm{A}_{1},\bm{X}\rangle\\
+\langle\bm{A}_{2},\bm{X}\rangle\\
+\vdots\\
+\langle\bm{A}_{m},\bm{X}\rangle
+\end{array}\right]=\left[\begin{array}{c}
+\langle\bm{a}_{1}\bm{a}_{1}^{\top},\bm{X}\rangle\\
+\langle\bm{a}_{2}\bm{a}_{2}^{\top},\bm{X}\rangle\\
+\vdots\\
+\langle\bm{a}_{m}\bm{a}_{m}^{\top},\bm{X}\rangle
+\end{array}\right]
+\]
+
+
+\end{frame}
+
+
+
+\begin{frame}[label={slide:PR-example-RIP}]
+\frametitle{Does $\mathcal{A}$ obey RIP?} 
+
+
+	Suppose $\bm{a}_i \overset{\mathrm{ind.}}{\sim} \mathcal{N}( \bm{0}, \bI_n )$
+\medskip
+% and $m \asymp n$, then
+\begin{itemize}
+\item<1> If $\bm{x}$ is independent of $\{\bm{a}_i\}$, then
+\[
+   \big\langle \bm{a}_i \bm{a}_i^{\top} , \bm{x} \bm{x}^{\top}  \big\rangle  =  \big| \bm{a}_i^{\top} \bm{x} \big|^2  \asymp \| \bx \|_2^2 
+   %= \| \bX \|_{\mathrm{F}}
+   ~~ \Rightarrow ~~   
+  \frac{1}{ \sqrt{m}} \left\|  \mathcal{A} \big(\bx \bx^{\top}\big) \right\|_{\mathrm{F}} \asymp \| \bx \bx^{\top} \|_{\mathrm{F}}
+   %\| \bX \|_{\mathrm{F}}
+\]
+\item<1> Consider $\bm{A}_i = \bm{a}_i \bm{a}_i ^{\top}$: with high prob.,
+\begin{align*}
+   \big\langle \bm{a}_i \bm{a}_i^{\top} , \bm{A}_i  \big\rangle  =  \| \bm{a}_i \|_2^4  \approx n  \| \bm{a}_i \ba_i^{\top} \|_{\mathrm{F}}
+   %\begin{cases}  \| \ba_j \|^2 \approx n, \qquad & \text{if } i \neq j  \\ n^2, &\text{else}  \end{cases}
+\end{align*}
+\[   
+   \Longrightarrow \quad   
+  \frac{1}{ \sqrt{m}}  \left\| \mathcal{A} ( \bA_i ) \right\|_{\mathrm{F}} \geq \frac{1}{ \sqrt{m}} |\big\langle \bm{a}_i \bm{a}_i^{\top} , \bm{A}_i  \big\rangle|  
+   \approx \frac{n}{ \sqrt{m}} \| \bm{A}_i \|_{\mathrm{F}}
+\]
+
+{\em \hfill --- fails to obey RIP when $m \approx n$}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Why do we lose RIP?} 
+
+
+\begin{itemize}
+  \itemsep1em 
+  \item Some low-rank matrices $\bm{X}$ (e.g.~$\bm{a}_i\bm{a}_i^{\top}$) might be too aligned with some (rank-1) measurement matrices 
+  \vspace{0.3em}
+  \begin{itemize}
+    \item loss of ``incoherence'' in some measurements
+  \end{itemize}
+%  \bigskip
+%  \item Some measurements $\langle \bm{A}_i,\bm{X} \rangle$ might have too high of a leverage on $\mathcal{A}(\bm{X})$ when measured in \alert{$\|\cdot\|_{\mathrm{F}}$}
+%  \vspace{0.3em}
+%  \begin{itemize}
+%    \item Solution: replace $\|\cdot\|_{\mathrm{F}}$ by other norms!
+%  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{A natural least-squares formulation}
+
+\begin{eqnarray*}
+	\text{given:}\qquad y_k &= &(\vct{a}_k^\top\vct{x}^{\star})^2, \quad  1\leq k \leq m  
+\end{eqnarray*}
+
+\vspace{-2em}
+\begin{align*}
+	\Downarrow
+\end{align*}
+\vspace{-2em}
+%
+%One may attempt recovery by solving
+%
+\begin{align*} 
+	%\label{eq:least-squares-PR}
+	\text{minimize}_{\bm{x}\in \mathbb{R}^n}\quad f(\bm{x})=\frac{1}{4m}\sum_{k=1}^{m}\Big[ \big(\bm{a}_{k}^{\top}\bm{x}\big)^{2}-y_{k} \Big]^{2}
+\end{align*}
+%
+%\bigskip
+%
+%\begin{itemize}
+%	\itemsep1em
+%	\pause
+%	\item {\bf pros:} often exact as long as sample size is sufficiently large
+%	\pause
+%	\item {\bf cons:} $f(\cdot)$ is highly nonconvex \\
+%		\hspace{6em} $\longrightarrow$~ {\em computationally challenging!} 
+%\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Wirtinger flow (Cand\`es, Li, Soltanolkotabi\,'14)}
+
+\[
+\text{minimize}_{\bm{x}}\quad f(\bm{x})=\frac{1}{4m}\sum_{k=1}^{m}\Big[ \big(\bm{a}_{k}^{\top}\bm{x}\big)^{2}-y_{k} \Big]^{2}
+\]
+
+
+\pause
+
+\vspace{-2em}
+
+
+\begin{columns}
+\begin{column}{0.3\textwidth}
+
+\begin{center}
+  \includegraphics[width=1.05\textwidth,angle=-40]{GD2.png}
+\end{center}
+
+\end{column}
+
+
+
+\begin{column}{0.7\textwidth}
+
+\begin{itemize}
+\itemsep1em
+\item {\bf spectral initialization:}  $\bm{x}^{0}~\leftarrow~$ leading eigenvector of certain data matrix
+	%\[
+	%\frac{1}{m}\sum_{i=1}^{m}(\bm{a}_{i}^{\top}\bm{x}^{\star})^{2}\bm{a}_{i}\bm{a}_{i}^{\top}
+	%\]
+\pause
+\item {\bf gradient descent:}  
+\[
+  \vct{x}^{t+1}= \vct{x}^t- \eta \, \nabla f(\vct{x}^t), \qquad t=0,1,\ldots
+\]
+\end{itemize}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Spectral initialization}
+{\em \hfill ---cf. homework 1}
+
+	$\lambda^0, \bm{u}^0 $~$\longleftarrow$~ leading eigenvalue, eigenvector of 
+	\[
+		\bm{M}:=\frac{1}{m}\sum_{k=1}^m y_k \,
+		\bm{a}_k\bm{a}_k^{\top}
+	\]
+	Then set $\bm{x}^0 = \sqrt{\lambda_0} \; \bm{u}^0$
+
+\vfill
+	{\bf Rationale:} under random Gaussian design $\bm{a}_i \overset{\mathrm{ind.}}{\sim} \mathcal{N}(\bm{0},\bm{I})$,
+	\begin{align*}
+		\quad \E[\bm{M}] := \E \left[\frac{1}{m} \sum_{k = 1}^m \bm{y}_k \bm{a}_k \bm{a}_k^{\top} \right] = 
+		\underset{\alert{\text{leading eigenvector: }\pm\bm{x}^{\star}}}{\underbrace{ \|\bm{x}^{\star}\|_2^2\, \bm{I} + 2 \bm{x}^{\star}\bm{x}^{\star\top}  }}
+	\end{align*}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{First theory of WF}
+
+	
+
+ 
+\hfill $\mathsf{dist}(\vct{x}^t, \vct{x}^{\star}) := \min \{ \|\vct{x}^t \pm \vct{x}^{\star} \|_2 \}$
+
+
+\begin{theorem}[Cand\`es, Li, Soltanolkotabi\,'14]
+Under i.i.d.~Gaussian design, WF with spectral initialization achieves
+\[
+	\mathsf{dist}(\vct{x}^t, \vct{x}^{\star}) \lesssim \left( 1 - \frac{\eta}{4} \right)^{t/2} \|\vct{x}^{\star} \|_2, 
+\]
+%
+with high prob., 
+	provided that step size $\only<2>{\alert{\eta \lesssim 1/n}}\only<1,3>{\eta \lesssim 1/n}$ and
+	sample size: $ \only<3>{\alert{m\,\gtrsim\, n\log n}}\only<1,2>{\alert{m\,\gtrsim\, n\log n}} $.
+\end{theorem}
+%
+
+%
+\begin{itemize}
+  \itemsep0.5em
+  \item Iteration complexity:  $O\big(\alert{n} \log\frac{1}{\epsilon}\big)$  
+  \item Sample complexity: $O(n\log n)$
+  \item Derived based on (worst-case) local geometry 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectral initialization for phase retrieval}
+	 Key: control
+		\begin{align*}
+			\left \| \frac{1}{m}\sum_{k=1}^m y_k \,
+		\bm{a}_k\bm{a}_k^{\top} - ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} ) \right\|
+		\end{align*}
+		
+	\begin{lemma}\label{lemma:pr-concentration}
+	Fix any small constant $\delta > 0$. As long as $m \geq c_{\delta} n \log n$ for some sufficiently large constant $c_{\delta}$ (which potentially depends on $\delta$), the following holds with high probability
+	\begin{align*}
+	\left \| \frac{1}{m}\sum_{k=1}^m y_k \,
+		\bm{a}_k\bm{a}_k^{\top} - ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} ) \right\| \leq \delta \| \bm{x}^\star \|_{2}^2
+	\end{align*}
+	\end{lemma}
+	
+	\vfill
+	\begin{itemize}
+		\item Proof: truncation-based matrix Bernstein or $\varepsilon$-net  argument
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectral initialization}
+	Since 
+	\[
+	\left \| \frac{1}{m}\sum_{k=1}^m y_k \,
+		\bm{a}_k\bm{a}_k^{\top} - ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} ) \right\|
+	\]
+	is small, by Weyl's inequality and Davis-Kahan's theorem, we know  
+	\begin{itemize}
+		\item $\lambda^0 - \lambda^\star$ is small
+		\item $\| \bm{u}^0 - \bm{u}^\star \|_2$ is small
+	\end{itemize}
+	
+	\vfill
+	Consequently, $\bm{x}^0 = \sqrt{\lambda^0} \bm{u}^0 $ is close to $\bm{x}^\star = \sqrt{\lambda^\star} \bm{u}^\star$ in the sense that 
+	\begin{align*}
+		\| \bm{x}^0 - \bm{x}^\star \|_{2} \ll \| \bm{x}^\star \|_2
+	\end{align*}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Local geometry for phase retrieval}
+	Now we move on to local convergence of GD, which boils down to characterizing local geometry of $f(\cdot)$
+	\vfill
+	\begin{lemma}\label{lemma:local-PR}
+		Assume that $m \geq c_{0} n \log n$. Then with high probability, 
+		\[
+		0.5 \bm{I}_{n} \preceq \nabla^2 f (\bm{x}) \preceq c_2 n  \bm{I}_{n} 
+		\]
+		holds simultaneously for all $\bm{x}$ obeying $\| \bm{x} - \bm{x}^\star \|_2 \leq c_1 \|\bm{x}^\star\|_{2}$. Here $c_0, c_1, c_2 > 0$ are some universal constants.
+	\end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof of Lemma~\ref{lemma:local-PR}}
+	First, write Hessian as
+	\[
+	\nabla^2 f (\bm{x}) = \frac{1}{m} \sum_{i=1}^{m} ( 3 (\bm{a}_i^\top \bm{x} )^2 - y_i ) \bm{a}_i \bm{a}_i^\top
+	\]
+	
+	When $\bm{x} = \bm{x}^\star$, one has 
+	\begin{align*}
+	\nabla^2 f (\bm{x}^\star) &= \frac{1}{m} \sum_{i=1}^{m} 2 (\bm{a}_i^\top \bm{x}^\star )^2 \bm{a}_i \bm{a}_i^\top \\
+	& \approx 2 ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top}  )
+	\end{align*}
+	
+	Therefore at minimizer $\bm{x}^\star$, $f(\cdot)$ is strongly convex and smooth; how about nearby points $\bm{x}$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local strong convexity}
+	Recall Hessian
+	\begin{align*}
+		\nabla^2 f (\bm{x}) &= \frac{1}{m} \sum_{i=1}^{m} ( 3 (\bm{a}_i^\top \bm{x} )^2 - (\bm{a}_i^\top \bm{x}^\star )^2 ) \bm{a}_i \bm{a}_i^\top \\
+		&= \frac{1}{m} \sum_{i=1}^{m} 3 (\bm{a}_i^\top \bm{x} )^2 \bm{a}_i \bm{a}_i^\top - ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} )  \\
+		&\quad + \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} - \frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x}^\star )^2 \bm{a}_i \bm{a}_i^\top
+	\end{align*}
+	
+	\begin{itemize}
+		\item Lemma~\ref{lemma:pr-concentration} guarantees that if $m \geq c_0 n \log n$, then whp.,
+			\[
+				\left \| \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} - \frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x}^\star )^2 \bm{a}_i \bm{a}_i^\top \right \| \leq 0.001 \| \bm{x}^\star \|_{2}^2
+			\]
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Local strong convexity (cont.)}
+	Now we turn to a uniform lower bound over $\bm{x}$
+	\begin{align*}
+		\frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x} )^2 \bm{a}_i \bm{a}_i^\top
+	\end{align*}
+	
+	Observe that for any constant $C > 0$
+	\begin{align*}
+		\frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x} )^2 \bm{a}_i \bm{a}_i^\top \succeq \frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x} )^2 \indicator\{ | \bm{a}_i^\top \bm{x} | \leq C \} \bm{a}_i \bm{a}_i^\top
+	\end{align*}
+	
+	\begin{itemize}
+		\item Intuition: truncation helps concentration due to better tail behavior
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Local strong convexity (cont.)}
+	Using covering argument, it is seen that with high probability 
+	\begin{align*}
+		\left \| \frac{1}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x} )^2 \indicator\{ | \bm{a}_i^\top \bm{x} | \leq C \} \bm{a}_i \bm{a}_i^\top - 3 (\beta_1 \bm{x} \bm{x}^\top + \beta_2 \|\bm{x}\|_2^2 \bm{I}_{n} ) \right \| \ll \|\bm{x}\|_{2}^2,
+	\end{align*}
+	for all $\bm{x}$, where 
+	\begin{align*}
+		\beta_1 &\coloneqq \mathbb{E} [ \xi^4 \indicator \{ | \xi | \leq C \}] - \mathbb{E} [ \xi^2 \indicator \{ | \xi | \leq C \}], \\
+		\beta_2 &\coloneqq \mathbb{E} [ \xi^2 \indicator \{ | \xi | \leq C \}]
+	\end{align*}
+	
+	Observe that $\beta_1 \stackrel{C \to \infty}{ \to } 2$, and $\beta_2 \stackrel{C \to \infty}{ \to } 1$
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Local smoothness}
+	Decompose Hessian as
+		\begin{align*}
+		\nabla^2 f (\bm{x}) &= \frac{1}{m} \sum_{i=1}^{m} ( 3 (\bm{a}_i^\top \bm{x} )^2 - (\bm{a}_i^\top \bm{x}^\star )^2 ) \bm{a}_i \bm{a}_i^\top \\
+		&= \frac{3}{m} \sum_{i=1}^{m}   [ (\bm{a}_i^\top \bm{x} )^2 - (\bm{a}_i^\top \bm{x}^\star )^2 ] \bm{a}_i \bm{a}_i^\top \coloneqq \bm{\Lambda}_1 \\
+		&\quad +\frac{2}{m} \sum_{i=1}^{m} (\bm{a}_i^\top \bm{x}^\star )^2 \bm{a}_i \bm{a}_i^\top -  2 ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top}  ) \coloneqq \bm{\Lambda}_2 \\
+		&\quad + 2 ( \| \bm{x}^\star \|_{2}^2 \bm{I}_{n} + 2 \bm{x}^\star \bm{x}^{\star \top} )   \coloneqq \bm{\Lambda}_3 \\
+		&\quad 	\end{align*}
+		
+Our goal is to upper bound $\| \bm{\Lambda}_1 + \bm{\Lambda}_2 + \bm{\Lambda}_3 \|$
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Local smoothness (cont.)}
+	
+	\begin{itemize}
+		\item Term $\| \bm{\Lambda}_3 \|$ is easy to control
+		\item By Lemma~\ref{lemma:pr-concentration}, term $\| \bm{\Lambda}_2 \|$ is also small
+		\item We are left with first term, which can be controlled as
+		\begin{align*}
+			\| \Lambda_{1} \| &\leq 3 \left \| \frac{1}{m} \sum_{i=1}^{m}   [ (\bm{a}_i^\top \bm{x} )^2 - (\bm{a}_i^\top \bm{x}^\star )^2 ] \bm{a}_i \bm{a}_i^\top \right \| \\
+			&\leq 3 \left \| \frac{1}{m} \sum_{i=1}^{m}   \left | (\bm{a}_i^\top \bm{x} )^2 - (\bm{a}_i^\top \bm{x}^\star )^2 \right |  \bm{a}_i \bm{a}_i^\top \right \| \\
+			&= 3 \left \| \frac{1}{m} \sum_{i=1}^{m}   \left | \bm{a}_i^\top ( \bm{x} - \bm{x}^\star ) \right |  \left | \bm{a}_i^\top ( \bm{x} + \bm{x}^\star ) \right |  \bm{a}_i \bm{a}_i^\top \right \|
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Control $\Lambda_{1}$}
+	By Cauchy--Schwarz, we have 
+	\[
+		\left | \bm{a}_i^\top ( \bm{x} - \bm{x}^\star ) \right | \leq \| \bm{a}_i \|_{2} \| \bm{x} - \bm{x}^\star \|_{2} \lesssim \sqrt{n} \| \bm{x}^\star \|_{2},
+	\]
+	where we have used the fact that $\| \bm{a}_i \|_2 \lesssim \sqrt{n}$ with high probability, and the assumption that $\|\bm{x} - \bm{x}^\star\|_2 \lesssim \|\bm{x}^\star\|_2$
+	
+	\vfill
+	As a result, we obtain
+	\begin{align*}
+		\| \Lambda_{1} \| \lesssim n \|\bm{x}^\star\|_2^2  \left \| \frac{1}{m} \sum_{i=1}^{m} \bm{a}_{i} \bm{a}_{i}^\top \right \| \asymp n
+	\end{align*}
+	
+	
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{A closer look at smoothness}
+	
+	\begin{itemize}
+		\item We obtain $O(n)$ smoothness parameter for coherent points $\bm{x}$ such that $|\bm{a}_i^\top \bm{x}| \asymp \sqrt{n}$
+		\item Our prediction of local smoothness is tight; take 
+		\[
+		\bm{x} = \bm{x}^\star + \delta \frac{ \bm{a}_i }{ \| \bm{a}_i \|_2 }
+		\]
+		consider $\bm{x}^\top \nabla^2 f( \bm{x} ) \bm{x}$
+	\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}[plain]
+
+\vfill
+\begin{center}
+  {\Large \bf Low-rank matrix completion}
+\end{center}
+\vfill
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Low-rank matrix completion}
+
+
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\[
+ \begin{bmatrix}
+   {\color{blue} \checkmark} & {\color{red} ?} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{red} ?} & {\color{blue} \checkmark}  & {\color{red} ?} &{\color{red} ?}  & {\color{blue} \checkmark} \\
+   {\color{blue} \checkmark}  &  {\color{red} ?} & {\color{red} ?} & {\color{red} ?}  & {\color{red} ?} & {\color{red} ?} \\
+   {\color{red} ?} & {\color{blue} \checkmark} &{\color{red} ?}  & {\color{red} ?} & {\color{blue} \checkmark} & {\color{red} ?} \\
+   {\color{red} ?}  &{\color{red} ?} & {\color{blue} \checkmark} &
+   {\color{blue} \checkmark} & {\color{red} ?} & {\color{red} ?}
+\end{bmatrix}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}  
+\begin{center}
+\includegraphics[width=0.9\textwidth]{NetflixMahdi} \\
+\hfill {\footnotesize\em figure credit: Cand\`es ~~}
+\end{center}
+\end{column}
+
+\end{columns}
+
+
+
+\begin{itemize}
+	\itemsep0.5em
+	\item consider a low-rank matrix $\bm{M}^{\star} = \bm{U}^{\star} \bm{\Sigma}^{\star} \bm{U}^{\star\top}$
+	\item each entry $M_{i,j}^{\star}$   is observed independently with prob.~$p$
+	\item {\bf Goal:} estimate $\bm{M}^{\star}$
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{A natural least-squares loss }
+
+\bigskip
+
+  Represent low-rank matrix by $\bm{X}\bm{X}^{\top}$ with $\underset{\alert{\text{low-rank factor}}}{\underbrace{\bm{X} \in \mathbb{R}^{n \times r}}}$ 
+
+
+\begin{figure}
+  \includegraphics[width=0.35\textwidth]{\LectureFigs/XY_factor-plain.pdf}
+\end{figure}
+
+\vfill
+{
+\setbeamercolor{block body}{bg=babyblueeyes,fg=black}
+
+
+\begin{varblock}[\textwidth]{}
+\[
+  \underset{\bm{X} \in \mathbb{R}^{n \times r}}{\text{minimize}}~~ f(\bm{X})=  \sum_{(i,j)\in\Omega}\Big[ \big( \bm{X}\bm{X}^{\top} \big)_{i,j} - M^\star_{i,j} \Big]^{2} 
+\]  
+\end{varblock}
+}
+
+{\hfill \em ---how does local geometry look like?}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Local geometry of $f(\cdot)$}
+\begin{lemma}Suppose that $n^{2}p\geq C\kappa^{2}\mu rn\log n$ for some sufficiently large
+constant $C>0$. Then with high probability,
+the Hessian $\nabla^{2}f(\bm{X})$ obeys 
+\begin{align*}
+\mathrm{vec}\left(\bm{V}\right)^{\top}\nabla^{2}f\left(\bm{X}\right)\mathrm{vec}\left(\bm{V}\right) & \geq\frac{\sigma_{\min}}{2}\left\Vert \bm{V}\right\Vert _{\mathrm{F}}^{2}\\ 
+\left\Vert \nabla^{2}f\left(\bm{X}\right)\right\Vert &\leq\frac{5}{2}\sigma_{\max}
+\end{align*}
+for all $\bm{X}$, \alert{$\bm{V} = \bm{Y}\bm{H}_{Y}-\bm{X}^\star$} s.t. $\bm{H}_{Y} \coloneqq \arg\min_{\bm{R}\in\mathcal{O}^{r\times r}}\left\Vert \bm{Y}\bm{R}-\bm{X}^\star\right\Vert _{\mathrm{F}}$,
+\alert{\begin{align*}
+ \left\Vert \bm{X}-\bm{X}^{\star}\right\Vert _{2,\infty} & \leq\epsilon\left\Vert \bm{X}^{\star}\right\Vert _{2,\infty},
+\end{align*}}
+where $\epsilon\ll1/\sqrt{\kappa^{3}\mu r\log^{2}n}$.
+
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Restricted local strong convexity}
+	\begin{itemize}
+	\itemsep 0.5em
+		\item Due to rotation ambiguity, $f(\cdot)$ cannot be strongly convex along every direction; it is strongly convex along specific directions $\bm{V} = \bm{Y}\bm{H}_{Y}-\bm{X}^\star$
+		\item Instead of $\ell_{\mathrm{F}}$ ball, $f(X)$ is strongly convex in a local $\ell_{2,\infty}$ ball; $\bm{X}$ needs to be incoherent in the sense that 
+		\[
+			\|\bm{X}\|_{2, \infty} \lesssim \sqrt{ \frac{\mu r }{n} }\| \bm{X}^\star \|
+		\]
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Revisit Incoherence}
+	\begin{definition}
+	Fix an orthonormal matrix $\bm{U}^\star \in \mathbb{R}^{n \times r}$. Define its incoherence to be
+	\begin{align*}
+	\mu(\bm{U}^\star) \coloneqq \frac{n\|\bm{U}^{\star}\|_{2,\infty}^{2}}{r} 
+\end{align*}
+\end{definition}
+
+{\hfill \em ---recover incoherence of eigenvector when $r=1$}
+
+\vfill 
+\begin{itemize}
+	\item For $\bm{M}^{\star} = \bm{U}^{\star}\bm{\Sigma}^{\star}\bm{U}^{\star\top}$, define $\mu(\bm{M}^\star) \coloneqq \mu(\bm{U}^\star)$
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+ \frametitle{Projected gradient descent for matrix completion}
+
+\begin{itemize}
+\itemsep1em
+\item[{\color{black}(1)}]  \textbf{{Projected spectral initialization}}: let $\bm{U}^{0}\bm{\Sigma}^{0}\bm{U}^{0\top}$
+be rank-$r$ eigendecomposition of 
+$$ \frac{1}{p} \mathcal{P}_{\Omega}(\bY).$$ 
+and set $\bm{Z}^{0}=\bm{U}^{0}\left(\bm{\Sigma}^{0}\right)^{1/2}$, and incoherence set 
+\[
+	\mathcal{C} \coloneqq \{ \bm{X} \mid \|\bm{X}\|_{2, \infty} \leq \sqrt{ \frac{2 \mu r }{n} }\| \bm{Z}^0 \| \}
+\]
+
+let $\bm{X}^0 = \mathcal{P}_{\mathcal{C}} (\bm{Z}^{0})$
+
+\medskip
+	\item[{\color{black}(2)}] {\bf Projected gradient descent updates:} 
+%\textbf{for} $t=0,1,2,\ldots,T-1$
+%\textbf{do} 
+$$\bm{X}^{t+1}= \mathcal{P}_{\mathcal{C}} ( \bm{X}^{t}-\eta_{t}\nabla f\big(\bm{X}^{t}\big)),\qquad t=0,1,\cdots $$
+\end{itemize}
+
+
+ 
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Projection operator}
+	Projection onto can be implemented via a row-wise ``clipping operation''
+	
+	\begin{align*}
+		[\mathcal{P}_{\mathcal{C}} ( \bm{X} ) ]_{i,\cdot} = \min \left \{ 1,  \sqrt{ \frac{2 \mu r}{n} } \frac{\|\bm{Z}^0\|}{ \|\bm{X}_{i,\cdot}\|_2} \right \} \cdot \bm{X}_{i, \cdot}
+	\end{align*}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Performance guarantees}
+	\begin{theorem}
+		Suppose that $n^2 p \geq c_0 \mu^2 r^2 \kappa^2 n \log n$ for some large constant $c_0 > 0$. With high probability, one has for all $t \geq 0$
+		\begin{align*}
+			\|\bm{X}^t \bm{Q}^t \|_{\mathrm{F}}^2 \leq \left ( 1 - \frac{c_1}{\mu^2 r^2 \kappa^2}\right)^{t} \sigma_{r} (\bm{M}^\star),
+		\end{align*}
+		provided that step size is chosen as $\eta \asymp \frac{1}{\mu^2 r^2 \kappa \sigma_1(\bm{M}^\star)}$
+	\end{theorem}
+	Here $\bm{Q}^t$ is the optimal alignment matrix between $\bm{X}^t$ and $\bm{X}^\star$
+	\[
+\bm{Q}^{t}:=\argmin_{\bm{R}\in\mathcal{O}^{r\times r}}\big\Vert \bm{X}^{t}\bm{R}-\bm{X}^{\star}\big\Vert _{\mathrm{F}}
+\]
+\end{frame}
+ 
+
+
+
+
+\begin{frame}
+	\frametitle{Regularity condition}
+	Key to prove convergence is the following regularity condition
+	
+	\vfill
+	\begin{lemma}
+		Suppose that $n^2 p \geq \mu^2 r^2 \kappa^2 n \log n$. Then with high probability, for all $\bm{X} \in \mathcal{C}$, and $\|\bm{X} - \bm{X}^\star \bm{H}\|_{\mathrm{F}}^2 \leq \frac{1}{16}\sigma_r(\bm{M}^\star)$ $f$ obeys
+		\begin{align*}
+		\langle \nabla f (\bm{X}), \bm{X} - \bm{X}^\star \bm{H} \rangle &\geq \frac{99}{512}\sigma_{r}(\bm{M}^\star) \| \bm{X} - \bm{X}^\star \bm{H} \|_{\mathrm{F}}^2 \\
+		&\quad + \frac{1}{13196 \mu^2 r^2 \kappa \sigma_{1}( \bm{M}^\star)} \| \nabla f (\bm{X}) \|_{\mathrm{F}}^2
+		\end{align*}
+	\end{lemma}
+	
+	Here $\bm{H}$ is optimal alignment matrix 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Complete the proof}
+\end{frame}
+ 
+%\begin{frame}
+%	\frametitle{XXX}
+%	only present the result using regularity condition, and mention that projection is not needed
+%\end{frame}
+
+\end{document}
+

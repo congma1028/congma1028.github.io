@@ -1,0 +1,407 @@
+\documentclass{article}
+\usepackage{url}
+
+\usepackage{cite,enumitem,amsmath, amsfonts, amssymb}
+\usepackage{epsfig,subfigure}
+\usepackage{comment}
+\usepackage{array}
+
+
+\newcommand\dueDate{Wednesday, Nov.~28, 2018}
+
+\input assignment_utils
+\usepackage{listings}
+
+
+\begin{document}
+\createHomework{3}
+
+
+\begin{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{Lasso with a single parameter}{10}
+
+Consider the single parameter setting $\bm{y}={\beta}\bm{z} + \bm{\eta}$ with $\beta\in \mathbb{R}$. In this case, the Lasso estimator is given by
+\[
+\text{minimize}_{\hat{\beta}\in \mathbb{R}}\quad\frac{1}{2}\|\bm{y}-\hat{\beta}\bm{z}\|_2^{2}+\lambda|\hat{\beta}|.
+\]
+
+Show that
+  $\hat{\beta}=\psi_{\mathsf{st}}\left( \frac{\bm{z}^{\top}\bm{y}}{\| \bm{z} \|_2^2};\frac{\lambda}{\| \bm{z} \|_2^2}\right)$
+ is a closed-form solution to the above program, where  $\psi_{\mathsf{st}}(x;\lambda) = \mathrm{sign}(x) \max\{ |x|-\lambda, 0\}$ is the soft-thresholding operator. 
+	%You should use the optimality condition based on subgradients. 
+
+ 
+
+\end{problem}
+
+\solution{
+Show that
+	\begin{align*}
+	\hat{\beta}=	\psi_{\mathsf{st}}\left( \frac{\bm{z}^{\top}\bm{y}}{\| \bm{z} \|^2};\frac{\lambda}{\| \bm{z} \|^2}\right)=\left\lbrace\begin{array}{ll} \frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2},&\text{if } \bm{z}^\top\bm{y}>\lambda,\\
+	 \frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2},&\text{if } \bm{z}^\top\bm{y}<-\lambda,\\
+	 0,&\text{otherwise.}
+	\end{array}\right.
+	\end{align*}
+by using the fact that given $f(\cdot)$ is convex, $x$ is optimal if and only if $0\in \partial x$, where $\partial x$ is a set of subgradients.
+The gradient of the first term of the objective function is
+	\begin{align*}
+	\frac{d}{d\beta} \frac{1}{2}\|\bm{y}-\beta\bm{z}\|^2=\|\bm{z}\|^2\beta-\bm{y}^\top\bm{z},
+	\end{align*}
+and the subgradient of the second term is
+	\begin{align*}
+	A(\beta)=\left\lbrace\begin{array}{ll} \{\mathsf{sign}(\beta)\},&\text{if }\beta\neq 0,\\ \left[-1,1\right] ,&\text{if }\beta=0.\end{array}\right.	
+	\end{align*}
+Thus, the subgradient set of the objective function is
+	\begin{align*}
+	\partial (\beta)=\left\{ \|\bm{z}\|^2\beta -\bm{y}^\top\bm{z}+\lambda s ~:~s\in A(\beta)\right\},
+	\end{align*}
+and $\hat{beta}$ is optimal if and only if $0\in\partial (\hat{\beta})$.
+
+First, when $|\bm{z}^\top\bm{y}|\leq \lambda$, 
+	\begin{align*}
+	\frac{\bm{z}^\top\bm{y}}{\lambda}\in[-1,1]= A(0),	
+	\end{align*}
+and therefore,
+	\begin{align*}
+	\|\bm{z}\|^2\cdot 0 -\bm{y}^\top\bm{z}+\lambda \cdot \frac{\bm{z}^\top\bm{y}}{\lambda}=0 \in\partial(0).	
+	\end{align*}
+Hence, $\beta=0$ is optimal for this case.
+
+If $\bm{z}^\top\bm{y}>\lambda$, then 
+	\begin{align*}
+	A\left(\frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2}	\right)=&\{ 1\},\\
+	\partial\left(\frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2}	\right)=&\left\{\|\bm{z}\|^2\cdot\frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2}	-\bm{y}^\top\bm{z}+\lambda \cdot 1\right\}=\{0\},
+	\end{align*}
+i.e., $0\in\partial\left(\frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2}	\right)$, and accordingly, $\beta=\frac{\bm{z}^\top\bm{y}-\lambda}{\|\bm{z}\|^2}$ is optimal when $\bm{z}^\top\bm{y}>\lambda$.
+
+Similarly, if $\bm{z}^\top\bm{y}<-\lambda$, then 
+	\begin{align*}
+	A\left(\frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2}	\right)=&\{ -1\},\\
+	\partial\left(\frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2}	\right)=&\left\{\|\bm{z}\|^2\cdot\frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2}	-\bm{y}^\top\bm{z}+\lambda \cdot (-1)\right\}=\{0\},
+	\end{align*}
+i.e., $0\in\partial\left(\frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2}	\right)$, and accordingly, $\beta=\frac{\bm{z}^\top\bm{y}+\lambda}{\|\bm{z}\|^2}$ is optimal when $\bm{z}^\top\bm{y}<-\lambda$.
+}
+
+\end{comment}
+
+
+
+
+\begin{problem}{Gaussian graphical models}{20}
+
+\newpart{0} 
+Consider a $p$-dimensional Gaussian vector $\bm{x} \sim \mathcal{N} (\bm{0}, \bm{\Sigma})$. For any $1\leq u,v \leq p$, show that 
+  \vspace{-0.5em}
+  \[
+    x_{u} \hspace{0.2em} {\perp\!\!\!\perp} \hspace{0.2em}x_{v} \hspace{0.2em} \mid \hspace{0.2em} \bm{x}_{\mathcal{V}\backslash\{u,v\}}
+  \] 
+(namely, $x_{u}$ and $x_{v}$ are conditionally independent given all other variables) if and only if ${\Theta}_{u,v} = 0$. Here, $\bm{\Theta}= \bm{\Sigma}^{-1}$. 
+
+
+\solution{
+
+Let
+	\begin{align*}
+	\bm{a}=\left[\begin{array}{l} x_u \\ x_v\end{array}\right],\quad \bm{b}=\bm{x}_{\mathcal{V}\backslash\{u,v\}}.	
+	\end{align*}
+Then, $\bm{a},\bm{b}$ are jointly Gaussian as
+	\begin{align*}
+	\left[\begin{array}{l} \bm{a}\\\bm{b}\end{array}\right]\sim \mathcal{N}\left(\left[\begin{array}{l}\bm{0}\\\bm{0}\end{array}\right], \left[\begin{array}{ll} \Sigma_{\bm{a}} &\Sigma_{\bm{a}\bm{b}}\\\Sigma_{\bm{a}\bm{b}}^\top &\Sigma_{\bm{b}}\end{array}\right]\right)	,
+	\end{align*}
+where covariance matrices are
+	\begin{align*}
+	\Sigma_{\bm{a}}=\mathbb{E}\left[ \bm{a}\bm{a}^\top\right],\quad \Sigma_{\bm{a}\bm{b}}=\mathbb{E}\left[ \bm{a}\bm{b}^\top\right],\quad \Sigma_{\bm{b}}=\mathbb{E}\left[\bm{b}\bm{b}^\top\right].
+	\end{align*}
+The conditional density of $\bm{a}$ given $\bm{b}$ is
+	\begin{align*}
+	p_{\bm{a}|\bm{b}}(\bm{r}|\bm{s})=\frac{1}{2\pi} (\det \Lambda )^{-\frac{1}{2}} \exp\left(-\frac{1}{2}(\bm{r}-\bm{w})^\top \Lambda^{-1}(\bm{r}-\bm{w})\right)
+	\end{align*}
+where
+	\begin{align*}
+	\bm{w}&=\Sigma_{\bm{a}\bm{b}}\Sigma_{\bm{b}}^{-1}\bm{s},\\
+	\Lambda&=\Sigma_{\bm{a}}-\Sigma_{\bm{a}\bm{b}}\Sigma_{\bm{b}}^{-1} \Sigma_{\bm{a}\bm{b}}^\top	
+	\end{align*}
+In the similar way, we can have the conditional density of $x_u$ and $x_v$ given $\bm{b}$ respectively as
+	\begin{align*}
+	p_{x_u|\bm{b}}(t|\bm{s})&=\frac{1}{\sqrt{2\pi \lambda_u}}\exp\left(-\frac{1}{2\lambda_u}(t-w_u)^2\right),\\
+	p_{x_v|\bm{b}}(t|\bm{s})&=\frac{1}{\sqrt{2\pi \lambda_v}}\exp\left(-\frac{1}{2\lambda_v}(t-w_v)^2\right),
+	\end{align*}
+where
+	\begin{align*}
+	\lambda_u&=\Sigma_{x_u}-\Sigma_{x_u\bm{b}}\Sigma_{\bm{b}}^{-1}\Sigma_{x_u\bm{b}}^\top,\\
+	\lambda_v&=\Sigma_{x_v}-\Sigma_{x_v\bm{b}}\Sigma_{\bm{b}}^{-1}\Sigma_{x_v\bm{b}}^\top,	\\
+	w_u&=\Sigma_{x_u\bm{b}}\Sigma_{\bm{b}}^{-1}\bm{s},\\
+	w_v&=\Sigma_{x_v\bm{b}}\Sigma_{\bm{b}}^{-1}\bm{s}.
+	\end{align*}
+We have
+	\begin{align*}
+	\Lambda_{11}=\lambda_u,~\Lambda_{22}=\lambda_v,~\bm{w}_1=w_u,~\bm{w}_2=w_v.	
+	\end{align*}
+	
+	
+Assume $\Theta_{u,v}=0$.
+Using Schur complement, 
+	\begin{align}
+	\Theta_{u,v}=\left[\Sigma^{-1}\right]_{u,v}=\left[\left(\Sigma_{\bm{a}}-\Sigma_{\bm{a}\bm{b}}\Sigma_{\bm{b}}^{-1}\Sigma_{\bm{a}\bm{b}}^\top\right)^{-1}\right]_{12}=\left[\Lambda^{-1}\right]_{12}=0.\label{eqn:theta}
+	\end{align}
+Therefore, since $\Lambda$ is symmetric,
+	\begin{align}
+	\Lambda=\left[\begin{array}{ll} \lambda_u & 0\\0&\lambda_v	\end{array}\right],\label{eqn:lambda}
+	\end{align}
+and
+	\begin{align*}
+	p_{\bm{a}|\bm{b}}(\bm{r}|\bm{s})=\frac{1}{2\pi}\frac{1}{\sqrt{\lambda_u\lambda_v}}\exp\left(-\frac{1}{2\lambda_u} (r_u-w_u)^2-\frac{1}{2\lambda_v} (r_v-w_v)^2\right)=p_{x_u|\bm{b}}(r_u|\bm{s})	p_{x_v|\bm{b}}(r_v|\bm{s}),
+	\end{align*}
+which implies that $x_u$ and $x_v$ are conditionally independent given $\bm{b}=\bm{x}_{\mathcal{V}\backslash\{u,v\}}$.
+
+Now, prove that $\Theta_{u,v}=0$ if $x_u$ and $x_v$ are conditionally independent given $\bm{b}$.
+For any $\bm{r}=(r_u,r_v)^\top$, we have
+	\begin{align*}
+	 (\det \Lambda )^{-\frac{1}{2}} \exp\left(-\frac{1}{2}(\bm{r}-\bm{w})^\top \Lambda^{-1}(\bm{r}-\bm{w})\right)=\frac{1}{\sqrt{\lambda_u\lambda_v}}\exp\left(-\frac{1}{2\lambda_u} (r_u-w_u)^2-\frac{1}{2\lambda_v} (r_v-w_v)^2\right).
+	\end{align*}
+This implies that
+	\begin{align*}
+	&\det\Lambda=\lambda_u\lambda_v,\\
+	&(\bm{r}-\bm{w})^\top \Lambda^{-1}(\bm{r}-\bm{w})=(\bm{r}-\bm{w})^\top \left[\begin{array}{ll} \frac{1}{\lambda_u}& 0\\ 0& \frac{1}{\lambda_v} \end{array}\right](\bm{r}-\bm{w}),
+	\end{align*}
+which shows that \eqref{eqn:lambda} and \eqref{eqn:theta} are true.
+
+}
+
+\newpart{0} 
+In graphical lasso, the objective function includes a term $\log \det \bm{\Theta}$. Show that $g(\bm{\Theta}):=\log \det (\bm{\Theta})$ ($\bm{\Theta}\succ \bm{0}$) is a concave function.
+ 
+\vspace{0.5em}
+Hint: A function $g(\bm{\Theta})$ is concave if $h(t):=g(\bm{\Theta}+t\bm{V})$ is concave for all $t$ and $\bm{V}$ obeying $\bm{\Theta}+t\bm{V} \succ \bm{0}$.
+ 
+
+\solution{
+We have
+	\begin{align*}
+	h(t)&=\log\det (\Theta+t\bm{V})	\\
+	&=\log\det \left(\Theta^{\frac{1}{2}}\left(\bm{I}+t\Theta^{-\frac{1}{2}}\bm{V}\Theta^{-\frac{1}{2}}\right) \Theta^{\frac{1}{2}}\right)\\
+	&=\log\det\left(\bm{I}+t\Theta^{-\frac{1}{2}}\bm{V}\Theta^{-\frac{1}{2}}\right) +\log\det\Theta\\
+	&=\sum_{i=1}^n \log(1+t\lambda_i)+\log\det\Theta,
+	\end{align*}
+where $\lambda_1,\cdots,\lambda_n$ are the eigenvalues of $\Theta^{-\frac{1}{2}}\bm{V}\Theta^{-\frac{1}{2}}$.
+$\Theta^{\frac{1}{2}}$ and $\Theta^{-\frac{1}{2}}$ are well defined since $\Theta\succ\bm{0}$.
+It is shown that $h''(t)\leq 0$, because
+	\begin{align*}
+	h'(t)=\sum_{i=1}^n \frac{\lambda_i}{1+t\lambda_i},\quad h''(t)=-\sum_{i=1}^n \frac{\lambda_i^2}{(1+t\lambda_i)^2}.	
+	\end{align*}
+Thus, $h(t)$ is concave in $t$.
+}
+
+\end{problem}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{Restricted isometry properties}{30}
+
+Recall that the restricted isometry constant $\delta_s \geq 0$ of 
+$\bm{A}$ is the smallest constant such that 
+\begin{equation}
+  \label{eq:defn-RIP}
+  (1-\delta_{s}) \| \bm{x} \|_2^2 \leq \|\bm{A} \bm{x}  \|_2^2 \leq  (1+\delta_{s}) \| \bm{x} \|_2^2
+\end{equation}
+holds for all $s$-sparse vector $\bm{x} \in \mathbb{R}^p$.
+
+\newpart{0} Show that
+$$|\langle \bm{A} \bm{x}_1, \bm{A} \bm{x}_2 \rangle | \leq \delta_{s_1+s_2} \| \bm{x}_1\|_2\|\bm{x}_2\|_2$$
+for all pairs of $\bm{x}_1$ and $\bm{x}_2$ that are supported on disjoint subsets $S_1, S_2\subset \{1,\cdots,n\}$ with $|S_1|\leq s_1$ and $|S_2|\leq s_2$.
+
+\solution{
+WLOG, assume $\|\bm{x}_1\|=\|\bm{x}_2\|=1$. Since $\bm{x}_1$ and $\bm{x}_2$ have disjoint support, we get
+\begin{align*}
+| \langle \bm{A} \bm{x}_1, \bm{A}\bm{x}_2 \rangle | 
+&  = \frac{1}{4} \left| \| \bm{A}\bm{x}_1 + \bm{A}\bm{x}_2\|_2^2 - \| \bm{A}\bm{x}_1 - \bm{A}\bm{x}_2\|_2^2 \right| \\
+&  = \frac{1}{4}\left|\left\Vert \bm{A}\left[\begin{array}{c}
+\bm{x}_{1}\\
+\bm{x}_{2}
+\end{array}\right]\right\Vert ^{2}-\left\Vert \bm{A}\left[\begin{array}{c}
+\bm{x}_{1}\\
+-\bm{x}_{2}
+\end{array}\right]\right\Vert ^{2}\right| \\
+& \leq  \frac{1}{4} |2(1+\delta_{s_1+s_2}) -2(1- \delta_{s_1+s_2}) | \\
+& \leq \delta_{s_1+s_2}.
+\end{align*}
+
+}
+
+\newpart{0} For any $\bm{u}$ and $\bm{v}$, show that
+\[
+|\langle\bm{u},\text{ }(\bm{I}-\bm{A}^{\top}\bm{A})\bm{v}\rangle|\leq\delta_{s}\|\bm{u}\|_2 \cdot\|\bm{v}\|_2,
+\]
+where $s$ is the cardinality of $\text{support}\left(\bm{u}\right) \cup\text{support}\left(\bm{v}\right)$. 
+
+\solution{
+%Yeohee, you can take a look at Lemma 6.16 of \url{http://human-robot.sysu.edu.cn/ebook/preprint093.pdf}
+Let $\mathcal{S}=\text{support}\left(\bm{u}\right) \cup\text{support}\left(\bm{v}\right)$.
+	\begin{align*}
+	|\langle\bm{u},(\bm{I}-\bm{A}^{\top}\bm{A})\bm{v}\rangle|&=|\langle\bm{u},\bm{v}\rangle-\langle\bm{A}\bm{u},\bm{A}\bm{v}\rangle|\\
+	&=|\langle\bm{u}_{\mathcal{S}},\bm{v}_{\mathcal{S}}\rangle-\langle\bm{A}_{\mathcal{S}}\bm{u}_{\mathcal{S}},\bm{A}_{\mathcal{S}}\bm{v}_{\mathcal{S}}\rangle|\\
+	&=|\langle \bm{u}_{\mathcal{S}},(\bm{I}-\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}})\bm{v}_{\mathcal{S}}\rangle|\\
+	&\leq \|\bm{u}_{\mathcal{S}}\|_2 \|\bm{I}-\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}}\|_{\mathsf{op}} \|\bm{v}_{\mathcal{S}}\|_2,
+	\end{align*}
+where $\|\cdot\|_{\mathsf{op}}$ denotes the operator norm of a matrix as
+	\begin{align*}
+	\|\bm{A}\|_{\mathsf{op}}=\max_{\|\bm{x}\|_2=1} \|\bm{A}\bm{x}\|_2.
+	\end{align*}
+By the definition of the restricted isometry constant,
+	\begin{align*}
+	|\langle (\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}}-\bm{I})\bm{x},\bm{x}\rangle|=|\langle\bm{A}_{\mathcal{S}}\bm{x},\bm{A}_{\mathcal{S}}\bm{x}\rangle-\langle\bm{x},\bm{x}\rangle|=| \|\bm{A}_{\mathcal{S}}\bm{x}\|^2-\|\bm{x}\|_2^2|\leq \delta_s \|\bm{x}\|_2^2.
+	\end{align*}
+Therefore,	
+	\begin{align*}
+	\|\bm{I}-\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}}\|_{\mathsf{op}}	\leq \delta_s
+	\end{align*}
+and
+	\begin{align*}
+	|\langle\bm{u},(\bm{I}-\bm{A}^{\top}\bm{A})\bm{v}\rangle|\leq\delta_s \|\bm{u}_{\mathcal{S}}\|_2 \|\bm{v}_{\mathcal{S}}\|_2	=\delta_s \|\bm{u}\|_2\|\bm{v}\|_2.
+	\end{align*}
+
+
+
+
+}
+
+
+\newpart{0} Suppose that each column of $\bm{A}$ has unit norm.  Show that $\delta_2 = \mu(\bm{A})$, where $\mu(\bm{A})$ is the mutual coherence of $\bm{A}$. 
+
+\solution{Given that 
+	\begin{align*}
+	|\langle (\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}}-\bm{I})\bm{x},\bm{x}\rangle|=|\langle\bm{A}_{\mathcal{S}}\bm{x},\bm{A}_{\mathcal{S}}\bm{x}\rangle-\langle\bm{x},\bm{x}\rangle|=| \|\bm{A}_{\mathcal{S}}\bm{x}\|^2-\|\bm{x}\|^2|\leq \delta_s \|\bm{x}\|^2,
+	\end{align*}
+$\delta_s$ is the same as
+	\begin{align*}
+	\delta_s=\max_{|\mathcal{S}|\leq s} \|\bm{A}_{\mathcal{S}}^{\top}\bm{A}_{\mathcal{S}}-\bm{I}\|_{\mathsf{op}}.
+	\end{align*}
+When $s=2$,
+	\begin{align*}
+	\delta_2=\max_{i\neq j} \left\| \left[\begin{array}{ll}\bm{a}_i&\bm{a}_j\end{array}\right]	^{\top}\left[\begin{array}{ll}\bm{a}_i&\bm{a}_j\end{array}\right]-\bm{I}\right\|_{\mathsf{op}}.
+	\end{align*}
+The eigenvalues of the following matrix
+	\begin{align*}
+	 \left[\begin{array}{ll}\bm{a}_i&\bm{a}_j\end{array}\right]	^{\top}\left[\begin{array}{ll}\bm{a}_i&\bm{a}_j\end{array}\right]-\bm{I}=\left[\begin{array}{ll} 1 & \langle \bm{a}_i,\bm{a}_j\rangle \\ \langle \bm{a}_i,\bm{a}_j\rangle  & 1\end{array}\right]-\bm{I}=	\left[\begin{array}{ll} 0 & \langle \bm{a}_i,\bm{a}_j\rangle \\ \langle \bm{a}_i,\bm{a}_j\rangle  & 0\end{array}\right]	
+	\end{align*}
+	are $\pm \langle \bm{a}_i,\bm{a}_j\rangle$, and accordingly
+	\begin{align*}
+	\delta_2=\max_{i\neq j} |\langle \bm{a}_i,\bm{a}_j\rangle| =\mu(\bm{A}).
+	\end{align*}
+
+	
+}
+
+\end{problem}
+
+
+\begin{problem}{Statistical dimension}{10}
+Recall that for any convex cone $\mathcal{K}$, its statistical dimension and Gaussian width are defined respectively as
+\[
+    \text{stat-dim}(\mathcal{K}) := \mathbb{E} \big[ \|\mathcal{P}_{\mathcal{K}}(\bm{g}) \|_2^2 \big]
+ \]
+and 
+\[
+  w(\mathcal{K}):=\mathbb{E}\Bigg[\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2=1 }\langle\bm{z},\bm{g}\rangle\Bigg],
+\]where $\bm{g}\sim \mathcal{N}(\bm{0},\bm{I})$ and $\mathcal{P}_{\mathcal{K}}$ denotes the projection to $\mathcal{K}$ as
+	\begin{align*}
+	\mathcal{P}_{\mathcal{K}}(\bm{g})=\underset{\bm{z}\in\mathcal{K}}{\arg\min	}\|\bm{g}-\bm{z}\|_2.
+	\end{align*}
+
+	
+
+
+
+\newpart{0} Prove that $  w^2(\mathcal{K}) \leq  \text{stat-dim}(\mathcal{K})  $.
+
+\solution{
+% Yeohee, you can take a look at Proposition 10.2 of \url{https://arxiv.org/pdf/1303.6672.pdf}
+	\begin{align}
+	w^2(\mathcal{K})&=\left(\mathbb{E}\Bigg[\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2=1 }\langle\bm{z},\bm{g}\rangle\Bigg]\right)^2\\
+	&\leq \left(\mathbb{E}\Bigg[\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1 }\langle\bm{z},\bm{g}\rangle\Bigg]\right)^2\label{eqn:ext}\\
+	&\leq \mathbb{E}\left[\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle\right)^2\right]\label{eqn:jen},
+	\end{align}
+where \eqref{eqn:ext} holds because $\{\bm{z}~:~\bm{z}\in\mathcal{K}, \|\bm{z}\|_2=1\}\subset\{\bm{z}~:~\bm{z}\in\mathcal{K}, \|\bm{z}\|_2 \leq 1\}$, and \eqref{eqn:jen} holds by Jensen's inequality.
+Further, the statistical dimension can be represented as
+	\begin{align*}
+	\text{stat-dim}(\mathcal{K})=	\mathbb{E}\left[\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle\right)^2\right],
+	\end{align*}
+since
+	\begin{align*}
+	\sup_{\bm{z}\in \mathcal{K}, \|\bm{z}\|_2\leq 1}\langle \bm{z},\bm{g}\rangle=
+	\sup_{\bm{z}\in \mathcal{K}, \|\bm{z}\|_2\leq 1}\langle \bm{z},\mathcal{P}_{\mathcal{K}}(\bm{g})+\mathcal{P}_{\mathcal{K}^{\circ}}(\bm{g})\rangle	\leq \sup_{\bm{z}\in \mathcal{K}, \|\bm{z}\|_2\leq 1}\langle \bm{z},\mathcal{P}_{\mathcal{K}}(\bm{g})\rangle	=\left\langle \frac{\mathcal{P}_{\mathcal{K}}(\bm{g})}{\|\mathcal{P}_{\mathcal{K}}(\bm{g})\|_2},\mathcal{P}_{\mathcal{K}}(\bm{g})\right\rangle=\|\mathcal{P}_{\mathcal{K}}(\bm{g})\|_2,
+	\end{align*}
+where
+	\begin{align*}
+	\mathcal{K}^{\circ}=\left\{\bm{u}~:~ \langle \bm{u},\bm{x}\rangle\leq 0\quad\forall\bm{x}\in\mathcal{K}\right\},\quad \bm{g}=\mathcal{P}_{\mathcal{K}}(\bm{g})+\mathcal{P}_{\mathcal{K}^{\circ}}(\bm{g}),\quad\langle\mathcal{P}_{\mathcal{K}}(\bm{g}),\mathcal{P}_{\mathcal{K}^{\circ}}(\bm{g})\rangle=0,
+	\end{align*}
+and
+	\begin{align*}
+	\sup_{\bm{z}\in \mathcal{K}, \|\bm{z}\|\leq 1}\langle \bm{z},\bm{g}\rangle\geq \left\langle \frac{\mathcal{P}_{\mathcal{K}}(\bm{g})}{\|\mathcal{P}_{\mathcal{K}}(\bm{g})\|_2},\bm{g}\right\rangle=\|\mathcal{P}_{\mathcal{K}}(\bm{g})\|_2. 	
+	\end{align*}
+Therefore, $w^2(\mathcal{K}) \leq  \text{stat-dim}(\mathcal{K})  $.
+
+}
+
+
+\newpart{0} (Optional (10 bonus points)) Prove the reverse inequality $  \text{stat-dim}(\mathcal{K}) \leq w^2(\mathcal{K}) + 1 $. \\
+\emph{hint: }Let $f(\cdot)$ be a function that is Lipschitz with respect to the Euclidean norm:
+	\begin{align*}
+	|f(\bm{u})-f(\bm{v})|\leq M\|\bm{u}-\bm{v}\|_2\quad\quad\forall \bm{u},\bm{v}.	
+	\end{align*}
+Then, $	\text{Var}(f(\bm{g}))\leq M^2$.
+
+
+
+\solution{
+ It was shown before that
+ 	\begin{align*}
+ 	\text{stat-dim}(\mathcal{K})=	\mathbb{E}\left[\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle\right)^2\right],
+ 	\end{align*}
+ and it is enough to show that
+ 	\begin{align*}
+ 	\mathbb{E}\left[\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle\right)^2\right]\leq w^2(\mathcal{K})+1.	
+ 	\end{align*}
+ 	
+ For any $\bm{g}\not\in\mathcal{K}^{\circ}$, we have
+ 	\begin{align*}
+ 	\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle	=\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2= 1} \langle\bm{z},\bm{g}\rangle.
+ 	\end{align*}
+Also, if $\bm{g}\in \mathcal{K}^{\circ}$, then 
+	\begin{align*}
+	\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle=\langle \bm{0},\bm{g}\rangle=0,	
+	\end{align*}
+because $\langle \bm{z},\bm{g}\rangle\leq 0$ for all $\bm{z}\neq 0, \bm{z}\in\mathcal{K}$. 
+Therefore,
+	\begin{align*}
+	\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle	\right)^2=\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2= 1} \langle\bm{z},\bm{g}\rangle\right)^2
+	\mathbf{1}\left\{\bm{g}\not\in \mathcal{K}^{\circ}\right\},
+	\end{align*}
+	\begin{align*}
+	\mathbb{E}\left[\left(\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2\leq 1} \langle\bm{z},\bm{g}\rangle\right)^2\right]\leq \mathbb{E}\left[ f^2(\bm{g})\right],	
+	\end{align*}
+where $f(\cdot)$ defined as
+	\begin{align*}
+	f(\bm{g})=\sup_{\bm{z}\in\mathcal{K}, \|\bm{z}\|_2= 1}	 \langle \bm{z},\bm{g}\rangle.
+	\end{align*}
+This function $f(\cdot)$ is 1-Lipschitz function because 
+	\begin{align*}
+	&|f(\bm{u})|\leq \|\bm{u}\|_2\quad\quad\forall\bm{u},\\
+	&|f(\bm{u})-f(\bm{v})| \leq \left|\|\bm{u}\|_2-\|\bm{v}\|_2\right| \leq \|\bm{u}-\bm{v}\|_2 \quad\quad\forall\bm{u},\bm{v}.
+	\end{align*}
+Using the hint,
+	\begin{align*}
+	\mathbb{E}\left[ f^2(\bm{g})\right]-w^2(\mathcal{K})	=\text{Var}(f(\bm{g}))\leq 1.
+	\end{align*}
+Thus, we have proven $  \text{stat-dim}(\mathcal{K}) \leq w^2(\mathcal{K}) + 1 $.
+
+
+
+}
+
+\end{problem}
+
+\end{document}

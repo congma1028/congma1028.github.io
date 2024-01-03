@@ -1,0 +1,25 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 37797: Syllabus \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2024 
+
+A tentative one:
+
+. Spectral methods
+.. Classic L2 matrix perturbation theory
+.. Matrix concentration inequalities
+.. Applications of spectral methods (L2 theory)
+.. Linf matrix perturbation theory
+.. Applications of spectral methods (Linf theory)
+. Nonconvex optimization
+.. Basic optimization theory 
+.. Generic local analysis for regularized gradient descent (GD)
+.. Refined local analysis for vanilla GD
+.. Global landscape analysis
+.. Gradient descent with random initialization
+. Convex relaxation
+.. Compressed sensing and sparse recovery
+.. Phase transition and convex geometry
+.. Low-rank matrix recovery
+.. Robust principal component analysis
+. Minimax lower bounds
+

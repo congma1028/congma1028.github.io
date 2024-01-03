@@ -1,0 +1,53 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 37797: Course Project \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2024 
+
+
+
+The project can either be a literature review or original research, and you can do it
+either individually or in groups of two:
+- *Literature review*: We will provide a list of related papers not covered in the lectures, and the literature review should involve in-depth summaries and exposition of one of these papers.
+- *Original research*: It can be either theoretic or experimental (ideally a mix of the two), with approval from the instructor. If you choose this option, you can do it /either individually or in groups of two/. You are encouraged to combine your current research with your project.
+
+There are 3 milestones / deliverables to help you through the process.
+. *Proposal* (due Feb. 1st): Submit a short report (no more than 1 page) stating the papers you plan to survey or the research problems that you plan to work on. Describe why they are important or interesting, and provide some appropriate references. If you elect to do original research, please do not propose an overly ambitious project that cannot be completed by the end of the semester, and do not be too lured by generality. Focus on the simplest scenarios that can capture the issues you’d like to address.
+. *In-class presentation*: Prepare an  oral presentation with slides (the exact time will depend on the number of projects in the class). Focus on high-level ideas, and leave most technical details to your report.
+. *A written report* (due Mar. 6th): You are expected to submit a final project report—up to 4 pages with unlimited appendix—summarizing your findings / contributions. You must turn in an electronic copy.
+
+== Suggested (theoretical) papers for literature review (constantly updated...)
+
+/You have the freedom to select a paper of your own interest (especially more practical papers), as long as it is related to the topics of this course. /
+
+. Spectral method
+.. "An Lp theory of PCA and spectral clustering", E. Abbe, J. Fan, K. Wang, 2021 
+.. "Rate-optimal perturbation bounds for singular subspaces with applications to high-dimensional statistics", T.T. Cai, A. Zhang, Annals of Statistics, 2018
+.. "Subspace estimation from unbalanced and incomplete data matrices: L2,inf statistical guarantees", C. Cai, G. Li, Y. Chi, H. V. Poor, Y. Chen, Annals of Statistics, 2021
+.. "Partial recovery for top-k ranking: optimality of MLE and sub-optimality of spectral method", P. Chen, C. Gao, A. Zhang, 2021
+.. "Clustering a mixture of Gaussians with unknown covariance", D. Davis, M. Diaz, K. Wang, 2021
+.. "Spectral methods meet EM: A provably optimal algorithm for crowdsourcing", Y. Zhang, X. Chen, D. Zhou, and M. Jordan, 2014
+.. "Tensor SVD: Statistical and Computational Limits", A. Zhang, D. Xia, 2018
+.. "Entrywise Eigenvector Analysis of Random Matrices with Low Expected Rank", E. Abbe, J. Fan, K. Wang, Y. Zhong, Annals of Statistics, 2020
+.. "Inference for Heteroskedastic PCA with Missing Data", Y. Yan, Y. Chen, J. Fan, 2021
+.. "Heteroskedastic PCA: Algorithm, Optimality, and Applications", A. R. Zhang, T. T. Cai, W. Wu, 2018
+.. "Optimal Spectral Recovery of a Planted Vector in a Subspace", C. Mao, A. S. Wein, 2021
+.. "MATRIX PERTURBATION: DAVIS-KAHAN IN THE INFINITY NORM", ABHINAV BHARDWAJ, VAN VU, 2023
+.. "A Novel and Optimal Spectral Method for Permutation Synchronization", D. Nguyen, AY Zhang, 2023
+.. "Fundamental Limits of Spectral Clustering in Stochastic Block Models", AY Zhang, 2023
+.. "Sharp Analysis of Power Iteration for Tensor PCA", Y. Wu, K. Zhou, 2023
+. Nonconvex optimization
+.. "On the computational and statistical complexity of over-parameterized matrix sensing", J. Zhuo, J. Kwon, N. Ho, C. Caramanis, 2021
+.. "Rank overspecified robust matrix recovery:
+subgradient method and exact recovery", L. Ding, L. Jiang, Y. Chen, Q. Qu, Z. Zhu, 2021
+.. "Nonconvex Low-Rank Symmetric Tensor Completion from Noisy Data", C. Cai, G. Li, H. V. Poor, Y. Chen, 2019
+.. "Algorithmic Regularization in Over-parameterized Matrix Sensing and Neural Networks with Quadratic Activations", Y. Li, T. Ma, H. Zhang, 2018
+.. "Inference and Uncertainty Quantification for Noisy Matrix Completion", Y. Chen, J. Fan, C. Ma, and Y. Yan, 2019
+.. "Low-rank Matrix Recovery with Composite Optimization: Good Conditioning and Rapid Convergence", V. Charisopoulos, Y. Chen, D. Davis, M. Diaz, L. Ding, D. Drusvyatskiy, 2019
+.. "Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent", T. Tong, C. Ma, Y. Chi, Journal of Machine Learning Research, 2021
+.. "Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization", Y. Chen, Y. Chi, J. Fan, C. Ma, Y. Yan, SIAM Journal on Optimization, 2020
+.. "Small random initialization is akin to spectral learning: Optimization and generalization guarantees for overparameterized low-rank matrix reconstruction," D. Stoger, M. Soltanolkotabi, 2021
+.. "Model-free Nonconvex Matrix Completion: Local Minima Analysis and Applications in Memory-efficient Kernel PCA", J. Chen, X. Li, Journal of Machine Learning Research, 2019
+.. "Fast Global Convergence of Natural Policy Gradient Methods with Entropy Regularization", S. Cen, C. Cheng, Y. Chen, Y. Wei, Y. Chi, Operations Research, 2021
+.. "Randomly initialized EM algorithm for two-component Gaussian mixture achieves near optimality in O(sqrt(n)) iterations", Y. Wu, H. H. Zhou, 2019
+.. "The landscape of empirical risk for non-convex losses", S. Mei, Y. Bai, A. Montanari, Annals of Statistics, 2018
+.. "Tensor Completion Made Practical", A. Liu, A. Moitra, 2020 
+.. "Matrix completion has no spurious local minimum", R. Ge, JD. Lee, T. Ma, Advances in neural information processing systems 29, 2016

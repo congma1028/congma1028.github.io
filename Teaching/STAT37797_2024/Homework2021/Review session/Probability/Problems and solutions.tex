@@ -1,0 +1,251 @@
+\documentclass{article}
+\usepackage{color,cite,array,comment}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{subfigure,epsfig}
+\usepackage{algorithm,algpseudocode}
+\usepackage{caption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\title{Problems}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Let $X_1,\cdots,X_n$ be a sequence of i.i.d. random variables, of which cdf is $F_X(\cdot)$.
+
+\begin{enumerate}
+
+
+\item What is CDF of $X_\text{max}=\max_i X_i$ ?
+
+\emph{Solution.}\\
+
+The event $X_\text{max}\leq x$ occurs iff $X_i\leq x$ for all $i$.
+	\begin{align*}
+	F_{X_\text{max}}(x)=&\mathbb{P}[X_\text{max}\leq x]\\
+	=&	\mathbb{P}[X_1\leq x,\cdots,X_n\leq x]\\
+	=&\prod_i F_X(x)=\left(F_X(x)\right)^n.
+	\end{align*}
+
+\item What is CDF of $X_\text{min}=\min_i X_i$ ?
+
+\emph{Solution.}
+
+The event $X_\text{min}>x$ occurs iff $X_i>x$ for all $i$.
+	\begin{align*}
+	F_{X_\text{min}}(x)&=\mathbb{P}[X_\text{min}\leq x]	\\
+	&=1-\mathbb{P}[X_\text{min}>x]\\
+	&=1-\mathbb{P}[X_1>x,\cdots,X_n>x]\\
+	&=1-\left(1-F_X(x)\right)^n.
+	\end{align*}
+\end{enumerate}
+
+\item Show how the Chebyshev inequality can be derived from Markov inequality.
+
+\emph{Solution.}
+
+Markov inequality is that if $X$ is a non-negative random variable, then for all $r>0$,
+	\begin{align*}
+	\mathbb{E}[X\geq r]\leq \frac{\mathbb{E}[X]}{r}.	
+	\end{align*}
+The Chebyshev inequality can be derived as
+	\begin{align*}
+	\mathbb{E}\left[ |X-\mathbb{E}[X]|\geq r\right]=\mathbb{E}\left[ (X-\mathbb{E}[X])^2\geq r^2\right]\leq \frac{\text{Var}(X)}{r^2}.
+	\end{align*}
+	
+\item If $X$ is a continuous random variable having CDF $F_X$, show that the random variable $Y=F_X(X)$ is uniformly distributed in $(0,1)$.
+
+\emph{Solution.}
+
+Define $F_X^{-1}(x)$ as
+	\begin{align*}
+	F_X^{-1}(x)=\inf\left\{t~:~F(t)\geq x\right\}.	
+	\end{align*}
+CDF of $Y$ is
+	\begin{align*}
+	\mathbb{P}[Y\leq x]&=\mathbb{P}[F_X(X)\leq x]=\mathbb{P} \left[X\leq F_X^{-1}(x)\right]\\ 	&=F_X\left(F_X^{-1}(x)\right)=x,\quad\forall~x\in(0,1),
+	\end{align*}
+which is the CDF of uniform random variable in $(0,1)$.
+
+\item Suppose you can generate a random variable $U$ uniformly distributed in $(0,1)$. How would you use it to simulate a continuous random variable $X$ having a arbitrary distribution function $F(\cdot)$ ? 
+
+\emph{Solution.}
+
+Generate $X=F^{-1}(U)$, where $F^{-1}(x)$ is defined as
+	\begin{align*}
+	F^{-1}(x)=\inf\left\{t~:~F(t)\geq x\right\}.	
+	\end{align*}
+Then, $X$ has CDF $F$, since
+	\begin{align*}
+	\mathbb{P}[X\leq x]&=\mathbb{P}\left[F^{-1}(U)\leq x\right]=\mathbb{P}[U\leq F(x)]=F(x).	
+	\end{align*}
+
+\item  Suppose you have access to two independent random variables $U_1$ and $U_2$, both uniformly distributed in $[0,1]$.How would you use them to simulate two continuous random variables $X_1$ and $X_2$ with a given joint distribution $F(\cdot,\cdot)$ ?
+
+\emph{Solution.}
+
+Compute the marginal CDF $f$ as
+	\begin{align*}
+	f(x)=\lim_{x_2\rightarrow\infty} F(x,x_2).
+	\end{align*}
+Define $g_t(x)$ as
+	\begin{align*}
+	g_t(x)=\frac{\frac{d}{dt}F(t,x)}{f'(t)}.	
+	\end{align*}
+Simulate $X_1$ and $X_2$ as 
+	\begin{align*}
+	X_1=f^{-1}(U_1),\quad X_2=g_{X_1}^{-1}(U_2).	
+	\end{align*}
+Then, $X_1$ and $X_2$ have CDF $F$, because
+	\begin{align*}
+	\mathbb{P}[X_1\leq x_1,~X_2\leq x_2]&=\mathbb{P}\left[ U_1\leq f(x_1), ~U_2\leq \frac{\frac{d}{dt}F(X_1,x_2)}{f'(X_1)}\right]\\
+	&=\int_0^{f(x_1)} \mathbb{P}\left[ U_2\leq \frac{\frac{d}{dt}F(f^{-1}(u),x_2)}{f'(f^{-1}(u))}\right]du\\
+	&=\int_0^{f(x_1)} \frac{\frac{d}{dt}F(f^{-1}(u),x_2)}{f'(f^{-1}(u))}du\\
+	&=\int_{-\infty}^{x_1} \frac{d}{dt}F(t,x_2) dt=F(x_1,x_2).
+	\end{align*}
+
+\item Prove the weak law of large number using Chebyshev's inequality.
+
+\emph{Solution.}
+
+Let $X_1,\cdots,$ be a sequence of i.i.d. random variables, each having $\mathbb{E}[X_i]=\mu$. Then,
+	\begin{align*}
+	\mathbb{E}\left[\frac{X_1+\cdots+X_n}{n}\right]=\mu	
+	\end{align*}
+and
+	\begin{align*}
+	\text{Var}\left(\frac{X_1+\cdots+X_n}{n}\right)=\frac{\sigma^2}{n}.
+	\end{align*}
+Chebyshev's inequality implies that
+	\begin{align*}
+	\mathbb{P}\left[\left|\frac{X_1+\cdots+X_n}{n}-\mu\right|>\epsilon\right]\leq \frac{\sigma^2}{n\epsilon^2}.	
+	\end{align*}
+Thus,
+	\begin{align*}
+	\lim_{n\rightarrow\infty}	\mathbb{P}\left[\left|\frac{X_1+\cdots+X_n}{n}-\mu\right|>\epsilon\right]=0.
+	\end{align*}
+
+
+\item Let $W\sim\mathcal{N}(0,1)$ and $Q(x)=\mathbb{P}[W>x]$.
+
+\begin{enumerate}
+\item Show that
+	\begin{align*}
+	Q(x)<\frac{1}{\sqrt{2\pi}x}\exp\left(-\frac{x^2}{2}\right).	
+	\end{align*}
+	
+\emph{Solution.}
+
+	\begin{align*}
+	Q(x)&=\int_x^\infty \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{t^2}{2}\right)dt\\
+	&\leq \int_x^\infty \frac{1}{\sqrt{2\pi}}\frac{t}{x}\exp\left(-\frac{t^2}{2}\right)dt\\
+	&=\frac{1}{\sqrt{2\pi}x} \int_x^\infty \exp\left(-\frac{t^2}{2}\right) d\left(\frac{1}{2}t^2\right)\\
+	&=\frac{1}{\sqrt{2\pi}x} \exp\left(-\frac{x^2}{2}\right).	
+	\end{align*}
+
+
+\item Show that
+	\begin{align*}
+	Q(x)>\frac{1}{\sqrt{2\pi}x}\left(1-\frac{1}{x^2}\right)\exp\left(-\frac{x^2}{2}\right)\quad\forall~x>1.
+	\end{align*}
+	
+\emph{Solution.}
+
+	\begin{align*}
+	&\left(1+\frac{1}{x^2}\right)Q(x)\\
+	&=\left(1+\frac{1}{x^2}\right)\int_x^\infty \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{t^2}{2}\right)dt	\\
+	&\geq \int_x^\infty \frac{1}{\sqrt{2\pi}} \left(1+\frac{1}{t^2}\right)\exp\left(-\frac{t^2}{2}\right)dt\\
+	&=\frac{1}{\sqrt{2\pi}}\left[\int_x^\infty \frac{1}{t}t\exp\left(-\frac{t^2}{2}\right)dt + \int_x^\infty \exp\left(-\frac{t^2}{2}\right)dt \right]\\
+	&=\frac{1}{\sqrt{2\pi}}\left[ -\frac{1}{t}\exp\left(-\frac{t^2}{2}\right)\bigg|_x^\infty -\int_x^\infty \frac{1}{t^2}\exp\left(-\frac{t^2}{2}\right)dt +\int_x^\infty \frac{1}{t^2}\exp\left(-\frac{t^2}{2}\right)dt\right]\\
+	&=\frac{1}{\sqrt{2\pi}x}\exp\left(-\frac{x^2}{2}\right).
+	\end{align*}
+When $x>1$,
+	\begin{align*}
+	Q(x)\geq \frac{1}{\sqrt{2\pi}x}\frac{x^2}{x^2+1}\exp\left(-\frac{x^2}{2}\right)\geq \frac{1}{\sqrt{2\pi}x}\frac{x^2-1}{x^2}\exp\left(-\frac{x^2}{2}\right).	
+	\end{align*}
+
+
+
+
+
+
+\end{enumerate}
+\item Prove Cauchy-Schwarz inequality. 
+	\begin{align*}
+	\mathbb{E}[XY]^2\leq \mathbb{E}[X^2]\mathbb{E}[Y^2].	
+	\end{align*}
+
+\emph{Solution.}
+For any $a,b\in\mathbb{R}$,
+	\begin{align}
+	\mathbb{E}\left[(aX+bY)^2\right]&=a^2\mathbb{E}[X^2]+b^2\mathbb{E}[Y^2]+2ab\mathbb{E}[XY]\geq 0,\label{eqn:1}\\
+	\mathbb{E}\left[(aX-bY)^2\right]&=a^2\mathbb{E}[X^2]+b^2\mathbb{E}[Y^2]-2ab\mathbb{E}[XY]\geq 0.\label{eqn:2}
+	\end{align}
+Let
+	\begin{align*}
+	a=\sqrt{\mathbb{E}[Y^2]},~b=\sqrt{\mathbb{E}[X^2]}.	
+	\end{align*}
+Then, equations \eqref{eqn:1} and \eqref{eqn:2} become
+	\begin{align*}
+	&2ab\mathbb{E}[XY]\geq -2a^2b^2,\\
+	&2ab\mathbb{E}[XY]\leq 2a^2b^2.	
+	\end{align*}
+This results in 
+	\begin{align*}
+	&\mathbb{E}[XY]\geq -\sqrt{\mathbb{E}[X^2]}\sqrt{\mathbb{E}[Y^2]},\\
+	&\mathbb{E}[XY]\leq 	\sqrt{\mathbb{E}[X^2]}\sqrt{\mathbb{E}[Y^2]}.
+	\end{align*}
+
+\item The amount of weight, $W$, that a bridge can withstand without damage, is a Gaussian random variable with mean $\mu_W$ and variance $\sigma_W^2$. 
+Suppose the weight of cars $X_1,X_2,\cdots,X_n$ are i.i.d. random variables with mean $\mu_X$ and variance $\sigma_X^2$.
+How many cars would have to be on the bridge for the probability of damage to exceed 0.1 ?
+
+\emph{Solution.}
+
+	\begin{align*}
+	P_n\triangleq \mathbb{P}[X_1+\cdots+X_n-W\geq 0].	
+	\end{align*}
+Since $X_i$ and $W$ are Gaussian, $X_i-\frac{W}{n}$ is also a Gaussian.
+	\begin{align*}
+	\mathbb{E}\left[X_i-\frac{W}{n}\right]=\mu_X-\frac{\mu_W}{n}.	
+	\end{align*}
+	\begin{align*}
+	\text{Var}\left(X_i-\frac{W}{n}\right)=n\sigma_X^2+\sigma_W^2.	
+	\end{align*}
+Using Central Limit theorem,
+	\begin{align*}
+	P_n&=\mathbb{P}\left[ \sum \left(X_i-\frac{W}{n}\right)\geq 0\right] \\&=\mathbb{P}\left[ \frac{\sum_i \left(X_i-\frac{W}{n}\right)-n\left(\mu_X-\frac{\mu_W}{n}\right)}{\sqrt{n\sigma_X^2+\sigma_W^2}}\geq \frac{-\left(n\mu_X-\mu_W\right)}{\sqrt{n\sigma_X^2+\sigma_W^2}}\right].	
+	\end{align*}
+Since $\mathbb{P}[Z\geq 1.28]\approx .1$, the number of cars should satisfy	\begin{align*}
+	\frac{\mu_W-n\mu_X}{\sqrt{n\sigma_X^2+\sigma_W^2}}	\leq 1.28.
+	\end{align*}
+
+
+\item Show that if $X$ and $Y$ are independent and 
+	\begin{align*}
+	&X\sim\mathcal{N}(\mu_X,\sigma_X^2),\\
+	&Y\sim\mathcal{N}(\mu_Y,\sigma_Y^2),\\
+	&Z=X+Y,	
+	\end{align*}
+then 
+	\begin{align*}
+	Z\sim\mathcal{N}(\mu_X+\mu_Y,\sigma_X^2+\sigma_Y^2).	
+	\end{align*}
+
+\emph{Solution.}
+
+For independent random variables $X$ and $Y$, the distribution of the sum equals the convolution of PDF's of $X$ and $Y$.
+Thus, PDF of $Z$ is
+	\begin{align*}
+	f_Z(z)&=\int_{-\infty}^\infty f_Y(z-x)f_X(x)dx\\
+	&=	\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi \sigma_Y^2}} \frac{1}{\sqrt{2\pi\sigma_X^2}} \exp\left(-\frac{(z-x-\mu_Y)^2}{2\sigma_Y^2}-\frac{(x-\mu_X)^2}{2\sigma_X^2}\right) dx\\
+	&=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sqrt{\sigma_X^2+\sigma_Y^2}} \exp\left(-\frac{(z-(\mu_X+\mu_Y))^2}{2(\sigma_X^2+\sigma_Y^2)}\right)
+	\\
+	&\quad\quad\quad\quad\frac{1}{\sqrt{2\pi}\frac{\sigma_X\sigma_Y}{\sqrt{\sigma_X^2+\sigma_Y^2}}}\exp\left(-\frac{\left(x-\frac{\sigma_X^2(z-\mu_Y)+\sigma_Y^2\mu_X}{\sigma_X^2+\sigma_Y^2}\right)^2}{2\left(\frac{\sigma_X\sigma_Y}{\sqrt{\sigma_X^2+\sigma_Y^2}}\right)^2}\right)dx\\
+	&=\frac{1}{\sqrt{2\pi(\sigma_X^2+\sigma_Y^2)}}\exp\left(-\frac{(z-(\mu_X+\mu_Y))^2}{2(\sigma_X^2+\sigma_Y^2)}\right).
+	\end{align*}
+
+
+
+\end{enumerate}
+\end{document}
