@@ -21,6 +21,9 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
+- Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
+for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
+
 - Our paper on distribution-free uncertainty quantification for matrix completion [Publication/CMC/cmc.pdf Conformalized Matrix Completion] has been accepted to Neurips 2023. 
 
 - A new paper on contrastive learning: [Publication/SSL/ssl.pdf Unraveling Projection Heads in Contrastive Learning:
