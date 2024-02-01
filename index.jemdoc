@@ -23,20 +23,14 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 - [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize]. 
 
+- A new paper on the suboptimality of the Lasso estimator: [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso]. 
+
 
 - Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
 for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
 
-- Our paper on distribution-free uncertainty quantification for matrix completion [Publication/CMC/cmc.pdf Conformalized Matrix Completion] has been accepted to Neurips 2023. 
-
-- A new paper on contrastive learning: [Publication/SSL/ssl.pdf Unraveling Projection Heads in Contrastive Learning:
-Insights from Expansion and Shrinkage].
 
 
-- Our paper on overparameterized matrix recovery: [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] has been accepted to ICML 2023.
-
-
-- Our paper on covariate shift [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression] has been accepted to the Annals of Statistics. 
 
 
 
