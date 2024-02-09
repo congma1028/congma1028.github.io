@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.27)  10 OCT 2023 10:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.27)  7 FEB 2024 17:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -393,19 +393,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] (./CV_Cong
-_Ma.aux)
+al/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] (./CV_
+Cong_Ma.aux)
 Package rerunfilecheck Info: File `CV_Cong_Ma.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10078 strings out of 476025
- 156622 string characters out of 5790017
- 1872388 words of memory out of 5000000
+ 10086 strings out of 476025
+ 156677 string characters out of 5790017
+ 1871388 words of memory out of 5000000
  30325 multiletter control sequences out of 15000+600000
  522184 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,76p,778b,675s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,5n,76p,778b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
@@ -415,10 +415,10 @@ cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
 l/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on CV_Cong_Ma.pdf (4 pages, 126872 bytes).
+Output written on CV_Cong_Ma.pdf (5 pages, 131235 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 90 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
+ 98 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

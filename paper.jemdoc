@@ -5,6 +5,9 @@
 
 == 2024
 
+- [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] \n
+Y.~Yang, A.~Chen, L.~Orecchia, *C. Ma* \n
+
 - [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso] \n
 R. Pathak, *C. Ma* \n
 [https://github.com/reesepathak/lowerlassosim \[Code]]
