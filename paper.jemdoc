@@ -23,8 +23,6 @@ to appear in /ICLR, 2024/
 
 
 
-
-
 - [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
 Y. Gui, R. F. Barber, * C. Ma* \n
 /Neurips, 2023/ [https://github.com/yugjerry/conf-mc \[Code\]] \n
@@ -67,6 +65,12 @@ G. Li, *C. Ma*, N. Srebro (alphabetical order) \n
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
 R. Pathak, *C. Ma*, M. J. Wainwright \n
 /ICML, 2022/ (long presentation)
+
+
+- [Publication/TPCA/TPCA.pdf Fast and Provable Tensor Robust Principal Component Analysis via Scaled Gradient Descent] \n
+H. Dong, T. Tong, *C. Ma*, Y. Chi\n
+/Information and Inference: A Journal of the IMA, 2023/ 
+
 
 == 2021
 
