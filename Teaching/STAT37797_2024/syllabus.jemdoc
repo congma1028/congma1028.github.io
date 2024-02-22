@@ -16,10 +16,4 @@ A tentative one:
 .. Refined local analysis for vanilla GD
 .. Global landscape analysis
 .. Gradient descent with random initialization
-. Convex relaxation
-.. Compressed sensing and sparse recovery
-.. Phase transition and convex geometry
-.. Low-rank matrix recovery
-.. Robust principal component analysis
-. Minimax lower bounds
 
