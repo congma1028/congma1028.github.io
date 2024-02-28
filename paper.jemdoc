@@ -10,6 +10,7 @@ R.~Jiang, *C.~Ma* \n
 
 - [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] \n
 Y.~Yang, A.~Chen, L.~Orecchia, *C. Ma* \n
+[Publication/RankingSemiRandom/topK_semi_random_slides.pdf \[Slides\]]\n
 
 - [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso] \n
 R. Pathak, *C. Ma* \n
@@ -32,7 +33,8 @@ Y. Gui, R. F. Barber, * C. Ma* \n
 
 - [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n 
 X. Xu, Y. Shen, Y. Chi, * C. Ma* \n
-/ICML, 2023/
+/ICML, 2023/ [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]\n
+
 
 - [Publication/TD/TD_LFA.pdf Sharp High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n 
 G. Li, W. Wu, Y. Chi, * C. Ma*, A. Rinaldo, Y. Wei \n
