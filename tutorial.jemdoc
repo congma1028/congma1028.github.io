@@ -2,3 +2,6 @@
 = Tutorial
 
 - Nonconvex Optimization for High-Dimensional Signal Estimation: Spectral and Iterative Methods together with Yuxin Chen, Yuejie Chi at [https://eusipco2020.org/tutorials/ EUSIPCO 2020].
+- [https://www.imsi.institute/activities/data-driven-materials-informatics/materials-informatics-tutorials-and-hands-on/ Materials Informatics: Tutorials and Hands-On], IMSI 2024. \n
+Slides: [IMSI/IMSI-tutorial-linear.pdf Linear classification], [IMSI/IMSI-tutorial-SVM.pdf SVM] (credit to Simon Du), [IMSI/IMSI-tutorial-tree.pdf Decision trees] \n
+Hands-on: [https://github.com/ageron/handson-ml3 Python notebooks] 
