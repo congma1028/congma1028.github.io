@@ -22,7 +22,7 @@ C. Ma, R. Pathak, M. J. Wainwright \n
 /Annals of Statistics, 2023/ [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]] \n
 
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
-R. Pathak, C. Ma, M. J. Wainwright \n
+R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
 /ICML, 2022/ (long presentation)
 
 
@@ -40,6 +40,7 @@ R. Pathak, C. Ma, M. J. Wainwright \n
 
 - [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits] \n
 R.~Jiang, C. Ma \n
+[Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]\n
 
 
 

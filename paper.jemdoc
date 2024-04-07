@@ -7,6 +7,7 @@
 
 - [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits] \n
 R.~Jiang, C. Ma \n
+[Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]\n
 
 - [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] \n
 Y.~Yang, A.~Chen, L.~Orecchia, C. Ma \n
@@ -64,7 +65,7 @@ H. Dong, T. Tong, C. Ma, Y. Chi\n
 
 
 - [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
-R. Pathak, C. Ma, M. J. Wainwright \n
+R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
 /ICML, 2022/ (long presentation)
 
 
