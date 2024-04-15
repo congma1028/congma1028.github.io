@@ -116,8 +116,8 @@ T. Tong, C. Ma, Y. Chi\n
 
 - [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] \n
 Y.~Yang, A.~Chen, L.~Orecchia, C. Ma \n
-[Publication/RankingSemiRandom/topK_semi_random_slides.pdf \[Slides\]]\n
-
+[Publication/RankingSemiRandom/topK_semi_random_slides.pdf \[Slides\]]
+[https://github.com/Orecchia-Research-Group/COLT-2024---Semirandom-Graph-Ranking \[Code]]\n
 
 
 - [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking ]  \n
