@@ -21,8 +21,13 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
+
+
+
 - [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize]. 
 
+
+- A new paper on item parameter estimation in the Rasch model: [Publication/Rasch/Rasch.pdf Random Pairing MLE for Estimation of Item Parameters in Rasch Model]. 
 
 
 - Our paper on ranking [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] has been accepted to COLT 2024. 
@@ -33,9 +38,6 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 
 - A new paper on bandits: [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits].
-
-
-
 
 
 - A new paper on the suboptimality of the Lasso estimator: [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso]. 
