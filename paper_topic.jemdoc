@@ -5,6 +5,9 @@
 
 == Transfer learning
 
+- [Publication/DRL/isoDRL.pdf Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
+Y.~Gui, R.~F.~Barber, C.~Ma
+
 - [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso] \n
 R. Pathak, C. Ma \n
 [https://github.com/reesepathak/lowerlassosim \[Code]]
@@ -37,6 +40,10 @@ R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
 
 
 == Reinforcement learning
+
+- Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning \n
+J.~Lee, C.~Ma \n
+/Neurips, 2024/
 
 - [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits] \n
 R.~Jiang, C. Ma \n

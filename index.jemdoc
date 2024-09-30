@@ -26,6 +26,9 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 - [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize]. 
 
+- Our paper ``Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning'' has been accepted to Neurips 2024. 
+
+- A new paper on robust risk evaluation: [Publication/DRL/isoDRL.pdf Distributionally Robust Risk Evaluation with an Isotonic Constraint].  
 
 - A new paper on item parameter estimation in the Rasch model: [Publication/Rasch/Rasch.pdf Random Pairing MLE for Estimation of Item Parameters in Rasch Model]. 
 
@@ -33,19 +36,14 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 - Our paper on ranking [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] has been accepted to COLT 2024. 
 
 
+- Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
+for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
+
+
 
 - Our paper on policy evaluation [Publication/TD/TD_LFA.pdf Sharp High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] has been accepted to IEEE Transactions on Information Theory, 2024. 
 
 
-- A new paper on bandits: [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits].
-
-
-- A new paper on the suboptimality of the Lasso estimator: [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso]. 
-
-
-
-- Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
-for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
 
 
 

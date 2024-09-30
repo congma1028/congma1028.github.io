@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.27)  11 APR 2024 13:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.27)  27 SEP 2024 11:05
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **CV_Cong_Ma.tex
 (./CV_Cong_Ma.tex
@@ -398,8 +399,8 @@ Package rerunfilecheck Info: File `CV_Cong_Ma.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10093 strings out of 476025
- 156726 string characters out of 5790017
+ 10101 strings out of 476025
+ 156790 string characters out of 5790017
  1872388 words of memory out of 5000000
  30325 multiletter control sequences out of 15000+600000
  522184 words of font info for 57 fonts, out of 8000000 for 9000
@@ -414,10 +415,10 @@ cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
 l/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on CV_Cong_Ma.pdf (5 pages, 131857 bytes).
+Output written on CV_Cong_Ma.pdf (5 pages, 132557 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
- 105 named destinations out of 1000 (max. 500000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 113 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
