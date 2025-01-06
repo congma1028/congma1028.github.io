@@ -1,34 +1,34 @@
 # jemdoc: menu{menu}{index.html}
-= STAT 253/317: Syllabus \n
-[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2024 
+= STAT 253/317: Syllabus
+
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025
 
 A tentative one:
 
 . Week 1
-.. Jan 4th: Lec 1 on Markov chains and C-K equations
-. Week 2
+.. Jan 7th: Lec 1 on Markov chains and C-K equations
 .. Jan 9th: Lec 2 on classification of states, recurrence, and transience
-.. Jan 11th: Lec 3 on stationary distribution, limiting distribution, periodicity
-. Week 3
+. Week 2
+.. Jan 14th: Lec 3 on stationary distribution, limiting distribution, periodicity
 .. Jan 16th: Lec 4 on positive recurrence and limit theorems
-.. Jan 18th: Lec 5 on reversible Markov chain
-. Week 4
+. Week 3
+.. Jan 21st: Lec 5 on reversible Markov chain
 .. Jan 23rd: Lec 6 on first step analysis
-.. Jan 25th: Lec 7 on generating functions and branching process 
+. Week 4
+.. Jan 28th: Lec 7 on generating functions and branching process
+.. Jan 30th: Midterm I 
 . Week 5
-.. Jan. 30th: Midterm I
-.. Feb. 1st: Lec 8 on exponential distribution and Poisson process
+.. Feb 4th: Lec 8 on exponential distribution and Poisson process
+.. Feb 6th: Lec 9 on thinning and superposition
 . Week 6
-.. Feb. 6th: Lec 9 on thinning and superposition 
-.. Feb. 8th: Lec 10 on continuous-time Markov chains
+.. Feb 11th: Lec 10 on continuous-time Markov chains
+.. Feb 13th: Lec 11 on limiting probabilities
 . Week 7
-.. Feb. 13th: Lec 11 on limiting probabilities
-.. Feb. 15th: Midterm II 
+.. Feb 18th: Midterm II
+.. Feb 20th: Lec 12 on renewal processes and limit theorems
 . Week 8
-.. Feb. 20th: Lec 12 on renewal processes and limit theorems
-.. Feb. 22nd: Lec 13 on reward renewal processes and alternating renewal processes 
+.. Feb 25th: Lec 13 on reward renewal processes and alternating renewal processes
 . Week 9
-.. Feb. 27th:
-.. Feb. 29th:
-
+.. Mar 3rd:
+.. Mar 5th:
 
