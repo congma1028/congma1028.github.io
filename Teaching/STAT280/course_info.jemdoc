@@ -1,0 +1,32 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 28000: Course Information \n
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025 
+
+
+== Instructor 
+- [https://congma1028.github.io/index.html Cong Ma], Jones 313
+- Office hours: 3:20pm - 4:20pm on Thursdays (from Week 2)
+
+
+== Lectures
+-  Time: Tue, Thu 3:00 PM - 4:50 PM
+-  Location: Eckhart Hall 133 
+
+== TA
+- [https://cam.uchicago.edu/people/profile/angela-wang/ Angela Wang]
+- Office hours: 4-6pm, Mondays (from Week 2), Jones 304
+
+== Grading
+- 4 problem sets and final exam, each counting towards 20% of grade 
+
+== Course Policies 
+- *GradeScope*: We only accept \textbf{online} submission of homework to Gradescope (not Canvas). Please do NOT email your homework to the instructor or TAs. 
+After uploading the pdf to Gradescope,  there is one more step to indicate which problem is on which page of your pdf. Please always complete the step of selecting pages that may substantially reduce the amount of work of TAs/Graders. We reserve the right of taking points off if the pages are not selected. A suggestion: place different problems on different pages for convenience in selection.
+- *Late homework*: Late homework will NOT be accepted. Note that adjustments will generally NOT be made for uploading-related issues and other such technical issues that result in late submission. For this reason, please DO NOT try to submit at the last moment.
+- *Typeset*: Homework must be easily legible. You can type your homework using LaTex, R markdown, Words and then convert it to a PDF file or
+you can scan your handwritten homework to a PDF file and then upload it.
+    To submit handwritten work, scan it using a scanner or multi-function printer or an app like CamScanner on a smartphone.
+    Please do not submit raw camera photos (not processed through a “scanning” app), which are essentially unreadable online.
+- *Collaboration*: We encourage you to work on homework problems in study groups. However, you must write up and submit your own solutions and code without reading or copying the solutions of other students or from other online resources.
+- *Regrade requests*: After the grades are posted, you can submit the regrade request for specific questions. The request must be submitted within 1 week after the grades are posted. If you have any question/concern or encounter any technical issue for homework submission, feel free to reach out.
+
