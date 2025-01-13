@@ -5,6 +5,9 @@
 
 == Transfer learning
 
+- [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] \n
+B.~Zhao, C.~Ma, M.~Kolar 
+
 - [Publication/DRL/isoDRL.pdf Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
 Y.~Gui, R.~F.~Barber, C.~Ma
 
@@ -41,7 +44,7 @@ R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
 
 == Reinforcement learning
 
-- Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning \n
+- [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] \n
 J.~Lee, C.~Ma \n
 /Neurips, 2024/
 
