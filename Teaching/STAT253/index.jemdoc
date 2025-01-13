@@ -1,19 +1,19 @@
 # jemdoc: menu{menu}{index.html}
 = STAT 253/317: Introduction to Probability Models  \n
-[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2024
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025
 
 == Announcements
 
-- The final exam will take place from 12:30 p.m. to 2:30 p.m. on March 7th in Eckhart Hall 133. 
+#- The final exam will take place from 12:30 p.m. to 2:30 p.m. on March 7th in Eckhart Hall 133. 
 
-- The second midterm will take place on Feb. 15th. Here are the mind maps for [Lectures2021/PoissonProcess.pdf Poisson processes] and [Lectures2021/CTMC.pdf continuous-time Markov chains]
+#- The second midterm will take place on Feb. 15th. Here are the mind maps for [Lectures2021/PoissonProcess.pdf Poisson processes] and [Lectures2021/CTMC.pdf continuous-time Markov chains]
 
-- The first midterm will take place on Jan. 30th. Here is a mind map for [Lectures2021/MarkovChains.pdf Markov chains].
+#- The first midterm will take place on Jan. 30th. Here is a mind map for [Lectures2021/MarkovChains.pdf Markov chains].
 
-- The first lecture will be at 12:30 pm on Thursday in Eckhart Hall 133 .
+- The first lecture will be at 12:30 pm on Tuesday in Eckhart Hall 133 .
 
 == About STAT 253/317
-The course will introduce stochastic processes that are popular in scientific applications, such as discrete time Markov chains, Poisson processes, continuous time Markov processes, renewal processes, queuing models, and Brownian motion.
+The course will introduce stochastic processes that are popular in scientific applications, such as discrete time Markov chains, Poisson processes, continuous time Markov processes, renewal processes, and queuing models.
 
 
 == Prerequisites

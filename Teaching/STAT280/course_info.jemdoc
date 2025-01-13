@@ -1,25 +1,23 @@
 # jemdoc: menu{menu}{index.html}
-= STAT 253/317: Course Information \n
+= STAT 28000: Course Information \n
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025 
 
 
 == Instructor 
 - [https://congma1028.github.io/index.html Cong Ma], Jones 313
-- Office hours: 3:20pm - 4:20pm on Tuesdays (from Week 2)
+- Office hours: 3:20pm - 4:20pm on Thursdays (from Week 2)
 
 
 == Lectures
--  Time: Tue, Thu 12:30 PM - 1:50 PM
+-  Time: Tue, Thu 3:00 PM - 4:50 PM
 -  Location: Eckhart Hall 133 
 
 == TA
-- [https://stat.uchicago.edu/people/profile/chenjia-lin/ Chen Lin]
-- [https://stat.uchicago.edu/people/profile/kulunu-ransika-dharmakeerthi/ Kulunu Dharmakeerthi]
-- Office hours: TA
+- [https://cam.uchicago.edu/people/profile/angela-wang/ Angela Wang]
+- Office hours: 4-6pm, Mondays (from Week 2), Jones 304
 
 == Grading
-- Homework (30\%), Midterm I (20\%), Midterm II (20\%), Final (30\%)
-- The lowest score among PSets will be dropped when calculating the overall homework score. 
+- 4 problem sets and final exam, each counting towards 20% of grade 
 
 == Course Policies 
 - *GradeScope*: We only accept \textbf{online} submission of homework to Gradescope (not Canvas). Please do NOT email your homework to the instructor or TAs. 

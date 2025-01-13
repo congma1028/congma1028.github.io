@@ -1,0 +1,35 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 28000: Syllabus
+
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025
+
+A tentative one:
+
+. Week 1
+.. Jan 7th: Lec 1 on introduction to optimization
+.. Jan 9th: Lec 2 on introduction to Newton's method
+. Week 2
+.. Jan 14th: Lec 3 on analysis of variants of Newton's method
+.. Jan 16th: Lec 4 on refresher on linear algebra and convergence
+. Week 3
+.. Jan 21st: Lec 5 on more preliminaries
+.. Jan 23rd: Lec 6 on gradient and Jacobian
+. Week 4
+.. Jan 28th: Lec 7 on matrix functions
+.. Jan 30th: Lec 8 on log determinant function and Hessian
+. Week 5
+.. Feb 4th: Lec 8 on Hessian computations
+.. Feb 6th: Midterm?
+. Week 6
+.. Feb 11th: Lec 10 on convex sets and functions
+.. Feb 13th: Lec 11 on necessary conditions for optimality
+. Week 7
+.. Feb 18th: Lec 12 on line search methods
+.. Feb 20th: Lec 13 on step size and Newton's method
+. Week 8
+.. Feb 25th: Lec 14 on Newton and SGD
+.. Feb 27th: Lec 15 on quasi newton
+. Week 9
+.. Mar 3rd: Lec 16 on constrained optimization  
+.. Mar 5th:
+
