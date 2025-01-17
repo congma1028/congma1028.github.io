@@ -24,10 +24,13 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 
 
-- [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize]. 
+- [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize].
 
 
-- Our paper [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] has been accepted to Neurips 2024. 
+- A new paper on shared subspace estimation [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices]. 
+
+
+# - Our paper [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] has been accepted to Neurips 2024. 
 
 - A new paper on transfer learning [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation].
 
@@ -36,15 +39,14 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 - A new paper on item parameter estimation in the Rasch model: [Publication/Rasch/Rasch.pdf Random Pairing MLE for Estimation of Item Parameters in Rasch Model]. 
 
 
-- Our paper on ranking [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] has been accepted to COLT 2024. 
+# - Our paper on ranking [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] has been accepted to COLT 2024. 
 
 
-- Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
-for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
+# - Our paper on covariate shift [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift] has been accepted to ICLR 2024. 
 
 
 
-- Our paper on policy evaluation [Publication/TD/TD_LFA.pdf Sharp High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] has been accepted to IEEE Transactions on Information Theory, 2024. 
+# - Our paper on policy evaluation [Publication/TD/TD_LFA.pdf Sharp High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] has been accepted to IEEE Transactions on Information Theory, 2024. 
 
 
 

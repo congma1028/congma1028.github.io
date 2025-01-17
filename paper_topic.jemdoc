@@ -146,6 +146,10 @@ Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order)\n
 == Low-rank matrix recovery
 
 
+- [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
+Y.~Yang, C. Ma \n
+
+
 - [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
 Y. Gui, R. F. Barber, C. Ma \n
 /NeurIPS, 2023/ [https://github.com/yugjerry/conf-mc \[Code\]] \n
