@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title></title>
+</head>
+<body>
+<div id="layout-content">
+<p>&ldquo;&rdquo;&ldquo;jemdoc version 0.7.3, 2012-11-27.&rdquo;&ldquo;&rdquo;
+</p>
+<p>from <u></u>future<u></u> import print_function
+import sys
+import os
+import re
+import time
+import io
+from subprocess import <b>
+from types import </b>
+import tempfile
+</p>
+<p>def info():
+print(<u></u>doc<u></u>)
+print('Platform: &rsquo; <tt> sys.platform </tt> &rsquo;.&rsquo;)
+print('Python: <tt>s, located at </tt>s.&rsquo; % (sys.version<a href=":5" target=&ldquo;blank&rdquo;>:5</a>, sys.executable))
+print('Equation support:&rsquo;, end=&rsquo; &rsquo;)
+(supported, message) = testeqsupport()
+if supported:
+print('yes.&rsquo;)
+else:
+print('no.&rsquo;)
+print(message)
+</p>
+<p>def testeqsupport():
+supported = True
+msg = &rsquo;&rsquo;
+p = Popen('latex &ndash;version&rsquo;, shell=True, stdout=PIPE, stderr=PIPE)
+rc = p.wait()
+if rc != 0:
+msg <tt>= &rsquo;  latex: not found.<br />&rsquo;
+supported = False
+else:
+msg </tt>= &rsquo;  latex: &rsquo; <tt> p.stdout.readlines()<a href="0" target=&ldquo;blank&rdquo;>0</a>.rstrip() </tt> &rsquo;.<br />&rsquo;
+p = Popen('dvipng &ndash;version&rsquo;, shell=True, stdout=PIPE, stderr=PIPE)
+rc = p.wait()
+if rc != 0:
+msg <tt>= &rsquo;  dvipng: not found.<br />&rsquo;
+supported = False
+else:
+msg </tt>= &rsquo;  dvipng: &rsquo; <tt> p.stdout.readlines()<a href="0" target=&ldquo;blank&rdquo;>0</a>.rstrip() </tt> &rsquo;.<br />&rsquo;
+</p>
+<p>return (supported, msg<a href=":-1" target=&ldquo;blank&rdquo;>:-1</a>)
+</p>
