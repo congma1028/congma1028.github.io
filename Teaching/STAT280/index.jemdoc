@@ -19,8 +19,8 @@
 - **Lec 12 (Feb 13):** Gradient descent and line search method
 - **Lec 13 (Feb 18):** Condition number and preconditioned gradient descent
 - **Lec 14 (Feb 20):** Newton’s method
-- **Lec 15 (Feb 25):** (No topic assigned)
-- **Lec 16 (Feb 27):** (No topic assigned)
-- **Lec 17 (Mar 4):** (No topic assigned)
+- **Lec 15 (Feb 25):** Quasi Newton method
+- **Lec 16 (Feb 27):** Rates of convergence for GD
+- **Lec 17 (Mar 4):** No Lecture today
 - **Lec 18 (Mar 6):** (No topic assigned)
 
