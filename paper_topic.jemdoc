@@ -48,9 +48,9 @@ R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
 J.~Lee, C.~Ma \n
 /Neurips, 2024/
 
-- [Publication/BatchedBandit/BatchedNB.pdf Batched Nonparametric Contextual Bandits] \n
+- [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits] \n
 R.~Jiang, C. Ma \n
-[Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]\n
+To appear on /IEEE Transactions on Information Theory, 2025/ [Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]\n
 
 
 - [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n 
