@@ -3,6 +3,18 @@
 
 
 
+== Multi-modal learning
+
+
+- [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n
+Y.~Gui, C.~Ma, Z.~Ma \n
+
+
+- [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
+Y.~Yang, C. Ma \n
+[Publication/AJIVE/AJIVE.pdf \[Slides\]]\n
+
+
 == Transfer learning
 
 - [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] \n
@@ -145,9 +157,7 @@ Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order)\n
 == Low-rank matrix recovery
 
 
-- [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
-Y.~Yang, C. Ma \n
-[Publication/AJIVE/AJIVE.pdf \[Slides\]]\n
+
 
 
 - [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
