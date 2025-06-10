@@ -1,0 +1,305 @@
+- title: Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared
+    Latent Variables
+  authors: Y. Gui, C. Ma, Z. Ma
+  year: 2025
+  venue: ''
+  topics: Multi-modal learning
+  arxiv: https://arxiv.org/abs/2505.12473
+
+- title: 'Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple
+    Data Matrices'
+  authors: Y.~Yang, C. Ma
+  year: 2025
+  venue: '[Publication/AJIVE/AJIVE.pdf \[Slides\]]'
+  topics: Multi-modal learning
+  arxiv: https://arxiv.org/abs/2501.09336
+
+
+
+- title: Batched Nonparametric Contextual Bandits
+  authors: R. Jiang, C. Ma
+  year: 2024
+  venue: IEEE Transactions on Information Theory, 2025 [Publication/BatchedBandit/batch_nb_slides.pdf
+    \[Slides\]]
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2402.17732
+
+- title: Top-K Ranking with a Monotone Adversary
+  authors: Y.~Yang, A.~Chen, L.~Orecchia, C. Ma
+  year: 2024
+  venue: COLT, 2024
+  topics: Ranking
+  arxiv: https://arxiv.org/abs/2402.07445
+
+
+- title: 'Off-Policy Estimation with Adaptively Collected Data: The Power of Online
+    Learning'
+  authors: J.~Lee, C.~Ma
+  year: 2024
+  venue: Neurips, 2024
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2411.12786
+
+- title: 'Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation'
+  authors: B.~Zhao, C.~Ma, M.~Kolar
+  year: 2024
+  venue: ''
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2411.15624
+
+- title: Distributionally Robust Risk Evaluation with an Isotonic Constraint
+  authors: Y.~Gui, R.~F.~Barber, C.~Ma
+  year: 2024
+  venue: ''
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2407.06867
+
+
+
+- title: Random Pairing MLE for Estimation of Item Parameters in Rasch Model
+  authors: Y. Yang, C. Ma
+  year: 2024
+  venue: ''
+  topics: Ranking
+  arxiv: https://arxiv.org/abs/2406.13989
+
+
+
+- title: On the Design-Dependent Suboptimality of the Lasso
+  authors: R. Pathak, C. Ma
+  year: 2024
+  venue: '[https://github.com/reesepathak/lowerlassosim \[Code]]'
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2402.00382
+
+- title: Conformalized Matrix Completion
+  authors: Y. Gui, R. F. Barber, C. Ma
+  year: 2023
+  venue: NeurIPS, 2023 [https://github.com/yugjerry/conf-mc \[Code\]] 
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2305.10637
+
+- title: The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing
+  authors: X. Xu, Y. Shen, Y. Chi, C. Ma
+  year: 2023
+  venue: ICML, 2023 [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]
+  topics: Scaled gradient descent
+  arxiv: https://arxiv.org/abs/2302.01186
+
+- title: High-Probability Sample Complexities for Policy Evaluation with Linear Function
+    Approximation
+  authors: G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei
+  year: 2023
+  venue: IEEE Transactions on Information Theory, 2024  
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2305.19001
+
+- title: 'Unraveling Projection Heads in Contrastive Learning: Insights from Expansion
+    and Shrinkage'
+  authors: Y. Gui, C. Ma, Y. Zhong
+  year: 2023
+  venue: ''
+  topics: Multi-modal learning
+  arxiv: https://arxiv.org/abs/2306.03335
+
+- title: Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression
+  authors: C. Ma, R. Pathak, M. J. Wainwright
+  year: 2022
+  venue: Annals of Statistics, 2023 [Publication/CovariateShiftKernel/covariate-shift-slides.pdf
+    \[Slides\]] 
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2205.02986
+
+- title: Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion
+  authors: Y. Yang, C. Ma
+  year: 2022
+  venue: IEEE Transactions on Information Theory, 2023  
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2207.05802
+
+- title: Fast and Provable Tensor Robust Principal Component Analysis via Scaled Gradient
+    Descent
+  authors: H. Dong, T. Tong, C. Ma, Y. Chi
+  year: 2022
+  venue: 'Information and Inference: A Journal of the IMA, 2023'
+  topics: Scaled gradient descent
+  arxiv: https://arxiv.org/abs/2206.09109
+
+- title: A New Similarity Measure for Covariate Shift with Applications to Nonparametric
+    Regression
+  authors: R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)
+  year: 2022
+  venue: ICML, 2022 (long presentation)
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2202.02837
+
+- title: Jump-Start Reinforcement Learning
+  authors: I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu,
+    C. Ma, J. Jiao, S Levine, K Hausman
+  year: 2022
+  venue: ICML, 2023
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2204.02372
+
+- title: $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player
+    Zero-Sum Markov Games
+  authors: Y. Yang, C. Ma
+  year: 2022
+  venue: ICLR, 2023 
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2209.12430
+
+- title: Pessimism for Offline Linear Contextual Bandits using $\ell_{p}$ Confidence
+    Sets
+  authors: G. Li, C. Ma, N. Srebro (alphabetical order)
+  year: 2022
+  venue: NeurIPS, 2022  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]]
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2205.10671
+
+- title: Minimax Off-Policy Evaluation for Multi-Armed Bandits
+  authors: C. Ma, B. Zhu, J. Jiao, M. J. Wainwright
+  year: 2021
+  venue: IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf
+    \[Slides\]] 
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2101.07781
+
+- title: 'Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of
+    Pessimism'
+  authors: P. Rashidinejad, B. Zhu, C. Ma, J. Jiao, S. Russell
+  year: 2021
+  venue: IEEE Transactions on Information Theory, 2022, accepted in part to /NeurIPS
+    2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] 
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2103.12021
+
+- title: 'Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from
+    Incomplete Measurements'
+  authors: T. Tong, C. Ma, A. Prater-Bennette, E. Tripp, Y. Chi
+  year: 2021
+  venue: Journal of Machine Learning Research, 2022, accepted in part to AISTATS,
+    2022
+  topics: Scaled gradient descent
+  arxiv: https://arxiv.org/abs/2104.14526
+
+- title: 'Spectral Methods for Data Science: A Statistical Perspective'
+  authors: Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)
+  year: 2020
+  venue: Foundations and Trends\R in Machine Learning, 2021
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2012.08496
+
+- title: 'Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers,
+    and Missing Data'
+  authors: Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)
+  year: 2020
+  venue: Annals of Statistics, 2021
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2001.05484
+
+- title: Learning Mixtures of Low-Rank Models
+  authors: Y. Chen, C. Ma, H. V. Poor, Y. Che
+  year: 2020
+  venue: IEEE Transactions on Information Theory, 2021
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2009.11282
+
+- title: 'Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust
+    Convergence Without the Condition Number'
+  authors: T. Tong, C. Ma, Y. Chi
+  year: 2020
+  venue: IEEE Transactions on Signal Processing, 2021
+  topics: Scaled gradient descent
+  arxiv: https://arxiv.org/abs/2010.13364
+
+- title: Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient
+    Descent
+  authors: T. Tong, C. Ma, Y. Chi
+  year: 2020
+  venue: Journal of Machine Learning Research, 2021
+  topics: Scaled gradient descent
+  arxiv: https://arxiv.org/abs/2005.08898
+
+- title: Inference and Uncertainty Quantification for Noisy Matrix Completion
+  authors: Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)
+  year: 2019
+  venue: Proceedings of the National Academy of Sciences, 2019 [Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf
+    \[Slides\]]  
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/1906.04159
+
+- title: A Selective Overview of Deep Learning
+  authors: J. Fan, C. Ma, Y. Zhong (alphabetical order)
+  year: 2019
+  venue: Statistical Science, 2020 
+  topics: Others
+  arxiv: https://arxiv.org/abs/1904.05526
+
+- title: 'Noisy Matrix Completion: Understanding Statistical Guarantees for Convex
+    Relaxation via Nonconvex Optimization'
+  authors: Y. Chen, Y. Chi, J. Fan, C. Ma, Y. Yan (alphabetical order)
+  year: 2019
+  venue: SIAM Journal on Optimization, 2020, [Publication/NoisyMC/Slides/NoisyMC_slides.pdf
+    \[Slides\]] 
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/1902.07698
+
+- title: 'Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank
+    Matrix Sensing'
+  authors: C. Ma, Y. Li, Y. Chi
+  year: 2019
+  venue: IEEE Transactions on Signal Processing, 2021, accepted in part to Asilomar
+    2019
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/2101.05113
+
+- title: 'Gradient Descent with Random Initialization: Fast Global Convergence for
+    Nonconvex Phase Retrieval'
+  authors: Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)
+  year: 2018
+  venue: Mathematical Programming, 2019, [Publication/RandomInit/Slides/random_init_slides.pdf
+    \[Slides\]]
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/1803.07726
+
+- title: Nonconvex Matrix Factorization from Rank-One Measurements
+  authors: Y. Li, C. Ma, Y. Chen, Y. Chi
+  year: 2018
+  venue: IEEE Transactions on Information Theory, 2021, accepted in part to AISTATS,
+    2019
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/1802.06286
+
+- title: 'Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent
+    Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution'
+  authors: C. Ma, K. Wang, Y. Chi, Y. Chen
+  year: 2017
+  venue: Foundations of Computational Mathematics, 2020 [Publication/Implicit/Slides/implicit_reg_slides.pdf
+    \[Slides\]]
+  topics: Low-rank matrix recovery
+  arxiv: https://arxiv.org/abs/1711.10467
+
+- title: Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking
+  authors: Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order)
+  year: 2017
+  venue: Annals of Statistics, 2019 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf
+    \[Slides\]]
+  topics: Ranking
+  arxiv: https://arxiv.org/abs/1707.09971
+
+- title: 'Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach'
+  authors: C. Ma, J. Lu, H. Liu
+  year: 2017
+  venue: Journal of American Statistical Association, 2021 [Publication/ISA/Slides/ISA.pdf
+    \[Slides\]]
+  topics: Others
+  arxiv: https://arxiv.org/abs/1709.07036
+
+- title: Fast and Flexible Top-K Similarity Search on Large Networks
+  authors: "J. Zhang, J. Tang, C. Ma, H. Tong, Y. Jing, J. Li, W. Luyten, \tM. Moens"
+  year: 2015
+  venue: ACM Transactions on Information Systems, 2017, accepted in part to /KDD,
+    2015/  
+  topics: Others
+  arxiv: https://arxiv.org/abs/1504.02577

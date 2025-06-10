@@ -1,260 +1,164 @@
-# jemdoc: menu{menu}{paper_topic.html}
+# jemdoc: menu{menu}{paper_topic.jemdoc}
 = Publications by topics
-
-
 
 == Multi-modal learning
 
-
 - [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n
-Y.~Gui, C.~Ma, Z.~Ma \n
-
+Y. Gui, C. Ma, Z. Ma \n
 
 - [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
 Y.~Yang, C. Ma \n
-[Publication/AJIVE/AJIVE.pdf \[Slides\]]\n
+/[Publication/AJIVE/AJIVE.pdf \[Slides\]]/
 
+- [https://arxiv.org/abs/2306.03335 Unraveling Projection Heads in Contrastive Learning: Insights from Expansion and Shrinkage] \n
+Y. Gui, C. Ma, Y. Zhong \n
 
 == Transfer learning
 
 - [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] \n
-B.~Zhao, C.~Ma, M.~Kolar 
+B.~Zhao, C.~Ma, M.~Kolar \n
 
-- [Publication/DRL/isoDRL.pdf Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
-Y.~Gui, R.~F.~Barber, C.~Ma
+- [https://arxiv.org/abs/2407.06867 Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
+Y.~Gui, R.~F.~Barber, C.~Ma \n
 
-- [Publication/Lasso/lasso_suboptimality.pdf On the Design-Dependent Suboptimality of the Lasso] \n
+- [https://arxiv.org/abs/2402.00382 On the Design-Dependent Suboptimality of the Lasso] \n
 R. Pathak, C. Ma \n
-[https://github.com/reesepathak/lowerlassosim \[Code]]
+/[https://github.com/reesepathak/lowerlassosim \[Code]]/
 
-
-- [Publication/Covariate-shift-MLE/CS-MLE.pdf Maximum Likelihood Estimation is All You Need
-for Well-Specified Covariate Shift] \n 
-J. Ge, S. Tang, J. Fan, C. Ma, C. Jin \n
-/ICLR, 2024/
-
-
-
-- [Publication/CovariateShiftKernel/CovariateShift.pdf Optimally Tackling Covariate Shift in RKHS-based Nonparametric Regression] \n
+- [https://arxiv.org/abs/2205.02986 Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression] \n
 C. Ma, R. Pathak, M. J. Wainwright \n
-/Annals of Statistics, 2023/ [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]] \n
+/Annals of Statistics, 2023 [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]]/
 
-- [Publication/CovariateShiftNW/main.pdf A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
-R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally)\n
-/ICML, 2022/ (long presentation)
-
-
-
-
-
-
-
-
-
-
-
+- [https://arxiv.org/abs/2202.02837 A New Similarity Measure for Covariate Shift with Applications to Nonparametric Regression] \n
+R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally) \n
+/ICML, 2022 (long presentation)/
 
 == Reinforcement learning
+
+- [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits] \n
+R. Jiang, C. Ma \n
+/IEEE Transactions on Information Theory, 2025 [Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]/
 
 - [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] \n
 J.~Lee, C.~Ma \n
 /Neurips, 2024/
 
-- [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits] \n
-R.~Jiang, C. Ma \n
-To appear on /IEEE Transactions on Information Theory, 2025/ [Publication/BatchedBandit/batch_nb_slides.pdf \[Slides\]]\n
-
-
-- [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n 
+- [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n
 G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei \n
-/IEEE Transactions on Information Theory, 2024/  \n
+/IEEE Transactions on Information Theory, 2024/
 
-- [Publication/JSRL/jsrl.pdf Jump-Start Reinforcement Learning] \n
+- [https://arxiv.org/abs/2204.02372 Jump-Start Reinforcement Learning] \n
 I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu, C. Ma, J. Jiao, S Levine, K Hausman \n
 /ICML, 2023/
 
-- [Publication/OFTRL/OFTRL.pdf $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
+- [https://arxiv.org/abs/2209.12430 $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player Zero-Sum Markov Games] \n
 Y. Yang, C. Ma \n
-/ICLR, 2023/ \n
+/ICLR, 2023/
 
-
-
-
-
-- [Publication/ContextualBandit/lcb_bounds_arxiv.pdf Pessimism for Offline Linear Contextual Bandits using $\ell_{p}$ Confidence Sets] \n
+- [https://arxiv.org/abs/2205.10671 Pessimism for Offline Linear Contextual Bandits using $\ell_{p}$ Confidence Sets] \n
 G. Li, C. Ma, N. Srebro (alphabetical order) \n
-/NeurIPS, 2022/  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]] \n
+/NeurIPS, 2022  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]]/
 
-
-- [Publication/OPE/OPE.pdf Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
+- [https://arxiv.org/abs/2101.07781 Minimax Off-Policy Evaluation for Multi-Armed Bandits] \n
 C. Ma, B. Zhu, J. Jiao, M. J. Wainwright \n
-/IEEE Transactions on Information Theory, 2022/ [Publication/OPE/OPE_slides.pdf \[Slides\]] \n
+/IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf \[Slides\]]/
 
-- [Publication/OfflineRL/OfflineRL.pdf Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
+- [https://arxiv.org/abs/2103.12021 Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, C. Ma, J. Jiao, S. Russell \n
-/IEEE Transactions on Information Theory, 2022/  \n
-accepted in part to /NeurIPS 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] \n
-
-
-
-
-
-== Scaled gradient descent
-
-
-- [Publication/Overparam/ScaledGD_Overparam.pdf The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n 
-X. Xu, Y. Shen, Y. Chi, C. Ma \n
-/ICML, 2023/ [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]\n
-
-- [Publication/TPCA/TPCA.pdf Fast and Provable Tensor Robust Principal Component Analysis via Scaled Gradient Descent] \n
-H. Dong, T. Tong, C. Ma, Y. Chi\n
-/Information and Inference: A Journal of the IMA, 2023/ 
-
-
-
-- [Publication/Tensor/Tensor_ScaledGD.pdf Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
-T. Tong, C. Ma, A. Prater-Bennette, E. Tripp, Y. Chi\n
-/Journal of Machine Learning Research, 2022/\n
-accepted in part to /AISTATS, 2022/
-
-
-- [Publication/ScaledSM/ScaledNonsmooth.pdf Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
-T. Tong, C. Ma, Y. Chi\n
-/IEEE Transactions on Signal Processing, 2021/\n
-
-
-- [Publication/ScaledGD/ScaledGD.pdf Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
-T. Tong, C. Ma, Y. Chi\n
-/Journal of Machine Learning Research, 2021/\n
-
-
-
-
-
-
-== Ranking
-
-
-- [Publication/Rasch/Rasch.pdf Random Pairing MLE for Estimation of Item Parameters in Rasch Model] \n
-Y.~Yang, C. Ma \n
-
-
-- [Publication/RankingSemiRandom/Semi_Random_Ranking.pdf Top-$K$ Ranking with a Monotone Adversary] \n
-Y.~Yang, A.~Chen, L.~Orecchia, C. Ma \n
-/COLT, 2024/ [Publication/RankingSemiRandom/topK_semi_random_slides.pdf \[Slides\]]
-[https://github.com/Orecchia-Research-Group/COLT-2024---Semirandom-Graph-Ranking \[Code]]\n
-
-
-- [Publication/Ranking/topK.pdf Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking ]  \n
-Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order)\n
-/Annals of Statistics, 2019/
-[Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]] 
-
-
-
-
+/IEEE Transactions on Information Theory, 2022, accepted in part to /NeurIPS 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]]/
 
 == Low-rank matrix recovery
 
-
-
-
-
-- [Publication/CMC/cmc.pdf Conformalized Matrix Completion] \n 
+- [https://arxiv.org/abs/2305.10637 Conformalized Matrix Completion] \n
 Y. Gui, R. F. Barber, C. Ma \n
-/NeurIPS, 2023/ [https://github.com/yugjerry/conf-mc \[Code\]] \n
+/NeurIPS, 2023 [https://github.com/yugjerry/conf-mc \[Code\]]/
 
-
-
-
-
-
-- [Publication/SqrtMC/SqrtMC.pdf Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] \n
+- [https://arxiv.org/abs/2207.05802 Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion] \n
 Y. Yang, C. Ma \n
-/IEEE Transactions on Information Theory, 2023/  \n
+/IEEE Transactions on Information Theory, 2023/
 
-
-
-
-
-
-
-
-
-
-
-- [Publication/Spectral/SpectralMethods_FnTarticle-nowplain.pdf Spectral Methods for Data Science: A Statistical Perspective] \n
-Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)\n
+- [https://arxiv.org/abs/2012.08496 Spectral Methods for Data Science: A Statistical Perspective] \n
+Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order) \n
 /Foundations and Trends\R in Machine Learning, 2021/
 
-- [Publication/RobustPCA/RPCA_noise.pdf Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
-Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)\n
-/Annals of Statistics, 2021/\n
+- [https://arxiv.org/abs/2001.05484 Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers, and Missing Data] \n
+Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order) \n
+/Annals of Statistics, 2021/
 
-- [Publication/Mixture_LowRank/mixed-matrix-sensing.pdf Learning Mixtures of Low-Rank Models] \n
-Y. Chen, C. Ma, H. V. Poor, Y. Chen\n
-/IEEE Transactions on Information Theory, 2021/\n
+- [https://arxiv.org/abs/2009.11282 Learning Mixtures of Low-Rank Models] \n
+Y. Chen, C. Ma, H. V. Poor, Y. Che \n
+/IEEE Transactions on Information Theory, 2021/
 
+- [https://arxiv.org/abs/1906.04159 Inference and Uncertainty Quantification for Noisy Matrix Completion] \n
+Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order) \n
+/Proceedings of the National Academy of Sciences, 2019 [Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf \[Slides\]]/
 
-- [Publication/Implicit/paper.pdf Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
-C. Ma, K. Wang, Y. Chi, Y. Chen \n
-/Foundations of Computational Mathematics, 2020/ \n
-accepted in part to /ICML 2018/ 
-[Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]] 
+- [https://arxiv.org/abs/1902.07698 Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization] \n
+Y. Chen, Y. Chi, J. Fan, C. Ma, Y. Yan (alphabetical order) \n
+/SIAM Journal on Optimization, 2020, [Publication/NoisyMC/Slides/NoisyMC_slides.pdf \[Slides\]]/
 
-
-
-
-- [Publication/MC_inference/MC_inference.pdf Inference and Uncertainty Quantification for Noisy Matrix Completion] \n
-Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)\n
- /Proceedings of the National Academy of Sciences, 2019/ 
-[Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf \[Slides\]]  \n
-
-
-
-
-- [Publication/NoisyMC/NoisyMC.pdf Noisy Matrix Completion: Understanding Statistical Guarantees for Convex Relaxation via Nonconvex Optimization] \n
-Y. Chen, Y. Chi, J. Fan, C. Ma, Y. Yan (alphabetical order)\n
-/SIAM Journal on Optimization, 2020/ 
-[Publication/NoisyMC/Slides/NoisyMC_slides.pdf \[Slides\]] \n
-
-- [Publication/BalancingFree/RectangularMF_TSP.pdf Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing] \n
+- [https://arxiv.org/abs/2101.05113 Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank Matrix Sensing] \n
 C. Ma, Y. Li, Y. Chi \n
- /IEEE Transactions on Signal Processing, 2021/ \n
- accepted in part to /Asilomar 2019/
+/IEEE Transactions on Signal Processing, 2021, accepted in part to Asilomar 2019/
 
-- [Publication/RandomInit/main.pdf Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
-Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)\n
-/Mathematical Programming, 2019/ 
-[Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]]  
+- [https://arxiv.org/abs/1803.07726 Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
+Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order) \n
+/Mathematical Programming, 2019, [Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]]/
 
-- [Publication/RankOne/noncvx_covsketch_latest.pdf Nonconvex Matrix Factorization from Rank-One Measurements]\n
+- [https://arxiv.org/abs/1802.06286 Nonconvex Matrix Factorization from Rank-One Measurements] \n
 Y. Li, C. Ma, Y. Chen, Y. Chi \n
-/IEEE Transactions on Information Theory, 2020/ \n
-accepted in part to /AISTATS, 2019/
+/IEEE Transactions on Information Theory, 2021, accepted in part to AISTATS, 2019/
 
+- [https://arxiv.org/abs/1711.10467 Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
+C. Ma, K. Wang, Y. Chi, Y. Chen \n
+/Foundations of Computational Mathematics, 2020 [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]]/
 
+== Scaled gradient descent
+
+- [https://arxiv.org/abs/2302.01186 The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n
+X. Xu, Y. Shen, Y. Chi, C. Ma \n
+/ICML, 2023 [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]/
+
+- [https://arxiv.org/abs/2206.09109 Fast and Provable Tensor Robust Principal Component Analysis via Scaled Gradient Descent] \n
+H. Dong, T. Tong, C. Ma, Y. Chi \n
+/Information and Inference: A Journal of the IMA, 2023/
+
+- [https://arxiv.org/abs/2104.14526 Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from Incomplete Measurements] \n
+T. Tong, C. Ma, A. Prater-Bennette, E. Tripp, Y. Chi \n
+/Journal of Machine Learning Research, 2022, accepted in part to AISTATS, 2022/
+
+- [https://arxiv.org/abs/2010.13364 Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust Convergence Without the Condition Number] \n
+T. Tong, C. Ma, Y. Chi \n
+/IEEE Transactions on Signal Processing, 2021/
+
+- [https://arxiv.org/abs/2005.08898 Accelerating Ill-Conditioned Low-Rank Matrix Estimation via Scaled Gradient Descent] \n
+T. Tong, C. Ma, Y. Chi \n
+/Journal of Machine Learning Research, 2021/
+
+== Ranking
+
+- [https://arxiv.org/abs/2402.07445 Top-K Ranking with a Monotone Adversary] \n
+Y.~Yang, A.~Chen, L.~Orecchia, C. Ma \n
+/COLT, 2024/
+
+- [https://arxiv.org/abs/2406.13989 Random Pairing MLE for Estimation of Item Parameters in Rasch Model] \n
+Y. Yang, C. Ma \n
+
+- [https://arxiv.org/abs/1707.09971 Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking] \n
+Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order) \n
+/Annals of Statistics, 2019 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]]/
 
 == Others
 
+- [https://arxiv.org/abs/1904.05526 A Selective Overview of Deep Learning] \n
+J. Fan, C. Ma, Y. Zhong (alphabetical order) \n
+/Statistical Science, 2020/
 
-- [Publication/SSL/ssl.pdf Unraveling Projection Heads in Contrastive Learning: Insights from Expansion and Shrinkage] \n 
-Y. Gui, C. Ma, Y. Zhong \n
-
-- [Publication/DL_survey/DL_survey.pdf A Selective Overview of Deep Learning] \n
-J. Fan, C. Ma, Y. Zhong (alphabetical order)\n
-/Statistical Science, 2020/ \n
-
-- [Publication/ISA/jasa.pdf Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach] \n
+- [https://arxiv.org/abs/1709.07036 Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach] \n
 C. Ma, J. Lu, H. Liu \n
-/Journal of the American Statistical Association, 2020/ 
-[Publication/ISA/Slides/ISA.pdf \[Slides\]]\n
+/Journal of American Statistical Association, 2021 [Publication/ISA/Slides/ISA.pdf \[Slides\]]/
 
-
-
-- [Publication/Panther/TOIS.pdf Fast and Flexible Top-$K$ Similarity Search on Large Networks] \n
+- [https://arxiv.org/abs/1504.02577 Fast and Flexible Top-K Similarity Search on Large Networks] \n
 J. Zhang, J. Tang, C. Ma, H. Tong, Y. Jing, J. Li, W. Luyten, 	M. Moens \n
-/ACM Transactions on Information Systems, 2017/ \n
-accepted in part to /KDD, 2015/  \n 
-
+/ACM Transactions on Information Systems, 2017, accepted in part to /KDD, 2015//
 
