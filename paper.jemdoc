@@ -142,7 +142,7 @@ C. Ma, Y. Li, Y. Chi \n
 
 - [https://arxiv.org/abs/1803.07726 Gradient Descent with Random Initialization: Fast Global Convergence for Nonconvex Phase Retrieval] \n
 Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order) \n
-/Mathematical Programming, 2019, [Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]]/
+/Mathematical Programming, 2019 [Publication/RandomInit/Slides/random_init_slides.pdf \[Slides\]]/
 
 - [https://arxiv.org/abs/1802.06286 Nonconvex Matrix Factorization from Rank-One Measurements] \n
 Y. Li, C. Ma, Y. Chen, Y. Chi \n
@@ -152,7 +152,7 @@ Y. Li, C. Ma, Y. Chen, Y. Chi \n
 
 - [https://arxiv.org/abs/1711.10467 Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution] \n
 C. Ma, K. Wang, Y. Chi, Y. Chen \n
-/Foundations of Computational Mathematics, 2020 [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]]/
+/Foundations of Computational Mathematics, 2020, accepted in part to ICML, 2018  [Publication/Implicit/Slides/implicit_reg_slides.pdf \[Slides\]]/
 
 - [https://arxiv.org/abs/1707.09971 Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking] \n
 Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order) \n

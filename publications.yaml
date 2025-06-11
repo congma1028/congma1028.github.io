@@ -258,7 +258,7 @@
     Nonconvex Phase Retrieval'
   authors: Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)
   year: 2018
-  venue: Mathematical Programming, 2019, [Publication/RandomInit/Slides/random_init_slides.pdf
+  venue: Mathematical Programming, 2019 [Publication/RandomInit/Slides/random_init_slides.pdf
     \[Slides\]]
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1803.07726
@@ -275,7 +275,7 @@
     Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution'
   authors: C. Ma, K. Wang, Y. Chi, Y. Chen
   year: 2017
-  venue: Foundations of Computational Mathematics, 2020 [Publication/Implicit/Slides/implicit_reg_slides.pdf
+  venue: Foundations of Computational Mathematics, 2020, accepted in part to ICML, 2018  [Publication/Implicit/Slides/implicit_reg_slides.pdf
     \[Slides\]]
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1711.10467
