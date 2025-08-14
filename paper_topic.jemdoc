@@ -25,6 +25,10 @@ Y.~Gui, R.~F.~Barber, C.~Ma \n
 R. Pathak, C. Ma \n
 /[https://github.com/reesepathak/lowerlassosim \[Code]]/
 
+- [https://arxiv.org/abs/2311.15961 Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift] \n
+J. Ge, S. Tang, J. Fan, C. Ma, C. Jin \n
+/ICLR, 2024/
+
 - [https://arxiv.org/abs/2205.02986 Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression] \n
 C. Ma, R. Pathak, M. J. Wainwright \n
 /Annals of Statistics, 2023 [Publication/CovariateShiftKernel/covariate-shift-slides.pdf \[Slides\]]/

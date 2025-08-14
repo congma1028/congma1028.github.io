@@ -39,17 +39,27 @@ R. Pathak, C. Ma \n
 
 == 2023
 
-- [https://arxiv.org/abs/2305.10637 Conformalized Matrix Completion] \n
-Y. Gui, R. F. Barber, C. Ma \n
-/NeurIPS, 2023 [https://github.com/yugjerry/conf-mc \[Code\]]/
+- [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n
+G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei \n
+/IEEE Transactions on Information Theory, 2024/
+
+
+- [https://arxiv.org/abs/2311.15961 Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift] \n
+J. Ge, S. Tang, J. Fan, C. Ma, C. Jin \n
+/ICLR, 2024/
 
 - [https://arxiv.org/abs/2302.01186 The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing] \n
 X. Xu, Y. Shen, Y. Chi, C. Ma \n
 /ICML, 2023 [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]/
 
-- [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n
-G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei \n
-/IEEE Transactions on Information Theory, 2024/
+
+
+- [https://arxiv.org/abs/2305.10637 Conformalized Matrix Completion] \n
+Y. Gui, R. F. Barber, C. Ma \n
+/NeurIPS, 2023 [https://github.com/yugjerry/conf-mc \[Code\]]/
+
+
+
 
 - [https://arxiv.org/abs/2306.03335 Unraveling Projection Heads in Contrastive Learning: Insights from Expansion and Shrinkage] \n
 Y. Gui, C. Ma, Y. Zhong \n
