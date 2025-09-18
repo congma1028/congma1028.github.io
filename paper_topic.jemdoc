@@ -5,6 +5,7 @@
 
 - [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n
 Y. Gui, C. Ma, Z. Ma \n
+/NeurIPS, 2025/
 
 - [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
 Y.~Yang, C. Ma \n
@@ -45,7 +46,7 @@ R. Jiang, C. Ma \n
 
 - [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] \n
 J.~Lee, C.~Ma \n
-/Neurips, 2024/
+/NeurIPS, 2024/
 
 - [https://arxiv.org/abs/2305.19001 High-Probability Sample Complexities for Policy Evaluation with Linear Function Approximation] \n
 G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei \n
@@ -69,7 +70,7 @@ C. Ma, B. Zhu, J. Jiao, M. J. Wainwright \n
 
 - [https://arxiv.org/abs/2103.12021 Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of Pessimism] \n
 P. Rashidinejad, B. Zhu, C. Ma, J. Jiao, S. Russell \n
-/IEEE Transactions on Information Theory, 2022, accepted in part to /NeurIPS 2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]]/
+/IEEE Transactions on Information Theory, 2022, accepted in part to NeurIPS, 2021 [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]]/
 
 == Low-rank matrix recovery
 
@@ -164,5 +165,9 @@ C. Ma, J. Lu, H. Liu \n
 
 - [https://arxiv.org/abs/1504.02577 Fast and Flexible Top-K Similarity Search on Large Networks] \n
 J. Zhang, J. Tang, C. Ma, H. Tong, Y. Jing, J. Li, W. Luyten, 	M. Moens \n
-/ACM Transactions on Information Systems, 2017, accepted in part to /KDD, 2015//
+/ACM Transactions on Information Systems, 2017, accepted in part to KDD, 2015/
+
+- [https://muse.jhu.edu/article/799748 Modern Data Modeling: Cross-Fertilization of the Two Cultures] \n
+J. Fan, C. Ma, K. Wang, Z. Zhu (alphabetical order) \n
+/Observational Studies, 2021/
 

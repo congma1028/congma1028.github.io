@@ -2,7 +2,7 @@
     Latent Variables
   authors: Y. Gui, C. Ma, Z. Ma
   year: 2025
-  venue: ''
+  venue: NeurIPS, 2025
   topics: Multi-modal learning
   arxiv: https://arxiv.org/abs/2505.12473
 
@@ -36,7 +36,7 @@
     Learning'
   authors: J.~Lee, C.~Ma
   year: 2024
-  venue: Neurips, 2024
+  venue: NeurIPS, 2024
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2411.12786
 
@@ -93,6 +93,14 @@
   venue: IEEE Transactions on Information Theory, 2024  
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2305.19001
+
+
+- title: Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift
+  authors: J. Ge, S. Tang, J. Fan, C. Ma, C. Jin
+  year: 2023
+  venue: ICLR, 2024
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2311.15961
 
 - title: 'Unraveling Projection Heads in Contrastive Learning: Insights from Expansion
     and Shrinkage'
@@ -151,7 +159,7 @@
 
 - title: Pessimism for Offline Linear Contextual Bandits using $\ell_{p}$ Confidence
     Sets
-  authors: G. Li, C. Ma, N. Srebro (alphabetical order)
+  authors: G. Li, C. Ma, N. Srebro
   year: 2022
   venue: NeurIPS, 2022  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]]
   topics: Reinforcement learning
@@ -169,8 +177,8 @@
     Pessimism'
   authors: P. Rashidinejad, B. Zhu, C. Ma, J. Jiao, S. Russell
   year: 2021
-  venue: IEEE Transactions on Information Theory, 2022, accepted in part to /NeurIPS
-    2021/ [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] 
+  venue: IEEE Transactions on Information Theory, 2022, accepted in part to NeurIPS,
+    2021 [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] 
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2103.12021
 
@@ -299,7 +307,21 @@
 - title: Fast and Flexible Top-K Similarity Search on Large Networks
   authors: "J. Zhang, J. Tang, C. Ma, H. Tong, Y. Jing, J. Li, W. Luyten, \tM. Moens"
   year: 2015
-  venue: ACM Transactions on Information Systems, 2017, accepted in part to /KDD,
-    2015/  
+  venue: ACM Transactions on Information Systems, 2017, accepted in part to KDD,
+    2015 
   topics: Others
   arxiv: https://arxiv.org/abs/1504.02577
+
+
+- title: 'Modern Data Modeling: Cross-Fertilization of the Two Cultures'
+  authors: J. Fan, C. Ma, K. Wang, Z. Zhu (alphabetical order)
+  year: 2021
+  venue: Observational Studies, 2021
+  topics: Others
+  arxiv: https://muse.jhu.edu/article/799748
+
+- title: 'Comment on “A Tuning-Free Robust and Efficient Approach to High-Dimensional Regression”'
+  authors: J. Fan, C. Ma, K. Wang (alphabetical order)
+  year: 2020
+  venue: Journal of the American Statistical Association, 2020
+  arxiv: https://www.tandfonline.com/doi/full/10.1080/01621459.2020.1837141
