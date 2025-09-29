@@ -1,3 +1,19 @@
+- title: IndiSeek Learns Information-Guided Disentangled Representations
+  authors: Y. Gui, C. Ma, Z. Ma
+  year: 2025
+  venue: 
+  topics: Multi-modal learning
+  arxiv: https://arxiv.org/abs/2509.21584
+
+
+- title: Learning to Answer from Correct Demonstrations
+  authors: N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro
+  year: 2025
+  venue: 
+  topics: Others
+  arxiv: 
+
+
 - title: Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared
     Latent Variables
   authors: Y. Gui, C. Ma, Z. Ma

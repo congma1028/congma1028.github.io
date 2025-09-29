@@ -3,6 +3,9 @@
 
 == Multi-modal learning
 
+- [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations] \n
+Y. Gui, C. Ma, Z. Ma \n
+
 - [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n
 Y. Gui, C. Ma, Z. Ma \n
 /NeurIPS, 2025/
@@ -154,6 +157,9 @@ Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order) \n
 /Annals of Statistics, 2019 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf \[Slides\]]/
 
 == Others
+
+- [None Learning to Answer from Correct Demonstrations] \n
+N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro \n
 
 - [https://arxiv.org/abs/1904.05526 A Selective Overview of Deep Learning] \n
 J. Fan, C. Ma, Y. Zhong (alphabetical order) \n
