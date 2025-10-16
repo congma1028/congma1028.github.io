@@ -10,7 +10,7 @@
   authors: N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro
   year: 2025
   venue: '[Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf \[Slides\]]'
-  topics: Others
+  topics: Reinforcement learning
   arxiv: 
 
 
@@ -159,7 +159,7 @@
 
 - title: Jump-Start Reinforcement Learning
   authors: I. Uchendu, T. Xiao, Y. Lu, B. Zhu, M. Yan, J. Simon, M. Bennice, C. Fu,
-    C. Ma, J. Jiao, S Levine, K Hausman
+    C. Ma, J. Jiao, S. Levine, K. Hausman
   year: 2022
   venue: ICML, 2023
   topics: Reinforcement learning
@@ -223,7 +223,7 @@
   arxiv: https://arxiv.org/abs/2001.05484
 
 - title: Learning Mixtures of Low-Rank Models
-  authors: Y. Chen, C. Ma, H. V. Poor, Y. Che
+  authors: Y. Chen, C. Ma, H. V. Poor, Y. Chen
   year: 2020
   venue: IEEE Transactions on Information Theory, 2021
   topics: Low-rank matrix recovery
@@ -340,4 +340,5 @@
   authors: J. Fan, C. Ma, K. Wang (alphabetical order)
   year: 2020
   venue: Journal of the American Statistical Association, 2020
+  topics: Others
   arxiv: https://www.tandfonline.com/doi/full/10.1080/01621459.2020.1837141
