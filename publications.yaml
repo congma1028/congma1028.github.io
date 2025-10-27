@@ -32,6 +32,13 @@
 
 
 
+- title: Random Pairing MLE for Estimation of Item Parameters in Rasch Model
+  authors: Y. Yang, C. Ma
+  year: 2024
+  venue: Journal of the American Statistical Association, 2025
+  topics: Ranking
+  arxiv: https://arxiv.org/abs/2406.13989
+
 - title: Batched Nonparametric Contextual Bandits
   authors: R. Jiang, C. Ma
   year: 2024
@@ -72,12 +79,7 @@
 
 
 
-- title: Random Pairing MLE for Estimation of Item Parameters in Rasch Model
-  authors: Y. Yang, C. Ma
-  year: 2024
-  venue: ''
-  topics: Ranking
-  arxiv: https://arxiv.org/abs/2406.13989
+
 
 
 
