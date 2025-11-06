@@ -11,7 +11,7 @@
 - title: 'The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin'
   authors: R. Jiang, C. Ma
   year: 2025
-  venue: 
+  venue: '[Publication/BatchedBandit/batch_nb_slides_uiuc.pdf \[Slides\]]'
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2511.03708
 
