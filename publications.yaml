@@ -1,3 +1,20 @@
+
+- title: Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared
+    Latent Variables
+  authors: Y. Gui, C. Ma, Z. Ma
+  year: 2025
+  venue: NeurIPS, 2025
+  topics: Multi-modal learning
+  arxiv: https://arxiv.org/abs/2505.12473
+
+
+- title: 'The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin'
+  authors: R. Jiang, C. Ma
+  year: 2025
+  venue: 
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2511.03708
+
 - title: IndiSeek Learns Information-Guided Disentangled Representations
   authors: Y. Gui, C. Ma, Z. Ma
   year: 2025
@@ -14,13 +31,7 @@
   arxiv: https://arxiv.org/abs/2510.15464
 
 
-- title: Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared
-    Latent Variables
-  authors: Y. Gui, C. Ma, Z. Ma
-  year: 2025
-  venue: NeurIPS, 2025
-  topics: Multi-modal learning
-  arxiv: https://arxiv.org/abs/2505.12473
+
 
 - title: 'Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple
     Data Matrices'

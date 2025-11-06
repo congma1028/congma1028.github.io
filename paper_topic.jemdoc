@@ -3,12 +3,12 @@
 
 == Multi-modal learning
 
-- [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations] \n
-Y. Gui, C. Ma, Z. Ma \n
-
 - [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n
 Y. Gui, C. Ma, Z. Ma \n
 /NeurIPS, 2025/
+
+- [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations] \n
+Y. Gui, C. Ma, Z. Ma \n
 
 - [https://arxiv.org/abs/2501.09336 Estimating Shared Subspace with AJIVE: The Power and Limitation of Multiple Data Matrices] \n
 Y.~Yang, C. Ma \n
@@ -42,6 +42,9 @@ R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally) \n
 /ICML, 2022 (long presentation)/
 
 == Reinforcement learning
+
+- [https://arxiv.org/abs/2511.03708 The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin] \n
+R. Jiang, C. Ma \n
 
 - [https://arxiv.org/abs/2510.15464 Learning to Answer from Correct Demonstrations] \n
 N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro \n
