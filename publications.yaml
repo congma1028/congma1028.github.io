@@ -50,6 +50,16 @@
   topics: Ranking
   arxiv: https://arxiv.org/abs/2406.13989
 
+
+
+- title: 'Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation'
+  authors: B.~Zhao, C.~Ma, M.~Kolar
+  year: 2024
+  venue: Journal of the American Statistical Association, 2025
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2411.15624
+
+  
 - title: Batched Nonparametric Contextual Bandits
   authors: R. Jiang, C. Ma
   year: 2024
@@ -57,6 +67,8 @@
     \[Slides\]]
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2402.17732
+
+
 
 - title: Top-K Ranking with a Monotone Adversary
   authors: Y.~Yang, A.~Chen, L.~Orecchia, C. Ma
@@ -74,12 +86,7 @@
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2411.12786
 
-- title: 'Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation'
-  authors: B.~Zhao, C.~Ma, M.~Kolar
-  year: 2024
-  venue: ''
-  topics: Transfer learning
-  arxiv: https://arxiv.org/abs/2411.15624
+
 
 - title: Distributionally Robust Risk Evaluation with an Isotonic Constraint
   authors: Y.~Gui, R.~F.~Barber, C.~Ma
