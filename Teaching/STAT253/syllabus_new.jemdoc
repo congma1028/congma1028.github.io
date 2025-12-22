@@ -1,0 +1,35 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 253/317: Syllabus
+
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
+
+== Schedule
+
+
+. Week 1: Foundations and Basic Examples
+.. Jan 6 (Tue): Lecture 1 — Markov chains; transition probabilities; Chapman–Kolmogorov equations; n-step transitions; simple finite examples
+.. Jan 8 (Thu): Lecture 2 — Communication classes; irreducibility; basic structure of state space; motivating examples (random walk, simple population models)
+. Week 2: Stationary Distributions and Long-Run Behavior
+.. Jan 13 (Tue): Lecture 3 — Stationary distributions (πP = π); examples; existence and intuition
+.. Jan 15 (Thu): Lecture 4 — Long-run behavior: limiting distributions; ergodic theorem (conceptual); periodicity; when convergence occurs
+. Week 3: Recurrence/Transience and Reversibility
+.. Jan 20 (Tue): Lecture 5 — Recurrence vs. transience; positive recurrence; expected return times; examples (random walk, absorbing chains)
+.. Jan 22 (Thu): Lecture 6 — Reversible chains; detailed balance; examples and applications (random walk on undirected graphs)
+. Week 4 Random walk and braching processes
+.. Jan 27 (Tue): Lecture 7 — Generating functions and branching processes
+.. Jan 29 (Thu): Lecture 8 — More on branching processes
+. Week 5
+.. Feb 3 (Tue): Midterm Exam (covers Lectures 1–8)
+.. Feb 5 (Thu): Lecture 9 — Counting process and Poisson process; exponential distribution
+. Week 6
+.. Feb 10 (Tue): Lecture 10 — Thinning, superposition, and related properties
+.. Feb 12 (Thu): Lecture 11 — Continuous-time Markov chains: construction and holding times
+. Week 7
+.. Feb 17 (Tue): Lecture 12 — Generator matrices; Kolmogorov equations; examples
+.. Feb 19 (Thu): Lecture 13 — Introduction to martingales; conditional expectation; simple examples
+. Week 8
+.. Feb 24 (Tue): Lecture 14 — Optional stopping (elementary cases): Gambler's ruin
+.. Feb 26 (Thu): Lecture 15 — Brownian motion: definition, basic properties, scaling
+. Week 9
+.. Mar 3 (Tue): Lecture 16 — Brownian motion as a martingale; reflection principle (intro)
+.. Mar 5 (Thu): Lecture 17 — Stopping times and hitting probabilities for Brownian motion
