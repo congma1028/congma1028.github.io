@@ -1,6 +1,6 @@
 # jemdoc: menu{menu}{index.html}
 = STAT 253/317: Introduction to Probability Models  \n
-[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
 
 == Announcements
 
@@ -13,7 +13,7 @@
 - The first lecture will be at 12:30 pm on Tuesday in Eckhart Hall 133 .
 
 == About STAT 253/317
-The course will introduce stochastic processes that are popular in scientific applications, such as discrete time Markov chains, Poisson processes, continuous time Markov processes, renewal processes, and queuing models.
+The course will introduce stochastic processes that are popular in scientific applications, such as discrete time Markov chains, Poisson processes, continuous time Markov processes, and Brownian motions.
 
 
 == Prerequisites

@@ -1,0 +1,32 @@
+# jemdoc: menu{menu}{index.html}
+= STAT 280: Syllabus
+
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
+
+== Schedule
+
+
+~~~
+{}{table}{Course Schedule (Winter Quarter)}
+Week | Date | Lec | Topic | Reading | Homework ||
+1 | Tue Jan 6 | 1 | Introduction to optimization; examples and scope | Nonlinear Opt. Ch. 1 |  ||
+1 | Thu Jan 8 | 2 | Optimality conditions for smooth unconstrained problems | Nonlinear Opt. Ch. 2 |  ||
+2 | Tue Jan 13 | 3 | Convex sets: definitions and examples | Boyd Ch. 2 | HW 1 assigned ||
+2 | Thu Jan 15 | 4 | Convex functions: definitions and examples | Boyd Ch. 3.1–3.2 |  ||
+3 | Tue Jan 20 | 5 | Properties of convex functions | Boyd Ch. 3.2–3.3 | HW 1 due ||
+3 | Thu Jan 22 | 6 | Convex optimization problems and global optimality | Boyd Ch. 4.1–4.2 |  ||
+4 | Tue Jan 27 | 7 | Examples of convex programs and modeling | Boyd Ch. 4.1–4.4 | HW 2 assigned ||
+4 | Thu Jan 29 | 8 | Optimality conditions for convex problems | Boyd Ch. 5.1 |  ||
+5 | Tue Feb 3 | 9 | **Midterm exam (conceptual)** |  | HW 2 due ||
+5 | Thu Feb 5 | 10 | Gradient descent: algorithm and intuition | Nonlinear Opt. Ch. 4 |  ||
+6 | Tue Feb 10 | 11 | Gradient descent: convergence for convex problems | Boyd Ch. 9.1 | HW 3 assigned ||
+6 | Thu Feb 12 | 12 | Ill-conditioning and scaling | Nonlinear Opt. Ch. 5 |  ||
+7 | Tue Feb 17 | 13 | Newton’s method: derivation and intuition | Nonlinear Opt. Ch. 5 | HW 3 due ||
+7 | Thu Feb 19 | 14 | Newton’s method: local convergence and comparison | Nonlinear Opt. Ch. 5 |  ||
+8 | Tue Feb 24 | 15 | Equality-constrained optimization | Nonlinear Opt. Ch. 6 | HW 4 assigned ||
+8 | Thu Feb 26 | 16 | Inequality-constrained optimization | Nonlinear Opt. Ch. 6 |  ||
+9 | Tue Mar 3 | 17 | Lagrangian, KKT conditions, and interpretation | Boyd Ch. 5.1–5.3 | HW 4 due ||
+9 | Thu Mar 5 | 18 | Duality, optimality certificates, and outlook | Boyd Ch. 5.3 |  ||
+~~~
+
+
