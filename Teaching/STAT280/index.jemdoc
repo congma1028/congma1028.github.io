@@ -1,26 +1,19 @@
 # jemdoc: menu{menu}{index.html}
 = STAT 280: Optimization  \n
-[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2025
+[https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
+
+== Announcements
+
+#- The final exam will take place from 12:30 p.m. to 2:30 p.m. on March 7th in Eckhart Hall 133. 
+
+#- The second midterm will take place on Feb. 15th. Here are the mind maps for [Lectures2021/PoissonProcess.pdf Poisson processes] and [Lectures2021/CTMC.pdf continuous-time Markov chains]
+
+#- The first midterm will take place on Jan. 30th. Here is a mind map for [Lectures2021/MarkovChains.pdf Markov chains].
+
+- The first lecture will be at 3:30 pm on Tuesday in Eckhart Hall 133.
+
+== About STAT 280
+The courses introduces core concepts in optimization, with a focus on convex optimization.
 
 
-### Lectures and Readings
-
-- **Lec 1 (Jan 7):** Introduction to optimization and several types of functions
-- **Lec 2 (Jan 9):** Univariate optimization: optimality conditions and Newton's method
-- **Lec 3 (Jan 14):** Analysis of Newton’s method
-- **Lec 4 (Jan 16):** Linear algebra and convergence in metric space
-- **Lec 5 (Jan 21):** Continuous functions and coercive functions
-- **Lec 6 (Jan 23):** Derivative, gradient and Jacobian
-- **Lec 7 (Jan 28):** No lecture today
-- **Lec 8 (Jan 30):** More examples; PSD matrices, matrix-variate functions
-- **Lec 9 (Feb 4):** Log-determinant function and Hessian, multi-variate Taylor’s theorem
-- **Lec 10 (Feb 6):** Convex sets and functions
-- **Lec 11 (Feb 11):** Necessary and sufficient conditions
-- **Lec 12 (Feb 13):** Gradient descent and line search method
-- **Lec 13 (Feb 18):** Condition number and preconditioned gradient descent
-- **Lec 14 (Feb 20):** Newton’s method
-- **Lec 15 (Feb 25):** Quasi Newton method
-- **Lec 16 (Feb 27):** Rates of convergence for GD
-- **Lec 17 (Mar 4):** No Lecture today
-- **Lec 18 (Mar 6):** (No topic assigned)
 

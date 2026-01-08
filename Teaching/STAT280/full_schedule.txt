@@ -1,0 +1,22 @@
+~~~
+{}{table}{Course Schedule (Winter Quarter)}
+Week | Date | Lec | Topic | Reading | Homework ||
+1 | Tue Jan 6 | 1 | Introduction to optimization; examples and scope |  |  ||
+1 | Thu Jan 8 | 2 | Optimality conditions for smooth unconstrained problems |  |  ||
+2 | Tue Jan 13 | 3 | Convex sets: definitions and examples |  | HW 1 due ||
+2 | Thu Jan 15 | 4 | Convex functions: definitions and examples |  |  ||
+3 | Tue Jan 20 | 5 | Convex optimization problems and global optimality |  | HW 1 due ||
+3 | Thu Jan 22 | 6 | Examples of convex programs and modeling |  |  ||
+4 | Tue Jan 27 | 7 | Gradient descent: algorithm and convergence |  |  ||
+4 | Thu Jan 29 | 8 | Stepsize choices, ill-conditioning |  |  ||
+5 | Tue Feb 3 | 9 | **Midterm exam (conceptual)** |  | HW 2 due ||
+5 | Thu Feb 5 | 10 | Newton’s method: derivation and intuition |  |  ||
+6 | Tue Feb 10 | 11 | Constrained optimizaiton |  |  ||
+6 | Thu Feb 12 | 12 |  |  |  ||
+7 | Tue Feb 17 | 13 |  |  |  ||
+7 | Thu Feb 19 | 14 |  |  |  ||
+8 | Tue Feb 24 | 15 | Equality-constrained optimization |  |  ||
+8 | Thu Feb 26 | 16 | Inequality-constrained optimization |  |  ||
+9 | Tue Mar 3 | 17 | Lagrangian, KKT conditions, and interpretation |  |  ||
+9 | Thu Mar 5 | 18 | Duality, optimality certificates, and outlook |  |  ||
+~~~
