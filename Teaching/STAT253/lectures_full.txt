@@ -1,17 +1,20 @@
 # jemdoc: menu{menu}{index.html}
-= STAT 253/317: Schedule
+= STAT 253/317: Syllabus
 
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
+
+== Schedule
+
 
 
 ~~~
 {}{table}{Course Schedule (Winter Quarter)}
 Week | Date | Lec | Topic | Reading | Homework ||
-1 | Tue Jan 6 | 1 | Course overview; Definition, Transition Matrix, Core Examples | RD Chapters 1 and 2 |  ||
+1 | Tue Jan 6 | 1 | Course overview; Definition, Transition Matrix, Core Examples |  |  ||
 1 | Thu Jan 8 | 2 | n-Step Transition Probabilities, Limiting Distributions and Stationarity  |  |  ||
-2 | Tue Jan 13 | 3 | Limiting Distributions and Stationarity |  | HW 1 due ||
-2 | Thu Jan 15 | 4 | Irreducibility, Recurrence, Transience |  |  ||
-3 | Tue Jan 20 | 5 | Periodicity, positive recurrence, ergodicity, and reversibility |  | HW 2 due ||
+2 | Tue Jan 13 | 3 | Irreducibility, Recurrence, Transience |  | HW 1 due ||
+2 | Thu Jan 15 | 4 | Periodicity, positive recurrence, ergodicity, |  |  ||
+3 | Tue Jan 20 | 5 | Reversibility |  | HW 2 due ||
 3 | Thu Jan 22 | 6 | Gambler's ruin problem and the first-step analysis |  |  ||
 4 | Tue Jan 27 | 7 | Branching processes and generating functions |  | HW 3 due ||
 4 | Thu Jan 29 | 8 | Introduction to martingales: definition and basic examples |  |  ||
