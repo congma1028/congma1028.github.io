@@ -10,9 +10,12 @@ Week | Date | Lec | Topic | Reading | Homework ||
 1 | Tue Jan 6 | 1 | Introduction to optimization; examples and scope | ODA Chapter 1 |  ||
 1 | Thu Jan 8 | 2 | Optimality conditions for smooth unconstrained problems | NO Chapter 2 |  ||
 2 | Tue Jan 13 | 3 | Convex sets: definitions and examples |  |  ||
-2 | Thu Jan 15 | 4 | Convex functions: definitions and examples |  |  ||
-3 | Tue Jan 20 | 5 | Convex optimization problems and global optimality |  | HW 1 due ||
-3 | Thu Jan 22 | 6 | Examples of convex programs and modeling |  |  ||
+2 | Thu Jan 15 | 4 | Convex sets and functions |  |  ||
+3 | Tue Jan 20 | 5 | Convex functions |  | HW 1 due ||
+3 | Thu Jan 22 | 6 | Convex optimization problems |  |  ||
+4 | Tue Jan 27 | 7 |  |  |  ||
+4 | Thu Jan 29 | 8 |  |  |  ||
+5 | Tue Feb 3 | 9 | **Midterm exam (conceptual)** |  | HW 2 due ||
 ~~~
 
 
