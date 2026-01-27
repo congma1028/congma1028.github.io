@@ -33,9 +33,9 @@ for year in sorted(by_year.keys(), reverse=True):
 paper_by_topic = "# jemdoc: menu{menu}{paper_topic.jemdoc}\n= Publications by topics\n\n"
 
 custom_topic_order = [
-    "Multi-modal learning",
+"Reinforcement learning",
     "Transfer learning",
-    "Reinforcement learning",
+    "Multi-modal learning",
     "Low-rank matrix recovery",
     "Scaled gradient descent",
     "Ranking",

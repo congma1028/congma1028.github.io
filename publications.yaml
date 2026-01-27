@@ -1,4 +1,16 @@
 
+
+- title: Learning to Answer from Correct Demonstrations
+  authors: N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro
+  year: 2025
+  venue: ICLR, 2026 [Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf \[Slides\]]
+  topics: Reinforcement learning
+  arxiv: https://arxiv.org/abs/2510.15464
+
+
+
+
+
 - title: Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared
     Latent Variables
   authors: Y. Gui, C. Ma, Z. Ma
@@ -21,15 +33,6 @@
   venue: 
   topics: Multi-modal learning
   arxiv: https://arxiv.org/abs/2509.21584
-
-
-- title: Learning to Answer from Correct Demonstrations
-  authors: N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro
-  year: 2025
-  venue: '[Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf \[Slides\]]'
-  topics: Reinforcement learning
-  arxiv: https://arxiv.org/abs/2510.15464
-
 
 
 
