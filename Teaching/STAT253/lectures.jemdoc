@@ -13,12 +13,12 @@ Week | Date | Lec | Topic | Reading | Homework ||
 2 | Thu Jan 15 | 4 | Positive recurrence, ergodicity, and limit theorems | RD Chapter 3 |  ||
 3 | Tue Jan 20 | 5 | Limit theorems, reversibility | RD Chapter 3 | HW 2 due ||
 3 | Thu Jan 22 | 6 | Gambler's ruin problem and the first-step analysis |  |  ||
-4 | Tue Jan 27 | 7 | Branching processes and generating functions |  | HW 3 due ||
+4 | Tue Jan 27 | 7 | Branching processes and generating functions | RD Chapter 4 | HW 3 due ||
 4 | Thu Jan 29 | 8 | Introduction to martingales: definition and basic examples |  |  ||
 5 | Tue Feb 3 | 9 | Midterm exam |  | HW 4 due on Feb 1 ||
-5 | Thu Feb 5 | 10 | Poisson process: definition, stationary and independent increments |  |  ||
+5 | Thu Feb 5 | 10 | Poisson process: definition, stationary and independent increments | RD Chapter 6 |  ||
 6 | Tue Feb 10 | 11 | Poisson process: interarrival times, thinning, superposition |  |  ||
-6 | Thu Feb 12 | 12 | Continuous-time Markov chains: definition, exponential holding times |  | HW 5 due on Feb 15||
+6 | Thu Feb 12 | 12 | Continuous-time Markov chains: definition, exponential holding times |  | HW 5 due on Feb 13||
 7 | Tue Feb 17 | 13 | CTMCs: jump chains and generator (Q-matrix) |  |  ||
 7 | Thu Feb 19 | 14 | Kolmogorov forward and backward equations |  |  ||
 8 | Tue Feb 24 | 15 | Birth–death processes and stationary distributions |  | HW 6 due on Feb 24 ||
