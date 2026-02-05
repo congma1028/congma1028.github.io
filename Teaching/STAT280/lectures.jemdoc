@@ -9,13 +9,22 @@
 Week | Date | Lec | Topic | Reading | Homework ||
 1 | Tue Jan 6 | 1 | Introduction to optimization; examples and scope | ODA Chapter 1 |  ||
 1 | Thu Jan 8 | 2 | Optimality conditions for smooth unconstrained problems | NO Chapter 2 |  ||
-2 | Tue Jan 13 | 3 | Convex sets: definitions and examples |  |  ||
-2 | Thu Jan 15 | 4 | Convex sets and functions |  |  ||
-3 | Tue Jan 20 | 5 | Convex functions |  | HW 1 due ||
-3 | Thu Jan 22 | 6 | Convex optimization problems |  |  ||
+2 | Tue Jan 13 | 3 | Convex sets: definitions and examples | CO Chapter 2 |  ||
+2 | Thu Jan 15 | 4 | Convex sets and functions | CO Chapter 2 |  ||
+3 | Tue Jan 20 | 5 | Convex functions | CO Chapter 3 | HW 1 due ||
+3 | Thu Jan 22 | 6 | Convex optimization problems | CO Chapter 4 |  ||
 4 | Tue Jan 27 | 7 | SDP |  |  ||
-4 | Thu Jan 29 | 8 | Gradient descent |  |  ||
+4 | Thu Jan 29 | 8 | Gradient descent | ODA Chapter 3 |  ||
 5 | Tue Feb 3 | 9 | **Midterm exam** |  | HW 2 due ||
+5 | Thu Feb 5 | 10 | Gradient descent and preconditioned GD | NO Chapter 4 |  ||
+6 | Tue Feb 10 | 11 | Newton’s method: derivation and intuition | NO Chapter 5 |  ||
+6 | Thu Feb 12 | 12 |  |  |  ||
+7 | Tue Feb 17 | 13 |  |  | HW3 due ||
+7 | Thu Feb 19 | 14 |  |  |  ||
+8 | Tue Feb 24 | 15 |  |  |  ||
+8 | Thu Feb 26 | 16 |  |  |  ||
+9 | Tue Mar 3 | 17 |  |  | HW4 due ||
+9 | Thu Mar 5 | 18 |  |  |  ||
 ~~~
 
 

@@ -6,9 +6,9 @@
 
 
 *Textbooks*: 
-- [https://www.cambridge.org/core/books/optimization-for-data-analysis/C02C3708905D236AA354D1CE1739A6A2 Optimization for Data Analysis], Stephen J. Wright and Benjamin Recht, 2022. 
-- [https://epubs.siam.org/doi/book/10.1137/1.9781611977622 Introduction to Nonlinear Optimization: Theory, Algorithms, and Applications with Python and MATLAB], Amir Beck, 2023. 
-- [https://stanford.edu/~boyd/cvxbook/ Convex Optimization], Stephen Boyd and Lieven Vandenberghe, 2009.
+- [https://www.cambridge.org/core/books/optimization-for-data-analysis/C02C3708905D236AA354D1CE1739A6A2 Optimization for Data Analysis], Stephen J. Wright and Benjamin Recht, 2022. (shorthand: **ODA**)
+- [https://epubs.siam.org/doi/book/10.1137/1.9781611977622 Introduction to Nonlinear Optimization: Theory, Algorithms, and Applications with Python and MATLAB], Amir Beck, 2023. (shorthand: **NO**)
+- [https://stanford.edu/~boyd/cvxbook/ Convex Optimization], Stephen Boyd and Lieven Vandenberghe, 2009. (shorthand: **CO**)
 
-
+Note: In the course schedule, readings are listed using the shorthand codes **ODA**, **NO**, and **CO** above.
 
