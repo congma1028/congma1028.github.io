@@ -17,7 +17,7 @@ Week | Date | Lec | Topic | Reading | Homework ||
 4 | Thu Jan 29 | 8 | Gradient descent | ODA Chapter 3 |  ||
 5 | Tue Feb 3 | 9 | **Midterm exam** |  | HW 2 due ||
 5 | Thu Feb 5 | 10 | Gradient descent and preconditioned GD | NO Chapter 4 |  ||
-6 | Tue Feb 10 | 11 | Newton’s method: derivation and intuition | NO Chapter 5 |  ||
+6 | Tue Feb 10 | 11 | Newton’s method | NO Chapter 5 |  ||
 6 | Thu Feb 12 | 12 | Optimality conditions for constrained problems |  |  ||
 7 | Tue Feb 17 | 13 | Normal cones and linear duality |  | HW3 due ||
 7 | Thu Feb 19 | 14 | Lagrangian, KKT conditions, and interpretation |  |  ||
