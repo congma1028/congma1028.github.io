@@ -18,7 +18,7 @@ Week | Date | Lec | Topic | Reading | Homework ||
 5 | Tue Feb 3 | 9 | Midterm exam |  | HW 4 due on Feb 1 ||
 5 | Thu Feb 5 | 10 | Poisson process: definition, stationary and independent increments | RD Chapter 6 |  ||
 6 | Tue Feb 10 | 11 | Poisson process: interarrival times, thinning, superposition |  |  ||
-6 | Thu Feb 12 | 12 | Continuous-time Markov chains: definition, exponential holding times |  | HW 5 due on Feb 13||
+6 | Thu Feb 12 | 12 | Continuous-time Markov chains: definition, exponential holding times | RD Chapter 7 | HW 5 due on Feb 13||
 7 | Tue Feb 17 | 13 | CTMCs: jump chains and generator (Q-matrix) |  |  ||
 7 | Thu Feb 19 | 14 | Kolmogorov forward and backward equations |  |  ||
 8 | Tue Feb 24 | 15 | Birth–death processes and stationary distributions |  | HW 6 due on Feb 24 ||
