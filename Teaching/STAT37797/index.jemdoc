@@ -1,4 +1,4 @@
-# jemdoc: menu{menu}{index.html}
+# jemdoc: menu{menu}{index.html}, nodefaultcss, addcss{../../jemdoc.css}
 = STAT 37797: Topics in Mathematical Data Science: \n Spectral Methods and Nonconvex Optimization  \n
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Autumn 2021
 

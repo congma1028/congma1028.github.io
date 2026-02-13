@@ -1,3 +1,4 @@
+# jemdoc: nodefaultcss, addcss{../../jemdoc.css}
 STAT 37797
     Home            [index.html] 
     Course Info     [course_info.html]

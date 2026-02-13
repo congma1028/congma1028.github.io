@@ -1,5 +1,59 @@
 import yaml
+import re
 from collections import defaultdict
+
+
+def split_legacy_venue_links(venue):
+    if not venue:
+        return "", []
+
+    text = venue
+    links = []
+    patterns = [
+        r"\[(\S+)\s+\\\[(.*?)\\\]\]",
+        r"\[(\S+)\s+\[(.*?)\]\]",
+    ]
+
+    for pattern in patterns:
+        while True:
+            m = re.search(pattern, text)
+            if not m:
+                break
+            links.append({"url": m.group(1), "label": m.group(2)})
+            text = (text[:m.start()] + text[m.end():]).strip()
+
+    text = re.sub(r"\s{2,}", " ", text).strip(" ,;")
+    return text, links
+
+
+def render_links(pub):
+    links = list(pub.get("links", []))
+    _, legacy_links = split_legacy_venue_links((pub.get("venue") or "").strip())
+    links.extend(legacy_links)
+    parts = []
+    for link in links:
+        url = link.get("url", "")
+        label = link.get("label", "Link")
+        if url:
+            parts.append(f"[{url} \\[{label}\\]]")
+    return " ".join(parts)
+
+
+def render_pub(pub):
+    arxiv = pub.get("arxiv", "")
+    line = f"- [{arxiv} {pub['title']}] \\n\n{pub['authors']}"
+    venue, _ = split_legacy_venue_links((pub.get("venue") or "").strip())
+    links = render_links(pub)
+    if venue:
+        line += f"; /{venue}/"
+    if links:
+        if venue:
+            line += f" {links}"
+        else:
+            line += f"; {links}"
+    line += "\n\n"
+    return line
+
 
 # Load publications from YAML
 with open("publications.yaml", "r") as f:
@@ -19,15 +73,18 @@ for pub in publications:
 
 # Generate paper.jemdoc (by year)
 paper_by_year = "# jemdoc: menu{menu}{paper.jemdoc}\n= Publications\n\n"
+
+selected_pubs = [pub for pub in publications if pub.get("selected")]
+
+if selected_pubs:
+    paper_by_year += "== Selected papers\n\n"
+    for pub in selected_pubs:
+        paper_by_year += render_pub(pub)
+
 for year in sorted(by_year.keys(), reverse=True):
     paper_by_year += f"== {year}\n\n"
     for pub in by_year[year]:
-        arxiv = pub.get("arxiv", "")
-        paper_by_year += f"- [{arxiv} {pub['title']}] \\n\n{pub['authors']} \\n\n"
-        if pub["venue"]:
-            paper_by_year += f"/{pub['venue']}/\n"
-    
-        paper_by_year += "\n"
+        paper_by_year += render_pub(pub)
 
 # Generate paper_topic.jemdoc (by topic)
 paper_by_topic = "# jemdoc: menu{menu}{paper_topic.jemdoc}\n= Publications by topics\n\n"
@@ -50,11 +107,7 @@ for topic in ordered_topics:
 
         paper_by_topic += f"== {topic}\n\n"
     for pub in by_topic[topic]:
-        arxiv = pub.get("arxiv", "")
-        paper_by_topic += f"- [{arxiv} {pub['title']}] \\n\n{pub['authors']} \\n\n"
-        if pub["venue"]:
-            paper_by_topic += f"/{pub['venue']}/\n"
-        paper_by_topic += "\n"
+        paper_by_topic += render_pub(pub)
 
 # Write output files
 with open("paper.jemdoc", "w") as f:

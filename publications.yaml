@@ -3,9 +3,13 @@
 - title: Learning to Answer from Correct Demonstrations
   authors: N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro
   year: 2025
-  venue: ICLR, 2026 [Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf \[Slides\]]
+  venue: ICLR, 2026
+  links:
+    - label: Slides
+      url: Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2510.15464
+  selected: true
 
 
 
@@ -18,14 +22,19 @@
   venue: NeurIPS, 2025
   topics: Multi-modal learning
   arxiv: https://arxiv.org/abs/2505.12473
+  selected: true
 
 
 - title: 'The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin'
   authors: R. Jiang, C. Ma
   year: 2025
-  venue: '[Publication/BatchedBandit/batch_nb_slides_uiuc.pdf \[Slides\]]'
+  venue: ''
+  links:
+    - label: Slides
+      url: Publication/BatchedBandit/batch_nb_slides_uiuc.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2511.03708
+  selected: true
 
 - title: IndiSeek Learns Information-Guided Disentangled Representations
   authors: Y. Gui, C. Ma, Z. Ma
@@ -40,7 +49,10 @@
     Data Matrices'
   authors: Y.~Yang, C. Ma
   year: 2025
-  venue: '[Publication/AJIVE/AJIVE.pdf \[Slides\]]'
+  venue: ''
+  links:
+    - label: Slides
+      url: Publication/AJIVE/AJIVE.pdf
   topics: Multi-modal learning
   arxiv: https://arxiv.org/abs/2501.09336
 
@@ -66,14 +78,16 @@
 - title: Batched Nonparametric Contextual Bandits
   authors: R. Jiang, C. Ma
   year: 2024
-  venue: IEEE Transactions on Information Theory, 2025 [Publication/BatchedBandit/batch_nb_slides.pdf
-    \[Slides\]]
+  venue: IEEE Transactions on Information Theory, 2025
+  links:
+    - label: Slides
+      url: Publication/BatchedBandit/batch_nb_slides.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2402.17732
 
 
 
-- title: Top-K Ranking with a Monotone Adversary
+- title: Top-$K$ Ranking with a Monotone Adversary
   authors: Y.~Yang, A.~Chen, L.~Orecchia, C. Ma
   year: 2024
   venue: COLT, 2024
@@ -107,23 +121,33 @@
 - title: On the Design-Dependent Suboptimality of the Lasso
   authors: R. Pathak, C. Ma
   year: 2024
-  venue: '[https://github.com/reesepathak/lowerlassosim \[Code]]'
+  venue: ''
+  links:
+    - label: Code
+      url: https://github.com/reesepathak/lowerlassosim
   topics: Transfer learning
   arxiv: https://arxiv.org/abs/2402.00382
 
 - title: Conformalized Matrix Completion
   authors: Y. Gui, R. F. Barber, C. Ma
   year: 2023
-  venue: NeurIPS, 2023 [https://github.com/yugjerry/conf-mc \[Code\]] 
+  venue: NeurIPS, 2023
+  links:
+    - label: Code
+      url: https://github.com/yugjerry/conf-mc
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/2305.10637
 
 - title: The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing
   authors: X. Xu, Y. Shen, Y. Chi, C. Ma
   year: 2023
-  venue: ICML, 2023 [Publication/Overparam/ScaledGD_Overparam_Purdue.pdf \[Slides\]]
+  venue: ICML, 2023
+  links:
+    - label: Slides
+      url: Publication/Overparam/ScaledGD_Overparam_Purdue.pdf
   topics: Scaled gradient descent
   arxiv: https://arxiv.org/abs/2302.01186
+  selected: true
 
 - title: High-Probability Sample Complexities for Policy Evaluation with Linear Function
     Approximation
@@ -152,10 +176,13 @@
 - title: Optimally Tackling Covariate Shift in RKHS-Based Nonparametric Regression
   authors: C. Ma, R. Pathak, M. J. Wainwright
   year: 2022
-  venue: Annals of Statistics, 2023 [Publication/CovariateShiftKernel/covariate-shift-slides.pdf
-    \[Slides\]] 
+  venue: Annals of Statistics, 2023
+  links:
+    - label: Slides
+      url: Publication/CovariateShiftKernel/covariate-shift-slides.pdf
   topics: Transfer learning
   arxiv: https://arxiv.org/abs/2205.02986
+  selected: true
 
 - title: Optimal Tuning-Free Convex Relaxation for Noisy Matrix Completion
   authors: Y. Yang, C. Ma
@@ -200,15 +227,20 @@
     Sets
   authors: G. Li, C. Ma, N. Srebro
   year: 2022
-  venue: NeurIPS, 2022  [Publication/ContextualBandit/lcb_bounds_poster.pdf \[Poster\]]
+  venue: NeurIPS, 2022
+  links:
+    - label: Poster
+      url: Publication/ContextualBandit/lcb_bounds_poster.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2205.10671
 
 - title: Minimax Off-Policy Evaluation for Multi-Armed Bandits
   authors: C. Ma, B. Zhu, J. Jiao, M. J. Wainwright
   year: 2021
-  venue: IEEE Transactions on Information Theory, 2022 [Publication/OPE/OPE_slides.pdf
-    \[Slides\]] 
+  venue: IEEE Transactions on Information Theory, 2022
+  links:
+    - label: Slides
+      url: Publication/OPE/OPE_slides.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2101.07781
 
@@ -217,7 +249,10 @@
   authors: P. Rashidinejad, B. Zhu, C. Ma, J. Jiao, S. Russell
   year: 2021
   venue: IEEE Transactions on Information Theory, 2022, accepted in part to NeurIPS,
-    2021 [Publication/OfflineRL/slides/PessimismRL.pdf \[Slides\]] 
+    2021
+  links:
+    - label: Slides
+      url: Publication/OfflineRL/slides/PessimismRL.pdf
   topics: Reinforcement learning
   arxiv: https://arxiv.org/abs/2103.12021
 
@@ -271,8 +306,10 @@
 - title: Inference and Uncertainty Quantification for Noisy Matrix Completion
   authors: Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)
   year: 2019
-  venue: Proceedings of the National Academy of Sciences, 2019 [Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf
-    \[Slides\]]  
+  venue: Proceedings of the National Academy of Sciences, 2019
+  links:
+    - label: Slides
+      url: Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1906.04159
 
@@ -287,8 +324,10 @@
     Relaxation via Nonconvex Optimization'
   authors: Y. Chen, Y. Chi, J. Fan, C. Ma, Y. Yan (alphabetical order)
   year: 2019
-  venue: SIAM Journal on Optimization, 2020 [Publication/NoisyMC/Slides/NoisyMC_slides.pdf
-    \[Slides\]] 
+  venue: SIAM Journal on Optimization, 2020
+  links:
+    - label: Slides
+      url: Publication/NoisyMC/Slides/NoisyMC_slides.pdf
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1902.07698
 
@@ -305,8 +344,10 @@
     Nonconvex Phase Retrieval'
   authors: Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)
   year: 2018
-  venue: Mathematical Programming, 2019 [Publication/RandomInit/Slides/random_init_slides.pdf
-    \[Slides\]]
+  venue: Mathematical Programming, 2019
+  links:
+    - label: Slides
+      url: Publication/RandomInit/Slides/random_init_slides.pdf
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1803.07726
 
@@ -322,28 +363,34 @@
     Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution'
   authors: C. Ma, K. Wang, Y. Chi, Y. Chen
   year: 2017
-  venue: Foundations of Computational Mathematics, 2020, accepted in part to ICML, 2018  [Publication/Implicit/Slides/implicit_reg_slides.pdf
-    \[Slides\]]
+  venue: Foundations of Computational Mathematics, 2020, accepted in part to ICML, 2018
+  links:
+    - label: Slides
+      url: Publication/Implicit/Slides/implicit_reg_slides.pdf
   topics: Low-rank matrix recovery
   arxiv: https://arxiv.org/abs/1711.10467
 
-- title: Spectral Method and Regularized MLE Are Both Optimal for Top-K Ranking
+- title: Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking
   authors: Y. Chen, J. Fan, C. Ma, K. Wang (alphabetical order)
   year: 2017
-  venue: Annals of Statistics, 2019 [Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf
-    \[Slides\]]
+  venue: Annals of Statistics, 2019
+  links:
+    - label: Slides
+      url: Publication/Ranking/Slides/GroupMeeting/topK_group_meeting.pdf
   topics: Ranking
   arxiv: https://arxiv.org/abs/1707.09971
 
 - title: 'Inter-Subject Analysis: A Partial Gaussian Graphical Model Approach'
   authors: C. Ma, J. Lu, H. Liu
   year: 2017
-  venue: Journal of American Statistical Association, 2021 [Publication/ISA/Slides/ISA.pdf
-    \[Slides\]]
+  venue: Journal of American Statistical Association, 2021
+  links:
+    - label: Slides
+      url: Publication/ISA/Slides/ISA.pdf
   topics: Others
   arxiv: https://arxiv.org/abs/1709.07036
 
-- title: Fast and Flexible Top-K Similarity Search on Large Networks
+- title: Fast and Flexible Top-$K$ Similarity Search on Large Networks
   authors: "J. Zhang, J. Tang, C. Ma, H. Tong, Y. Jing, J. Li, W. Luyten, \tM. Moens"
   year: 2015
   venue: ACM Transactions on Information Systems, 2017, accepted in part to KDD,

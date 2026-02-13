@@ -139,6 +139,7 @@ def standardconf():
   <head>
   <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   [defaultcss]
   <link rel="stylesheet" href="jemdoc.css" type="text/css" />
@@ -254,7 +255,7 @@ def standardconf():
   </div>
   
   [lastupdated]
-  Page generated |, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+  Page generated |, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank" rel="noopener noreferrer">jemdoc+MathJax</a>.
 
   [sourcelink]
   (<a href="|">source</a>)
@@ -334,7 +335,7 @@ def insertmenuitems(f, mname, current, prefix):
     if r: # then we have a menu item.
       link = r.group(2)
       if link[0] == '\\':
-        option = ' target="blank"'
+        option = ' target="\\_blank" rel="noopener noreferrer"'
         link = link[1:]
       else:
         option = ''
@@ -676,7 +677,7 @@ def replacelinks(b):
         option = ''
         m1 = m1[1:]
     else:
-        option = ' target="blank"'
+        option = ' target="\\_blank" rel="noopener noreferrer"'
 
     if '@' in m1 and not m1.startswith('mailto:') and not \
        m1.startswith('http://'):

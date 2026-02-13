@@ -1,4 +1,4 @@
-# jemdoc: menu{menu}{index.html}
+# jemdoc: menu{menu}{index.html}, nodefaultcss, addcss{../../jemdoc.css}
 = STAT 37797: Course Information \n
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2024 
 

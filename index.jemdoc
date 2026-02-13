@@ -2,7 +2,7 @@
 = Cong Ma
 
 ~~~
-{}{img_left}{figure/Cong_Cancun.jpeg}{alt text}{350}{250}
+{}{img_left}{figure/Cong_Cancun.jpeg}{Portrait of Cong Ma}{350}{250}
 I am an assistant professor in the Department of Statistics at the University of Chicago. 
 
 
@@ -19,36 +19,19 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 ~~~
 
 
+== Highlights
+
+- [https://arxiv.org/abs/2510.15464 Learning to Answer from Correct Demonstrations] was accepted to /ICLR 2026/.
+- [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] was accepted to /NeurIPS 2025/.
+- [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization received the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize].
+
 == News
 
-
-- [https://arxiv.org/abs/2510.15464 Learning to Answer from Correct Demonstrations] has been accepted to ICLR 2026. 
-
-
-
-- A new paper on adaptation cost [https://arxiv.org/abs/2511.03708 The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin]. 
-
-- A new paper on disentangled multi-modal representation learning [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations].
-
-
-
-
-- [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] has been accepted to Journal of the American Statistical Association.
-
-
-- [https://arxiv.org/abs/2406.13989 Random Pairing MLE for Estimation of Item Parameters in Rasch Model] has been accepted to Journal of the American Statistical Association.
-
-- [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] has been accepted to Neurips, 2025. 
-
-
-- [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits]  has been accepted to IEEE Transactions on Information Theory. 
-
-
-
-
-
-
-- [Publication/Implicit/paper.pdf Our paper] on nonconvex statistical optimization  has been selected for the [https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-imaging-science-best-paper-prize 2024 SIAM Activity Group on Imaging Science Best Paper Prize].
+- /Paper:/ [https://arxiv.org/abs/2511.03708 The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin].
+- /Paper:/ [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations].
+- /Journal acceptance:/ [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] in /Journal of the American Statistical Association/.
+- /Journal acceptance:/ [https://arxiv.org/abs/2406.13989 Random Pairing MLE for Estimation of Item Parameters in Rasch Model] in /Journal of the American Statistical Association/.
+- /Journal acceptance:/ [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits] in /IEEE Transactions on Information Theory/.
 
 
 
