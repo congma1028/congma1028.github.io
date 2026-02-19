@@ -18,11 +18,11 @@ Week | Date | Lec | Topic | Reading | Homework ||
 5 | Tue Feb 3 | 9 | **Midterm exam** |  | HW 2 due ||
 5 | Thu Feb 5 | 10 | Gradient descent and preconditioned GD | NO Chapter 4 |  ||
 6 | Tue Feb 10 | 11 | Newton’s method | NO Chapter 5 |  ||
-6 | Thu Feb 12 | 12 | Lagrangian, duality, and KKT conditions  |  |  ||
-7 | Tue Feb 17 | 13 | Optimality conditions for constrained problems  |  | HW3 due ||
-7 | Thu Feb 19 | 14 | Normal cones and linear duality |  |  ||
-8 | Tue Feb 24 | 15 |  |  |  ||
-8 | Thu Feb 26 | 16 | Projected gradient descent |  |  ||
+6 | Thu Feb 12 | 12 | Lagrangian and dual problems  |  |  ||
+7 | Tue Feb 17 | 13 | Duality and KKT conditions  |  | HW3 due ||
+7 | Thu Feb 19 | 14 | Optimality conditions for constrained problems and projected GD |  |  ||
+8 | Tue Feb 24 | 15 | Projected gradient descent |  |  ||
+8 | Thu Feb 26 | 16 |  |  |  ||
 9 | Tue Mar 3 | 17 | Interior point methods |  | HW4 due ||
 9 | Thu Mar 5 | 18 | Interior point methods |  |  ||
 ~~~
