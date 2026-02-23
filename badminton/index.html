@@ -6,13 +6,13 @@
   <title>Badminton Doubles Planner</title>
   <style>
     :root {
-      --bg: #f7f9f6;
+      --bg: #f3f6f9;
       --card: #ffffff;
-      --line: #d9e1d5;
-      --text: #1f2a1f;
-      --muted: #526052;
-      --accent: #2f7b4a;
-      --accent-dark: #215736;
+      --line: #d7e0eb;
+      --text: #1b2430;
+      --muted: #5e6a7a;
+      --accent: #1f6fd9;
+      --accent-dark: #1757a9;
       --warn: #9a2f2f;
     }
 
@@ -22,11 +22,11 @@
 
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Avenir Next", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 85% 12%, #d7ebda 0, transparent 35%),
-        radial-gradient(circle at 12% 88%, #e4f2e7 0, transparent 40%),
+        radial-gradient(circle at 85% 12%, #d8e9ff 0, transparent 35%),
+        radial-gradient(circle at 12% 88%, #dff3f1 0, transparent 40%),
         var(--bg);
       min-height: 100vh;
       padding: 24px;
@@ -42,14 +42,46 @@
     .card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 5px 20px rgba(20, 45, 20, 0.07);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(15, 28, 50, 0.08);
+    }
+
+    .stage-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .stage-btn {
+      border: 1px solid #c9d7eb;
+      background: #eef4ff;
+      color: #31527d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+    }
+
+    .stage-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .stage-pane {
+      display: none;
+      gap: 16px;
+    }
+
+    .stage-pane.active {
+      display: grid;
     }
 
     h1 {
       margin: 0;
-      font-size: 1.65rem;
+      font-size: 1.8rem;
+      letter-spacing: 0.01em;
     }
 
     h2 {
@@ -73,33 +105,28 @@
     label {
       display: block;
       margin-bottom: 5px;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--muted);
     }
 
     input,
-    textarea,
     select,
     button {
       width: 100%;
       font: inherit;
       border-radius: 10px;
       border: 1px solid var(--line);
-      padding: 10px 12px;
+      padding: 11px 12px;
       color: var(--text);
       background: #fff;
     }
 
     input:focus,
-    textarea:focus {
+    select:focus {
       outline: 2px solid #cae4d1;
       border-color: #87ba96;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-      line-height: 1.45;
     }
 
     .row {
@@ -119,11 +146,12 @@
       background: var(--accent);
       cursor: pointer;
       font-weight: 600;
-      transition: background 120ms ease;
+      transition: background 120ms ease, transform 120ms ease;
     }
 
     .btn:hover {
       background: var(--accent-dark);
+      transform: translateY(-1px);
     }
 
     .btn.secondary {
@@ -144,28 +172,218 @@
     }
 
     .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 7px;
       margin-top: 12px;
+      max-height: 220px;
+      overflow: auto;
+      padding-right: 4px;
     }
 
     .chip {
-      padding: 5px 10px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f6f9ff;
+      border: 1px solid #d8e3f5;
+      font-size: 0.9rem;
+    }
+
+    .chip-index {
+      color: #5a6f91;
+      font-weight: 700;
+    }
+
+    .chip-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip-remove {
+      border: 1px solid #d7e0eb;
+      background: #fff;
+      color: #536078;
+      border-radius: 7px;
+      padding: 3px 8px;
+      width: auto;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .chip-remove:hover {
+      background: #f1f5fb;
+    }
+
+    .player-list-header {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .count-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 12px;
+      border: 1px solid #cfe0fb;
+      background: #edf4ff;
+      color: #37578a;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pool-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #d2def5;
+      background: #eef4ff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .pool-chip.registered {
+      border-color: #c9dec9;
+      background: #eef8ef;
+      color: #2e5e3d;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-top: 12px;
+      background: #fff;
+    }
+
+    .round-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .round-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .round-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #f7fbff;
+      border-bottom: 1px solid #e5edf8;
+    }
+
+    .round-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .round-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .round-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .round-badge {
+      border: 1px solid #cfe0fb;
+      background: #edf4ff;
+      color: #335a91;
       border-radius: 999px;
-      background: #edf4ee;
-      border: 1px solid #d7e5da;
+      padding: 2px 8px;
+      font-weight: 700;
+    }
+
+    .round-content {
+      padding: 8px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .match-item {
+      border: 1px solid #e3ebf7;
+      border-radius: 10px;
+      padding: 8px;
+      background: #fbfdff;
+    }
+
+    .match-line {
+      font-weight: 600;
+      line-height: 1.35;
       font-size: 0.88rem;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto auto;
+      gap: 6px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .score-input {
+      padding: 6px 8px;
+      min-width: 64px;
+      font-size: 0.85rem;
+    }
+
+    .mini-btn {
+      width: auto;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .status-pill {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #d6e1f3;
+      background: #f5f9ff;
+      color: #4e6689;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 12px;
       font-size: 0.95rem;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 1px solid var(--line);
+      min-width: 760px;
     }
 
     th,
@@ -177,7 +395,7 @@
     }
 
     th {
-      background: #f2f7f2;
+      background: #eef4fb;
       font-weight: 600;
     }
 
@@ -189,6 +407,49 @@
       color: var(--muted);
       margin-top: 4px;
       font-style: italic;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: linear-gradient(180deg, #ffffff, #f7fbff);
+    }
+
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .kpi-value {
+      margin-top: 4px;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .progress-wrap {
+      margin-top: 12px;
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 999px;
+      background: #dce7f6;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #4c95ff, #1f6fd9);
+      transition: width 200ms ease;
     }
 
     @media (max-width: 640px) {
@@ -204,11 +465,28 @@
       td {
         padding: 8px;
       }
+
+      .row > * {
+        flex: 1 1 100%;
+      }
+
+      .score-row {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <section class="card">
+      <div class="stage-nav">
+        <button type="button" class="stage-btn active" data-stage-target="register">1. Registration</button>
+        <button type="button" class="stage-btn" data-stage-target="schedule">2. Scoring</button>
+        <button type="button" class="stage-btn" data-stage-target="ranking">3. Ranking</button>
+      </div>
+    </section>
+
+    <div class="stage-pane active" data-stage-pane="register">
     <section class="card">
       <h1>Badminton Doubles Planning Tool</h1>
       <p class="muted">
@@ -234,33 +512,68 @@
         <button class="btn" id="generateBtn">Generate Schedule</button>
       </div>
       <div id="message" class="msg"></div>
+      <div class="player-list-header">
+        <label style="margin: 0;">Registered Players</label>
+        <span class="count-pill" id="playerCountPill">0 / 10</span>
+      </div>
       <div class="chips" id="playerChips"></div>
       <p id="emptyPlayers" class="empty">No players registered yet.</p>
     </section>
 
     <section class="card">
-      <h2>Bulk Registration (Optional)</h2>
-      <p class="muted">Enter one player per line, then click Import.</p>
-      <label for="bulkInput">Player list</label>
-      <textarea id="bulkInput" placeholder="Sam&#10;Jamie&#10;Taylor"></textarea>
-      <div class="row" style="margin-top: 10px;">
-        <button class="btn" id="importBtn">Import Players</button>
-      </div>
+      <h2>Player Pool</h2>
+      <p class="muted">Double-click a player to add/remove from registration.</p>
+      <div class="pool-grid" id="playerPool"></div>
     </section>
+    </div>
 
+    <div class="stage-pane" data-stage-pane="schedule">
     <section class="card">
       <h2>Generated Schedule</h2>
       <p class="muted" id="scheduleSummary">No schedule yet.</p>
+      <div class="kpi-grid" id="scheduleKpis"></div>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="muted" id="progressLabel">0% complete</p>
+      </div>
       <div id="scheduleTableContainer"></div>
-      <h2 style="margin-top: 16px;">Ranking (By Winning Sets)</h2>
-      <div id="rankingContainer"><p class="empty">No ranking yet.</p></div>
+      <div class="row" style="margin-top: 12px;">
+        <button type="button" class="btn" id="gotoRankingBtn">Go To Ranking</button>
+      </div>
     </section>
+    </div>
+
+    <div class="stage-pane" data-stage-pane="ranking">
+    <section class="card">
+      <h2>Ranking (By Winning Sets)</h2>
+      <p class="muted">Live standings update as you save match scores.</p>
+      <div id="rankingContainer"><p class="empty">No ranking yet.</p></div>
+      <div class="row" style="margin-top: 12px;">
+        <button type="button" class="btn secondary" id="backToScoringBtn">Back To Scoring</button>
+      </div>
+    </section>
+    </div>
   </div>
 
   <script>
     const players = [];
+    const playerPool = [
+      "Achilles",
+      "cobra_khan",
+      "Bill Tang",
+      "cindy",
+      "Andrew",
+      "Chris",
+      "404",
+      "Alex",
+      "Jamie",
+      "Taylor"
+    ];
     const results = new Map();
     let currentSchedule = [];
+    let currentStage = "register";
 
     const elements = {
       playerName: document.getElementById("playerName"),
@@ -269,15 +582,32 @@
       addPlayerBtn: document.getElementById("addPlayerBtn"),
       clearPlayersBtn: document.getElementById("clearPlayersBtn"),
       generateBtn: document.getElementById("generateBtn"),
+      gotoRankingBtn: document.getElementById("gotoRankingBtn"),
+      backToScoringBtn: document.getElementById("backToScoringBtn"),
+      playerCountPill: document.getElementById("playerCountPill"),
       playerChips: document.getElementById("playerChips"),
+      playerPool: document.getElementById("playerPool"),
       emptyPlayers: document.getElementById("emptyPlayers"),
       message: document.getElementById("message"),
-      importBtn: document.getElementById("importBtn"),
-      bulkInput: document.getElementById("bulkInput"),
       scheduleSummary: document.getElementById("scheduleSummary"),
+      scheduleKpis: document.getElementById("scheduleKpis"),
+      progressFill: document.getElementById("progressFill"),
+      progressLabel: document.getElementById("progressLabel"),
       scheduleTableContainer: document.getElementById("scheduleTableContainer"),
-      rankingContainer: document.getElementById("rankingContainer")
+      rankingContainer: document.getElementById("rankingContainer"),
+      stageButtons: document.querySelectorAll("[data-stage-target]"),
+      stagePanes: document.querySelectorAll("[data-stage-pane]")
     };
+
+    function setActiveStage(stage) {
+      currentStage = stage;
+      elements.stageButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.stageTarget === stage);
+      });
+      elements.stagePanes.forEach((pane) => {
+        pane.classList.toggle("active", pane.dataset.stagePane === stage);
+      });
+    }
 
     function uniquePush(name) {
       if (!players.includes(name)) {
@@ -296,6 +626,9 @@
       currentSchedule = [];
       results.clear();
       elements.scheduleSummary.textContent = "No schedule yet.";
+      elements.scheduleKpis.innerHTML = "";
+      elements.progressFill.style.width = "0%";
+      elements.progressLabel.textContent = "0% complete";
       elements.scheduleTableContainer.innerHTML = "";
       elements.rankingContainer.innerHTML = "<p class=\"empty\">No ranking yet.</p>";
     }
@@ -303,20 +636,72 @@
     function renderPlayers() {
       elements.playerChips.innerHTML = "";
       players.forEach((name, index) => {
-        const chip = document.createElement("button");
+        const chip = document.createElement("div");
         chip.className = "chip";
-        chip.textContent = `${index + 1}. ${name}`;
-        chip.title = "Click to remove";
-        chip.addEventListener("click", () => {
+        chip.innerHTML = `
+          <span class="chip-index">${index + 1}</span>
+          <span class="chip-name">${name}</span>
+          <button type="button" class="chip-remove" data-remove-player="${name}">Remove</button>
+        `;
+        chip.querySelector(".chip-remove").addEventListener("click", () => {
           players.splice(index, 1);
           renderPlayers();
+          renderPlayerPool();
           resetScheduleView();
           setMessage(`Removed ${name}.`, false);
         });
         elements.playerChips.appendChild(chip);
       });
       elements.emptyPlayers.style.display = players.length ? "none" : "block";
+      elements.playerCountPill.textContent = `${players.length} / 10`;
       updateSetsPerPlayerChoices();
+    }
+
+    function addPlayerByName(name) {
+      const raw = name.trim();
+      if (!raw) {
+        return false;
+      }
+      if (players.length >= 10) {
+        setMessage("Maximum 10 players allowed.", true);
+        return false;
+      }
+      const added = uniquePush(raw);
+      if (!added) {
+        return false;
+      }
+      renderPlayers();
+      renderPlayerPool();
+      resetScheduleView();
+      setMessage(`Added ${raw}.`, false);
+      return true;
+    }
+
+    function renderPlayerPool() {
+      elements.playerPool.innerHTML = "";
+      playerPool.forEach((name) => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = `pool-chip${players.includes(name) ? " registered" : ""}`;
+        item.textContent = players.includes(name) ? `${name} (Added)` : name;
+        item.dataset.playerName = name;
+        item.title = "Double-click to add/remove";
+        item.addEventListener("dblclick", () => {
+          if (players.includes(name)) {
+            const idx = players.indexOf(name);
+            if (idx >= 0) {
+              players.splice(idx, 1);
+              renderPlayers();
+              renderPlayerPool();
+              resetScheduleView();
+              setMessage(`Removed ${name}.`, false);
+            }
+            return;
+          }
+          addPlayerByName(name);
+        });
+        elements.playerPool.appendChild(item);
+      });
     }
 
     function getAllowedSetsPerPlayer(playerCount) {
@@ -361,6 +746,10 @@
         setMessage("Enter a player name first.", true);
         return;
       }
+      if (players.length >= 10) {
+        setMessage("Maximum 10 players allowed.", true);
+        return;
+      }
       const added = uniquePush(raw);
       if (!added) {
         setMessage(`Player \"${raw}\" already exists.`, true);
@@ -368,31 +757,9 @@
       }
       elements.playerName.value = "";
       renderPlayers();
+      renderPlayerPool();
       resetScheduleView();
       setMessage(`Added ${raw}.`, false);
-    }
-
-    function importPlayers() {
-      const lines = elements.bulkInput.value
-        .split("\n")
-        .map((line) => line.trim())
-        .filter(Boolean);
-
-      if (!lines.length) {
-        setMessage("No valid names to import.", true);
-        return;
-      }
-
-      let addedCount = 0;
-      lines.forEach((name) => {
-        if (uniquePush(name)) {
-          addedCount += 1;
-        }
-      });
-
-      renderPlayers();
-      resetScheduleView();
-      setMessage(`Imported ${addedCount} new player(s).`, false);
     }
 
     function pairKey(a, b) {
@@ -658,6 +1025,7 @@
         `Schedule generated with ${generated.activeCourts} active court(s), ${setsPerPlayer} set(s) per player, and balanced rest frequency.`,
         false
       );
+      setActiveStage("schedule");
     }
 
     function renderSchedule() {
@@ -672,66 +1040,73 @@
         const score = results.get(match.id);
         return score && Number.isInteger(score.scoreA) && Number.isInteger(score.scoreB);
       }).length;
+      const completionPct = allMatches.length ? Math.round((completed / allMatches.length) * 100) : 0;
       elements.scheduleSummary.textContent =
         `League-style scoring. ${currentSchedule.length} round(s), ${allMatches.length} match(es). ` +
         `${completed}/${allMatches.length} match score(s) recorded.`;
-
-      const rows = [];
-      currentSchedule.forEach((round) => {
-        if (!round.matches.length) {
-          rows.push(`
-            <tr>
-              <td>Round ${round.round}</td>
-              <td>-</td>
-              <td>${round.byes.join(", ") || "-"}</td>
-              <td>No match generated</td>
-            </tr>
-          `);
-          return;
-        }
-
-        round.matches.forEach((match, idx) => {
-          const saved = results.get(match.id);
-          const scoreA = saved ? saved.scoreA : "";
-          const scoreB = saved ? saved.scoreB : "";
-          const isFinished = Number.isInteger(scoreA) && Number.isInteger(scoreB);
-          const byeText = idx === 0 ? (round.byes.join(", ") || "-") : "";
-          rows.push(`
-            <tr>
-              <td>Round ${round.round}</td>
-              <td>Court ${match.court}: ${match.teamA[0]} & ${match.teamA[1]} vs ${match.teamB[0]} & ${match.teamB[1]}</td>
-              <td>${byeText}</td>
-              <td>
-                <div class="row">
-                  <input type="number" min="0" max="30" step="1" data-score-side="A" data-match-id="${match.id}" value="${scoreA}" placeholder="A score" />
-                  <input type="number" min="0" max="30" step="1" data-score-side="B" data-match-id="${match.id}" value="${scoreB}" placeholder="B score" />
-                </div>
-                <div class="row" style="margin-top: 8px;">
-                  <button class="btn" data-action="save-score" data-match-id="${match.id}">Save Score</button>
-                  <button class="btn secondary" data-action="clear-score" data-match-id="${match.id}">Clear</button>
-                </div>
-                <div class="muted" style="margin-top: 6px;">${isFinished ? "Finished" : "Pending"}</div>
-              </td>
-            </tr>
-          `);
-        });
-      });
-
-      elements.scheduleTableContainer.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>Round</th>
-              <th>Matchup</th>
-              <th>Byes</th>
-              <th>Score (1 set)</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows.join("")}
-          </tbody>
-        </table>
+      elements.scheduleKpis.innerHTML = `
+        <div class="kpi"><div class="kpi-label">Players</div><div class="kpi-value">${players.length}</div></div>
+        <div class="kpi"><div class="kpi-label">Rounds</div><div class="kpi-value">${currentSchedule.length}</div></div>
+        <div class="kpi"><div class="kpi-label">Matches</div><div class="kpi-value">${allMatches.length}</div></div>
+        <div class="kpi"><div class="kpi-label">Recorded</div><div class="kpi-value">${completed}</div></div>
       `;
+      elements.progressFill.style.width = `${completionPct}%`;
+      elements.progressLabel.textContent = `${completionPct}% complete`;
+
+      const firstUnfinishedRoundIndex = currentSchedule.findIndex((round) => {
+        const done = round.matches.filter((match) => {
+          const score = results.get(match.id);
+          return score && Number.isInteger(score.scoreA) && Number.isInteger(score.scoreB);
+        }).length;
+        return done < round.matches.length;
+      });
+      const defaultOpenIndex = firstUnfinishedRoundIndex >= 0 ? firstUnfinishedRoundIndex : 0;
+
+      const roundCards = currentSchedule.map((round, roundIndex) => {
+        const roundCompleted = round.matches.filter((match) => {
+          const score = results.get(match.id);
+          return score && Number.isInteger(score.scoreA) && Number.isInteger(score.scoreB);
+        }).length;
+        const byesText = round.byes.join(", ") || "-";
+
+        const matchItems = round.matches.length
+          ? round.matches.map((match) => {
+              const saved = results.get(match.id);
+              const scoreA = saved ? saved.scoreA : "";
+              const scoreB = saved ? saved.scoreB : "";
+              const isFinished = Number.isInteger(scoreA) && Number.isInteger(scoreB);
+              return `
+                <div class="match-item">
+                  <div class="match-line">Court ${match.court}: ${match.teamA[0]} & ${match.teamA[1]} vs ${match.teamB[0]} & ${match.teamB[1]}</div>
+                  <div class="score-row">
+                    <input class="score-input" type="number" min="0" max="30" step="1" data-score-side="A" data-match-id="${match.id}" value="${scoreA}" placeholder="A" />
+                    <input class="score-input" type="number" min="0" max="30" step="1" data-score-side="B" data-match-id="${match.id}" value="${scoreB}" placeholder="B" />
+                    <button class="btn mini-btn" data-action="save-score" data-match-id="${match.id}">Save</button>
+                    <button class="btn secondary mini-btn" data-action="clear-score" data-match-id="${match.id}">Clear</button>
+                  </div>
+                  <span class="status-pill">${isFinished ? "Finished" : "Pending"}</span>
+                </div>
+              `;
+            }).join("")
+          : `<div class="match-item"><div class="muted">No match generated this round.</div></div>`;
+
+        return `
+          <details class="round-card" ${roundIndex === defaultOpenIndex ? "open" : ""}>
+            <summary class="round-summary">
+              <span class="round-title">Round ${round.round}</span>
+              <span class="round-meta">
+                <span>Byes: ${byesText}</span>
+                <span class="round-badge">${roundCompleted}/${round.matches.length} done</span>
+              </span>
+            </summary>
+            <div class="round-content">
+              ${matchItems}
+            </div>
+          </details>
+        `;
+      }).join("");
+
+      elements.scheduleTableContainer.innerHTML = `<div class="round-list">${roundCards}</div>`;
 
       elements.scheduleTableContainer.querySelectorAll("[data-action='save-score']").forEach((btn) => {
         btn.addEventListener("click", (event) => {
@@ -838,15 +1213,12 @@
 
       const rows = ranking.map((row, idx) => {
         const pct = row.completed ? Math.round((row.wins / row.completed) * 100) : 0;
-        const rests = currentSchedule.length - row.played;
         return `
           <tr>
             <td>${idx + 1}</td>
             <td>${row.name}</td>
             <td>${row.wins}</td>
             <td>${row.losses}</td>
-            <td>${row.completed}/${row.played}</td>
-            <td>${rests}</td>
             <td>${row.pointDiff}</td>
             <td>${pct}%</td>
           </tr>
@@ -854,6 +1226,7 @@
       });
 
       elements.rankingContainer.innerHTML = `
+        <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -861,8 +1234,6 @@
               <th>Player</th>
               <th>Set Wins</th>
               <th>Set Losses</th>
-              <th>Sets Played</th>
-              <th>Rests</th>
               <th>Point Diff</th>
               <th>Win %</th>
             </tr>
@@ -871,17 +1242,30 @@
             ${rows.join("")}
           </tbody>
         </table>
+        </div>
       `;
     }
 
     elements.addPlayerBtn.addEventListener("click", addPlayer);
-    elements.importBtn.addEventListener("click", importPlayers);
     elements.generateBtn.addEventListener("click", generateSchedule);
+    elements.gotoRankingBtn.addEventListener("click", () => {
+      setActiveStage("ranking");
+    });
+    elements.backToScoringBtn.addEventListener("click", () => {
+      setActiveStage("schedule");
+    });
+    elements.stageButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setActiveStage(btn.dataset.stageTarget);
+      });
+    });
     elements.clearPlayersBtn.addEventListener("click", () => {
       players.length = 0;
       renderPlayers();
+      renderPlayerPool();
       resetScheduleView();
       setMessage("All players cleared.", false);
+      setActiveStage("register");
     });
 
     elements.playerName.addEventListener("keydown", (event) => {
@@ -891,7 +1275,9 @@
       }
     });
 
+    setActiveStage(currentStage);
     renderPlayers();
+    renderPlayerPool();
   </script>
 </body>
 </html>
