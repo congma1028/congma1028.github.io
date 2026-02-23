@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badminton Doubles Planner</title>
+  <style>
+    :root {
+      --bg: #f7f9f6;
+      --card: #ffffff;
+      --line: #d9e1d5;
+      --text: #1f2a1f;
+      --muted: #526052;
+      --accent: #2f7b4a;
+      --accent-dark: #215736;
+      --warn: #9a2f2f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 12%, #d7ebda 0, transparent 35%),
+        radial-gradient(circle at 12% 88%, #e4f2e7 0, transparent 40%),
+        var(--bg);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 5px 20px rgba(20, 45, 20, 0.07);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      width: 100%;
+      font: inherit;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid #cae4d1;
+      border-color: #87ba96;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.45;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .row > * {
+      flex: 1 1 180px;
+    }
+
+    .btn {
+      border: 0;
+      color: #fff;
+      background: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 120ms ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn.secondary {
+      background: #6a7b69;
+    }
+
+    .btn.secondary:hover {
+      background: #4f5e4f;
+    }
+
+    .msg {
+      margin-top: 10px;
+      font-size: 0.92rem;
+    }
+
+    .msg.warn {
+      color: var(--warn);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #edf4ee;
+      border: 1px solid #d7e5da;
+      font-size: 0.88rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f7f2;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .empty {
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      th,
+      td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="card">
+      <h1>Badminton Doubles Planning Tool</h1>
+      <p class="muted">
+        Register 4-10 players, set courts and sets-per-player, then run league-style doubles scoring with live rankings.
+      </p>
+      <div class="grid">
+        <div>
+          <label for="playerName">Player name</label>
+          <input id="playerName" type="text" placeholder="e.g. Alex" />
+        </div>
+        <div>
+          <label for="courtCount">Number of courts</label>
+          <input id="courtCount" type="number" min="1" step="1" value="1" />
+        </div>
+        <div>
+          <label for="setsPerPlayer">Sets per player</label>
+          <select id="setsPerPlayer"></select>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 12px;">
+        <button class="btn" id="addPlayerBtn">Add Player</button>
+        <button class="btn secondary" id="clearPlayersBtn">Clear Players</button>
+        <button class="btn" id="generateBtn">Generate Schedule</button>
+      </div>
+      <div id="message" class="msg"></div>
+      <div class="chips" id="playerChips"></div>
+      <p id="emptyPlayers" class="empty">No players registered yet.</p>
+    </section>
+
+    <section class="card">
+      <h2>Bulk Registration (Optional)</h2>
+      <p class="muted">Enter one player per line, then click Import.</p>
+      <label for="bulkInput">Player list</label>
+      <textarea id="bulkInput" placeholder="Sam&#10;Jamie&#10;Taylor"></textarea>
+      <div class="row" style="margin-top: 10px;">
+        <button class="btn" id="importBtn">Import Players</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Generated Schedule</h2>
+      <p class="muted" id="scheduleSummary">No schedule yet.</p>
+      <div id="scheduleTableContainer"></div>
+      <h2 style="margin-top: 16px;">Ranking (By Winning Sets)</h2>
+      <div id="rankingContainer"><p class="empty">No ranking yet.</p></div>
+    </section>
+  </div>
+
+  <script>
+    const players = [];
+    const results = new Map();
+    let currentSchedule = [];
+
+    const elements = {
+      playerName: document.getElementById("playerName"),
+      courtCount: document.getElementById("courtCount"),
+      setsPerPlayer: document.getElementById("setsPerPlayer"),
+      addPlayerBtn: document.getElementById("addPlayerBtn"),
+      clearPlayersBtn: document.getElementById("clearPlayersBtn"),
+      generateBtn: document.getElementById("generateBtn"),
+      playerChips: document.getElementById("playerChips"),
+      emptyPlayers: document.getElementById("emptyPlayers"),
+      message: document.getElementById("message"),
+      importBtn: document.getElementById("importBtn"),
+      bulkInput: document.getElementById("bulkInput"),
+      scheduleSummary: document.getElementById("scheduleSummary"),
+      scheduleTableContainer: document.getElementById("scheduleTableContainer"),
+      rankingContainer: document.getElementById("rankingContainer")
+    };
+
+    function uniquePush(name) {
+      if (!players.includes(name)) {
+        players.push(name);
+        return true;
+      }
+      return false;
+    }
+
+    function setMessage(text, isWarn) {
+      elements.message.textContent = text;
+      elements.message.className = isWarn ? "msg warn" : "msg";
+    }
+
+    function resetScheduleView() {
+      currentSchedule = [];
+      results.clear();
+      elements.scheduleSummary.textContent = "No schedule yet.";
+      elements.scheduleTableContainer.innerHTML = "";
+      elements.rankingContainer.innerHTML = "<p class=\"empty\">No ranking yet.</p>";
+    }
+
+    function renderPlayers() {
+      elements.playerChips.innerHTML = "";
+      players.forEach((name, index) => {
+        const chip = document.createElement("button");
+        chip.className = "chip";
+        chip.textContent = `${index + 1}. ${name}`;
+        chip.title = "Click to remove";
+        chip.addEventListener("click", () => {
+          players.splice(index, 1);
+          renderPlayers();
+          resetScheduleView();
+          setMessage(`Removed ${name}.`, false);
+        });
+        elements.playerChips.appendChild(chip);
+      });
+      elements.emptyPlayers.style.display = players.length ? "none" : "block";
+      updateSetsPerPlayerChoices();
+    }
+
+    function getAllowedSetsPerPlayer(playerCount) {
+      const options = [];
+      for (let sets = 1; sets <= 10; sets += 1) {
+        if ((playerCount * sets) % 4 === 0) {
+          options.push(sets);
+        }
+      }
+      return options;
+    }
+
+    function updateSetsPerPlayerChoices() {
+      const select = elements.setsPerPlayer;
+      const current = Number(select.value);
+      select.innerHTML = "";
+
+      if (players.length < 4 || players.length > 10) {
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Add 4-10 players first";
+        placeholder.selected = true;
+        select.appendChild(placeholder);
+        return;
+      }
+
+      const allowed = getAllowedSetsPerPlayer(players.length);
+      allowed.forEach((sets) => {
+        const option = document.createElement("option");
+        option.value = String(sets);
+        option.textContent = String(sets);
+        select.appendChild(option);
+      });
+
+      const preferred = allowed.includes(current) ? current : (allowed.includes(4) ? 4 : allowed[0]);
+      select.value = String(preferred);
+    }
+
+    function addPlayer() {
+      const raw = elements.playerName.value.trim();
+      if (!raw) {
+        setMessage("Enter a player name first.", true);
+        return;
+      }
+      const added = uniquePush(raw);
+      if (!added) {
+        setMessage(`Player \"${raw}\" already exists.`, true);
+        return;
+      }
+      elements.playerName.value = "";
+      renderPlayers();
+      resetScheduleView();
+      setMessage(`Added ${raw}.`, false);
+    }
+
+    function importPlayers() {
+      const lines = elements.bulkInput.value
+        .split("\n")
+        .map((line) => line.trim())
+        .filter(Boolean);
+
+      if (!lines.length) {
+        setMessage("No valid names to import.", true);
+        return;
+      }
+
+      let addedCount = 0;
+      lines.forEach((name) => {
+        if (uniquePush(name)) {
+          addedCount += 1;
+        }
+      });
+
+      renderPlayers();
+      resetScheduleView();
+      setMessage(`Imported ${addedCount} new player(s).`, false);
+    }
+
+    function pairKey(a, b) {
+      return a < b ? `${a}|${b}` : `${b}|${a}`;
+    }
+
+    function shuffle(list) {
+      const arr = [...list];
+      for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function chooseBestFour(availablePlayers, playedCount, targetPerPlayer, playStreak, restStreak) {
+      const combos = [];
+      for (let i = 0; i < availablePlayers.length; i += 1) {
+        for (let j = i + 1; j < availablePlayers.length; j += 1) {
+          for (let k = j + 1; k < availablePlayers.length; k += 1) {
+            for (let l = k + 1; l < availablePlayers.length; l += 1) {
+              const group = [availablePlayers[i], availablePlayers[j], availablePlayers[k], availablePlayers[l]];
+              const deficits = group.map((name) => Math.max(0, targetPerPlayer - playedCount[name]));
+              const deficitScore = deficits.reduce((sum, v) => sum + v, 0);
+              const playedSum = group.reduce((sum, name) => sum + playedCount[name], 0);
+              const urgencyScore = group.reduce(
+                (sum, name) => sum + (targetPerPlayer - playedCount[name]) * 5 + restStreak[name] * 2 - playStreak[name],
+                0
+              );
+              combos.push({ group, deficitScore, playedSum, urgencyScore });
+            }
+          }
+        }
+      }
+
+      combos.sort((a, b) =>
+        b.deficitScore - a.deficitScore ||
+        b.urgencyScore - a.urgencyScore ||
+        a.playedSum - b.playedSum
+      );
+      if (!combos.length) {
+        return [];
+      }
+
+      const topDeficit = combos[0].deficitScore;
+      const topChoices = combos.filter((combo) => combo.deficitScore === topDeficit).slice(0, 8);
+      return topChoices[Math.floor(Math.random() * topChoices.length)].group;
+    }
+
+    function chooseTeamSplit(group, partnerCount, opponentCount) {
+      const [a, b, c, d] = group;
+      const splits = [
+        { teamA: [a, b], teamB: [c, d] },
+        { teamA: [a, c], teamB: [b, d] },
+        { teamA: [a, d], teamB: [b, c] }
+      ];
+
+      function scoreSplit(split) {
+        const partnerA = pairKey(split.teamA[0], split.teamA[1]);
+        const partnerB = pairKey(split.teamB[0], split.teamB[1]);
+        const partnerRepeats = (partnerCount[partnerA] || 0) + (partnerCount[partnerB] || 0);
+
+        const opponentPairs = [
+          pairKey(split.teamA[0], split.teamB[0]),
+          pairKey(split.teamA[0], split.teamB[1]),
+          pairKey(split.teamA[1], split.teamB[0]),
+          pairKey(split.teamA[1], split.teamB[1])
+        ];
+        const opponentRepeats = opponentPairs.reduce((sum, key) => sum + (opponentCount[key] || 0), 0);
+        return partnerRepeats * 10 + opponentRepeats + Math.random() * 0.05;
+      }
+
+      splits.sort((x, y) => scoreSplit(x) - scoreSplit(y));
+      return splits[0];
+    }
+
+    function isRemainderFeasible(playedCount, playerList, targetPerPlayer) {
+      let remainingSlots = 0;
+      let playersWithRemaining = 0;
+      playerList.forEach((name) => {
+        const remaining = targetPerPlayer - playedCount[name];
+        if (remaining > 0) {
+          playersWithRemaining += 1;
+          remainingSlots += remaining;
+        }
+      });
+
+      if (remainingSlots === 0) {
+        return true;
+      }
+      if (playersWithRemaining > 0 && playersWithRemaining < 4) {
+        return false;
+      }
+      return remainingSlots % 4 === 0;
+    }
+
+    function tryBuildSchedule(playerList, courtCount, targetPerPlayer) {
+      const n = playerList.length;
+      const maxCourtsUsable = Math.floor(n / 4);
+      const activeCourts = Math.max(1, Math.min(courtCount, maxCourtsUsable));
+      const totalMatches = (n * targetPerPlayer) / 4;
+
+      const playedCount = {};
+      const playStreak = {};
+      const restStreak = {};
+      const restCount = {};
+      const partnerCount = {};
+      const opponentCount = {};
+      const randomizedPlayers = shuffle(playerList);
+      randomizedPlayers.forEach((name) => {
+        playedCount[name] = 0;
+        playStreak[name] = 0;
+        restStreak[name] = 0;
+        restCount[name] = 0;
+      });
+
+      const rounds = [];
+      let matchSeq = 1;
+      let peakPlayStreak = 0;
+      let peakRestStreak = 0;
+      while (matchSeq <= totalMatches) {
+        const round = rounds.length + 1;
+        const usedThisRound = new Set();
+        const matches = [];
+
+        for (let court = 1; court <= activeCourts && matchSeq <= totalMatches; court += 1) {
+          const availablePlayers = randomizedPlayers
+            .filter((name) => !usedThisRound.has(name) && playedCount[name] < targetPerPlayer)
+            .sort((a, b) => playedCount[a] - playedCount[b] || a.localeCompare(b));
+
+          if (availablePlayers.length < 4) {
+            break;
+          }
+
+          const group = chooseBestFour(availablePlayers, playedCount, targetPerPlayer, playStreak, restStreak);
+          if (group.length < 4) {
+            break;
+          }
+
+          const tentativeCounts = { ...playedCount };
+          group.forEach((name) => {
+            tentativeCounts[name] += 1;
+          });
+          if (!isRemainderFeasible(tentativeCounts, randomizedPlayers, targetPerPlayer)) {
+            continue;
+          }
+          group.forEach((name) => {
+            usedThisRound.add(name);
+            playedCount[name] = tentativeCounts[name];
+          });
+
+          const split = chooseTeamSplit(group, partnerCount, opponentCount);
+          const partnerA = pairKey(split.teamA[0], split.teamA[1]);
+          const partnerB = pairKey(split.teamB[0], split.teamB[1]);
+          partnerCount[partnerA] = (partnerCount[partnerA] || 0) + 1;
+          partnerCount[partnerB] = (partnerCount[partnerB] || 0) + 1;
+
+          const oppKeys = [
+            pairKey(split.teamA[0], split.teamB[0]),
+            pairKey(split.teamA[0], split.teamB[1]),
+            pairKey(split.teamA[1], split.teamB[0]),
+            pairKey(split.teamA[1], split.teamB[1])
+          ];
+          oppKeys.forEach((key) => {
+            opponentCount[key] = (opponentCount[key] || 0) + 1;
+          });
+
+          matches.push({
+            id: `m${matchSeq}`,
+            round,
+            court,
+            teamA: split.teamA,
+            teamB: split.teamB
+          });
+          matchSeq += 1;
+        }
+
+        if (!matches.length) {
+          return null;
+        }
+
+        const byes = randomizedPlayers.filter((name) => !usedThisRound.has(name));
+        randomizedPlayers.forEach((name) => {
+          if (usedThisRound.has(name)) {
+            playStreak[name] += 1;
+            restStreak[name] = 0;
+            peakPlayStreak = Math.max(peakPlayStreak, playStreak[name]);
+          } else {
+            restStreak[name] += 1;
+            playStreak[name] = 0;
+            restCount[name] += 1;
+            peakRestStreak = Math.max(peakRestStreak, restStreak[name]);
+          }
+        });
+        rounds.push({ round, byes, matches });
+      }
+
+      const exact = randomizedPlayers.every((name) => playedCount[name] === targetPerPlayer);
+      if (!exact) {
+        return null;
+      }
+
+      const maxPlayStreak = peakPlayStreak;
+      const maxRestStreak = peakRestStreak;
+      return { rounds, activeCourts, restCount, maxPlayStreak, maxRestStreak };
+    }
+
+    function buildSchedule(playerList, courtCount, targetPerPlayer) {
+      const attempts = 200;
+      let best = null;
+      for (let i = 0; i < attempts; i += 1) {
+        const schedule = tryBuildSchedule(playerList, courtCount, targetPerPlayer);
+        if (schedule) {
+          if (!best) {
+            best = schedule;
+            continue;
+          }
+          if (
+            schedule.maxPlayStreak < best.maxPlayStreak ||
+            (schedule.maxPlayStreak === best.maxPlayStreak && schedule.maxRestStreak < best.maxRestStreak)
+          ) {
+            best = schedule;
+          }
+        }
+      }
+      return best;
+    }
+
+    function generateSchedule() {
+      const courtCount = Number(elements.courtCount.value);
+      const setsPerPlayer = Number(elements.setsPerPlayer.value);
+      if (!Number.isInteger(courtCount) || courtCount < 1) {
+        setMessage("Court count must be an integer >= 1.", true);
+        return;
+      }
+      if (!Number.isInteger(setsPerPlayer) || setsPerPlayer < 1 || setsPerPlayer > 10) {
+        setMessage("Please choose a valid sets-per-player option (1-10).", true);
+        return;
+      }
+
+      if (players.length < 4 || players.length > 10) {
+        setMessage("Please register between 4 and 10 players.", true);
+        return;
+      }
+
+      if (!getAllowedSetsPerPlayer(players.length).includes(setsPerPlayer)) {
+        setMessage("Selected sets-per-player is not valid for this player count.", true);
+        return;
+      }
+
+      const generated = buildSchedule(players, courtCount, setsPerPlayer);
+      if (!generated) {
+        setMessage("Could not generate a fair schedule with exact equal sets. Try fewer sets or fewer courts.", true);
+        return;
+      }
+
+      currentSchedule = generated.rounds;
+      results.clear();
+      renderSchedule();
+      renderRanking();
+
+      setMessage(
+        `Schedule generated with ${generated.activeCourts} active court(s), ${setsPerPlayer} set(s) per player, and balanced rest frequency.`,
+        false
+      );
+    }
+
+    function renderSchedule() {
+      if (!currentSchedule.length) {
+        elements.scheduleSummary.textContent = "No schedule yet.";
+        elements.scheduleTableContainer.innerHTML = "";
+        return;
+      }
+
+      const allMatches = currentSchedule.flatMap((round) => round.matches);
+      const completed = allMatches.filter((match) => {
+        const score = results.get(match.id);
+        return score && Number.isInteger(score.scoreA) && Number.isInteger(score.scoreB);
+      }).length;
+      elements.scheduleSummary.textContent =
+        `League-style scoring. ${currentSchedule.length} round(s), ${allMatches.length} match(es). ` +
+        `${completed}/${allMatches.length} match score(s) recorded.`;
+
+      const rows = [];
+      currentSchedule.forEach((round) => {
+        if (!round.matches.length) {
+          rows.push(`
+            <tr>
+              <td>Round ${round.round}</td>
+              <td>-</td>
+              <td>${round.byes.join(", ") || "-"}</td>
+              <td>No match generated</td>
+            </tr>
+          `);
+          return;
+        }
+
+        round.matches.forEach((match, idx) => {
+          const saved = results.get(match.id);
+          const scoreA = saved ? saved.scoreA : "";
+          const scoreB = saved ? saved.scoreB : "";
+          const isFinished = Number.isInteger(scoreA) && Number.isInteger(scoreB);
+          const byeText = idx === 0 ? (round.byes.join(", ") || "-") : "";
+          rows.push(`
+            <tr>
+              <td>Round ${round.round}</td>
+              <td>Court ${match.court}: ${match.teamA[0]} & ${match.teamA[1]} vs ${match.teamB[0]} & ${match.teamB[1]}</td>
+              <td>${byeText}</td>
+              <td>
+                <div class="row">
+                  <input type="number" min="0" max="30" step="1" data-score-side="A" data-match-id="${match.id}" value="${scoreA}" placeholder="A score" />
+                  <input type="number" min="0" max="30" step="1" data-score-side="B" data-match-id="${match.id}" value="${scoreB}" placeholder="B score" />
+                </div>
+                <div class="row" style="margin-top: 8px;">
+                  <button class="btn" data-action="save-score" data-match-id="${match.id}">Save Score</button>
+                  <button class="btn secondary" data-action="clear-score" data-match-id="${match.id}">Clear</button>
+                </div>
+                <div class="muted" style="margin-top: 6px;">${isFinished ? "Finished" : "Pending"}</div>
+              </td>
+            </tr>
+          `);
+        });
+      });
+
+      elements.scheduleTableContainer.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Matchup</th>
+              <th>Byes</th>
+              <th>Score (1 set)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.join("")}
+          </tbody>
+        </table>
+      `;
+
+      elements.scheduleTableContainer.querySelectorAll("[data-action='save-score']").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const matchId = event.target.dataset.matchId;
+          const inputA = elements.scheduleTableContainer.querySelector(`input[data-score-side="A"][data-match-id="${matchId}"]`);
+          const inputB = elements.scheduleTableContainer.querySelector(`input[data-score-side="B"][data-match-id="${matchId}"]`);
+          const scoreA = Number(inputA.value);
+          const scoreB = Number(inputB.value);
+
+          if (!Number.isInteger(scoreA) || !Number.isInteger(scoreB) || scoreA < 0 || scoreB < 0) {
+            setMessage("Both scores must be non-negative integers.", true);
+            return;
+          }
+
+          if (scoreA === scoreB) {
+            setMessage("Badminton set score cannot be a tie. Please adjust scores.", true);
+            return;
+          }
+
+          results.set(matchId, { scoreA, scoreB });
+          renderSchedule();
+          renderRanking();
+          setMessage("Score saved.", false);
+        });
+      });
+
+      elements.scheduleTableContainer.querySelectorAll("[data-action='clear-score']").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const matchId = event.target.dataset.matchId;
+          results.delete(matchId);
+          renderSchedule();
+          renderRanking();
+          setMessage("Score cleared.", false);
+        });
+      });
+    }
+
+    function renderRanking() {
+      if (!currentSchedule.length) {
+        elements.rankingContainer.innerHTML = "<p class=\"empty\">No ranking yet.</p>";
+        return;
+      }
+
+      const stats = {};
+      players.forEach((name) => {
+        stats[name] = {
+          wins: 0,
+          losses: 0,
+          played: 0,
+          completed: 0,
+          pointsFor: 0,
+          pointsAgainst: 0
+        };
+      });
+
+      currentSchedule.forEach((round) => {
+        round.matches.forEach((match) => {
+          const participants = [...match.teamA, ...match.teamB];
+          participants.forEach((name) => {
+            stats[name].played += 1;
+          });
+
+          const score = results.get(match.id);
+          if (!score || !Number.isInteger(score.scoreA) || !Number.isInteger(score.scoreB) || score.scoreA === score.scoreB) {
+            return;
+          }
+
+          participants.forEach((name) => {
+            stats[name].completed += 1;
+          });
+
+          match.teamA.forEach((name) => {
+            stats[name].pointsFor += score.scoreA;
+            stats[name].pointsAgainst += score.scoreB;
+          });
+          match.teamB.forEach((name) => {
+            stats[name].pointsFor += score.scoreB;
+            stats[name].pointsAgainst += score.scoreA;
+          });
+
+          const winners = score.scoreA > score.scoreB ? match.teamA : match.teamB;
+          const losers = score.scoreA > score.scoreB ? match.teamB : match.teamA;
+          winners.forEach((name) => {
+            stats[name].wins += 1;
+          });
+          losers.forEach((name) => {
+            stats[name].losses += 1;
+          });
+        });
+      });
+
+      const ranking = Object.entries(stats)
+        .map(([name, values]) => ({
+          name,
+          ...values,
+          pointDiff: values.pointsFor - values.pointsAgainst
+        }))
+        .sort((a, b) =>
+          b.wins - a.wins ||
+          b.pointDiff - a.pointDiff ||
+          b.pointsFor - a.pointsFor ||
+          a.name.localeCompare(b.name)
+        );
+
+      const rows = ranking.map((row, idx) => {
+        const pct = row.completed ? Math.round((row.wins / row.completed) * 100) : 0;
+        const rests = currentSchedule.length - row.played;
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${row.name}</td>
+            <td>${row.wins}</td>
+            <td>${row.losses}</td>
+            <td>${row.completed}/${row.played}</td>
+            <td>${rests}</td>
+            <td>${row.pointDiff}</td>
+            <td>${pct}%</td>
+          </tr>
+        `;
+      });
+
+      elements.rankingContainer.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Set Wins</th>
+              <th>Set Losses</th>
+              <th>Sets Played</th>
+              <th>Rests</th>
+              <th>Point Diff</th>
+              <th>Win %</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    elements.addPlayerBtn.addEventListener("click", addPlayer);
+    elements.importBtn.addEventListener("click", importPlayers);
+    elements.generateBtn.addEventListener("click", generateSchedule);
+    elements.clearPlayersBtn.addEventListener("click", () => {
+      players.length = 0;
+      renderPlayers();
+      resetScheduleView();
+      setMessage("All players cleared.", false);
+    });
+
+    elements.playerName.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        addPlayer();
+      }
+    });
+
+    renderPlayers();
+  </script>
+</body>
+</html>
