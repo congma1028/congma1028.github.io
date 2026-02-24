@@ -1,0 +1,25 @@
+arxiv:
+  enabled: true
+  categories:
+    - stat.ME
+    - stat.ML
+    - stat.TH
+  per_category_max_results: 50
+  lookback_hours: 24
+  align_to_submission_deadline: true
+  retries: 5
+  request_delay_seconds: 15.0
+  user_agent: "paper-agent-daily-digest/1.0 (+mailto:congma2015@gmail.com)"
+
+crossref:
+  enabled: false
+  arxiv_pdf_fallback: 1
+  journals:
+    - Annals of Statistics
+    - Journal of the American Statistical Association
+    - Biometrika
+    - Journal of the Royal Statistical Society Series B
+  max_results_per_journal: 10
+  from_days: 14
+  request_delay_seconds: 1.0
+  user_agent: "paper-agent-daily-digest/1.0 (+mailto:congma2015@gmail.com)"

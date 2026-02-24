@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# paper_agent runtime/state artifacts
+paper_agent_cong/paper_agent/
+paper_agent_cong/logs/
+paper_agent_cong/digests/
+paper_agent_cong/build/
+paper_agent_cong/data/*.db

@@ -1,0 +1,23 @@
+# Runtime knobs for pipeline behavior (non-secret settings).
+# Edit this file instead of setting env vars for these controls.
+
+first_pass_limit: 0
+second_pass_limit: 20
+
+llm_max_concurrency: 5
+report_max_concurrency: 5
+
+first_pass_temperature: 0.1
+second_pass_temperature: 0.1
+
+llm_retry_max_attempts: 5
+
+zotero_sync_score_threshold: 85
+
+clear_db_cache_on_run: false
+
+# Exclude papers whose title+abstract contains any of these phrases (case-insensitive).
+# Example:
+# - "bayesian nonparametric"
+# - "pure causal inference"
+exclude_topics: []
