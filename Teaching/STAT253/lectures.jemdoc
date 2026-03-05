@@ -8,7 +8,7 @@
 {}{table}{Course Schedule (Winter Quarter)}
 Week | Date | Lec | Topic | Reading | Homework ||
 1 | Tue Jan 6 | 1 | Course overview; Definition, Transition Matrix, Core Examples | RD Chapters 1 and 2 |  ||
-1 | Thu Jan 8 | 2 | n-Step Transition Probabilities, Limiting Distributions and Stationarity  | RD Chapters 2 and 3 |  ||
+1 | Thu Jan 8 | 2 | $n$-Step Transition Probabilities, Limiting Distributions and Stationarity  | RD Chapters 2 and 3 |  ||
 2 | Tue Jan 13 | 3 | Irreducibility, Periodicity, Recurrence, Transience  | RD Chapter 3 | HW 1 due ||
 2 | Thu Jan 15 | 4 | Positive recurrence, ergodicity, and limit theorems | RD Chapter 3 |  ||
 3 | Tue Jan 20 | 5 | Limit theorems, reversibility | RD Chapter 3 | HW 2 due ||
@@ -21,10 +21,10 @@ Week | Date | Lec | Topic | Reading | Homework ||
 6 | Thu Feb 12 | 12 | Continuous-time Markov chains: definition, exponential holding times | RD Chapter 7 | HW 5 due on Feb 13||
 7 | Tue Feb 17 | 13 | CTMCs: jump chains and generator (Q-matrix) |  |  ||
 7 | Thu Feb 19 | 14 | Renewal Processes |  |  ||
-8 | Tue Feb 24 | 15 |  |  | HW 6 due on Feb 24 ||
-8 | Thu Feb 26 | 16 |  |  |  ||
-9 | Tue Mar 3 | 17 |  |  |  ||
-9 | Thu Mar 5 | 18 |  |  |  ||
+8 | Tue Feb 24 | 15 | Renewal Processes |  | HW 6 due on Feb 24 ||
+8 | Thu Feb 26 | 16 | Renewal Processes |  |  ||
+9 | Tue Mar 3 | 17 | Queueing Models |  | HW 7 due on Mar 4 ||
+9 | Thu Mar 5 | 18 | Queueing Models and Review |  | HW 8 due on Mar 8 ||
 ~~~
 
 

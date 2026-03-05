@@ -1,1 +1,0 @@
-"""Daily paper assistant package."""
