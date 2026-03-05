@@ -1,4 +1,4 @@
-# jemdoc: menu{menu}{index.html}, nodefaultcss, addcss{../../jemdoc.css}
+# jemdoc: menu{menu}{course_info.html}, nodefaultcss, addcss{../../jemdoc.css}
 = STAT 253/317: Course Information \n
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026 
 
@@ -33,4 +33,3 @@ you can scan your handwritten homework to a PDF file and then upload it.
     Please do not submit raw camera photos (not processed through a “scanning” app), which are essentially unreadable online.
 - *Collaboration*: We encourage you to work on homework problems in study groups. However, you must write up and submit your own solutions and code without reading or copying the solutions of other students or from other online resources including any AI products.
 - *Regrade requests*: After the grades are posted, you can submit the regrade request for specific questions. The request must be submitted within 1 week after the grades are posted. If you have any question/concern or encounter any technical issue for homework submission, feel free to reach out.
-

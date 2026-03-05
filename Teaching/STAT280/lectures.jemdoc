@@ -1,4 +1,4 @@
-# jemdoc: menu{menu}{index.html}, nodefaultcss, addcss{../../jemdoc.css}
+# jemdoc: menu{menu}{lectures.html}, nodefaultcss, addcss{../../jemdoc.css}
 = STAT 280: Schedule
 
 [https://congma1028.github.io/index.html Cong Ma], University of Chicago, Winter 2026
@@ -22,9 +22,9 @@ Week | Date | Lec | Topic | Reading | Homework ||
 7 | Tue Feb 17 | 13 | Duality and KKT conditions  |  | HW3 due ||
 7 | Thu Feb 19 | 14 | Optimality conditions for constrained problems and projected GD |  |  ||
 8 | Tue Feb 24 | 15 | Projected gradient descent |  |  ||
-8 | Thu Feb 26 | 16 |  |  |  ||
-9 | Tue Mar 3 | 17 | Interior point methods |  | HW4 due ||
-9 | Thu Mar 5 | 18 | Interior point methods |  |  ||
+8 | Thu Feb 26 | 16 | Interior point methods |  |  ||
+9 | Tue Mar 3 | 17 | Nonconvex optimization |  | HW4 due ||
+9 | Thu Mar 5 | 18 | Stochastic gradient descent and review |  |  ||
 ~~~
 
 
