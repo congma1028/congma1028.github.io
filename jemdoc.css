@@ -1,23 +1,23 @@
 /* Default css file for jemdoc. */
 
 :root {
-	--bg-page: #f4efe7;
-	--bg-page-alt: #e6dbcd;
-	--bg-panel: rgba(255, 253, 249, 0.96);
-	--bg-panel-strong: #fffdf9;
-	--bg-menu: linear-gradient(180deg, #efe6da 0%, #e5dacd 100%);
-	--text-main: #1f2430;
-	--text-muted: #5b6471;
-	--text-soft: #78675c;
-	--border-soft: #d7c8b8;
-	--border-strong: #bca58f;
-	--accent: #8b2235;
-	--accent-strong: #671220;
-	--accent-soft: rgba(139, 34, 53, 0.12);
-	--accent-soft-strong: rgba(139, 34, 53, 0.2);
-	--accent-wash: #f5eaed;
-	--heading: #30262d;
-	--shadow-color: rgba(67, 49, 36, 0.1);
+	--bg-page: #eef3f8;
+	--bg-page-alt: #dfe8f1;
+	--bg-panel: #ffffff;
+	--bg-panel-strong: #ffffff;
+	--bg-menu: linear-gradient(180deg, #f7faff 0%, #e9f0f7 100%);
+	--text-main: #121826;
+	--text-muted: #3d4b5e;
+	--text-soft: #53677d;
+	--border-soft: #c6d3e1;
+	--border-strong: #8ba4bf;
+	--accent: #1f4e9d;
+	--accent-strong: #163878;
+	--accent-soft: rgba(31, 78, 157, 0.1);
+	--accent-soft-strong: rgba(31, 78, 157, 0.22);
+	--accent-wash: #edf4fb;
+	--heading: #102033;
+	--shadow-color: rgba(28, 54, 86, 0.12);
 }
 
 table#tlayout {
@@ -33,9 +33,8 @@ table#tlayout {
 body {
 	background-color: var(--bg-page);
 	background-image:
-		radial-gradient(circle at top left, rgba(139, 34, 53, 0.12), transparent 34%),
-		radial-gradient(circle at top right, rgba(137, 98, 46, 0.11), transparent 26%),
-		linear-gradient(180deg, var(--bg-page) 0%, #f8f3ed 100%);
+		radial-gradient(circle at top left, rgba(31, 78, 157, 0.08), transparent 30%),
+		linear-gradient(180deg, var(--bg-page) 0%, #fafcff 100%);
 	font-family: Georgia, serif;
 	/*font-family: Palatino, serif;*/
 	padding-bottom: 8px;
@@ -99,7 +98,7 @@ body {
 }
 
 tt {
-    background: #fbf3cf;
+    background: #eef2ff;
 }
 
 pre, tt {
@@ -111,21 +110,21 @@ a, a > tt {
 	color: var(--accent);
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
-	text-decoration-color: rgba(139, 34, 53, 0.45);
+	text-decoration-color: rgba(31, 78, 157, 0.45);
 	text-underline-offset: 2px;
 	transition: color 140ms ease, text-decoration-color 140ms ease;
 }
 
 a:hover {
 	color: var(--accent-strong);
-	text-decoration-color: rgba(103, 18, 32, 0.82);
+	text-decoration-color: rgba(22, 56, 120, 0.82);
 	border-bottom: none;
 }
 
 #layout-menu a.current:link, #layout-menu a.current:visited {
 	color: #ffffff;
 	background: var(--accent);
-	box-shadow: 0 6px 12px rgba(103, 18, 32, 0.18);
+	box-shadow: 0 6px 12px rgba(22, 56, 120, 0.18);
 	border-bottom: none;
 	text-decoration: none;
 }
@@ -228,7 +227,7 @@ p {
 	padding: 0.62rem 0.78rem;
 	border: 1px solid var(--border-soft);
 	border-radius: 12px;
-	background: linear-gradient(180deg, #fbf6f1 0%, var(--accent-wash) 100%);
+	background: linear-gradient(180deg, #ffffff 0%, var(--accent-wash) 100%);
 }
 
 .pub-selection-label {
@@ -350,7 +349,7 @@ div.blockcontent {
 }
 
 div.infoblock > div.blockcontent {
-	background: #fffaf0;
+	background: #f7f9fc;
 }
 
 div.blockcontent p + ul, div.blockcontent p + ol {
@@ -401,7 +400,7 @@ div.infoblock p + p {
 }
 
 div.codeblock > div.blockcontent {
-	background: #f6f1eb;
+	background: #eef2f6;
 }
 
 span.pycommand {
@@ -526,14 +525,14 @@ body:has(#layout-menu a.current[href="paper_topic.html"]) #layout-content h2 {
 	padding: 0.62em 0.82em 0.66em 0.82em;
 	border: 1px solid var(--border-soft);
 	border-radius: 9px;
-	background: linear-gradient(180deg, #fffdfa 0%, #f7f1ea 100%);
+	background: #ffffff;
 	margin-bottom: 0.45em;
 	transition: border-color 130ms ease, background 130ms ease, transform 130ms ease;
 }
 
 .pub-entry:hover {
 	border-color: var(--border-strong);
-	background: linear-gradient(180deg, #fff8fb 0%, #f7ece8 100%);
+	background: #f7fbff;
 	transform: translateY(-1px);
 }
 
@@ -598,7 +597,7 @@ a.pub-link-btn {
 
 a.pub-link-btn:hover {
 	background: var(--accent-soft);
-	border-color: rgba(139, 34, 53, 0.42);
+	border-color: rgba(31, 78, 157, 0.42);
 	text-decoration: none;
 }
 
@@ -644,7 +643,7 @@ body:has(#layout-menu a.current[href="index.html"]) table.imgtable img {
 	padding: 0.58em 0.68em 0.62em;
 	border: 1px solid var(--border-soft);
 	border-radius: 9px;
-	background: rgba(255, 253, 249, 0.74);
+	background: #ffffff;
 	font-size: 0.9em;
 	line-height: 1.42;
 	color: var(--text-muted);
