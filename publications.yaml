@@ -1,3 +1,19 @@
+- title: When Are Trade-Off Functions Testable from Finite Samples?
+  authors: K. Shi, Q. Wang, C. Ma
+  year: 2026
+  venue: ''
+  links:
+  topics: Others
+  arxiv: https://arxiv.org/abs/2605.10774
+
+- title: Sample Efficient Inductive Matrix Completion with Noise and Inexact Side Information
+  authors: Y. Yang, C. Ma
+  year: 2026
+  venue: ''
+  links:
+  topics: Low-rank matrix estimation
+  arxiv: https://arxiv.org/abs/2605.17189
+
 
 
 - title: Learning to Answer from Correct Demonstrations
@@ -7,7 +23,7 @@
   links:
     - label: Slides
       url: Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2510.15464
   selected: true
 
@@ -32,7 +48,7 @@
   links:
     - label: Slides
       url: Publication/BatchedBandit/batch_nb_slides_uiuc.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2511.03708
   selected: true
 
@@ -82,7 +98,7 @@
   links:
     - label: Slides
       url: Publication/BatchedBandit/batch_nb_slides.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2402.17732
 
 
@@ -100,7 +116,7 @@
   authors: J.~Lee, C.~Ma
   year: 2024
   venue: NeurIPS, 2024
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2411.12786
 
 
@@ -135,13 +151,13 @@
   links:
     - label: Code
       url: https://github.com/yugjerry/conf-mc
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2305.10637
 
 - title: The Power of Preconditioning in Overparameterized Low-Rank Matrix Sensing
   authors: X. Xu, Y. Shen, Y. Chi, C. Ma
   year: 2023
-  venue: ICML, 2023
+  venue: "Information and Inference: A Journal of the IMA, accepted in part to ICML, 2023"
   links:
     - label: Slides
       url: Publication/Overparam/ScaledGD_Overparam_Purdue.pdf
@@ -154,7 +170,7 @@
   authors: G. Li, W. Wu, Y. Chi, C. Ma, A. Rinaldo, Y. Wei
   year: 2023
   venue: IEEE Transactions on Information Theory, 2024  
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2305.19001
 
 
@@ -188,7 +204,7 @@
   authors: Y. Yang, C. Ma
   year: 2022
   venue: IEEE Transactions on Information Theory, 2023  
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2207.05802
 
 - title: Fast and Provable Tensor Robust Principal Component Analysis via Scaled Gradient
@@ -212,7 +228,7 @@
     C. Ma, J. Jiao, S. Levine, K. Hausman
   year: 2022
   venue: ICML, 2023
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2204.02372
 
 - title: $O(1/T)$ Convergence of Optimistic-Follow-the-Regularized-Leader in Two-Player
@@ -220,7 +236,7 @@
   authors: Y. Yang, C. Ma
   year: 2022
   venue: ICLR, 2023 
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2209.12430
 
 - title: Pessimism for Offline Linear Contextual Bandits using $\ell_{p}$ Confidence
@@ -231,7 +247,7 @@
   links:
     - label: Poster
       url: Publication/ContextualBandit/lcb_bounds_poster.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2205.10671
 
 - title: Minimax Off-Policy Evaluation for Multi-Armed Bandits
@@ -241,7 +257,7 @@
   links:
     - label: Slides
       url: Publication/OPE/OPE_slides.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2101.07781
 
 - title: 'Bridging Offline Reinforcement Learning and Imitation Learning: A Tale of
@@ -253,7 +269,7 @@
   links:
     - label: Slides
       url: Publication/OfflineRL/slides/PessimismRL.pdf
-  topics: Reinforcement learning
+  topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2103.12021
 
 - title: 'Scaling and Scalability: Provable Nonconvex Low-Rank Tensor Estimation from
@@ -269,7 +285,7 @@
   authors: Y. Chen, Y. Chi, J. Fan, C. Ma (alphabetical order)
   year: 2020
   venue: Foundations and Trends\R in Machine Learning, 2021
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2012.08496
 
 - title: 'Bridging Convex and Nonconvex Optimization in Robust PCA: Noise, Outliers,
@@ -277,14 +293,14 @@
   authors: Y. Chen, J. Fan, C. Ma, Y. Yan (alphabetical order)
   year: 2020
   venue: Annals of Statistics, 2021
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2001.05484
 
 - title: Learning Mixtures of Low-Rank Models
   authors: Y. Chen, C. Ma, H. V. Poor, Y. Chen
   year: 2020
   venue: IEEE Transactions on Information Theory, 2021
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2009.11282
 
 - title: 'Low-Rank Matrix Recovery with Scaled Subgradient Methods: Fast and Robust
@@ -310,7 +326,7 @@
   links:
     - label: Slides
       url: Publication/MC_inference/Slides/Noisy_MC_inference_slides.pdf
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/1906.04159
 
 - title: A Selective Overview of Deep Learning
@@ -328,7 +344,7 @@
   links:
     - label: Slides
       url: Publication/NoisyMC/Slides/NoisyMC_slides.pdf
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/1902.07698
 
 - title: 'Beyond Procrustes: Balancing-Free Gradient Descent for Asymmetric Low-Rank
@@ -337,7 +353,7 @@
   year: 2019
   venue: IEEE Transactions on Signal Processing, 2021, accepted in part to Asilomar
     2019
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/2101.05113
 
 - title: 'Gradient Descent with Random Initialization: Fast Global Convergence for
@@ -348,7 +364,7 @@
   links:
     - label: Slides
       url: Publication/RandomInit/Slides/random_init_slides.pdf
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/1803.07726
 
 - title: Nonconvex Matrix Factorization from Rank-One Measurements
@@ -356,7 +372,7 @@
   year: 2018
   venue: IEEE Transactions on Information Theory, 2021, accepted in part to AISTATS,
     2019
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/1802.06286
 
 - title: 'Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent
@@ -367,7 +383,7 @@
   links:
     - label: Slides
       url: Publication/Implicit/Slides/implicit_reg_slides.pdf
-  topics: Low-rank matrix recovery
+  topics: Low-rank matrix estimation
   arxiv: https://arxiv.org/abs/1711.10467
 
 - title: Spectral Method and Regularized MLE Are Both Optimal for Top-$K$ Ranking

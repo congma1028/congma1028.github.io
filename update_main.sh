@@ -1,10 +1,12 @@
-python2 jemdoc.py -c my.conf index.jemdoc
-python2 jemdoc.py -c my.conf paper.jemdoc
-python2 jemdoc.py -c my.conf paper_topic.jemdoc
-python2 jemdoc.py -c my.conf group.jemdoc
-python2 jemdoc.py -c my.conf teaching.jemdoc
-python2 jemdoc.py -c my.conf tutorial.jemdoc
-python2 jemdoc.py -c my.conf talk.jemdoc
+python3 generate_jemdocs.py
+python jemdoc.py -c my.conf index.jemdoc
+python jemdoc.py -c my.conf paper.jemdoc
+python jemdoc.py -c my.conf paper_topic.jemdoc
+python jemdoc.py -c my.conf group.jemdoc
+python jemdoc.py -c my.conf teaching.jemdoc
+python jemdoc.py -c my.conf tutorial.jemdoc
+python jemdoc.py -c my.conf talk.jemdoc
+python3 generate_jemdocs.py --postprocess-html
 # python2 jemdoc.py homework.jemdoc
 # python2 jemdoc.py lectures.jemdoc
 # python2 jemdoc.py reference.jemdoc

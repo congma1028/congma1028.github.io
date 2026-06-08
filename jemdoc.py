@@ -430,15 +430,14 @@ def hb(f, tag, content1, content2=None, content3=None):
     content3 = ""
 
   if content2 is None:
-#    out(f, re.sub(r'\|', content1, tag))
-    r = re.sub(r'\|', content1, tag)
-    r = re.sub(r'\|3', content3, r)
+    r = re.sub(r'\|', lambda m: content1, tag)
+    r = re.sub(r'\|3', lambda m: content3, r)
     r = mathjaxeqresub(r)
     out(f, r)
   else:
-    r = re.sub(r'\|1', content1, tag)
-    r = re.sub(r'\|3', content3, r)
-    r = re.sub(r'\|2', content2, r)
+    r = re.sub(r'\|1', lambda m: content1, tag)
+    r = re.sub(r'\|3', lambda m: content3, r)
+    r = re.sub(r'\|2', lambda m: content2, r)
     r = mathjaxeqresub(r)
     out(f, r)
 

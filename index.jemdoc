@@ -2,21 +2,24 @@
 = Cong Ma
 
 ~~~
-{}{img_left}{figure/Cong_Cancun.jpeg}{Portrait of Cong Ma}{350}{250}
-I am an assistant professor in the Department of Statistics at the University of Chicago. 
-
-
-
-Previously, I was a postdoctoral researcher at UC~Berkeley, advised by Professor [https://computing.mit.edu/martin-wainwright/ Martin Wainwright]. I obtained my Ph.D. at Princeton University in 2020, advised by Professor [https://yuxinchen2020.github.io/ Yuxin Chen] and Professor [https://orfe.princeton.edu/~jqfan/ Jianqing Fan]. Prior to the graduate school, I received my bachelor's degree in Electrical Engineering from Tsinghua University in 2015. \n
-\n
-I am broadly interested in mathematics of data science with a current focus on reinforcement learning, transfer learning, multi-modal learning, high-dimensional statistics, and nonconvex optimization. \n
-
-
-
-E-mail: /congm/ \[@\] uchicago \[DOT\] edu
-\n
-[https://scholar.google.com/citations?user=IB_jPZ0AAAAJ&hl=en Google Scholar]
+{}{raw}
+<table class="imgtable home-profile"><tr><td>
+<img src="figure/Cong_Cancun.jpeg" alt="Portrait of Cong Ma" width="350px" height="250px" />
+<div class="profile-contact">
+E-mail:<br />
+<i>congm</i> [@] uchicago [DOT] edu<br />
+<a href="https://scholar.google.com/citations?user=IB_jPZ0AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+</div>
+</td>
+<td align="left"><p>I am an assistant professor in the Department of Statistics at the University of Chicago.</p>
+<p>Previously, I was a postdoctoral researcher at UC&nbsp;Berkeley, advised by Professor <a href="https://computing.mit.edu/martin-wainwright/" target="_blank" rel="noopener noreferrer">Martin Wainwright</a>. I obtained my Ph.D. at Princeton University in 2020, advised by Professor <a href="https://yuxinchen2020.github.io/" target="_blank" rel="noopener noreferrer">Yuxin Chen</a> and Professor <a href="https://orfe.princeton.edu/~jqfan/" target="_blank" rel="noopener noreferrer">Jianqing Fan</a>. Prior to the graduate school, I received my bachelor's degree in Electrical Engineering from Tsinghua University in 2015.</p>
+<p>I am broadly interested in mathematics of data science with a current focus on reinforcement learning, transfer learning, multi-modal learning, high-dimensional statistics, and nonconvex optimization.</p>
+</td></tr></table>
 ~~~
+
+== Openings
+
+I'm looking for highly motivated Ph.D. students with strong mathematical backgrounds and interests in machine learning, statistics, and optimization.
 
 
 == Highlights
@@ -27,11 +30,12 @@ E-mail: /congm/ \[@\] uchicago \[DOT\] edu
 
 == News
 
+- /Paper:/ [https://arxiv.org/abs/2605.10774 When Are Trade-Off Functions Testable from Finite Samples?].
 - /Paper:/ [https://arxiv.org/abs/2511.03708 The Adaptivity Barrier in Batched Nonparametric Bandits: Sharp Characterization of the Price of Unknown Margin].
 - /Paper:/ [https://arxiv.org/abs/2509.21584 IndiSeek Learns Information-Guided Disentangled Representations].
 - /Journal acceptance:/ [https://arxiv.org/abs/2411.15624 Trans-Glasso: A Transfer Learning Approach to Precision Matrix Estimation] in /Journal of the American Statistical Association/.
 - /Journal acceptance:/ [https://arxiv.org/abs/2406.13989 Random Pairing MLE for Estimation of Item Parameters in Rasch Model] in /Journal of the American Statistical Association/.
-- /Journal acceptance:/ [https://arxiv.org/abs/2402.17732 Batched Nonparametric Contextual Bandits] in /IEEE Transactions on Information Theory/.
+
 
 
 
