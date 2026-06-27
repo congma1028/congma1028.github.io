@@ -6,6 +6,17 @@
   topics: Others
   arxiv: https://arxiv.org/abs/2605.10774
 
+
+- title: Distributionally Robust Risk Evaluation with an Isotonic Constraint
+  authors: Y.~Gui, R.~F.~Barber, C.~Ma
+  year: 2024
+  venue: "Information and Inference: A Journal of the IMA, 2026"
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2407.06867
+
+
+
+
 - title: Sample Efficient Inductive Matrix Completion with Noise and Inexact Side Information
   authors: Y. Yang, C. Ma
   year: 2026
@@ -120,13 +131,6 @@
   arxiv: https://arxiv.org/abs/2411.12786
 
 
-
-- title: Distributionally Robust Risk Evaluation with an Isotonic Constraint
-  authors: Y.~Gui, R.~F.~Barber, C.~Ma
-  year: 2024
-  venue: ''
-  topics: Transfer learning
-  arxiv: https://arxiv.org/abs/2407.06867
 
 
 

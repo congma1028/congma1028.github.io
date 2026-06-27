@@ -31,6 +31,9 @@ Y.~Yang, C. Ma; [Publication/AJIVE/AJIVE.pdf \[Slides\]]
 {{<a id="year-2024"></a>}}
 == 2024
 
+- [https://arxiv.org/abs/2407.06867 Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
+Y.~Gui, R.~F.~Barber, C.~Ma; /Information and Inference: A Journal of the IMA, 2026/
+
 - [https://arxiv.org/abs/2406.13989 Random Pairing MLE for Estimation of Item Parameters in Rasch Model] \n
 Y. Yang, C. Ma; /Journal of the American Statistical Association, 2025/
 
@@ -45,9 +48,6 @@ Y.~Yang, A.~Chen, L.~Orecchia, C. Ma; /COLT, 2024/
 
 - [https://arxiv.org/abs/2411.12786 Off-Policy Estimation with Adaptively Collected Data: The Power of Online Learning] \n
 J.~Lee, C.~Ma; /NeurIPS, 2024/
-
-- [https://arxiv.org/abs/2407.06867 Distributionally Robust Risk Evaluation with an Isotonic Constraint] \n
-Y.~Gui, R.~F.~Barber, C.~Ma
 
 - [https://arxiv.org/abs/2402.00382 On the Design-Dependent Suboptimality of the Lasso] \n
 R. Pathak, C. Ma; [https://github.com/reesepathak/lowerlassosim \[Code\]]
