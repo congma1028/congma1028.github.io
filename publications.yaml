@@ -1,3 +1,15 @@
+- title: 'Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation
+    in Multi-View Data'
+  authors: X. Song, Y. Yang, C. Ma
+  year: 2026
+  venue: ''
+  links:
+    - label: Lean
+      url: https://github.com/congma1028/bcsi-lean-verification
+  topics: Multi-modal learning
+  arxiv: Publication/BCSI/BCSI.pdf
+
+
 - title: When Are Trade-Off Functions Testable from Finite Samples?
   authors: K. Shi, Q. Wang, C. Ma
   year: 2026
@@ -5,6 +17,17 @@
   links:
   topics: Others
   arxiv: https://arxiv.org/abs/2605.10774
+
+
+- title: On the Design-Dependent Suboptimality of the Lasso
+  authors: R. Pathak, C. Ma
+  year: 2024
+  venue: Biometrika, 2026
+  links:
+    - label: Code
+      url: https://github.com/reesepathak/lowerlassosim
+  topics: Transfer learning
+  arxiv: https://arxiv.org/abs/2402.00382
 
 
 - title: Distributionally Robust Risk Evaluation with an Isotonic Constraint
@@ -131,22 +154,6 @@
   arxiv: https://arxiv.org/abs/2411.12786
 
 
-
-
-
-
-
-
-
-- title: On the Design-Dependent Suboptimality of the Lasso
-  authors: R. Pathak, C. Ma
-  year: 2024
-  venue: ''
-  links:
-    - label: Code
-      url: https://github.com/reesepathak/lowerlassosim
-  topics: Transfer learning
-  arxiv: https://arxiv.org/abs/2402.00382
 
 - title: Conformalized Matrix Completion
   authors: Y. Gui, R. F. Barber, C. Ma
