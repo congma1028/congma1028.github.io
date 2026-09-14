@@ -7,7 +7,7 @@
     - label: Lean
       url: https://github.com/congma1028/bcsi-lean-verification
   topics: Multi-modal learning
-  arxiv: Publication/BCSI/BCSI.pdf
+  arxiv: https://arxiv.org/abs/2609.05617v1
 
 
 - title: When Are Trade-Off Functions Testable from Finite Samples?

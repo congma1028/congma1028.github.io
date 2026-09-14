@@ -60,7 +60,7 @@ R. Pathak, C. Ma, M. J. Wainwright (RP and CM contributed equally); /ICML, 2022 
 {{<a id="topic-multi-modal-learning"></a>}}
 == Multi-modal learning
 
-- [Publication/BCSI/BCSI.pdf Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] \n
+- [https://arxiv.org/abs/2609.05617v1 Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] \n
 X. Song, Y. Yang, C. Ma; [https://github.com/congma1028/bcsi-lean-verification \[Lean\]]
 
 - [https://arxiv.org/abs/2505.12473 Multi-Modal Contrastive Learning Adapts to Intrinsic Dimensions of Shared Latent Variables] \n

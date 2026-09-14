@@ -24,7 +24,7 @@ I'm looking for highly motivated Ph.D. students with strong mathematical backgro
 
 == Highlights
 
-- New paper: [Publication/BCSI/BCSI.pdf Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] ([https://github.com/congma1028/bcsi-lean-verification Lean formalization]).
+- New paper: [https://arxiv.org/abs/2609.05617v1 Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] ([https://github.com/congma1028/bcsi-lean-verification Lean formalization]).
 - [https://arxiv.org/abs/2402.00382 On the Design-Dependent Suboptimality of the Lasso] was accepted to /Biometrika, 2026/.
 - [https://arxiv.org/abs/2407.06867 Distributionally Robust Risk Evaluation with an Isotonic Constraint] was accepted to /Information and Inference: A Journal of the IMA, 2026/.
 - [https://arxiv.org/abs/2510.15464 Learning to Answer from Correct Demonstrations] was accepted to /ICLR 2026/.

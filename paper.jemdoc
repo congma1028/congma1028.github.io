@@ -4,7 +4,7 @@
 {{<a id="year-2026"></a>}}
 == 2026
 
-- [Publication/BCSI/BCSI.pdf Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] \n
+- [https://arxiv.org/abs/2609.05617v1 Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] \n
 X. Song, Y. Yang, C. Ma; [https://github.com/congma1028/bcsi-lean-verification \[Lean\]]
 
 - [https://arxiv.org/abs/2605.10774 When Are Trade-Off Functions Testable from Finite Samples?] \n
