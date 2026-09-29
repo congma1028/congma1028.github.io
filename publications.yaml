@@ -1,3 +1,10 @@
+- title: The Statistical Benefits of Multiple Responses for Learning from Demonstrations
+  authors: C. Chakraborty, C. Ma
+  year: 2026
+  topics: Reinforcement learning and bandits
+  arxiv: https://arxiv.org/abs/2609.33291
+
+
 - title: 'Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation
     in Multi-View Data'
   authors: X. Song, Y. Yang, C. Ma

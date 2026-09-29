@@ -6,6 +6,9 @@ PUBLICATIONTOPICSELECTIONBAR
 {{<a id="topic-reinforcement-learning-and-bandits"></a>}}
 == Reinforcement learning and bandits
 
+- [https://arxiv.org/abs/2609.33291 The Statistical Benefits of Multiple Responses for Learning from Demonstrations] \n
+C. Chakraborty, C. Ma
+
 - [https://arxiv.org/abs/2510.15464 Learning to Answer from Correct Demonstrations] \n
 N. Joshi, G. Li, S. Bhandari, S. P. Kasiviswanathan, C. Ma, N. Srebro; /ICLR, 2026/ [Publication/Demonstrations/LearningToAnswerFromCorrectDemonstrations.pdf \[Slides\]]
 

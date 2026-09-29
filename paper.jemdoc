@@ -4,6 +4,9 @@
 {{<a id="year-2026"></a>}}
 == 2026
 
+- [https://arxiv.org/abs/2609.33291 The Statistical Benefits of Multiple Responses for Learning from Demonstrations] \n
+C. Chakraborty, C. Ma
+
 - [https://arxiv.org/abs/2609.05617v1 Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation in Multi-View Data] \n
 X. Song, Y. Yang, C. Ma; [https://github.com/congma1028/bcsi-lean-verification \[Lean\]]
 
