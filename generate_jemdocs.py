@@ -161,7 +161,7 @@ def load_publications():
 def build_publication_outputs():
     publications, by_year, by_topic = load_publications()
 
-    paper_by_year = "# jemdoc: menu{menu}{paper.jemdoc}\n= Publications\n\n"
+    paper_by_year = "# jemdoc: menu{menu}{paper.html}\n= Publications\n\n"
     year_order = sorted(by_year.keys(), reverse=True)
 
     for year in year_order:
@@ -170,7 +170,7 @@ def build_publication_outputs():
         for pub in by_year[year]:
             paper_by_year += render_pub(pub)
 
-    paper_by_topic = "# jemdoc: menu{menu}{paper_topic.jemdoc}\n= Publications by topics\n\n"
+    paper_by_topic = "# jemdoc: menu{menu}{paper_topic.html}\n= Publications by topics\n\n"
 
     custom_topic_order = [
         "Reinforcement learning and bandits",
