@@ -3,6 +3,9 @@
   year: 2026
   topics: Reinforcement learning and bandits
   arxiv: https://arxiv.org/abs/2609.33291
+  links:
+    - label: Lean
+      url: https://github.com/chandramaulichak108/passk-lean
 
 
 - title: 'Bias-Corrected Subspace Intersection: Minimax-Optimal Shared Subspace Estimation
